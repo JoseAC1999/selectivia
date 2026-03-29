@@ -1,0 +1,545 @@
+{
+"subject": "lengua-castellana-y-literatura-ii",
+"analysisYear": 2026,
+"sourceSummary": {
+"orientationYear": "2025-26",
+"pastExamYearsAnalyzed": [
+2024,
+2025
+],
+"weighting": {
+"2025": 1.0,
+"2024": 0.7
+},
+"notes": "Se ha dado más peso a 2025 por su mayor cercanía al modelo vigente. Aun así, se ha corregido la predicción con las orientaciones 2025-26, que introducen un texto inicial periodístico o ensayístico, añaden el apartado 4c y reformulan 5a y 5b como cuestiones guiadas más breves."
+},
+"predictions": [
+{
+"id": "len-pred-001",
+"topic": "Texto periodístico o ensayístico sobre tecnología, IA, redes o cultura digital",
+"block": "Bloque B. Comunicación",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.93,
+"reason": "El texto inicial queda acotado oficialmente a un texto periodístico o ensayístico y en el histórico reciente aparecen con fuerza asuntos de tecnología, IA, mundo digital y cultura contemporánea. Además, son temas que facilitan bien la pregunta argumentativa del apartado 3.",
+"likelyQuestions": [
+"Identifique las ideas principales del texto y justifique su estructura argumentativa.",
+"Explique la intención comunicativa de la autora y comente el enfoque valorativo con el que trata la IA o la cultura digital.",
+"¿Mejora la tecnología nuestra capacidad de pensar y relacionarnos o la debilita? Elabore un texto argumentativo de 200 a 250 palabras."
+],
+"studyTips": "Practica con columnas de opinión sobre IA, redes sociales, lectura digital y cultura. Resume la tesis en una frase, localiza conectores y ensaya redacciones con tesis clara, dos argumentos y cierre.",
+"relatedFlashcardTopics": [
+"tesis y estructura argumentativa",
+"subjetividad y modalización",
+"marcadores discursivos"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Predominio de artículos de opinión y ensayos breves sobre asuntos sociales y culturales; en 2025 apareció explícitamente un texto sobre IA."
+}
+},
+{
+"id": "len-pred-002",
+"topic": "Texto periodístico o ensayístico sobre problemas sociales contemporáneos",
+"block": "Bloque B. Comunicación",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.91,
+"reason": "La serie 2024-2025 repite textos sobre emancipación juvenil, pobreza laboral, acoso escolar, alteridad, natalidad, dieta o desigualdad. Ese campo temático encaja muy bien con un examen competencial y con la redacción argumentativa final.",
+"likelyQuestions": [
+"Exponga de forma concisa la organización del texto y justifique si predomina una estructura inductiva, deductiva o encuadrada.",
+"Explique la intención comunicativa del autor en un texto sobre juventud, trabajo, pobreza o convivencia.",
+"¿Debe intervenir más el Estado para corregir problemas estructurales como la vivienda, la precariedad o el acoso? Redacte un texto argumentativo."
+],
+"studyTips": "Entrena comentarios con editoriales y artículos sobre juventud, trabajo, educación y convivencia. Aprende a distinguir tema, tesis, argumento de autoridad, ejemplo y conclusión.",
+"relatedFlashcardTopics": [
+"tipos de argumentos",
+"estructura externa e interna",
+"registro periodístico"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "En el histórico reciente abundan textos de actualidad social con enfoque argumentativo y tesis explícita o implícita."
+}
+},
+{
+"id": "len-pred-003",
+"topic": "Sintaxis de oraciones compuestas a partir de fragmentos del texto",
+"block": "Bloques A y D. Las lenguas y sus hablantes / Reflexión sobre la lengua",
+"sectionType": "cuestiones",
+"confidence": "muy alta",
+"score": 0.9,
+"reason": "Es el núcleo más estable del apartado 4a en todos los exámenes revisados. Siempre se mantiene la doble vía: relaciones entre oraciones o análisis sintáctico de un fragmento.",
+"likelyQuestions": [
+"Identifique y explique las relaciones sintácticas que se establecen entre las oraciones del fragmento propuesto.",
+"Analice sintácticamente un fragmento del texto con subordinación sustantiva, adjetiva o adverbial.",
+"Distinga coordinación, subordinación y posibles incisos o construcciones extraoracionales presentes en el enunciado."
+],
+"studyTips": "No memorices árboles aislados. Practica con periodos reales de prensa y acostúmbrate a segmentar primero verbos conjugados, nexos, proposiciones incrustadas y funciones globales.",
+"relatedFlashcardTopics": [
+"subordinadas sustantivas",
+"subordinadas adjetivas",
+"coordinación y yuxtaposición"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Repetición total del formato 4a en todos los modelos analizados."
+}
+},
+{
+"id": "len-pred-004",
+"topic": "Formación de palabras y procedimientos morfológicos",
+"block": "Bloques A y D. Las lenguas y sus hablantes / Reflexión sobre la lengua",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.86,
+"reason": "En 2024 y 2025 aparece de forma muy regular una opción de análisis morfológico de dos palabras del texto. Es una de las salidas más frecuentes del apartado 4b.",
+"likelyQuestions": [
+"Analice cómo están formadas dos palabras del texto e indique para cada una sus formantes y el procedimiento empleado.",
+"Distinga entre derivación, composición, parasíntesis y prefijación en dos vocablos tomados del texto.",
+"Explique si las palabras propuestas presentan base léxica culta, sufijación apreciativa o prefijos de negación."
+],
+"studyTips": "Repasa familias léxicas frecuentes de artículos periodísticos: prefijos negativos, sustantivos abstractos en -dad, adjetivos en -ble, nombres de acción en -ción y compuestos patrimoniales.",
+"relatedFlashcardTopics": [
+"derivación",
+"composición",
+"parasíntesis"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Muy alta recurrencia de la opción de morfología léxica en 4b."
+}
+},
+{
+"id": "len-pred-005",
+"topic": "Objetividad, subjetividad y mecanismos de cohesión",
+"block": "Bloques A y D. Las lenguas y sus hablantes / Reflexión sobre la lengua",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.83,
+"reason": "Aunque en 2025 no siempre apareció como pregunta independiente, las orientaciones 2025-26 lo refuerzan de forma expresa en 4b y 4c. Además, ya forma parte estructural del comentario del bloque de comunicación.",
+"likelyQuestions": [
+"Señale justificadamente dos marcas de objetividad y/o subjetividad presentes en el texto.",
+"Comente dos mecanismos de cohesión distintos que refuercen la coherencia textual.",
+"Explique el valor cohesivo de los tiempos verbales, de los conectores o de las correferencias léxicas del texto."
+],
+"studyTips": "Haz listas dobles: una de marcas de objetividad y otra de subjetividad. Luego practica comentarios donde cada rasgo vaya unido a su efecto comunicativo, no solo a su identificación.",
+"relatedFlashcardTopics": [
+"modalización",
+"cohesión léxica y gramatical",
+"deixis y correferencia"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Las orientaciones nuevas amplían explícitamente este campo y el bloque 1 ya venía exigiendo comentar cohesión."
+}
+},
+{
+"id": "len-pred-006",
+"topic": "Lengua y sus hablantes: variedades, registro, norma y prejuicios lingüísticos",
+"block": "Bloque A. Las lenguas y sus hablantes",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.8,
+"reason": "Es el ámbito más claramente reforzado por las orientaciones 2025-26 y, además, el nuevo 4c abre espacio para preguntas que no habían tenido tanto recorrido en 2025. La probabilidad sube por ajuste con el modelo oficial, aunque el histórico inmediato no sea tan abundante.",
+"likelyQuestions": [
+"Comente dos rasgos o aspectos relativos a la lengua y sus hablantes presentes o sugeridos por el texto.",
+"Diferencie dialecto, sociolecto, registro y jerga a partir de un ejemplo relacionado con el texto.",
+"Explique qué es la norma culta o estándar y señale algún prejuicio lingüístico que convenga evitar."
+],
+"studyTips": "Prepara definiciones operativas, muy breves y comparables, de dialecto, habla, registro, sociolecto, norma culta y estándar. Practica aplicándolas a ejemplos concretos y no como teoría aislada.",
+"relatedFlashcardTopics": [
+"dialecto andaluz",
+"norma culta y estándar",
+"prejuicios lingüísticos"
+],
+"evidence": {
+"seenInYears": [
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Refuerzo oficial del bloque A y aparición prevista de un apartado 4c que favorece estas preguntas."
+}
+},
+{
+"id": "len-pred-007",
+"topic": "La novela desde 1975 hasta nuestros días",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.84,
+"reason": "Es uno de los temas oficiales de 5a y no apareció en el modelo 2025, mientras que en 2024 solo se vio de forma puntual. Esa ausencia reciente lo hace buen candidato de rotación en un examen que suele repartir focos entre temas del anexo.",
+"likelyQuestions": [
+"Explique dos rasgos de la novela española desde 1975 hasta nuestros días y cite un autor y una obra representativos.",
+"Distinga entre diversidad de tendencias narrativas tras 1975 y renovación técnica de la novela contemporánea.",
+"Mencione una línea narrativa relevante de las últimas décadas y relacione dos autores con ella."
+],
+"studyTips": "Lleva un esquema mínimo por tendencias: metanovela, novela histórica, intimista, de memoria, policíaca o de autoficción. No estudies listas sueltas: asocia cada tendencia con 2 autores y 1 obra.",
+"relatedFlashcardTopics": [
+"novela de la democracia",
+"metanovela",
+"autores y obras desde 1975"
+],
+"evidence": {
+"seenInYears": [
+2024
+],
+"orientationMatch": "alto",
+"questionPattern": "Tema oficial poco explotado en el modelo más reciente, lo que aumenta su valor de rotación."
+}
+},
+{
+"id": "len-pred-008",
+"topic": "La poesía desde los años 70 a nuestros días",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.81,
+"reason": "Es probablemente el gran tema oficial menos representado en los exámenes aportados. Precisamente por esa infrarrepresentación, y porque sigue vigente en el anexo, entra con una probabilidad razonable de recuperación en 2026.",
+"likelyQuestions": [
+"Mencione una o dos tendencias de la poesía española desde los años 70 y cite autores u obras representativos.",
+"Explique brevemente la pluralidad estética de la poesía contemporánea y asóciela con nombres concretos.",
+"Distinga una línea de poesía de la experiencia y otra de corte culturalista, intimista o experimental."
+],
+"studyTips": "Haz un mapa sencillo de tendencias posteriores a los novísimos y aprende autores-clave por bloques. Aquí puntúa mucho la claridad y la selección certera de ejemplos, más que el exceso de detalle.",
+"relatedFlashcardTopics": [
+"novísimos",
+"poesía de la experiencia",
+"pluralidad poética contemporánea"
+],
+"evidence": {
+"seenInYears": [],
+"orientationMatch": "alto",
+"questionPattern": "Tema oficial vigente pero ausente en el histórico revisado; la predicción se basa más en ajuste con orientaciones y necesidad de rotación."
+}
+},
+{
+"id": "len-pred-009",
+"topic": "El teatro desde 1939 hasta nuestros días",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media-alta",
+"score": 0.77,
+"reason": "Aparece en 2024 y 2025, pero con menos saturación que el teatro anterior a 1939. La combinación de posguerra, teatro social, renovación y teatro independiente encaja muy bien con la formulación breve del nuevo 5a.",
+"likelyQuestions": [
+"Explique dos etapas o tendencias del teatro español desde 1939 y cite un autor y una obra de cada una.",
+"Señale diferencias entre teatro de evasión, teatro realista y teatro renovador o independiente.",
+"Relacione la censura y el contexto histórico con la evolución de la dramaturgia española de posguerra."
+],
+"studyTips": "Estudia el tema como una secuencia evolutiva: posguerra, realismo social, renovación y teatro independiente. Esa lógica temporal ayuda mucho en respuestas breves de tres subpreguntas.",
+"relatedFlashcardTopics": [
+"Buero Vallejo",
+"teatro social",
+"teatro independiente"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Presencia moderada y compatible con el formato de microcuestiones contextuales."
+}
+},
+{
+"id": "len-pred-010",
+"topic": "La novela desde 1939 hasta los años 70",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media-alta",
+"score": 0.75,
+"reason": "Tiene recurrencia fuerte en 2024 y sigue activa en 2025 con preguntas sobre tremendismo, realismo social, objetivismo y novela experimental. Es un núcleo muy estable del temario.",
+"likelyQuestions": [
+"Explique una característica del tremendismo, otra del realismo social y otra de la novela experimental.",
+"Cite autores y obras representativas de la novela de los 40, 50 y 60.",
+"Comente la evolución narrativa entre la posguerra inmediata y la renovación técnica de los años sesenta."
+],
+"studyTips": "No lo estudies como un bloque único. Divide 40, 50 y 60 y asocia a cada tramo una técnica dominante, dos autores y una obra.",
+"relatedFlashcardTopics": [
+"tremendismo",
+"objetivismo",
+"novela experimental"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Tema muy recurrente tanto en el modelo antiguo como en el reciente."
+}
+},
+{
+"id": "len-pred-011",
+"topic": "La poesía del grupo poético del 27",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media-alta",
+"score": 0.73,
+"reason": "Es un clásico del histórico y en 2025 volvió mediante preguntas guiadas sobre autores, rasgos generacionales e influencias de las vanguardias. Su centralidad curricular la mantiene muy viva.",
+"likelyQuestions": [
+"Mencione dos autores del 27 y una obra de cada uno.",
+"Explique dos rasgos definitorios del grupo poético del 27.",
+"Indique dos movimientos vanguardistas que influyeran en la generación y señale un rasgo de cada uno."
+],
+"studyTips": "Prepara una ficha base: equilibrio tradición-vanguardia, metáfora e imagen, etapas del grupo y nombres mínimos. Funciona muy bien para respuestas breves encadenadas.",
+"relatedFlashcardTopics": [
+"generación del 27",
+"tradición y vanguardia",
+"autores del 27"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Reaparición continua en ambos cursos, aunque no con la máxima frecuencia."
+}
+},
+{
+"id": "len-pred-012",
+"topic": "La novela desde principios del siglo XX hasta 1939",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media-alta",
+"score": 0.71,
+"reason": "Fue muy frecuente en 2024 y en 2025 reapareció mediante cuestiones sobre generación del 98, Unamuno y vanguardias. Sigue siendo un tema nuclear y muy adaptable al formato breve.",
+"likelyQuestions": [
+"Explique dos líneas temáticas de la generación del 98 y cite un autor representativo.",
+"Defina la nivola y relacione el término con una obra de Unamuno.",
+"Comente una aportación de las vanguardias o de Ramón Gómez de la Serna al cambio narrativo del periodo."
+],
+"studyTips": "Une generación del 98, regeneracionismo, Unamuno, Baroja y greguerías en un solo esquema para no fragmentar el periodo.",
+"relatedFlashcardTopics": [
+"generación del 98",
+"nivola",
+"greguería"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Mucha presencia en 2024 y continuidad indirecta en 2025."
+}
+},
+{
+"id": "len-pred-013",
+"topic": "La poesía desde 1939 a los años 70",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media",
+"score": 0.69,
+"reason": "Solo apareció una vez en 2025, pero su encaje con el anexo es claro y ofrece un repertorio muy manejable para preguntas de tres subapartados: exilio, poesía arraigada/desarraigada y evolución posterior.",
+"likelyQuestions": [
+"Señale dos rasgos comunes de la poesía del exilio.",
+"Mencione autores y obras de la poesía arraigada o desarraigada.",
+"Justifique por qué una obra o un autor determinados pueden considerarse representativos de la poesía de posguerra."
+],
+"studyTips": "Reduce el tema a cuatro bloques: exilio, arraigada, desarraigada/social y evolución posterior. En respuestas cortas es clave comparar, no solo enumerar.",
+"relatedFlashcardTopics": [
+"poesía del exilio",
+"poesía arraigada y desarraigada",
+"Vicente Aleixandre"
+],
+"evidence": {
+"seenInYears": [
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Presencia limitada pero reciente en el modelo vigente."
+}
+},
+{
+"id": "len-pred-014",
+"topic": "El teatro desde principios del siglo XX hasta 1939",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media",
+"score": 0.67,
+"reason": "Ha sido el tema más repetido del modelo 2025, sobre todo alrededor de Valle-Inclán, esperpento, teatro cómico y Lorca. Esa saturación reciente puede restarle algo de probabilidad, aunque sigue siendo claramente examinable.",
+"likelyQuestions": [
+"Señale las principales tendencias teatrales del periodo y cite autores y obras representativos.",
+"Defina el esperpento y relacione la técnica con Luces de bohemia.",
+"Explique rasgos de los dramas rurales de Lorca o de la evolución de su dramaturgia."
+],
+"studyTips": "Aquí conviene estudiar por polos: teatro comercial frente a renovador, Valle-Inclán, Lorca. Si el tema cae, normalmente se formula por tendencias y autores muy concretos.",
+"relatedFlashcardTopics": [
+"esperpento",
+"teatro comercial",
+"Lorca dramaturgo"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Muy alta recurrencia en 2025, pero precisamente por ello con algo más de incertidumbre para 2026."
+}
+},
+{
+"id": "len-pred-015",
+"topic": "La poesía desde el Modernismo a las vanguardias",
+"block": "Bloque C. Educación literaria",
+"sectionType": "cuestiones",
+"confidence": "media",
+"score": 0.66,
+"reason": "Tiene presencia en ambos años y se presta muy bien a subpreguntas de movimientos, autores, obras y contexto cultural. No destaca tanto por rotación como otros temas, pero sigue siendo una opción verosímil.",
+"likelyQuestions": [
+"Mencione los movimientos de renovación lírica de fin de siglo y destaque un rasgo de cada uno.",
+"Explique dos características de la poesía modernista y cite un autor y una obra representativos.",
+"Comente algún movimiento de vanguardia y señale una obra poética vinculada a él."
+],
+"studyTips": "Convierte el tema en una línea de continuidad: Modernismo, Juan Ramón, vanguardias y puente hacia el 27. Esa visión integrada da mucha solidez a respuestas breves.",
+"relatedFlashcardTopics": [
+"Modernismo",
+"Juan Ramón Jiménez",
+"vanguardias"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Tema estable, con formulaciones de autores, etapas y movimientos."
+}
+},
+{
+"id": "len-pred-016",
+"topic": "La casa de Bernarda Alba: libertad, represión, símbolos y contexto dramático",
+"block": "Bloque C. Educación literaria",
+"sectionType": "documento",
+"confidence": "alta",
+"score": 0.87,
+"reason": "La obra mantiene una presencia muy alta en 2024 y 2025 y además encaja de forma excelente con el nuevo 5b fragmentario, porque permite preguntar a la vez por tema, forma y contexto.",
+"likelyQuestions": [
+"Sitúe el fragmento en la obra y explique su función en el desarrollo de la acción.",
+"Comente el conflicto entre autoridad y deseo de libertad a partir del pasaje propuesto.",
+"Explique el valor simbólico de un elemento del fragmento y relacione el texto con una característica del teatro de Lorca."
+],
+"studyTips": "Estudia la obra por ejes: personajes, símbolos, espacios, tiempo, conflicto y lenguaje dramático. Con eso puedes responder casi cualquier subpregunta guiada.",
+"relatedFlashcardTopics": [
+"Adela y Bernarda",
+"simbolismo escénico",
+"dramas rurales"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Obra muy repetida con preguntas sobre personajes, título, tiempo, espacio, símbolos y lugar del fragmento."
+}
+},
+{
+"id": "len-pred-017",
+"topic": "El cuarto de atrás: memoria, posguerra, metaliteratura y estructura dialogada",
+"block": "Bloque C. Educación literaria",
+"sectionType": "documento",
+"confidence": "alta",
+"score": 0.85,
+"reason": "Comparte con Bernarda la mayor recurrencia del modelo 2025 y ofrece muchas posibilidades de pregunta guiada: interlocutores, memoria, guerra/posguerra, mezcla genérica, simbolismo y reflexión sobre la escritura.",
+"likelyQuestions": [
+"Explique la función del diálogo o de los interlocutores presentes en el fragmento.",
+"Comente cómo se proyectan en la obra la memoria personal y la posguerra.",
+"Justifique a partir del pasaje el carácter metaliterario, fantástico o híbrido de la novela."
+],
+"studyTips": "No memorices solo el argumento. Lleva preparados núcleos de análisis: interlocutor de negro, memoria, infancia, censura, posguerra, cuarto de atrás, mezcla de realidad y fantasía.",
+"relatedFlashcardTopics": [
+"metaliteratura",
+"memoria y posguerra",
+"interlocutor de negro"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "muy alto",
+"questionPattern": "Repetición fuerte con preguntas sobre género, interlocución, símbolos, guerra/posguerra y generaciones de mujeres."
+}
+},
+{
+"id": "len-pred-018",
+"topic": "El árbol de la ciencia: crisis existencial, estructura y rasgos de la generación del 98",
+"block": "Bloque C. Educación literaria",
+"sectionType": "documento",
+"confidence": "media-alta",
+"score": 0.76,
+"reason": "Su frecuencia global es alta si se suman 2024 y 2025, aunque en 2025 bajó algo frente a Bernarda y El cuarto de atrás. Sigue siendo una lectura muy funcional para preguntas de contexto generacional y análisis del protagonista.",
+"likelyQuestions": [
+"Sitúe el fragmento en la evolución de Andrés Hurtado y explique su valor dentro de la obra.",
+"Relacione el pasaje con un rasgo de la generación del 98 o con la visión crítica de la realidad española.",
+"Comente un aspecto estructural o filosófico de la novela a partir del texto propuesto."
+],
+"studyTips": "Prepara juntos personaje, estructura en partes, ataraxia, mundo urbano/rural y crisis ideológica. Son los focos que más se repiten.",
+"relatedFlashcardTopics": [
+"Andrés Hurtado",
+"ataraxia",
+"generación del 98"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Preguntas habituales sobre estructura, personajes secundarios, simbolismo del título y claves del 98."
+}
+},
+{
+"id": "len-pred-019",
+"topic": "Luis Cernuda y La realidad y el deseo: etapas, exilio, España, tiempo y deseo",
+"block": "Bloque C. Educación literaria",
+"sectionType": "documento",
+"confidence": "media-alta",
+"score": 0.74,
+"reason": "Aunque en 2025 apareció menos que otras lecturas, su presencia es sostenida y las orientaciones lo mantienen como lectura fija. Además, un fragmento poético permite preguntas claras sobre etapa, tema y rasgos expresivos.",
+"likelyQuestions": [
+"Sitúe el poema o fragmento en una etapa de la trayectoria de Cernuda y justifique la respuesta.",
+"Comente uno o dos temas del texto, como deseo, exilio, España, tiempo o soledad.",
+"Explique un rasgo formal del poema y relaciónelo con la evolución estética del autor."
+],
+"studyTips": "Estudia a Cernuda por etapas y asocia cada una con 2 temas dominantes y 1 libro. Con eso podrás contestar tanto si preguntan por obra concreta como si lo hacen a partir de un poema.",
+"relatedFlashcardTopics": [
+"etapas de Cernuda",
+"La realidad y el deseo",
+"exilio y deseo"
+],
+"evidence": {
+"seenInYears": [
+2024,
+2025
+],
+"orientationMatch": "alto",
+"questionPattern": "Preguntas recurrentes sobre etapas, último poemario, temas de España y tiempo, y rasgos tras 1939."
+}
+}
+],
+"generalTips": "Prioriza el modelo 2025-26: un único texto periodístico o ensayístico para el bloque de comunicación, sintaxis fija en 4a, probable apertura temática de 4b-4c y literatura resuelta en respuestas breves y muy dirigidas. Estudia con esquemas comparativos, no con temas cerrados: para 5a organiza cada periodo por tendencias, autores y una obra; para 5b prepara por cada lectura un paquete mínimo de argumento, estructura, personajes, temas, símbolos, contexto y rasgos formales. En la parte práctica, entrena comentarios de artículos de opinión y redacciones de 200-250 palabras con tesis clara, conectores y cierre."
+}

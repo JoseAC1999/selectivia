@@ -1,0 +1,395 @@
+{
+  "subject": "ingles",
+  "analysisYear": 2026,
+  "sourceSummary": {
+    "orientationYear": "2025-26",
+    "pastExamYearsAnalyzed": [2024, 2025],
+    "weighting": {
+      "2025": 1.0,
+      "2024": 0.75
+    },
+    "notes": "Se ha dado más peso a 2025 porque ya coincide con la estructura vigente para 2026: un único texto en Comprehension, dos opciones cerradas en Use of English y dos temas en Writing. 2024 se ha usado para detectar recurrencias temáticas y estructuras gramaticales frecuentes."
+  },
+  "predictions": [
+    {
+      "id": "eng-pred-001",
+      "topic": "Comprehension text about history, biography or a remarkable real-life story",
+      "block": "Block A - Comprehension",
+      "sectionType": "reading_text",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "En 2024 y 2025 se repiten con mucha frecuencia textos de historia divulgativa, biografías y episodios llamativos de la vida real, con un tono accesible pero culto.",
+      "likelyQuestions": [
+        "A reading text about a historical figure, cultural episode or surprising real event followed by multiple choice, true/false and vocabulary items",
+        "A biography-based text with questions on key events, cause-effect relationships and the character’s achievements",
+        "A historical or cultural article asking students to identify main ideas, infer meaning and locate synonyms or definitions in the text"
+      ],
+      "studyTips": "Practica textos divulgativos sobre personajes, episodios históricos y curiosidades culturales. Entrena especialmente inferencia contextual, justificación textual exacta en true/false y búsqueda de sinónimos/opuestos.",
+      "relatedFlashcardTopics": [
+        "historical figures",
+        "cultural history",
+        "biographies",
+        "reading inference",
+        "text evidence"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "authentic non-specialized text with 8 fixed questions"
+      }
+    },
+    {
+      "id": "eng-pred-002",
+      "topic": "Comprehension text about science, technology or social impact",
+      "block": "Block A - Comprehension",
+      "sectionType": "reading_text",
+      "confidence": "alta",
+      "score": 0.93,
+      "reason": "Los exámenes recientes incluyen textos sobre conspiracies, climate-related phenomena, space, screen time, fake news y hábitos sociales, por lo que los temas de ciencia y sociedad tienen mucha presencia.",
+      "likelyQuestions": [
+        "A text about technology or science in everyday life followed by factual and inferential comprehension questions",
+        "A text about digital behavior, misinformation or media impact with vocabulary questions based on context",
+        "A text about science communication, environment or social behavior with true/false justification and lexical search"
+      ],
+      "studyTips": "Lee textos breves sobre ciencia, tecnología, redes sociales y comportamiento humano. Practica detectar thesis, supporting ideas y vocabulario deducido por contexto.",
+      "relatedFlashcardTopics": [
+        "technology",
+        "science and society",
+        "fake news",
+        "social media",
+        "environment"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "informative or argumentative source text"
+      }
+    },
+    {
+      "id": "eng-pred-003",
+      "topic": "Vocabulary extraction: synonym, opposite and word meaning in context",
+      "block": "Block A - Comprehension",
+      "sectionType": "vocabulary_in_context",
+      "confidence": "muy alta",
+      "score": 0.99,
+      "reason": "La estructura oficial fija dos preguntas finales de vocabulario y los exámenes recientes repiten exactamente el patrón de synonym/opposite y word meaning/expression meaning.",
+      "likelyQuestions": [
+        "Find in the text one synonym or one opposite for a given word and specified word class",
+        "Find in the text one word or expression meaning a definition provided in English",
+        "Locate lexical items in the passage by meaning, not by direct repetition"
+      ],
+      "studyTips": "No memorices listas aisladas: practica encontrar equivalencias léxicas dentro de un texto real. Fíjate en categoría gramatical y en la línea donde aparece la palabra.",
+      "relatedFlashcardTopics": [
+        "synonyms",
+        "opposites",
+        "context clues",
+        "word class",
+        "lexical meaning"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "fixed lexical tasks in A7 and A8"
+      }
+    },
+    {
+      "id": "eng-pred-004",
+      "topic": "Conditional structures in sentence transformation",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "muy alta",
+      "score": 0.98,
+      "reason": "Las condicionales aparecen con mucha frecuencia en los modelos recientes, tanto en reescritura completa como en completar una oración condicional.",
+      "likelyQuestions": [
+        "Rewrite a sentence using an if clause without changing the meaning",
+        "Complete a conditional sentence naturally and correctly",
+        "Transform a cause-consequence sentence into a second or third conditional structure"
+      ],
+      "studyTips": "Lleva cerradas zero, first, second, third y mixed conditionals. Practica equivalencias con unless, as long as, in case y wish/if only.",
+      "relatedFlashcardTopics": [
+        "conditionals",
+        "unless",
+        "in case",
+        "as long as",
+        "mixed conditionals"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "rewrite and sentence completion"
+      }
+    },
+    {
+      "id": "eng-pred-005",
+      "topic": "Passive and active voice transformations",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Es una de las estructuras más estables del histórico reciente y aparece una y otra vez en acceso, admisión, reserva y suplentes.",
+      "likelyQuestions": [
+        "Turn the following sentence into the passive voice",
+        "Turn the following sentence into the active voice",
+        "Rewrite a sentence using a causative or passive-like structure without changing the meaning"
+      ],
+      "studyTips": "Repasa cambios de objeto y sujeto, tiempos verbales, modales en pasiva y construcciones como get + object + past participle.",
+      "relatedFlashcardTopics": [
+        "passive voice",
+        "active voice",
+        "causative get",
+        "modals in passive",
+        "verb tense shift"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "direct transformation tasks"
+      }
+    },
+    {
+      "id": "eng-pred-006",
+      "topic": "Reported speech and direct speech",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "En los exámenes recientes es recurrente pedir paso de estilo directo a indirecto y viceversa, a menudo con cambios de tiempo, pronombres y referencias temporales.",
+      "likelyQuestions": [
+        "Turn the following sentence into reported speech",
+        "Turn the following sentence into direct speech",
+        "Rewrite a request, offer or apology in reported speech without changing the original meaning"
+      ],
+      "studyTips": "Practica statements, requests, offers, suggestions y questions. Revisa backshift, pronombres, adverbios de tiempo y cambios de deíxis.",
+      "relatedFlashcardTopics": [
+        "reported speech",
+        "direct speech",
+        "backshift",
+        "reported requests",
+        "reported questions"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "speech transformation"
+      }
+    },
+    {
+      "id": "eng-pred-007",
+      "topic": "Relative clauses and sentence joining",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Aparece de forma muy consistente tanto como join the following sentences using a relative como mediante whose o which en reescrituras guiadas.",
+      "likelyQuestions": [
+        "Join the following sentences using a relative pronoun",
+        "Rewrite the sentence using WHOSE, WHICH or a defining/non-defining relative clause",
+        "Combine information about a person, place or object into a single sentence with a relative structure"
+      ],
+      "studyTips": "Domina who, which, that, whose, where y when. Practica cuándo usar comas y cuándo no.",
+      "relatedFlashcardTopics": [
+        "relative clauses",
+        "whose",
+        "defining relative clauses",
+        "non-defining relative clauses",
+        "sentence combination"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "join using a relative"
+      }
+    },
+    {
+      "id": "eng-pred-008",
+      "topic": "Wishes, regrets and unreal meaning",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Los modelos recientes repiten wish, if only, would rather y otras estructuras de arrepentimiento o irrealidad.",
+      "likelyQuestions": [
+        "Rewrite the sentence using WISH without changing the original meaning",
+        "Complete an IF ONLY sentence expressing regret",
+        "Transform a sentence into a structure expressing past regret or present dissatisfaction"
+      ],
+      "studyTips": "Repasa la diferencia entre regret about the past, dissatisfaction in the present y desires about other people’s behavior.",
+      "relatedFlashcardTopics": [
+        "wish",
+        "if only",
+        "would rather",
+        "past regret",
+        "unreal present"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "guided rewrite with keyword"
+      }
+    },
+    {
+      "id": "eng-pred-009",
+      "topic": "Comparatives, result structures and equivalence patterns",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite",
+      "confidence": "alta",
+      "score": 0.89,
+      "reason": "Se repiten estructuras como as...as, the same as, too/enough, so/such y comparatives in context.",
+      "likelyQuestions": [
+        "Rewrite using AS or THE SAME AS",
+        "Transform a sentence using SO...THAT or SUCH...THAT",
+        "Rewrite using TOO or ENOUGH while keeping the same meaning"
+      ],
+      "studyTips": "Trabaja equivalencias entre too/enough, so/such, as...as y comparativos. Son fáciles de perder por pequeños detalles.",
+      "relatedFlashcardTopics": [
+        "comparatives",
+        "as...as",
+        "the same as",
+        "so...that",
+        "such...that",
+        "too and enough"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "meaning-preserving transformation"
+      }
+    },
+    {
+      "id": "eng-pred-010",
+      "topic": "Error correction and controlled grammatical accuracy",
+      "block": "Block B - Use of English",
+      "sectionType": "rewrite_or_correction",
+      "confidence": "media-alta",
+      "score": 0.84,
+      "reason": "En 2024 se veía mucho la corrección de errores; en 2025 el modelo oficial se centra más en reescritura, pero la exigencia de precisión gramatical sigue siendo central.",
+      "likelyQuestions": [
+        "Rewrite a sentence into a grammatically accurate version after detecting structural problems",
+        "Transform a sentence where agreement, infinitive/gerund or preposition choice is crucial",
+        "Produce a new sentence that clearly shows a different structure with no grammatical mistakes"
+      ],
+      "studyTips": "Aunque el formato haya virado a reescritura, sigue repasando subject-verb agreement, prepositions, infinitive vs gerund y collocations frecuentes.",
+      "relatedFlashcardTopics": [
+        "subject-verb agreement",
+        "gerund vs infinitive",
+        "prepositions",
+        "common errors",
+        "grammatical accuracy"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "medio-alto",
+        "questionPattern": "accuracy-sensitive transformation"
+      }
+    },
+    {
+      "id": "eng-pred-011",
+      "topic": "Writing topic about society, technology or digital life",
+      "block": "Block C - Writing",
+      "sectionType": "opinion_composition",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Los temas recientes de writing incluyen fake news, social media, scientific research, traditions, digital world y problemas sociales, por lo que los topics de sociedad y tecnología tienen mucha probabilidad.",
+      "likelyQuestions": [
+        "Discuss the impact of social media in our lives",
+        "Discuss the problem of fake news or misinformation online",
+        "Should more money be spent on scientific or technological research? Give reasons"
+      ],
+      "studyTips": "Prepara conectores de opinión, ventajas y desventajas, ejemplos actuales y una estructura muy clara de introduction, development and conclusion.",
+      "relatedFlashcardTopics": [
+        "opinion essay",
+        "social media",
+        "fake news",
+        "technology",
+        "pros and cons connectors"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "discursive writing on current issues"
+      }
+    },
+    {
+      "id": "eng-pred-012",
+      "topic": "Writing topic about personal experience, preferences or values",
+      "block": "Block C - Writing",
+      "sectionType": "personal_reflection_composition",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "La otra gran familia de temas recientes es muy personal: what makes a good friend, what you would do if you won the lottery, favourite films or series, fascinating places, traditions, beauty and personal care.",
+      "likelyQuestions": [
+        "What makes a good friend for you? Explain",
+        "Which place in the world would you like to visit or find fascinating? Give reasons",
+        "What would you do if you had a lot of money or won the lottery?"
+      ],
+      "studyTips": "Ten listas expresiones para gustos, preferencias, experiencias, hypothetical situations y personal values. Son temas sencillos, pero conviene escribir con variedad léxica.",
+      "relatedFlashcardTopics": [
+        "personal opinion",
+        "friendship",
+        "travel",
+        "preferences",
+        "hypothetical situations"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "personal explanatory composition"
+      }
+    },
+    {
+      "id": "eng-pred-013",
+      "topic": "Balanced discussion essay with advantages and disadvantages",
+      "block": "Block C - Writing",
+      "sectionType": "discussion_composition",
+      "confidence": "alta",
+      "score": 0.91,
+      "reason": "Muchos de los temas recientes se formulan como discuss, pros and cons o should/should not, lo que favorece la redacción argumentativa equilibrada.",
+      "likelyQuestions": [
+        "Pros and cons of sharing your life online. Discuss",
+        "Should we preserve traditions or be more open to new ones? Give reasons",
+        "There should be more public investment in research. Discuss"
+      ],
+      "studyTips": "Practica modelos de redacción con dos lados del debate y una conclusión final. Usa conectores como however, on the one hand, on the other hand, moreover, therefore, in conclusion.",
+      "relatedFlashcardTopics": [
+        "discussion essay",
+        "advantages and disadvantages",
+        "argument connectors",
+        "balanced opinion",
+        "conclusion strategies"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "discursive prompt with discussion framing"
+      }
+    },
+    {
+      "id": "eng-pred-014",
+      "topic": "Text length control, task focus and formal exam execution",
+      "block": "Block C - Writing",
+      "sectionType": "exam_strategy",
+      "confidence": "alta",
+      "score": 0.88,
+      "reason": "Las orientaciones 2025-26 endurecen el foco en ceñirse al tema y escribir entre 140 y 180 palabras, por lo que la ejecución técnica del writing gana importancia.",
+      "likelyQuestions": [
+        "A writing task requiring a focused 140–180 word composition on only one topic",
+        "A prompt where drifting off-topic would seriously reduce the score",
+        "A composition where content and expression must both be clearly controlled"
+      ],
+      "studyTips": "Entrena redacciones de 145 a 170 palabras. No te vayas por las ramas. Planifica en 3 minutos, escribe en 12-15 y deja 3-4 para revisar tiempos verbales, connectors y spelling.",
+      "relatedFlashcardTopics": [
+        "writing length control",
+        "task achievement",
+        "paragraphing",
+        "revision checklist",
+        "exam timing"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "140-180 word composition with strict focus"
+      }
+    }
+  ],
+  "generalTips": "En Inglés 2026 no tiene sentido intentar predecir un tema exacto de lectura como si fuera Historia o Biología. Lo más rentable es preparar patrones. En Comprehension, entrena textos auténticos de divulgación, historia, sociedad, ciencia y cultura con preguntas fijas de opción múltiple, true/false y vocabulario en contexto. En Use of English, prioriza condicionales, pasiva/activa, reported speech, relativas, wish/if only y estructuras de equivalencia. En Writing, lleva dos registros dominados: uno de opinión-discusión sobre temas sociales o digitales y otro más personal sobre experiencias, gustos o valores. La clave no es adivinar el tema exacto, sino llegar con plantillas mentales y recursos lingüísticos listos para adaptarte a casi cualquier prompt."
+}

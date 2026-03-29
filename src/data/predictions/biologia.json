@@ -1,0 +1,698 @@
+{
+  "subject": "biologia",
+  "analysisYear": 2026,
+  "sourceSummary": {
+    "orientationYear": "2025-26",
+    "pastExamYearsAnalyzed": [2024, 2025],
+    "weighting": {
+      "2025": 1.0,
+      "2024": 0.65
+    },
+    "notes": "Se ha dado más peso a 2025 porque comparte la estructura de examen con 2026. 2024 se ha usado para reforzar recurrencias temáticas."
+  },
+  "predictions": [
+    {
+      "id": "bio-pred-001",
+      "topic": "Propiedades fisicoquímicas del agua y funciones biológicas",
+      "block": "Bloque A - Las biomoléculas",
+      "confidence": "alta",
+      "score": 0.95,
+      "reason": "Es uno de los temas con mayor presencia reciente y además encaja muy bien con preguntas competenciales de razonamiento aplicado.",
+      "likelyQuestions": [
+        "Explique cuatro propiedades fisicoquímicas del agua y relaciónelas con sus funciones biológicas",
+        "Razone qué propiedad del agua explica la regulación térmica de los seres vivos, la ascensión por el xilema o la flotación del hielo",
+        "Indique qué tipo de interacción existe entre las moléculas de agua y explique su importancia biológica",
+        "Explique por qué la salazón o el secado ayudan a conservar alimentos en relación con el agua"
+      ],
+      "studyTips": "Domina puentes de hidrógeno, cohesión, adhesión, capilaridad, alto calor específico, alto calor de vaporización, densidad anómala y papel como disolvente.",
+      "relatedFlashcardTopics": [
+        "Agua",
+        "Biomoléculas inorgánicas",
+        "Propiedades del agua",
+        "Ósmosis"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "razonamiento competencial y aplicación a contextos reales"
+      }
+    },
+    {
+      "id": "bio-pred-002",
+      "topic": "Lípidos: clasificación, estructura y funciones",
+      "block": "Bloque A - Las biomoléculas",
+      "confidence": "alta",
+      "score": 0.91,
+      "reason": "Ha aparecido de forma directa y también mezclado con membrana plasmática y reconocimiento de moléculas en imágenes.",
+      "likelyQuestions": [
+        "Defina lípido y clasifique los lípidos en saponificables e insaponificables con ejemplos",
+        "Explique la composición y función de fosfolípidos, triacilglicéridos, ceras y esteroides",
+        "Identifique qué lípidos forman parte de la membrana plasmática y razone su función",
+        "Relacione distintas moléculas con su naturaleza lipídica e indique si son saponificables o insaponificables"
+      ],
+      "studyTips": "Repasa bien fosfolípidos, colesterol, triacilglicéridos y ceras. Muy probable que se combine con membrana plasmática o identificación de moléculas.",
+      "relatedFlashcardTopics": [
+        "Lípidos",
+        "Fosfolípidos",
+        "Colesterol",
+        "Membrana plasmática"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "definición, clasificación e imagen aplicada"
+      }
+    },
+    {
+      "id": "bio-pred-003",
+      "topic": "Proteínas, aminoácidos y enlace peptídico",
+      "block": "Bloque A - Las biomoléculas",
+      "confidence": "alta",
+      "score": 0.89,
+      "reason": "Es un clásico del bloque de biomoléculas y suele formularse de manera muy estándar, tanto conceptual como aplicada.",
+      "likelyQuestions": [
+        "Describa la estructura general de un aminoácido y explique cómo se forma el enlace peptídico",
+        "Cite funciones de las proteínas y explique al menos dos de ellas",
+        "Relacione estructura y función de las proteínas",
+        "Identifique biomoléculas nitrogenadas y explique su importancia biológica"
+      ],
+      "studyTips": "Lleva cerrado el esquema completo: aminoácido, enlace peptídico, estructura proteica básica y funciones.",
+      "relatedFlashcardTopics": [
+        "Aminoácidos",
+        "Proteínas",
+        "Enlace peptídico",
+        "Funciones proteicas"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "pregunta teórica clásica"
+      }
+    },
+    {
+      "id": "bio-pred-004",
+      "topic": "Glúcidos y su importancia biológica",
+      "block": "Bloque A - Las biomoléculas",
+      "confidence": "media-alta",
+      "score": 0.85,
+      "reason": "Aparece asociado a moléculas concretas, membrana, reserva y estructura, y puede combinarse con metabolismo.",
+      "likelyQuestions": [
+        "Indique propiedades de los monosacáridos y explique la importancia biológica de glucosa, ribosa, almidón y celulosa",
+        "Cite disacáridos que contengan glucosa e indique el tipo de enlace entre sus monosacáridos",
+        "Clasifique distintos glúcidos según su función estructural o de reserva",
+        "Relacione glúcidos con rutas metabólicas como la glucólisis"
+      ],
+      "studyTips": "Repasa monosacáridos, disacáridos y polisacáridos con ejemplos claros y función biológica concreta.",
+      "relatedFlashcardTopics": [
+        "Glúcidos",
+        "Glucosa",
+        "Ribosa",
+        "Polisacáridos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "clasificación y función"
+      }
+    },
+    {
+      "id": "bio-pred-005",
+      "topic": "Ácidos nucleicos, bases nitrogenadas y complementariedad",
+      "block": "Bloque A - Las biomoléculas / Bloque B - Genética molecular",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Es un puente muy natural entre biomoléculas y genética molecular y ha aparecido en varias formulaciones.",
+      "likelyQuestions": [
+        "Defina base nitrogenada y clasifique las bases que forman parte de los ácidos nucleicos",
+        "Explique la complementariedad de las bases nitrogenadas",
+        "Diferencie ADN y ARN en composición y función",
+        "Relacione nucleótidos, bases y tipos de azúcares presentes en los ácidos nucleicos"
+      ],
+      "studyTips": "Lleva bien purinas/pirimidinas, ADN frente a ARN, complementariedad y composición de nucleótidos.",
+      "relatedFlashcardTopics": [
+        "ADN",
+        "ARN",
+        "Bases nitrogenadas",
+        "Nucleótidos"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "definición y razonamiento básico"
+      }
+    },
+    {
+      "id": "bio-pred-006",
+      "topic": "Código genético, codón, anticodón y características del código genético",
+      "block": "Bloque B - Genética molecular",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Es uno de los núcleos más preguntables del bloque de genética y suele ir unido a expresión génica.",
+      "likelyQuestions": [
+        "Defina código genético, codón y anticodón",
+        "Explique qué son los codones de terminación y cite características del código genético",
+        "Relacione código genético con traducción y síntesis proteica",
+        "Razone las consecuencias de una alteración en la secuencia de codones"
+      ],
+      "studyTips": "No te quedes en la definición: enlázalo con traducción, ARNt, ribosoma y síntesis de proteínas.",
+      "relatedFlashcardTopics": [
+        "Código genético",
+        "Codón",
+        "Anticodón",
+        "Traducción"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "teoría enlazada con expresión génica"
+      }
+    },
+    {
+      "id": "bio-pred-007",
+      "topic": "Expresión génica: transcripción y traducción",
+      "block": "Bloque B - Genética molecular",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Es uno de los temas más fuertes del lote. Sale de forma directa, con figuras, identificación de elementos y conexión con biotecnología.",
+      "likelyQuestions": [
+        "Cite y defina los procesos que intervienen en la expresión de la información genética",
+        "Identifique en un esquema los elementos implicados en transcripción y traducción",
+        "Explique diferencias entre la transcripción en procariotas y eucariotas",
+        "Indique las moléculas resultantes de cada proceso y dónde se producen en la célula eucariota"
+      ],
+      "studyTips": "Repasa secuencia completa, enzimas, extremos 5'-3', tipos de ARN y diferencias procariotas/eucariotas.",
+      "relatedFlashcardTopics": [
+        "Transcripción",
+        "Traducción",
+        "ARNm",
+        "ARNt",
+        "ARNr"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "imagen, identificación y aplicación"
+      }
+    },
+    {
+      "id": "bio-pred-008",
+      "topic": "PCR, transcriptasa inversa y herramientas de genética molecular",
+      "block": "Bloque B - Genética molecular / Bloque E - Biotecnología",
+      "confidence": "alta",
+      "score": 0.92,
+      "reason": "Las orientaciones insisten expresamente en PCR y aplicaciones, y en los exámenes recientes ya aparece transcriptasa inversa y Taq polimerasa.",
+      "likelyQuestions": [
+        "Explique en qué consiste la PCR, sus reactivos principales y sus etapas",
+        "Indique por qué la Taq polimerasa se utiliza en PCR y qué naturaleza química tiene",
+        "Explique por qué la transcriptasa inversa permite expresar correctamente un gen humano en bacterias",
+        "Cite aplicaciones de la PCR en medicina, investigación o diagnóstico"
+      ],
+      "studyTips": "Lleva cerrados reactivos, pasos y aplicaciones. Es muy probable en formato de cuestión aplicada.",
+      "relatedFlashcardTopics": [
+        "PCR",
+        "Taq polimerasa",
+        "Transcriptasa inversa",
+        "ADNc"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "biotecnología aplicada"
+      }
+    },
+    {
+      "id": "bio-pred-009",
+      "topic": "Ingeniería genética, ADN recombinante y organismos modificados genéticamente",
+      "block": "Bloque E - Biotecnología",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Tema muy reforzado por orientaciones y con varias apariciones recientes ligadas a producción de proteínas, transgénicos y aplicaciones.",
+      "likelyQuestions": [
+        "Defina ingeniería genética y ADN recombinante",
+        "Explique aplicaciones de los organismos modificados genéticamente en salud, agricultura o medio ambiente",
+        "Relacione ingeniería genética con la producción de insulina humana en bacterias",
+        "Defina organismos transgénicos y cite ejemplos"
+      ],
+      "studyTips": "Repasa definiciones exactas y ejemplos concretos de uso real: insulina, vacunas, plantas transgénicas, biorremediación.",
+      "relatedFlashcardTopics": [
+        "Ingeniería genética",
+        "ADN recombinante",
+        "OMG",
+        "Transgénicos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "definición más aplicación"
+      }
+    },
+    {
+      "id": "bio-pred-010",
+      "topic": "Biotecnología tradicional y moderna: aplicaciones y microorganismos",
+      "block": "Bloque E - Biotecnología",
+      "confidence": "alta",
+      "score": 0.91,
+      "reason": "Las orientaciones desarrollan mucho este bloque y en los exámenes salen alimentos fermentados, ámbitos de aplicación y procesos industriales.",
+      "likelyQuestions": [
+        "Cite ámbitos de aplicación de la biotecnología y un ejemplo de cada uno",
+        "Explique el papel de los microorganismos en la producción de pan, cerveza, vino, yogur o queso",
+        "Diferencie biotecnología tradicional y moderna con ejemplos",
+        "Defina biorremediación y cite aplicaciones ambientales"
+      ],
+      "studyTips": "Prepara ejemplos muy concretos por ámbito: sanitario, alimentario, agrícola, energético y ambiental.",
+      "relatedFlashcardTopics": [
+        "Biotecnología",
+        "Fermentación industrial",
+        "Biorremediación",
+        "Microorganismos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "aplicaciones por ámbitos"
+      }
+    },
+    {
+      "id": "bio-pred-011",
+      "topic": "CRISPR-Cas y terapia génica",
+      "block": "Bloque E - Biotecnología",
+      "confidence": "media",
+      "score": 0.78,
+      "reason": "Las orientaciones lo incluyen expresamente, aunque en los exámenes aportados no se ve tan repetido como otros subtemas.",
+      "likelyQuestions": [
+        "Explique el concepto y utilidad de CRISPR-Cas sin entrar en detalle molecular exhaustivo",
+        "Defina terapia génica y cite una posible aplicación",
+        "Relacione edición genética con tratamiento de enfermedades",
+        "Explique ventajas y riesgos generales de la manipulación genética"
+      ],
+      "studyTips": "No hace falta nivel muy técnico, pero sí una definición limpia, utilidad y ejemplos.",
+      "relatedFlashcardTopics": [
+        "CRISPR-Cas",
+        "Terapia génica",
+        "Edición genética",
+        "Biotecnología médica"
+      ],
+      "evidence": {
+        "seenInYears": [],
+        "orientationMatch": "alto",
+        "questionPattern": "tema nuevo potenciado por orientaciones"
+      }
+    },
+    {
+      "id": "bio-pred-012",
+      "topic": "Microscopía: tipos, poder de resolución y usos",
+      "block": "Bloque C - Biología celular",
+      "confidence": "alta",
+      "score": 0.88,
+      "reason": "Se repite en diferentes modelos y combina muy bien teoría, imagen y razonamiento experimental.",
+      "likelyQuestions": [
+        "Defina poder de resolución y compare microscopio óptico y electrónico",
+        "Indique qué fuente de radiación utiliza cada tipo de microscopio",
+        "Explique qué microscopio usaría para observar bacterias, ribosomas o glóbulos rojos",
+        "Identifique imágenes obtenidas con distintos microscopios y explique sus diferencias"
+      ],
+      "studyTips": "Prepara comparativa clara: radiación, resolución, aumento, tipo de muestra y aplicaciones.",
+      "relatedFlashcardTopics": [
+        "Microscopio óptico",
+        "Microscopio electrónico",
+        "Poder de resolución",
+        "Técnicas de observación"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "comparación e identificación"
+      }
+    },
+    {
+      "id": "bio-pred-013",
+      "topic": "Ribosomas, orgánulos y localización celular",
+      "block": "Bloque C - Biología celular",
+      "confidence": "media-alta",
+      "score": 0.83,
+      "reason": "Ha salido de forma directa y además se relaciona con expresión génica y diferencias entre procariotas y eucariotas.",
+      "likelyQuestions": [
+        "Describa la estructura y composición de los ribosomas eucarióticos",
+        "Indique las posibles localizaciones de los ribosomas en una célula eucariota",
+        "Compare ribosomas procariotas y eucariotas",
+        "Relacione ribosomas con síntesis proteica"
+      ],
+      "studyTips": "Únelo a traducción, retículo rugoso y diferencias 70S/80S.",
+      "relatedFlashcardTopics": [
+        "Ribosomas",
+        "Orgánulos",
+        "Síntesis proteica",
+        "Procariotas vs eucariotas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "estructura, localización y función"
+      }
+    },
+    {
+      "id": "bio-pred-014",
+      "topic": "Membrana plasmática, transporte y equilibrio osmótico",
+      "block": "Bloque C - Biología celular",
+      "confidence": "muy alta",
+      "score": 0.94,
+      "reason": "Tema muy presente y muy compatible con preguntas competenciales sobre transporte, osmolaridad y composición de membrana.",
+      "likelyQuestions": [
+        "Describa la estructura y composición de la membrana plasmática según el modelo de mosaico fluido",
+        "Explique diferencias entre transporte pasivo y transporte activo",
+        "Razone qué ocurre en una célula animal en un medio hipotónico o hipertónico",
+        "Explique por qué los fosfolípidos son idóneos para formar membranas biológicas"
+      ],
+      "studyTips": "Lleva bien estructura de la bicapa, proteínas, glucocálix, colesterol, transporte y tonicidad.",
+      "relatedFlashcardTopics": [
+        "Membrana plasmática",
+        "Transporte activo",
+        "Transporte pasivo",
+        "Ósmosis",
+        "Mosaico fluido"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "estructura más razonamiento fisiológico"
+      }
+    },
+    {
+      "id": "bio-pred-015",
+      "topic": "Mitosis, fases y significado biológico",
+      "block": "Bloque C - Biología celular",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Ha aparecido varias veces y además es un tema muy estándar y rentable para preguntas con imágenes o secuencias.",
+      "likelyQuestions": [
+        "Ordene e identifique las fases de la mitosis y describa los principales acontecimientos de cada una",
+        "Explique la importancia biológica de la mitosis",
+        "Razone qué efecto tendría un fármaco que inhibe la polimerización de la tubulina",
+        "Indique diferencias entre citocinesis animal y vegetal"
+      ],
+      "studyTips": "Repasa muy bien profase, metafase, anafase, telofase, citocinesis y papel del huso mitótico.",
+      "relatedFlashcardTopics": [
+        "Mitosis",
+        "Citocinesis",
+        "Tubulina",
+        "Ciclo celular"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "imagen y fármaco antimitótico"
+      }
+    },
+    {
+      "id": "bio-pred-016",
+      "topic": "Meiosis, recombinación y variabilidad genética",
+      "block": "Bloque C - Biología celular",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Es uno de los temas con formulación más clásica y además las orientaciones lo desarrollan con bastante detalle.",
+      "likelyQuestions": [
+        "Explique la importancia biológica de la meiosis",
+        "Relacione recombinación genética y segregación cromosómica con la variabilidad genética",
+        "Compare mitosis y meiosis en tipo celular, fases, resultado y significado biológico",
+        "Explique el papel del sobrecruzamiento en la diversidad genética"
+      ],
+      "studyTips": "Lleva muy bien diferencias con mitosis y las tres fuentes de variabilidad: recombinación, segregación y fecundación al azar.",
+      "relatedFlashcardTopics": [
+        "Meiosis",
+        "Recombinación genética",
+        "Variabilidad genética",
+        "Gametogénesis"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "muy alto",
+        "questionPattern": "teórico-explicativa"
+      }
+    },
+    {
+      "id": "bio-pred-017",
+      "topic": "Ciclo celular y cáncer",
+      "block": "Bloque C - Biología celular",
+      "confidence": "media-alta",
+      "score": 0.82,
+      "reason": "Las orientaciones lo enfatizan de forma expresa y en el histórico ya aparece la conexión entre nucleolo, proliferación y cáncer.",
+      "likelyQuestions": [
+        "Defina ciclo celular y describa la interfase y sus fases",
+        "Explique qué es el cáncer y cómo se relaciona con la alteración del ciclo celular",
+        "Relacione cáncer con mutaciones y agentes mutagénicos",
+        "Indique hábitos de vida que reduzcan la probabilidad de padecer cáncer"
+      ],
+      "studyTips": "Aquí conviene unir ciclo celular, control de proliferación, mutaciones y prevención.",
+      "relatedFlashcardTopics": [
+        "Ciclo celular",
+        "Interfase",
+        "Cáncer",
+        "Mutaciones"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "conceptual y aplicada a salud"
+      }
+    },
+    {
+      "id": "bio-pred-018",
+      "topic": "Metabolismo, anabolismo, catabolismo y tipos de nutrición",
+      "block": "Bloque D - Metabolismo",
+      "confidence": "alta",
+      "score": 0.88,
+      "reason": "Ha aparecido de forma muy clásica y es uno de los ejes básicos del bloque D.",
+      "likelyQuestions": [
+        "Defina metabolismo, anabolismo y catabolismo",
+        "Explique diferencias entre nutrición autótrofa y heterótrofa",
+        "Diferencie células fotoautótrofas y quimioautótrofas",
+        "Clasifique tipos de metabolismo según fuente de carbono, energía y oxígeno"
+      ],
+      "studyTips": "No memorices solo definiciones: relaciona cada tipo con ejemplos y con rutas metabólicas.",
+      "relatedFlashcardTopics": [
+        "Metabolismo",
+        "Anabolismo",
+        "Catabolismo",
+        "Autotrofía",
+        "Heterotrofía"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "definiciones enlazadas"
+      }
+    },
+    {
+      "id": "bio-pred-019",
+      "topic": "Respiración celular, glucólisis y fermentación",
+      "block": "Bloque D - Metabolismo",
+      "confidence": "muy alta",
+      "score": 0.94,
+      "reason": "Es uno de los patrones más constantes del bloque de metabolismo y aparece además conectado con aplicaciones biotecnológicas.",
+      "likelyQuestions": [
+        "Defina fermentación e indique dónde tiene lugar en la célula",
+        "Compare rentabilidad energética de fermentación y respiración celular",
+        "Indique productos finales de la glucólisis y su rendimiento en ATP y poder reductor",
+        "Explique qué ocurre metabólicamente cuando una célula muscular carece de oxígeno"
+      ],
+      "studyTips": "Ten muy claro glucólisis, destino del piruvato, fermentación láctica y alcohólica, y diferencia con respiración aerobia.",
+      "relatedFlashcardTopics": [
+        "Glucólisis",
+        "Fermentación",
+        "Respiración celular",
+        "ATP",
+        "NADH"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "comparación y razonamiento"
+      }
+    },
+    {
+      "id": "bio-pred-020",
+      "topic": "Fotosíntesis y ciclo de Calvin",
+      "block": "Bloque D - Metabolismo",
+      "confidence": "media-alta",
+      "score": 0.84,
+      "reason": "Aparece en el histórico y es un clásico muy alineado con el bloque de anabolismo autótrofo.",
+      "likelyQuestions": [
+        "Indique dónde tiene lugar el ciclo de Calvin y si es un proceso anabólico o catabólico",
+        "Cite productos de la fase fotoquímica y su papel en la síntesis de glucosa",
+        "Explique finalidad del ciclo de Calvin y molécula atmosférica que incorpora",
+        "Relacione fase luminosa y fase oscura de la fotosíntesis"
+      ],
+      "studyTips": "Ubica bien cloroplasto, estroma, tilacoides, ATP, NADPH y fijación de CO2.",
+      "relatedFlashcardTopics": [
+        "Fotosíntesis",
+        "Ciclo de Calvin",
+        "Fase luminosa",
+        "Cloroplasto"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "metabolismo autótrofo clásico"
+      }
+    },
+    {
+      "id": "bio-pred-021",
+      "topic": "β-oxidación y metabolismo lipídico",
+      "block": "Bloque D - Metabolismo",
+      "confidence": "media",
+      "score": 0.76,
+      "reason": "Ha aparecido en el histórico, aunque con menos fuerza que glucólisis o fermentación.",
+      "likelyQuestions": [
+        "Defina β-oxidación e indique sustratos y productos finales",
+        "Relacione β-oxidación con obtención de energía a partir de lípidos",
+        "Compare metabolismo de carbohidratos y lípidos en términos generales",
+        "Explique en qué condiciones fisiológicas aumenta el uso de lípidos como combustible"
+      ],
+      "studyTips": "Puede salir como subapartado corto. Lleva una definición precisa y su finalidad energética.",
+      "relatedFlashcardTopics": [
+        "β-oxidación",
+        "Catabolismo lipídico",
+        "Acetil-CoA",
+        "Metabolismo energético"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "medio-alto",
+        "questionPattern": "subpregunta técnica"
+      }
+    },
+    {
+      "id": "bio-pred-022",
+      "topic": "Inmunidad innata y adquirida",
+      "block": "Bloque F - Inmunología",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "La inmunología tiene mucha presencia reciente y este es el punto de entrada más natural para preguntas mixtas de células y moléculas.",
+      "likelyQuestions": [
+        "Diferencie inmunidad innata e inmunidad adquirida y clasifique células o moléculas concretas en cada una",
+        "Explique barreras defensivas como mucosidad, lisozimas o piel",
+        "Relacione elementos del sistema inmunitario con su función",
+        "Diferencie respuesta humoral y celular"
+      ],
+      "studyTips": "Prepara una tabla mental muy clara: barreras, fagocitos, linfocitos, anticuerpos, mastocitos, perforinas, histamina.",
+      "relatedFlashcardTopics": [
+        "Inmunidad innata",
+        "Inmunidad adquirida",
+        "Barreras defensivas",
+        "Respuesta humoral",
+        "Respuesta celular"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "clasificación y función"
+      }
+    },
+    {
+      "id": "bio-pred-023",
+      "topic": "Anticuerpos, vacunación, sueroterapia e inmunidad artificial",
+      "block": "Bloque F - Inmunología",
+      "confidence": "alta",
+      "score": 0.92,
+      "reason": "Tema muy examinal y además muy apto para preguntas aplicadas sobre estrategias de protección frente a enfermedades.",
+      "likelyQuestions": [
+        "Explique diferencias entre vacunación y sueroterapia",
+        "Diferencie inmunidad artificial activa y pasiva con ejemplos",
+        "Indique qué células participan en la producción de anticuerpos y qué orgánulos deberían tener desarrollados",
+        "Razone por qué en un posible caso de tétanos puede administrarse suero en lugar de vacuna"
+      ],
+      "studyTips": "Muy importante dominar activa/pasiva y natural/artificial, con ejemplos reales y rapidez de respuesta.",
+      "relatedFlashcardTopics": [
+        "Vacunas",
+        "Sueroterapia",
+        "Anticuerpos",
+        "Inmunidad activa",
+        "Inmunidad pasiva"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "caso práctico médico"
+      }
+    },
+    {
+      "id": "bio-pred-024",
+      "topic": "Autoinmunidad, CMH y tratamientos inmunosupresores",
+      "block": "Bloque F - Inmunología",
+      "confidence": "alta",
+      "score": 0.89,
+      "reason": "Ha aparecido recientemente con un enfoque muy contextualizado y razonado, que encaja con el nuevo examen.",
+      "likelyQuestions": [
+        "Explique qué es una enfermedad autoinmune",
+        "Defina CMH e indique su función",
+        "Razone por qué ciertas variantes del CMH pueden relacionarse con enfermedades autoinmunes",
+        "Explique cómo actúan los tratamientos inmunosupresores y qué efectos negativos pueden tener"
+      ],
+      "studyTips": "No basta con definiciones. Lleva razonado el vínculo entre reconocimiento inmunitario, autoinmunidad y tratamiento.",
+      "relatedFlashcardTopics": [
+        "Autoinmunidad",
+        "CMH",
+        "Lupus",
+        "Inmunosupresores"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "caso aplicado a salud"
+      }
+    },
+    {
+      "id": "bio-pred-025",
+      "topic": "Trasplantes, rechazo y células implicadas",
+      "block": "Bloque F - Inmunología",
+      "confidence": "media-alta",
+      "score": 0.84,
+      "reason": "Es un tema clásico del bloque de inmunología y ya aparece claramente en el histórico.",
+      "likelyQuestions": [
+        "Explique por qué se produce el rechazo de un órgano trasplantado",
+        "Cite células del sistema inmunitario implicadas en el rechazo",
+        "Indique tratamientos para evitar el rechazo y cómo actúan",
+        "Explique casos de trasplante con escaso o nulo problema de rechazo"
+      ],
+      "studyTips": "Únelo a histocompatibilidad e inmunosupresión.",
+      "relatedFlashcardTopics": [
+        "Trasplantes",
+        "Rechazo",
+        "Histocompatibilidad",
+        "Inmunosupresión"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "conceptual y aplicada"
+      }
+    },
+    {
+      "id": "bio-pred-026",
+      "topic": "Infección, agentes infecciosos, vías de transmisión y barreras del organismo",
+      "block": "Bloque F - Inmunología",
+      "confidence": "media-alta",
+      "score": 0.82,
+      "reason": "Tema muy preguntable por definición, clasificación y relación con primeras barreras defensivas.",
+      "likelyQuestions": [
+        "Defina infección e indique distintos tipos de agentes causantes",
+        "Cite vías de transmisión de infecciones",
+        "Relacione cada vía con mecanismos defensivos del organismo",
+        "Diferencie infección y respuesta inmunitaria"
+      ],
+      "studyTips": "Ideal para preguntas cortas y ordenadas. Lleva agentes, vías y barreras bien sistematizados.",
+      "relatedFlashcardTopics": [
+        "Infección",
+        "Patógenos",
+        "Vías de transmisión",
+        "Barreras del organismo"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "definición y clasificación"
+      }
+    }
+  ],
+  "generalTips": "Prioriza primero los temas que ya han salido en 2025 con formato competencial: agua, expresión génica, membrana/transporte, metabolismo energético e inmunología aplicada. Después consolida los clásicos de definición y relación: lípidos, proteínas, meiosis, código genético, ingeniería genética y biotecnología. Entrena respuestas semiconstruidas y abiertas, porque el modelo 2025-26 exige razonar, aplicar y enlazar conceptos de varios bloques en una misma pregunta."
+}

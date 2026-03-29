@@ -1,0 +1,579 @@
+{
+  "subject": "matematicas-ii",
+  "analysisYear": 2026,
+  "sourceSummary": {
+    "orientationYear": "2025-26",
+    "pastExamYearsAnalyzed": [2024, 2025],
+    "weighting": {
+      "2025": 1.0,
+      "2024": 0.65
+    },
+    "notes": "Se han analizado 6 exámenes del curso 2023-24 (modelo antiguo: 4 bloques optativos, sin probabilidad) y 6 exámenes del curso 2024-25 (modelo intermedio: 1 obligatorio + 3 bloques optativos con probabilidad). El modelo definitivo 2025-26, descrito en las orientaciones y mostrado en el modelo de prueba adjunto, introduce una estructura nueva: 2 ejercicios obligatorios (uno de Análisis competencial-contextualizado más uno de Álgebra/Geometría/Análisis) y 2 bloques optativos (uno temático + uno con Estadística). El modelo de prueba 2025-26 reutiliza literalmente ejercicios de la convocatoria 2024-25 (Titular-B E1 = modelo E2; Titular-A E5 = modelo E3.1; Reserva-B E6 E7 = modelo E3.2 E4.2), lo que confirma los patrones de temas prioritarios. Se pondera más 2024-25 por ser el modelo más próximo en estructura al nuevo formato."
+  },
+  "predictions": [
+    {
+      "id": "mat2-pred-001",
+      "topic": "Análisis competencial-contextualizado: función polinómica o exponencial en contexto real",
+      "block": "Parte Obligatoria - Ejercicio 1 (único bloque fijo en orientaciones 2025-26)",
+      "sectionType": "competencial",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Las orientaciones 2025-26 establecen explícitamente que el Ejercicio 1 obligatorio SIEMPRE será de Análisis de carácter competencial-contextualizado. El modelo de prueba oficial muestra una función cúbica (contaminación NO2) con tres apartados: evaluar en un punto, encontrar el máximo mediante derivada, y calcular el valor promedio con una integral definida. El anexo de las orientaciones contiene 13 ejemplos de este tipo de ejercicio, todos con funciones polinómicas, exponenciales o racionales en contextos de velocidad, concentración, bacterias, temperatura o beneficio. Este ejercicio es obligatorio e inamovible.",
+      "likelyQuestions": [
+        "Una función f(t) modela [temperatura/concentración/beneficio/velocidad] en el intervalo [a,b]. Calcula el valor de f en t=t0.",
+        "¿En qué instante se alcanza el valor máximo de f(t)? ¿Cuál es ese valor máximo?",
+        "Calcula mediante (1/(b-a))·∫[a,b] f(t) dt el valor promedio de f en el intervalo.",
+        "Un objeto/partícula tiene velocidad v(t)=... Calcula el espacio recorrido en los primeros k segundos.",
+        "Determina cuándo la función es creciente/decreciente e interpreta el resultado en el contexto del problema."
+      ],
+      "studyTips": "Practica los 13 ejercicios del Anexo 8 de las orientaciones: son el banco oficial de referencia. La clave es saber pasar de la derivada = 0 al máximo/mínimo real del contexto, y calcular integrales de polinomios con la regla de Barrow. Aprende la fórmula del valor promedio: (1/(b-a))·∫[a,b]f(t)dt. Los apartados suelen repartirse como 0.5 + 1.25 + 0.75 puntos, así que el apartado del máximo es el de más peso.",
+      "relatedFlashcardTopics": [
+        "Derivada de polinomios y exponenciales",
+        "Regla de Barrow",
+        "Valor promedio de una función (integral media)",
+        "Interpretación del máximo/mínimo en contexto real",
+        "Integral definida de función polinómica"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Función contextualizada con 3 apartados: evaluación puntual + extremo absoluto + integral media"
+      }
+    },
+    {
+      "id": "mat2-pred-002",
+      "topic": "Geometría: posición relativa de rectas y plano que las contiene",
+      "block": "Parte Obligatoria - Ejercicio 2",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.92,
+      "reason": "El modelo de prueba 2025-26 incluye como Ejercicio 2 obligatorio exactamente el mismo enunciado que Titular-B 2024-25 Ejercicio 1: determinar k para que dos rectas se corten y hallar el plano que contiene a r y es paralelo a s. Este patrón (rectas simétricas, intersección con parámetro, plano resultante) apareció también en Suplente1-A 2024-25 como bloque obligatorio. Es el tema estrella de geometría en el modelo nuevo. Probabilidad reducida ligeramente porque en la convocatoria real el Ejercicio 2 puede rotar a Álgebra o Análisis.",
+      "likelyQuestions": [
+        "Considera las rectas r ≡ x/a = (y-b)/c = (z-k)/d y s ≡ ... Determina k para que ambas se corten.",
+        "Para k=k0, halla la ecuación general del plano que contiene a r y es paralelo a s.",
+        "Estudia la posición relativa de dos rectas dadas en función de un parámetro.",
+        "Determina el plano que contiene a dos rectas que se cortan."
+      ],
+      "studyTips": "Para que dos rectas se corten: sistema de ecuaciones con los parámetros λ y μ, ha de tener solución única. Para el plano que contiene a r y es paralelo a s: el vector director de s es paralelo al plano, así que el normal del plano es perpendicular a ambos directores (producto vectorial). Resuelve los 6 modelos de posición relativa disponibles en los exámenes históricos.",
+      "relatedFlashcardTopics": [
+        "Posición relativa de dos rectas (secantes, paralelas, cruzadas)",
+        "Producto vectorial para obtener vector normal",
+        "Ecuación general del plano",
+        "Plano paralelo a una recta",
+        "Ecuaciones paramétricas de una recta"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Dos rectas con parámetro k → condición de intersección → plano contenedor"
+      }
+    },
+    {
+      "id": "mat2-pred-003",
+      "topic": "Álgebra: matrices con parámetro y ecuación matricial (A²=4I, inversa, sistema AX=B^t)",
+      "block": "Bloque Optativo 1 (Álgebra)",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.91,
+      "reason": "El modelo de prueba 2025-26 Ejercicio 3.1 es idéntico a Titular-A 2024-25 Ejercicio 5: matrices A=(a,3;b,1) y B, determinar a y b para que A²=4I, y calcular X que cumple A²X=B^t. Este patrón (determinar parámetros de una matriz a partir de una condición algebraica + resolver ecuación matricial) es el más recurrente de todo el bloque de álgebra: aparece en Titular-A 2023-24 E5, Reserva-A 2023-24 E6, Suplente1-B 2024-25 E5, y el propio modelo. El bloque 1 optativo contendrá 2 ejercicios de álgebra.",
+      "likelyQuestions": [
+        "Sean las matrices A=(a,b;c,d) y B=... Determina a y b para que A²=kI.",
+        "Para los valores de a y b hallados, calcula la matriz X que verifica A²X=B^t (o B^(-1) o AX+B=C).",
+        "Halla razonadamente el determinante de una matriz expresada como combinación de A y B.",
+        "Determina los valores de α para los que la matriz A admite inversa. Para α=α0, calcula A^(-1)."
+      ],
+      "studyTips": "Para A²=kI: calcula A² explícitamente en función de los parámetros e iguala a la matriz kI elemento a elemento. Para la ecuación matricial A²X=C: si A² es inversible, X=(A²)^(-1)·C. Practica el cálculo de inversas 2×2 (fórmula directa) y 3×3 (por determinantes o Gauss). Recuerda que det(AB)=det(A)·det(B) y det(A^n)=det(A)^n.",
+      "relatedFlashcardTopics": [
+        "Producto de matrices",
+        "Determinante de un producto y de una potencia",
+        "Matriz inversa 2×2 y 3×3",
+        "Ecuación matricial AXB=C",
+        "Propiedades de la matriz transpuesta"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Matriz con parámetros → condición cuadrática → ecuación matricial con inversa"
+      }
+    },
+    {
+      "id": "mat2-pred-004",
+      "topic": "Álgebra: sistema homogéneo con parámetro tipo autovalor (Ax=mx)",
+      "block": "Bloque Optativo 1 (Álgebra)",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.85,
+      "reason": "El modelo 2025-26 Ejercicio 3.2 es idéntico a Reserva-B 2023-24 Ejercicio 6: sistema (A-mI)X=0, discutir para qué valores de m es compatible indeterminado (m es autovalor) y resolver para m concreto. Apareció también en Suplente1-A 2023-24 E6 y Suplente-B 2023-24 E6 con la misma estructura. Es el segundo ejercicio del bloque de álgebra en el modelo, lo que confirma que este binomio (matrices parámetro + sistema tipo autovalor) es el combo previsto para el Bloque 1.",
+      "likelyQuestions": [
+        "Considera el sistema (A-mI)X=0. Determina m para que el sistema sea compatible indeterminado.",
+        "Para m=m0, resuelve el sistema si es posible.",
+        "Discute el sistema AX=B según los valores de un parámetro k usando el Teorema de Rouché-Frobenius.",
+        "Para el valor de k que hace el sistema compatible determinado, resuélvelo."
+      ],
+      "studyTips": "Para sistemas tipo Ax=mx: reescribe como (A-mI)x=0. El sistema es CI cuando det(A-mI)=0 (autovalores). Calcula el determinante expandido, iguala a 0 y factoriza. Para cada valor de m, reduce por Gauss la matriz ampliada y expresa la solución en función de parámetros libres. Recuerda el teorema de Rouché-Frobenius: rango(A)=rango(A|B) para compatibilidad.",
+      "relatedFlashcardTopics": [
+        "Teorema de Rouché-Frobenius",
+        "Discusión de sistemas con parámetro",
+        "Reducción de Gauss",
+        "Rango de una matriz",
+        "Sistemas compatibles indeterminados: solución paramétrica"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Sistema homogéneo con parámetro espectral → discusión → resolución para m concreto"
+      }
+    },
+    {
+      "id": "mat2-pred-005",
+      "topic": "Distribución Normal: cálculo de probabilidades con tabla N(0,1)",
+      "block": "Bloque Optativo 2 (Estadística y Probabilidad - ejercicio fijo)",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Las orientaciones 2025-26 establecen explícitamente que el Bloque Optativo 2 contendrá SIEMPRE un ejercicio de Estadística y Probabilidad. El modelo muestra el Ejercicio 4.2 de distribución normal (mismo que Reserva-B 2024-25 E7 y Suplente1-B 2024-25 E7: manzanas con media 200 g, calcular σ a partir de percentil y luego P(160<X<220)). La distribución normal apareció en 4 de los 6 exámenes de 2024-25 y es la distribución más pedida junto a probabilidad condicional.",
+      "likelyQuestions": [
+        "El peso/longitud/duración de [objeto] sigue una distribución N(μ, σ). Si el X% de los elementos supera el valor a, calcula σ.",
+        "Si σ=σ0, calcula P(a < X < b).",
+        "En circunstancias normales, ¿cuál es la probabilidad de que [objeto] cumpla el criterio de calidad?",
+        "Tras un cambio de condiciones, la distribución cambia a N(μ', σ'). ¿Cuál es ahora la probabilidad de cumplir el criterio?"
+      ],
+      "studyTips": "Aprende a tipificar: Z=(X-μ)/σ. Con la tabla N(0,1) siempre lees P(Z<z). Para P(Z>z) usa el complementario. Para P(a<Z<b) resta acumuladas. Si te dan un percentil (el k% supera el valor a), tipificas y usas la tabla inversamente. Practica con los 4 ejercicios de normal de 2024-25: Titular-A E7, Suplente-B E7, Suplente2-B E7 y el modelo E4.2. Usa siempre 4 decimales.",
+      "relatedFlashcardTopics": [
+        "Tipificación Z=(X-μ)/σ",
+        "Lectura de la tabla de la distribución normal N(0,1)",
+        "P(X>a) = 1 - Φ(z)",
+        "Cálculo de σ a partir de un percentil dado",
+        "Distribución normal aplicada a control de calidad"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Distribución normal con dos apartados: hallar parámetro desconocido + calcular probabilidad en intervalo"
+      }
+    },
+    {
+      "id": "mat2-pred-006",
+      "topic": "Probabilidad condicionada y Teorema de Bayes",
+      "block": "Bloque Optativo 2 (Estadística y Probabilidad - ejercicio fijo)",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.82,
+      "reason": "El ejercicio de Estadística del Bloque 2 alterna entre distribución normal y probabilidad condicional/Bayes. En 2024-25: Titular-B E7 (café: probabilidad total + Bayes), Suplente2-A E7 (tabla ITV: probabilidad básica condicionada), Suplente1-B E7 (bolígrafos: probabilidad total + Bayes), Suplente2-B E7 (velocidades: normal). El patrón Bayes apareció en 3 de 6 exámenes. Para 2026, si el ejercicio obligatorio ya toca Análisis con integrales, el bloque optativo bien puede traer Bayes como alternativa a la normal.",
+      "likelyQuestions": [
+        "Una empresa fabrica [producto] en tres fábricas con porcentajes de producción p1, p2, p3 y tasas de defecto d1, d2, d3. ¿Cuál es la probabilidad de que una pieza tomada al azar sea defectuosa?",
+        "Si la pieza es defectuosa (o no defectuosa), ¿cuál es la probabilidad de que provenga de la fábrica i?",
+        "En una clínica se diagnostica una enfermedad con sensibilidad S y especificidad E. Si el test es positivo, ¿cuál es la probabilidad de tener la enfermedad?",
+        "Se elige al azar un elemento de una tabla de contingencia. Calcula P(A∪B) y P(A|B)."
+      ],
+      "studyTips": "El Teorema de Bayes: P(Ai|B) = P(B|Ai)·P(Ai) / Σ P(B|Aj)·P(Aj). Dibuja siempre el árbol de probabilidades para visualizar los caminos. Para tablas de contingencia, suma filas y columnas antes de calcular. Recuerda que P(A|B) ≠ P(B|A). Practica los ejercicios de Bayes de Titular-B, Suplente1-B y Suplente2-A de 2024-25.",
+      "relatedFlashcardTopics": [
+        "Teorema de la probabilidad total",
+        "Teorema de Bayes",
+        "Diagrama de árbol de probabilidades",
+        "Probabilidad condicionada P(A|B)",
+        "Tabla de contingencia"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Problema de probabilidad total + Bayes inverso en contexto industrial o médico"
+      }
+    },
+    {
+      "id": "mat2-pred-007",
+      "topic": "Integral: área entre dos curvas con esbozo previo",
+      "block": "Bloque Optativo 2 (Análisis/Geometría - segundo ejercicio del bloque)",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.83,
+      "reason": "El área entre dos curvas es el tema de integración más recurrente en toda la serie histórica: Titular-A 2023-24 E3, Suplente1-A 2024-25 E3 (f(x)=-x²+7 y g(x)=|x²-1|), Suplente-B 2024-25 E6 (f=-e^x y g=-e^(-x)), Reserva-A 2023-24 E3 (función a trozos). El Bloque 2 del modelo incluye como alternativa a la normal un ejercicio de integral (modelo E4.1: integral con sustitución y simetría). Para 2026, la alternativa a probabilidad en el Bloque 2 será análisis (integral o función), y el área entre curvas es la forma más probable.",
+      "likelyQuestions": [
+        "Sean f y g dos funciones. Halla los puntos de intersección de sus gráficas, esboza el recinto acotado y calcula su área.",
+        "Calcula la suma de las áreas de los recintos acotados por la gráfica de f(x)=x³-ax²+bx y el eje de abscisas.",
+        "Calcula a>0 para que el área del recinto limitado por f(x)=(x-c)² y la recta y=a sea una cantidad dada.",
+        "Calcula el área de la región delimitada por f(x)=x³-x y g(x)=-x²+1."
+      ],
+      "studyTips": "Los puntos de intersección (f=g) definen los límites de integración. El área siempre es positiva: integra |f(x)-g(x)|, cambiando de signo en los subintervalos donde f y g se cruzan. Cuando hay valor absoluto en la función (como g=|x²-1|), parte el intervalo en trozos donde el interior del valor absoluto cambie de signo. Fórmula: Área = ∫[a,b] |f(x)-g(x)| dx.",
+      "relatedFlashcardTopics": [
+        "Puntos de corte entre dos curvas",
+        "Integral definida con valor absoluto",
+        "Área como suma de áreas parciales",
+        "Esbozo de regiones acotadas",
+        "Área bajo la curva con la regla de Barrow"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Hallar intersecciones + esbozo + integral de diferencia con posible cambio de signo"
+      }
+    },
+    {
+      "id": "mat2-pred-008",
+      "topic": "Integral: primitiva con cambio de variable o por partes",
+      "block": "Bloque Optativo 2 (Análisis - segundo ejercicio) o Bloque Optativo 1 (Análisis)",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.80,
+      "reason": "La integral con cambio de variable con sugerencia explícita ha aparecido en el modelo E4.1 (sen(x)/√(1+cos(x))), Titular-A 2023-24 E4 (t=e^x), Reserva-B 2023-24 E4 (t=e^x), Suplente-B 2023-24 E4 (t=√(1+e^x)), Suplente1-B 2024-25 E2 (t=x²-3), Titular-B 2024-25 E2 (t=x²-3). La integración por partes aparece en Suplente-A 2024-25 E4 (f''=xcos(x)) y Titular-B 2023-24 E4 (primitiva de polinomio·ln). El examen suele incluir una de estas dos técnicas en el bloque de integrales.",
+      "likelyQuestions": [
+        "Calcula ∫ [función racional o trigonométrica] dx. (Sugerencia: efectúa el cambio de variable t=...).",
+        "Calcula ∫[a,b] [función] dx usando el cambio de variable indicado.",
+        "Halla la función f: I → R que pasa por el punto (x0, y0) y verifica f'(x) = [fracción racional compleja].",
+        "Halla f tal que f''(x)=p(x)·cos(x) [o e^x] y cuya gráfica pasa por dos puntos dados.",
+        "Calcula una primitiva de f(x) = (x²-ax+b)·e^x cuya gráfica pase por el punto (0, c)."
+      ],
+      "studyTips": "Cambio de variable: identifica t=g(x), calcula dt, sustituye y simplifica antes de integrar. Con la sugerencia del examen, el truco está en que el integrando se simplifica drásticamente tras la sustitución. Por partes: ∫u·dv = u·v - ∫v·du. Para polinomio×e^x o polinomio×cos(x), toma u=polinomio y dv=e^x dx (o cos(x) dx). Aplica por partes dos veces si el polinomio es de grado 2. Para f''(x)=p(x), integra dos veces y usa los dos puntos para determinar las dos constantes.",
+      "relatedFlashcardTopics": [
+        "Integración por cambio de variable",
+        "Integración por partes (fórmula)",
+        "Primitivas inmediatas: e^x, sen(x), cos(x), ln(x)",
+        "Doble integración para hallar f desde f''",
+        "Primitiva que pasa por un punto dado"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Integral técnica (sustitución o partes) con sugerencia explícita o primitiva determinada por condición inicial"
+      }
+    },
+    {
+      "id": "mat2-pred-009",
+      "topic": "Análisis: estudio de monotonía, extremos relativos/absolutos e inflexión",
+      "block": "Bloque Optativo 1 (Análisis) o Parte Obligatoria E2",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.82,
+      "reason": "El estudio completo de una función (crecimiento, decrecimiento, extremos, concavidad/inflexión) es el contenido más recurrente de todo el histórico: presente en al menos un ejercicio de cada convocatoria 2023-24 (Titular-A E1&E2, Reserva-A E2, Suplente1-A E1, Suplente-A E2, Suplente-B E2). En 2024-25 aparece en Suplente1-A E3, Suplente1-B E2, Suplente2-A E3. Si el Ejercicio 2 obligatorio no es de geometría, muy posiblemente sea este. También puede aparecer en el Bloque 1 como ejercicio de análisis.",
+      "likelyQuestions": [
+        "Sea f(x) = [función compuesta con e^x o ln]. Calcula los intervalos de crecimiento y decrecimiento de f.",
+        "Determina los intervalos de concavidad y convexidad de f y los puntos de inflexión (abscisas y valores).",
+        "Halla los extremos absolutos de f en [a,b] (abscisas donde se obtienen y valores que se alcanzan).",
+        "Sea f(x)=(x-a)·e^(-x²). Determina los intervalos de crecimiento y halla los extremos absolutos.",
+        "Considera f(x)=ln((x²+1)/x). Estudia crecimiento, extremos relativos y absolutos."
+      ],
+      "studyTips": "Crecimiento: f'(x)>0; Decrecimiento: f'(x)<0. Extremos: puntos donde f'=0 o no existe, y cambio de signo de f'. Para extremo absoluto en un intervalo cerrado: compara todos los extremos relativos + valores en los extremos del intervalo. Concavidad (convexa): f''(x)>0; Cóncava: f''(x)<0. Inflexión: f''=0 con cambio de signo. Para funciones con e^x, el producto de derivadas es key: deriva usando regla del producto.",
+      "relatedFlashcardTopics": [
+        "Regla del producto y de la cadena",
+        "Extremos relativos: criterio de la derivada primera",
+        "Extremos absolutos en intervalos cerrados",
+        "Puntos de inflexión y segunda derivada",
+        "Derivada de e^x, ln(x), arctan(x)"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Función con e^x o ln → monotonía → extremos → inflexión, con apartados a) y b) separados"
+      }
+    },
+    {
+      "id": "mat2-pred-010",
+      "topic": "Análisis: continuidad y derivabilidad de función a trozos",
+      "block": "Bloque Optativo 1 (Análisis) o Parte Obligatoria E1/E2",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.73,
+      "reason": "Las funciones a trozos (estudio de continuidad y derivabilidad en el punto de empalme) aparecen en Suplente-A 2023-24 E2 (a·e^(-x)+b·ln), Reserva-A 2023-24 E2 (a·cos(x)), Suplente-A 2024-25 E2 (b·cos(x)-1), Suplente1-A 2024-25 E3 (1+|x|/(1-|x|)), Titular-B 2024-25 E1 (obligatorio: 1-e^x si x<1). En el nuevo modelo la derivabilidad de una función a trozos puede aparecer tanto en E2 obligatorio como en el bloque de análisis. Las orientaciones lo mencionan explícitamente.",
+      "likelyQuestions": [
+        "Considera la función continua f(x) = {g(x) si x<0; h(x) si x≥0}. Calcula a y b para que sea continua y derivable.",
+        "Estudia la derivabilidad de f(x)={1-e^x si 0≤x<1; 2x-1-e si 1≤x≤2} y halla sus extremos absolutos.",
+        "Sea f(x)={a·e^(-x)+b·ln(1-x) si x<0; x+ln(1+x) si x≥0}. Determina a y b para que f sea derivable en x=0.",
+        "Analiza la continuidad y derivabilidad de f(x)=1+|x|/(1-|x|) en x=0."
+      ],
+      "studyTips": "Para continuidad en x=c: el límite por la izquierda, el límite por la derecha y el valor de la función deben coincidir. Para derivabilidad: además, los límites de la derivada (o cocientes incrementales) por izquierda y derecha deben ser iguales. En funciones con valor absoluto, estudia los casos x>0 y x<0 por separado. Cuando encuentres a y b, siempre verifica que el resultado tiene sentido (e.g. que los logaritmos tienen argumento positivo en su dominio).",
+      "relatedFlashcardTopics": [
+        "Continuidad en un punto: definición y comprobación",
+        "Derivada lateral izquierda y derecha",
+        "Función continua pero no derivable en un punto",
+        "Derivabilidad de funciones con valor absoluto",
+        "Límites laterales con funciones exponenciales y logarítmicas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Función definida en dos o tres ramas → hallar parámetros para continuidad/derivabilidad o estudiarla directamente"
+      }
+    },
+    {
+      "id": "mat2-pred-011",
+      "topic": "Análisis: asíntotas y estudio completo de función racional o trascendente",
+      "block": "Bloque Optativo 1 (Análisis)",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.70,
+      "reason": "El estudio de asíntotas (horizontales, verticales, oblicuas) aparece en Suplente-B 2023-24 E1&2 (asíntota oblicua y vertical), Suplente1-B 2024-25 E3 (asíntota horizontal + extremos), Titular-B 2024-25 E1 obligatorio tiene apartado de asíntotas, Suplente2-B 2024-25 E3 (asíntota horizontal + crecimiento). En el anexo de análisis conceptual (Ejercicio 10) también aparece. Si el bloque 1 es Análisis, uno de los dos ejercicios puede abordar asíntotas.",
+      "likelyQuestions": [
+        "Sea f(x) = (ax³+bx²+...)/(...). Calcula a y b para que y=cx+d sea una asíntota oblicua de la gráfica.",
+        "Estudia y halla las asíntotas de la gráfica de f (verticales, horizontales y oblicuas).",
+        "Sea f(x) = a + ln(x)/x². Calcula a para que y=1 sea asíntota horizontal. Para a=0, estudia crecimiento y extremos.",
+        "Halla la recta tangente paralela a la recta AB dada, siendo A y B puntos de la gráfica de f."
+      ],
+      "studyTips": "Asíntota horizontal: lím f(x) cuando x→±∞. Asíntota vertical: x=c donde lím |f(x)|=∞ (denominador nulo). Asíntota oblicua y=mx+n: m=lím f(x)/x, n=lím [f(x)-mx] cuando x→∞. Para funciones racionales donde grado(numerador)=grado(denominador)+1, siempre existe asíntota oblicua: divide polinomios. Si hay asíntota oblicua, no hay horizontal en ese infinito.",
+      "relatedFlashcardTopics": [
+        "Asíntota oblicua: m y n mediante límites",
+        "Asíntota vertical por denominador nulo",
+        "División de polinomios (cociente y resto)",
+        "Límites al infinito de funciones racionales",
+        "Función racional: dominio y discontinuidades"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Función racional con parámetros → condición sobre asíntota oblicua → estudio de asíntotas restantes"
+      }
+    },
+    {
+      "id": "mat2-pred-012",
+      "topic": "Análisis: límites con indeterminación (L'Hôpital o Taylor/equivalentes)",
+      "block": "Bloque Optativo 1 (Análisis)",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.68,
+      "reason": "Los límites con parámetros aparecen en Suplente1-A 2023-24 E2 (límite indeterminado con a y b), Suplente-A 2023-24 E2 (límite con L'Hôpital implícito), Suplente2-A 2024-25 E2 (límite finito con parámetro a), Suplente2-B 2024-25 E6 (límite con a y b, indeterminación 0/0). El patrón consiste en imponer que el límite sea finito para encontrar los parámetros. Está explícitamente en las orientaciones bajo 'regla de L'Hôpital'.",
+      "likelyQuestions": [
+        "Calcula a y b sabiendo que lím[x→0] [a(ln(1+x)-x)+b(e^x-1)+1-cos(x)] / sen²(x) = k.",
+        "Sabiendo que lím[x→0] [sen(x)-ax+...] / [e^x-xcos(x)-1] es finito, calcula a y el valor del límite.",
+        "Calcula lím[x→-π] arctan(x+π)/sen(x) usando L'Hôpital o equivalentes.",
+        "Determina a para que lím[x→0] [...] / [...] sea finito y calcula el valor del límite."
+      ],
+      "studyTips": "El truco de estos límites: si el límite es finito con indeterminación 0/0, el numerador debe tender a 0. Esto da una ecuación para los parámetros. Luego aplica L'Hôpital o los desarrollos de Taylor de orden 2: sen(x)≈x-x³/6, cos(x)≈1-x²/2, e^x≈1+x+x²/2, ln(1+x)≈x-x²/2. Sustituye y simplifica para encontrar el límite residual.",
+      "relatedFlashcardTopics": [
+        "Regla de L'Hôpital (indeterminación 0/0 y ∞/∞)",
+        "Desarrollos de Taylor de orden 2 de sen, cos, e^x, ln(1+x)",
+        "Equivalentes infinitesimales",
+        "Límites laterales",
+        "Condición de finitud de un límite para hallar parámetros"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Límite 0/0 con parámetros → imponer finitud → calcular parámetros → evaluar límite"
+      }
+    },
+    {
+      "id": "mat2-pred-013",
+      "topic": "Álgebra: determinantes con propiedades y operaciones (calcular det de matriz transformada)",
+      "block": "Bloque Optativo 1 (Álgebra)",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.72,
+      "reason": "El ejercicio de propiedades de determinantes (dado det(M)=k, calcula el determinante de una matriz transformada aplicando operaciones elementales de filas/columnas) aparece en Reserva-B 2024-25 E4 (det=-5, transformaciones múltiples), Suplente1-B 2024-25 E5 (det dado, A²=4I, calcular det de expresión), Titular-B 2023-24 E5 (potencias y escalares). Es un tipo de ejercicio que puede funcionar como primer o segundo ejercicio del Bloque de Álgebra.",
+      "likelyQuestions": [
+        "Sabiendo que det(M)=k, calcula el determinante de matrices obtenidas por operaciones elementales de filas/columnas.",
+        "Considera las matrices A y B. Calcula det((AB)^5)^(-1) y det(27·A·B^6).",
+        "Calcula A^2025 sabiendo que A³+I=O (o que A tiene ciclo de orden n).",
+        "Halla razonadamente det(4A^25(A^t)^4) conocidas las propiedades de A."
+      ],
+      "studyTips": "Propiedades clave: det(AB)=det(A)·det(B); det(A^n)=det(A)^n; det(kA)=k^n·det(A) para matriz nxn; det(A^t)=det(A); det(A^(-1))=1/det(A). Para potencias cíclicas de matrices: si A³=I, entonces A^(3k)=I, A^(3k+1)=A, A^(3k+2)=A². Usa siempre el algoritmo de Sarrus o el desarrollo por adjuntos para det de 3×3.",
+      "relatedFlashcardTopics": [
+        "Propiedades del determinante: producto, potencia, escalar",
+        "Determinante de la transpuesta y de la inversa",
+        "Potencia cíclica de una matriz",
+        "Operaciones elementales de filas y su efecto en el determinante",
+        "Determinante 3×3: Sarrus o desarrollo por filas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Determinante conocido → aplicar propiedades algebraicas → calcular determinante de matriz transformada"
+      }
+    },
+    {
+      "id": "mat2-pred-014",
+      "topic": "Geometría: punto simétrico respecto a plano o recta",
+      "block": "Bloque Optativo 2 (Geometría/Análisis - segunda opción del bloque)",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.70,
+      "reason": "El cálculo de puntos simétricos (respecto a un plano y/o a una recta) aparece en Suplente-A 2024-25 E7 (simétrico de P respecto a recta r, simétrico de Q respecto a plano π), Titular-B 2024-25 E6 (simétrico de A respecto a plano π + plano perpendicular), Reserva-B 2024-25 E6 (simétrico de A respecto a π). Es el tipo de ejercicio geométrico más frecuente en los exámenes nuevos de 2024-25 y está bien cubierto por las orientaciones bajo 'simetría en el espacio'.",
+      "likelyQuestions": [
+        "Halla el punto simétrico de P respecto al plano π≡ax+by+cz+d=0.",
+        "Calcula el punto simétrico de Q respecto a la recta r≡{ecuaciones implícitas}.",
+        "Considera el plano π y los puntos A y B. Calcula el simétrico de A respecto a π. Halla el plano que contiene a A y B y es perpendicular a π.",
+        "Calcula los planos paralelos a π que distan d unidades de π."
+      ],
+      "studyTips": "Simétrico de P respecto a π: (1) halla el pie de la perpendicular H (recta por P con director normal al plano, intersecta con π); (2) el simétrico P'=2H-P. Simétrico de P respecto a r: (1) halla H=proyección ortogonal de P sobre r; (2) P'=2H-P. Para la proyección sobre una recta: parametriza r, escribe la condición de perpendicularidad del vector PH con el director de r, resuelve para el parámetro. Para planos paralelos a π que distan d: ax+by+cz+d±d·√(a²+b²+c²)=0.",
+      "relatedFlashcardTopics": [
+        "Pie de la perpendicular de un punto a un plano",
+        "Pie de la perpendicular de un punto a una recta",
+        "Punto simétrico: fórmula P'=2H-P",
+        "Distancia punto-plano y punto-recta",
+        "Planos paralelos equidistantes"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "Punto exterior + plano o recta → cálculo del simétrico + posiblemente plano o distancia adicional"
+      }
+    },
+    {
+      "id": "mat2-pred-015",
+      "topic": "Geometría: área de triángulo/tetraedro con vectores y producto vectorial/mixto",
+      "block": "Bloque Optativo 2 (Geometría)",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.69,
+      "reason": "El área de triángulo con vértices dados (vía producto vectorial: área = ½|AB×AC|) y el volumen de tetraedro (1/6|producto mixto|) aparecen en Titular-A 2024-25 E4, Suplente1-B 2024-25 E4, Titular-B 2023-24 E8, Reserva-A 2024-25 E4 (área y tetraedro con punto en eje OZ). Es un tipo de ejercicio que combina producto vectorial con geometría métrica, habitual en el Bloque 2.",
+      "likelyQuestions": [
+        "Sean A, B y C tres puntos. Calcula el área del triángulo de vértices A, B y C.",
+        "Halla los puntos D pertenecientes al eje OZ para que el tetraedro ABCD tenga volumen V.",
+        "Calcula el cuarto vértice D de un paralelogramo ABCD dados A, B, C.",
+        "Determina a para que el triángulo OAB tenga área k unidades cuadradas."
+      ],
+      "studyTips": "Área del triángulo ABC = ½|AB×AC|. Volumen del tetraedro ABCD = (1/6)|det[AB, AC, AD]|. Para hallar D en un eje: si D=(0,0,d), expresa AD en función de d y aplica la condición de volumen. Para el paralelogramo ABCD: D=A+C-B (diagonal: las diagonales se bisecan). Practica el cálculo del producto vectorial 3×3 (regla del determinante con i, j, k).",
+      "relatedFlashcardTopics": [
+        "Producto vectorial: definición y cálculo con determinante",
+        "Módulo del producto vectorial",
+        "Área del triángulo = ½|u×v|",
+        "Producto mixto y volumen del tetraedro",
+        "Paralelogramo: cuarto vértice y diagonales"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Tres o cuatro puntos → área de triángulo + volumen de tetraedro o cuarto vértice de paralelogramo"
+      }
+    },
+    {
+      "id": "mat2-pred-016",
+      "topic": "Álgebra: sistemas de ecuaciones lineales con aplicación a contexto real (precios, mezclas)",
+      "block": "Parte Obligatoria E2 (si rota a Álgebra) o Bloque Optativo 1 (Álgebra)",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.60,
+      "reason": "Los sistemas de ecuaciones en contexto real (precios de productos, prendas, ingredientes) aparecen en Suplente1-A 2024-25 E1 (jersey, camisa, pantalón con descuentos), Suplente-A 2024-25 E6 (perfumes tipo A, B, C), Suplente1-B 2023-24 E6 (número de tres cifras), Suplente2-B 2024-25 E1 (tres números naturales). En la nueva estructura, el E2 obligatorio puede ser de Álgebra con un problema de contexto. Las orientaciones refuerzan: 'sistemas de ecuaciones: modelización en diversos contextos'.",
+      "likelyQuestions": [
+        "Una tienda vende tres productos A, B y C. Con los datos de dos pedidos, determina si es posible conocer los precios individualmente. Con una condición adicional, calcula el precio de cada uno.",
+        "Determina un número de tres cifras/naturales sabiendo que cumple tres condiciones dadas.",
+        "Un agricultor mezcla tres tipos de fertilizantes. Sabiendo que... determina la cantidad de cada tipo.",
+        "¿Es posible determinar de forma única [la incógnita]? Razona la respuesta."
+      ],
+      "studyTips": "Modela el problema como sistema Ax=b, identifica las incógnitas claramente. Aplica Gauss para reducir la matriz ampliada. Si el sistema es indeterminado (CI), interpreta en el contexto: ¿hay grados de libertad? La pregunta '¿es posible determinar de forma única?' es clave: la respuesta es sí si rango(A)=rango(A|b)=número de incógnitas. Si rango < incógnitas, la solución no es única.",
+      "relatedFlashcardTopics": [
+        "Modelización de un sistema de ecuaciones",
+        "Método de Gauss reducción",
+        "Interpretación del rango en términos de unicidad de solución",
+        "Sistema determinado vs indeterminado vs incompatible",
+        "Regla de Cramer"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Problema contextual con 3 incógnitas → sistema 3×3 → análisis de unicidad + resolución"
+      }
+    },
+    {
+      "id": "mat2-pred-017",
+      "topic": "Análisis: optimización (problema de máximo/mínimo geométrico o físico)",
+      "block": "Bloque Optativo 1 (Análisis) o Parte Obligatoria E1",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.62,
+      "reason": "Los problemas de optimización clásicos (minimizar distancia, maximizar área, minimizar tiempo) aparecen en Suplente-B 2023-24 E1 (rectángulo de área fija con diagonal mínima), Suplente1-A 2024-25 E2 (náufrago: distancia mínima a curva). El anexo de las orientaciones contiene 5 ejemplos de este tipo. Sin embargo, en la nueva estructura estos problemas se integran en el Ejercicio 1 obligatorio competencial, por lo que como ejercicio independiente es algo menos probable, aunque no descartable.",
+      "likelyQuestions": [
+        "Entre todos los rectángulos de área fija, determina el que minimiza el producto de las diagonales.",
+        "Un náufrago en el punto P quiere alcanzar la trayectoria f(x)=√(x+1) por el camino más corto. Halla ese punto y la distancia.",
+        "Un agricultor divide una parcela acotada por y=ax² e y=b mediante la recta y=k en dos partes iguales. Halla k.",
+        "Minimiza el tiempo de recorrido de A a C con velocidades distintas a nado y a pie."
+      ],
+      "studyTips": "Define la función objetivo en términos de una sola variable usando la restricción. Deriva e iguala a cero. Comprueba que el punto crítico es mínimo (o máximo) usando la segunda derivada o el contexto. Para distancia punto-curva: minimiza d²(x)=(x-x0)²+(f(x)-y0)² (equivalente a minimizar la distancia, pero más sencillo algebraicamente).",
+      "relatedFlashcardTopics": [
+        "Planteamiento de función objetivo en optimización",
+        "Uso de la restricción para reducir variables",
+        "Criterio de la segunda derivada para clasificar extremos",
+        "Distancia de un punto a una curva: minimización",
+        "Optimización en intervalos cerrados: comparar extremos relativos y de contorno"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "medio-alto",
+        "questionPattern": "Contexto geométrico o físico → función de una variable → derivada = 0 → solución con interpretación"
+      }
+    },
+    {
+      "id": "mat2-pred-018",
+      "topic": "Geometría: plano que pasa por puntos dados y es paralelo/perpendicular a otro plano o recta",
+      "block": "Bloque Optativo 2 (Geometría)",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.60,
+      "reason": "La construcción de planos con condiciones mixtas aparece en Titular-B 2023-24 E8 (plano paralelo a dos planos dados que pasa por el origen), Suplente1-B 2024-25 E6 (plano que contiene r y pasa por P), Suplente2-A 2024-25 E5 (plano por P que contiene r + recta perpendicular a r). Las orientaciones enfatizan: 'plano que contiene a dos rectas paralelas o secantes', 'plano paralelo a una recta que pasa por P y Q'. Es un segundo tipo de ejercicio geométrico del Bloque 2.",
+      "likelyQuestions": [
+        "Considera el punto P y la recta r. Halla el plano que pasa por P y contiene a r.",
+        "Halla la recta que pasa por P y corta perpendicularmente a r.",
+        "Determina la ecuación de la recta paralela a dos planos dados que pasa por el origen.",
+        "Halla el plano perpendicular a r, contenido en π, que pasa por el origen."
+      ],
+      "studyTips": "Para el plano que contiene a r y pasa por P: el normal del plano es perpendicular al director de r y al vector de P a cualquier punto de r (producto vectorial). Para la recta perpendicular a r en P: su director es el mismo que el de r, parametriza desde P. Para recta paralela a dos planos: su director es perpendicular a los dos normales (producto vectorial de normales); pasa por el punto pedido.",
+      "relatedFlashcardTopics": [
+        "Plano que contiene a una recta y un punto exterior",
+        "Recta perpendicular a otra que pasa por un punto",
+        "Recta paralela a dos planos: director como producto vectorial de normales",
+        "Ecuación paramétrica vs implícita de recta y plano",
+        "Posición relativa plano-recta: paralelo, contenido, secante"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Punto + recta o dos planos → construcción del objeto geométrico con condición de paralelismo o perpendicularidad"
+      }
+    },
+    {
+      "id": "mat2-pred-019",
+      "topic": "Álgebra: potencia de matriz cuadrada por ciclo o por anulador polinómico",
+      "block": "Bloque Optativo 1 (Álgebra)",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.57,
+      "reason": "El cálculo de potencias grandes de matrices (aprovechando que la matriz es cíclica o satisface una ecuación matricial) aparece en Suplente-A 2024-25 E5 (A^2024, con A triangular superior), Suplente1-A 2024-25 E4 (A^2025, con A³+I=O→A^(-1)=-A²), Suplente2-A 2024-25 E4 (A^4 y A^31 de la matriz de rotación). Las orientaciones lo mencionan explícitamente: 'potencia de una matriz cuadrada: cálculo de la potencia de una matriz en situaciones cíclicas'.",
+      "likelyQuestions": [
+        "Comprueba que A³+I=O. Calcula A^(-1) y A^2025.",
+        "Calcula A^4 y A^(2k+1) para una matriz de rotación 2×2.",
+        "Dada A triangular superior, calcula A^n (por inducción o directamente).",
+        "Si A verifica A^k=I, expresa A^n en función de k y el residuo de n mod k."
+      ],
+      "studyTips": "Busca el ciclo de la matriz: calcula A², A³, ... hasta que vuelvas a la identidad o al inicio. Si A^k=I, entonces A^n=A^(n mod k). Si A satisface una ecuación polinómica (p.e. A³=-I), úsala para reducir: A^4=A·A³=A·(-I)=-A. Para matrices de rotación de ángulo θ: A^n es la rotación de ángulo nθ. Para matrices triangulares: el patrón de la potencia suele ser polinómico en n.",
+      "relatedFlashcardTopics": [
+        "Ciclo de una matriz: A^k=I",
+        "Uso de la ecuación matricial anuladora para calcular potencias",
+        "Matrices de rotación y sus potencias",
+        "División entera y residuo para calcular n mod k",
+        "Matrices nilpotentes y su potencia"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Propiedad algebraica de A (A^k=±I o A^k+A^j=O) → calcular A^n para n grande"
+      }
+    },
+    {
+      "id": "mat2-pred-020",
+      "topic": "Análisis: integral de función definida a trozos / función par o impar",
+      "block": "Bloque Optativo 2 (Análisis)",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.58,
+      "reason": "La integral de una función definida a trozos sobre un intervalo que contiene el punto de corte aparece en Reserva-A 2023-24 E3 (función a trozos 1-e^x / xcos(x) en [-π,π]), Suplente-B 2023-24 E3 (misma función), el modelo E4.1 de 2025-26 usa la simetría de f(x)=sen(x)/√(1+cos(x)) para deducir la integral en [-π,π]. Este tipo de ejercicio combina el manejo de integrales en varios tramos con el análisis de simetría (función par/impar), lo que aparece explícitamente en el modelo 2025-26.",
+      "likelyQuestions": [
+        "Considera f(x)={g(x) si x≤0; h(x) si x>0}. Calcula ∫[-π,π] f(x)dx dividiendo el intervalo en [-π,0] y [0,π].",
+        "Considera f(x)=sen(x)/√(1+cos(x)). Calcula ∫[0,π] f(x)dx. Estudia la simetría de f y deduce ∫[-π,π] f(x)dx.",
+        "Sea f par (o impar). Justifica que ∫[-a,a] f(x)dx = 2∫[0,a]f(x)dx (o = 0) y aplícalo.",
+        "Calcula ∫[-π/4,1] f(x)dx para f(x)={xsen(2x) si x≤0; cos(πx)-1 si x>0}."
+      ],
+      "studyTips": "Propiedad de aditividad: ∫[a,b]=∫[a,c]+∫[c,b]. Para funciones impares (f(-x)=-f(x)): ∫[-a,a]=0. Para funciones pares (f(-x)=f(x)): ∫[-a,a]=2∫[0,a]. Para verificar simetría: comprueba si f(-x)=f(x) (par) o f(-x)=-f(x) (impar). Cuando el integrando involucra cambio de variable trigonométrica, sustituye t=cos(x) o t=sen(x) y transforma los límites.",
+      "relatedFlashcardTopics": [
+        "Propiedad de aditividad de la integral definida",
+        "Función par e impar: definición y propiedades integrales",
+        "Integral de función a trozos: partir el intervalo",
+        "Cambio de variable en integral definida con nuevos límites",
+        "Regla de Barrow: primitiva evaluada en extremos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "Función a trozos o con simetría → integral definida por tramos → propiedad de función par/impar"
+      }
+    }
+  ],
+  "generalTips": "El cambio de modelo 2025-26 es radical: hay un ejercicio obligatorio de Análisis competencial-contextualizado que no existía antes. Practica intensivamente los 13 ejercicios del Anexo 8 de las orientaciones: son el patrón oficial. Para el resto, el histórico es muy claro: Álgebra siempre trae matrices con parámetro + sistema tipo autovalor; Geometría oscila entre posición relativa de rectas/planos, puntos simétricos y áreas vectoriales; Análisis cubre monotonía/extremos, funciones a trozos y asíntotas; la integral siempre trae área o técnica (cambio de variable/partes); Estadística es siempre Normal o Bayes. Domina el producto vectorial (imprescindible para geometría) y la tabla N(0,1) (imprescindible para probabilidad). Gestiona el tiempo: 4 ejercicios en 90 minutos implica 22 minutos por ejercicio como máximo. Empieza por el ejercicio obligatorio 1 (lo controlas porque está bien delimitado) y elige siempre el ejercicio de cada bloque optativo que más domines."
+}

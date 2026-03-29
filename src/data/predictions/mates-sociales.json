@@ -1,0 +1,459 @@
+{
+  "subject": "matematicas_aplicadas_ccss",
+  "analysisYear": 2026,
+  "sourceSummary": {
+    "orientationYear": "2025-26",
+    "pastExamYearsAnalyzed": [2024, 2025],
+    "weighting": {
+      "2025": 1.0,
+      "2024": 0.75
+    },
+    "notes": "Se ha dado más peso a 2025 porque ya se ajusta a la estructura vigente de cuatro bloques con estadística/inferencia obligatoria. 2024 se ha usado para reforzar recurrencias temáticas y tipos de ejercicio."
+  },
+  "predictions": [
+    {
+      "id": "macss-pred-001",
+      "topic": "Matrices: operaciones, inversa, rango y ecuaciones matriciales",
+      "block": "Bloque A - Sentido numérico / Álgebra matricial",
+      "sectionType": "problema_matricial",
+      "confidence": "muy alta",
+      "score": 0.99,
+      "reason": "Es uno de los patrones más constantes del histórico: en 2024 y 2025 aparecen con mucha frecuencia ecuaciones matriciales, cálculo de inversas, rangos, compatibilidad dimensional y propiedades operativas.",
+      "likelyQuestions": [
+        "Resolver una ecuación matricial del tipo AX+B=C o A·X·B=C",
+        "Calcular el rango de una matriz y decidir si es invertible",
+        "Comprobar si una igualdad matricial es cierta y justificarlo",
+        "Determinar dimensiones para que una operación matricial tenga sentido"
+      ],
+      "studyTips": "Lleva completamente dominados producto, transpuesta, inversa, determinante, rango y compatibilidad de dimensiones. Muy rentable practicar ecuaciones matriciales paso a paso.",
+      "relatedFlashcardTopics": [
+        "matrices",
+        "inversa",
+        "rango",
+        "ecuaciones matriciales",
+        "compatibilidad dimensional"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "ejercicio directo de matrices con justificación"
+      }
+    },
+    {
+      "id": "macss-pred-002",
+      "topic": "Modelización con matrices en contextos reales",
+      "block": "Bloque A - Sentido numérico / Álgebra matricial",
+      "sectionType": "problema_contextualizado",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "En 2025 se repiten problemas reales resueltos de forma matricial: costes, vendedores, proyectos, ingresos o tiempos. Las orientaciones insisten en el uso de matrices para modelizar situaciones reales.",
+      "likelyQuestions": [
+        "Plantear y resolver un problema de costes o producción mediante matrices",
+        "Organizar datos de varias personas, productos o zonas en matrices y operar con ellas",
+        "Calcular importes finales, costes totales o resultados agregados con un modelo matricial"
+      ],
+      "studyTips": "Practica traducción de enunciado a matriz. Lo importante no es solo operar, sino decidir bien qué representa cada fila, columna o vector.",
+      "relatedFlashcardTopics": [
+        "modelización matricial",
+        "costes",
+        "tablas de datos",
+        "vectores columna",
+        "matrices en contexto"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "contexto real resuelto con matrices"
+      }
+    },
+    {
+      "id": "macss-pred-003",
+      "topic": "Sistemas de ecuaciones y problemas de planteamiento algebraico",
+      "block": "Bloque A - Sentido algebraico",
+      "sectionType": "sistema_y_modelizacion",
+      "confidence": "alta",
+      "score": 0.92,
+      "reason": "Aparecen problemas de números, precios, horas trabajadas y repartos que obligan a plantear sistemas lineales, a veces de forma matricial y a veces directa.",
+      "likelyQuestions": [
+        "Plantear y resolver un sistema de ecuaciones a partir de un problema de precios o cantidades",
+        "Determinar tres números con condiciones de suma, cociente y resto",
+        "Resolver un problema de reparto de horas, entradas o costes mediante un sistema"
+      ],
+      "studyTips": "Lleva muy fluido el paso de texto a ecuaciones. Suelen caer en versión aparentemente sencilla pero con varios datos encadenados.",
+      "relatedFlashcardTopics": [
+        "sistemas de ecuaciones",
+        "planteamiento algebraico",
+        "problemas de precios",
+        "problemas de cantidades",
+        "resolución lineal"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "problema verbal con sistema"
+      }
+    },
+    {
+      "id": "macss-pred-004",
+      "topic": "Programación lineal: región factible, vértices y óptimo",
+      "block": "Bloque A - Sentido algebraico / Programación lineal",
+      "sectionType": "optimizacion_lineal",
+      "confidence": "muy alta",
+      "score": 0.99,
+      "reason": "Es otro de los núcleos más estables del examen. En 2024 y 2025 aparece repetidamente en contextos de producción, logística, menús, abonos, agricultura o almacenaje.",
+      "likelyQuestions": [
+        "Plantear un problema de programación lineal con dos variables y representarlo gráficamente",
+        "Determinar la región factible y calcular analíticamente sus vértices",
+        "Maximizar beneficios o minimizar costes bajo restricciones reales",
+        "Interpretar la solución óptima en contexto"
+      ],
+      "studyTips": "No te quedes en dibujar rectas: practica también el cálculo exacto de vértices, la comprobación de restricciones y la interpretación final.",
+      "relatedFlashcardTopics": [
+        "programacion lineal",
+        "region factible",
+        "vertices",
+        "funcion objetivo",
+        "maximizacion",
+        "minimizacion"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "problema real con dos variables y optimización"
+      }
+    },
+    {
+      "id": "macss-pred-005",
+      "topic": "Derivadas: cálculo, continuidad, derivabilidad y recta tangente",
+      "block": "Bloque B - Sentido de la medida / Cambio",
+      "sectionType": "analisis_funcional",
+      "confidence": "muy alta",
+      "score": 0.98,
+      "reason": "Las orientaciones cargan mucho este bloque y en 2024-2025 aparecen cuestiones de derivabilidad, funciones a trozos, recta tangente y cálculo de parámetros.",
+      "likelyQuestions": [
+        "Estudiar continuidad y derivabilidad de una función, especialmente si está definida a trozos",
+        "Calcular la ecuación de la recta tangente a una función en un punto",
+        "Hallar parámetros para que una función cumpla continuidad o derivabilidad",
+        "Calcular derivadas de funciones polinómicas, racionales, exponenciales o logarítmicas"
+      ],
+      "studyTips": "Lleva muy sólidos límites, derivadas laterales y recta tangente. En funciones a trozos, revisa valor, límite y derivadas laterales con orden.",
+      "relatedFlashcardTopics": [
+        "derivadas",
+        "continuidad",
+        "derivabilidad",
+        "recta tangente",
+        "funciones a trozos",
+        "regla de la cadena"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "estudio local y derivación aplicada"
+      }
+    },
+    {
+      "id": "macss-pred-006",
+      "topic": "Estudio completo de funciones: crecimiento, extremos, concavidad e inflexión",
+      "block": "Bloque B - Sentido de la medida / Cambio",
+      "sectionType": "estudio_global_funcion",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Los exámenes recientes incluyen con mucha frecuencia crecimiento, máximos y mínimos, análisis gráfico y comportamiento global de funciones modelizadas.",
+      "likelyQuestions": [
+        "Determinar intervalos de crecimiento y decrecimiento de una función",
+        "Calcular máximos y mínimos relativos o absolutos",
+        "Estudiar concavidad, convexidad y puntos de inflexión",
+        "Extraer conclusiones prácticas de un modelo funcional"
+      ],
+      "studyTips": "Practica estudio completo ordenado: dominio, derivada, puntos críticos, segunda derivada, extremos e interpretación.",
+      "relatedFlashcardTopics": [
+        "crecimiento",
+        "decrecimiento",
+        "extremos relativos",
+        "puntos de inflexion",
+        "concavidad",
+        "convexidad"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "analisis de función en contexto"
+      }
+    },
+    {
+      "id": "macss-pred-007",
+      "topic": "Optimización con derivadas en contextos reales",
+      "block": "Bloque B - Sentido de la medida / Cambio",
+      "sectionType": "optimizacion_con_derivadas",
+      "confidence": "alta",
+      "score": 0.93,
+      "reason": "Las orientaciones la destacan expresamente y el histórico reciente trabaja funciones en contexto de noticias, glucosa, difusión o almacenamiento con interpretación real.",
+      "likelyQuestions": [
+        "Determinar cuándo una magnitud alcanza su valor máximo o mínimo",
+        "Resolver un problema de optimización mediante derivadas e interpretar el resultado",
+        "Comparar tasas de cambio en distintos instantes a partir de la derivada"
+      ],
+      "studyTips": "No te quedes en la mecánica. Suele puntuar mucho la interpretación del extremo en el contexto del problema.",
+      "relatedFlashcardTopics": [
+        "optimizacion",
+        "tasa de cambio",
+        "derivada en contexto",
+        "maximos y minimos",
+        "interpretacion real"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "función contextualizada con interpretación"
+      }
+    },
+    {
+      "id": "macss-pred-008",
+      "topic": "Integrales inmediatas, regla de Barrow y cálculo de áreas",
+      "block": "Bloque B - Sentido de la medida / Medición",
+      "sectionType": "integral_y_area",
+      "confidence": "muy alta",
+      "score": 0.98,
+      "reason": "Aparece de manera muy recurrente en 2024 y 2025 mediante áreas entre curvas, áreas con el eje X e integrales de funciones elementales.",
+      "likelyQuestions": [
+        "Calcular el área comprendida entre dos curvas",
+        "Representar el recinto limitado por varias funciones y hallar su área",
+        "Aplicar la regla de Barrow para obtener el área bajo una curva",
+        "Combinar representación gráfica e integral definida en una misma cuestión"
+      ],
+      "studyTips": "Practica mucho los puntos de corte, el dibujo correcto del recinto y la separación en intervalos cuando cambie la función superior.",
+      "relatedFlashcardTopics": [
+        "integral definida",
+        "regla de Barrow",
+        "area entre curvas",
+        "puntos de corte",
+        "representacion de recintos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "área de recinto con representación previa"
+      }
+    },
+    {
+      "id": "macss-pred-009",
+      "topic": "Funciones definidas a trozos y análisis mixto",
+      "block": "Bloque B - Sentido de la medida / Cambio y Medición",
+      "sectionType": "funcion_a_trozos",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "En 2024 se repiten ejercicios con funciones a trozos que mezclan continuidad, derivabilidad, representación y área, muy alineados con las orientaciones.",
+      "likelyQuestions": [
+        "Estudiar continuidad y derivabilidad de una función definida a trozos",
+        "Representar el recinto limitado por una función a trozos y otra función simple",
+        "Calcular el área correspondiente separando correctamente intervalos"
+      ],
+      "studyTips": "Este tipo de ejercicio mezcla varias técnicas. Trabájalo como bloque completo y no como apartados sueltos.",
+      "relatedFlashcardTopics": [
+        "funciones a trozos",
+        "continuidad",
+        "derivabilidad",
+        "area",
+        "representacion grafica"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "alto",
+        "questionPattern": "ejercicio mixto de análisis"
+      }
+    },
+    {
+      "id": "macss-pred-010",
+      "topic": "Probabilidad total, Bayes y sucesos condicionados",
+      "block": "Bloque C - Incertidumbre / Probabilidad",
+      "sectionType": "probabilidad_condicionada",
+      "confidence": "muy alta",
+      "score": 0.99,
+      "reason": "En 2025 se repiten claramente problemas con tablas o particiones: sexo y cosmética, tipos de pantalla, llaveros, escuelas, etc. Es uno de los patrones más fuertes.",
+      "likelyQuestions": [
+        "Calcular probabilidades condicionadas a partir de datos porcentuales",
+        "Aplicar la probabilidad total y el teorema de Bayes en un problema real",
+        "Decidir si dos sucesos son incompatibles o independientes",
+        "Resolver un problema de selección aleatoria con árbol o tabla"
+      ],
+      "studyTips": "Lleva muy claro cuándo usar intersección, unión, condicional, total y Bayes. Haz siempre esquema previo.",
+      "relatedFlashcardTopics": [
+        "probabilidad condicionada",
+        "Bayes",
+        "probabilidad total",
+        "independencia",
+        "incompatibilidad",
+        "arbol de probabilidades"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "problema contextualizado con porcentajes y condicionales"
+      }
+    },
+    {
+      "id": "macss-pred-011",
+      "topic": "Distribución binomial y esperanza",
+      "block": "Bloque C - Incertidumbre / Probabilidad",
+      "sectionType": "binomial",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "La binomial aparece con mucha frecuencia en 2025: tratamientos, campañas publicitarias y situaciones repetidas de éxito/fracaso.",
+      "likelyQuestions": [
+        "Identificar una variable binomial y escribir sus parámetros",
+        "Calcular probabilidades puntuales y acumuladas en una binomial",
+        "Obtener la esperanza o número esperado de éxitos",
+        "Determinar cuántos ensayos son necesarios para alcanzar una esperanza mínima"
+      ],
+      "studyTips": "No olvides justificar por qué es binomial: número fijo de ensayos, independencia y probabilidad constante de éxito.",
+      "relatedFlashcardTopics": [
+        "binomial",
+        "esperanza",
+        "probabilidad puntual",
+        "probabilidad acumulada",
+        "ensayos de Bernoulli"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "éxito/fracaso repetido en contexto real"
+      }
+    },
+    {
+      "id": "macss-pred-012",
+      "topic": "Distribución normal y uso de tablas",
+      "block": "Bloque C - Incertidumbre / Probabilidad",
+      "sectionType": "normal",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Las tablas normales están entre el material subido y las orientaciones contemplan distribución normal. Aunque en los fragmentos visibles pesa más la binomial, la normal sigue siendo muy probable.",
+      "likelyQuestions": [
+        "Tipificar una variable normal y calcular probabilidades con la tabla N(0,1)",
+        "Calcular percentiles o valores asociados a una probabilidad dada",
+        "Resolver un problema de distribución normal en contexto social o económico"
+      ],
+      "studyTips": "Lleva automatizado el paso Z=(X-mu)/sigma y el uso correcto de la tabla acumulada.",
+      "relatedFlashcardTopics": [
+        "distribucion normal",
+        "tipificacion",
+        "tabla normal",
+        "percentiles",
+        "probabilidad acumulada"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "uso de tabla y tipificación"
+      }
+    },
+    {
+      "id": "macss-pred-013",
+      "topic": "Intervalos de confianza para proporciones",
+      "block": "Bloque D - Estadística e inferencia",
+      "sectionType": "intervalo_confianza_proporcion",
+      "confidence": "muy alta",
+      "score": 0.99,
+      "reason": "El Bloque D es obligatorio en 2025 y en los modelos visibles aparecen intervalos para proporciones de productos, especies o respuestas muestrales.",
+      "likelyQuestions": [
+        "Construir un intervalo de confianza para una proporción poblacional",
+        "Estimar la proporción de una categoría y la complementaria con un nivel de confianza dado",
+        "Interpretar correctamente el intervalo obtenido en contexto"
+      ],
+      "studyTips": "Ten muy clara la fórmula, el valor crítico y la interpretación verbal del intervalo.",
+      "relatedFlashcardTopics": [
+        "intervalo de confianza",
+        "proporcion muestral",
+        "nivel de confianza",
+        "margen de error",
+        "estimacion"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "ejercicio obligatorio de inferencia"
+      }
+    },
+    {
+      "id": "macss-pred-014",
+      "topic": "Determinación del tamaño muestral con error máximo",
+      "block": "Bloque D - Estadística e inferencia",
+      "sectionType": "tamano_muestral",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Suele acompañar a los intervalos de confianza en inferencia y las orientaciones lo contemplan de forma natural dentro del bloque estadístico.",
+      "likelyQuestions": [
+        "Calcular el tamaño mínimo de muestra necesario para estimar una proporción con un error dado",
+        "Determinar el tamaño muestral para un determinado nivel de confianza",
+        "Relacionar error máximo permitido, confianza y tamaño de la muestra"
+      ],
+      "studyTips": "Aprende bien cuándo redondear al alza y cómo usar el caso más desfavorable si no se conoce la proporción.",
+      "relatedFlashcardTopics": [
+        "tamano muestral",
+        "error maximo",
+        "nivel de confianza",
+        "proporciones",
+        "estimacion estadistica"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "continuación natural del intervalo de confianza"
+      }
+    },
+    {
+      "id": "macss-pred-015",
+      "topic": "Inferencia con medias: intervalo de confianza para la media",
+      "block": "Bloque D - Estadística e inferencia",
+      "sectionType": "intervalo_confianza_media",
+      "confidence": "media-alta",
+      "score": 0.84,
+      "reason": "Aunque en los fragmentos visibles pesa más la proporción, el bloque obligatorio de inferencia puede alternar con medias según orientaciones generales del temario.",
+      "likelyQuestions": [
+        "Construir un intervalo de confianza para la media poblacional",
+        "Interpretar el resultado en un contexto de tiempos, pesos, consumos o rendimientos",
+        "Comparar el intervalo obtenido con un valor de referencia"
+      ],
+      "studyTips": "Repasa cuándo se usa desviación típica conocida o muestral y cómo interpretar bien el intervalo final.",
+      "relatedFlashcardTopics": [
+        "media muestral",
+        "intervalo de confianza para la media",
+        "desviacion tipica",
+        "error de estimacion",
+        "inferencia"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "medio-alto",
+        "questionPattern": "alternativa plausible dentro del bloque obligatorio"
+      }
+    },
+    {
+      "id": "macss-pred-016",
+      "topic": "Problemas mixtos de contexto real con interpretación final",
+      "block": "Transversal",
+      "sectionType": "competencial_contextualizado",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "En 2025 el examen se vuelve claramente más contextualizado: catering, marketing, agricultura, software, hospitales, cosmética, tecnología o logística. La interpretación final gana peso.",
+      "likelyQuestions": [
+        "Resolver un problema matemático completo con datos realistas y explicar la solución en lenguaje natural",
+        "Interpretar si una solución es viable o no en contexto",
+        "Justificar qué decisión conviene a partir de un cálculo matemático"
+      ],
+      "studyTips": "No estudies solo técnicas aisladas. Entrena problemas completos donde haya que traducir, resolver y explicar el resultado final.",
+      "relatedFlashcardTopics": [
+        "modelizacion",
+        "interpretacion de resultados",
+        "problemas reales",
+        "justificacion",
+        "competencia matematica"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "enunciados aplicados con interpretación"
+      }
+    }
+  ],
+  "generalTips": "En Matemáticas Aplicadas a las CCSS II para 2026 conviene estudiar por bloques reales de examen. Prioridad máxima: matrices y modelización matricial, programación lineal, derivadas y estudio de funciones, áreas con integrales, probabilidad condicionada/Bayes, binomial y el bloque obligatorio de inferencia estadística. No basta con saber calcular: el examen reciente pide mucha traducción de enunciado a modelo matemático y una interpretación final clara. Practica problemas completos con contexto y justificación, porque ahí se está concentrando buena parte del patrón del examen."
+}

@@ -1,0 +1,802 @@
+{
+  "subject": "historia_de_espana",
+  "analysisYear": 2026,
+  "sourceSummary": {
+    "orientationYear": "2025-26",
+    "pastExamYearsAnalyzed": [2024, 2025],
+    "weighting": {
+      "2025": 1.0,
+      "2024": 0.7
+    },
+    "notes": "Se ha dado más peso a 2025 porque ya comparte la estructura de examen vigente para 2026. 2024 se ha usado para reforzar recurrencias de temas, documentos y bloques."
+  },
+  "predictions": [
+    {
+      "id": "his-pred-001",
+      "topic": "Romanización y sus mecanismos",
+      "block": "Agrupación I - Bloque 1",
+      "sectionType": "cuestiones",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Las orientaciones 2025-26 la incluyen de forma expresa en el modelo de cuestiones comunes y encaja perfectamente con el formato breve de definición y desarrollo corto.",
+      "likelyQuestions": [
+        "Defina el concepto de romanización y describa los medios para llevarla a cabo",
+        "Explique los principales ámbitos en los que se manifestó la romanización en la Península",
+        "Relacione romanización con lengua, derecho, urbanismo y red viaria"
+      ],
+      "studyTips": "Lleva una definición muy cerrada y cuatro mecanismos claros: ejército, ciudades, calzadas y administración, con consecuencias culturales y jurídicas.",
+      "relatedFlashcardTopics": [
+        "Romanización",
+        "Hispania romana",
+        "Municipios romanos",
+        "Legado romano"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "definición breve y explicación"
+      }
+    },
+    {
+      "id": "his-pred-002",
+      "topic": "Diferencias entre mozárabes y mudéjares",
+      "block": "Agrupación I - Bloque 2",
+      "sectionType": "cuestiones",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Figura literalmente en el modelo de orientaciones y además ya ha salido en 2024-25 en las cuestiones comunes.",
+      "likelyQuestions": [
+        "Establezca las diferencias entre un mozárabe y un mudéjar",
+        "Explique en qué contextos históricos existieron mozárabes y mudéjares",
+        "Relacione ambos grupos con la convivencia y el cambio político de la Edad Media peninsular"
+      ],
+      "studyTips": "No basta con definir: diferencia también territorio, religión y contexto político de cada grupo.",
+      "relatedFlashcardTopics": [
+        "Mozárabes",
+        "Mudéjares",
+        "Al-Ándalus",
+        "Sociedad medieval"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "comparación directa"
+      }
+    },
+    {
+      "id": "his-pred-003",
+      "topic": "Etapas de la dominación musulmana en la Península",
+      "block": "Agrupación I - Bloque 2",
+      "sectionType": "cuestiones",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Ha aparecido en 2024-25 y es una formulación muy típica del bloque medieval en formato breve.",
+      "likelyQuestions": [
+        "Precise cuáles fueron las etapas de la dominación musulmana en la Península",
+        "Explique la evolución política de Al-Ándalus desde el emirato hasta el reino nazarí",
+        "Resuma las fases principales de Al-Ándalus y sus rasgos distintivos"
+      ],
+      "studyTips": "Ten memorizada una secuencia limpia: emirato dependiente, emirato independiente, califato, taifas, almorávides, almohades y reino nazarí.",
+      "relatedFlashcardTopics": [
+        "Al-Ándalus",
+        "Califato de Córdoba",
+        "Taifas",
+        "Reino nazarí"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "enumeración cronológica"
+      }
+    },
+    {
+      "id": "his-pred-004",
+      "topic": "Carlos I y Felipe II: política exterior e internacional",
+      "block": "Agrupación I - Bloque 3",
+      "sectionType": "cuestiones",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Aparece en el modelo de orientaciones y también en 2024-25 como formulación casi directa.",
+      "likelyQuestions": [
+        "Señale los dos monarcas de más amplio reinado en el siglo XVI y las diferencias en su política exterior",
+        "Explique brevemente las diferencias de la política internacional de Carlos I y Felipe II",
+        "Relacione los objetivos exteriores de Carlos I y Felipe II con la posición de la Monarquía Hispánica en Europa"
+      ],
+      "studyTips": "Ve muy al grano: Carlos I, visión imperial europea; Felipe II, defensa del catolicismo, hegemonía hispánica y problemas atlánticos y mediterráneos.",
+      "relatedFlashcardTopics": [
+        "Carlos I",
+        "Felipe II",
+        "Política exterior",
+        "Monarquía Hispánica"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "comparación de reinados"
+      }
+    },
+    {
+      "id": "his-pred-005",
+      "topic": "Reyes Católicos: expansión territorial y unidad religiosa",
+      "block": "Agrupación I - Bloque 3",
+      "sectionType": "cuestiones",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "En 2024-25 han aparecido formulaciones sobre expansión territorial y también sobre política de unidad religiosa.",
+      "likelyQuestions": [
+        "Explique la expansión territorial realizada durante el reinado de los Reyes Católicos",
+        "Explique la política de unidad religiosa de los Reyes Católicos",
+        "Relacione la construcción de la Monarquía Hispánica con la conquista de Granada, Navarra y la política mediterránea"
+      ],
+      "studyTips": "Prepara por separado expansión territorial y unidad religiosa, porque pueden salir como dos enfoques distintos del mismo reinado.",
+      "relatedFlashcardTopics": [
+        "Reyes Católicos",
+        "Expansión territorial",
+        "Unidad religiosa",
+        "Monarquía autoritaria"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "explicación breve de proceso"
+      }
+    },
+    {
+      "id": "his-pred-006",
+      "topic": "Validos y crisis política del siglo XVII",
+      "block": "Agrupación I - Bloque 3",
+      "sectionType": "cuestiones",
+      "confidence": "alta",
+      "score": 0.89,
+      "reason": "Se ha preguntado de forma directa en 2024-25 y además aparece reforzado en el histórico 2023-24 de cuestiones.",
+      "likelyQuestions": [
+        "Explique en qué consistió la figura del valido y la importancia que tuvo en el siglo XVII",
+        "Cite algún valido de los Austrias menores y describa su papel político",
+        "Relacione la figura del valido con la crisis de la monarquía de los Austrias en el siglo XVII"
+      ],
+      "studyTips": "Lleva el concepto, dos nombres concretos y su relación con la decadencia política y militar del siglo XVII.",
+      "relatedFlashcardTopics": [
+        "Validos",
+        "Austrias menores",
+        "Conde-Duque de Olivares",
+        "Crisis del siglo XVII"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "definición con ejemplo"
+      }
+    },
+    {
+      "id": "his-pred-007",
+      "topic": "Ilustración y reformismo borbónico",
+      "block": "Agrupación I - Bloque 4",
+      "sectionType": "cuestiones",
+      "confidence": "alta",
+      "score": 0.88,
+      "reason": "En 2024-25 han aparecido preguntas sobre el Siglo de las Luces y sobre las medidas ilustradas para la agricultura.",
+      "likelyQuestions": [
+        "Explique las características del movimiento ideológico y cultural del Siglo de las Luces",
+        "Explique brevemente las medidas más relevantes emprendidas por los monarcas ilustrados para el desarrollo de la agricultura",
+        "Relacione ilustración, reformismo borbónico y modernización económica"
+      ],
+      "studyTips": "Conviene llevar una versión general de la Ilustración y otra más aplicada al reformismo económico y agrario.",
+      "relatedFlashcardTopics": [
+        "Ilustración",
+        "Despotismo ilustrado",
+        "Carlos III",
+        "Reformas borbónicas"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "concepto más medidas concretas"
+      }
+    },
+    {
+      "id": "his-pred-008",
+      "topic": "Decretos de Nueva Planta y abolición de los fueros",
+      "block": "Agrupación I - Bloque 4",
+      "sectionType": "cuestiones",
+      "confidence": "muy alta",
+      "score": 0.94,
+      "reason": "Figura expresamente en el modelo de orientaciones y además ya ha salido en 2024-25 en preguntas comunes.",
+      "likelyQuestions": [
+        "Explique por qué se hicieron y en qué consistieron los decretos que abolieron los fueros en la antigua Corona de Aragón",
+        "Relacione Guerra de Sucesión y Decretos de Nueva Planta",
+        "Explique las consecuencias políticas y administrativas de la Nueva Planta"
+      ],
+      "studyTips": "Une siempre causa, contenido y consecuencia: centralización borbónica, castigo político y uniformización institucional.",
+      "relatedFlashcardTopics": [
+        "Decretos de Nueva Planta",
+        "Guerra de Sucesión",
+        "Primeros Borbones",
+        "Centralización"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "causa, desarrollo y consecuencias"
+      }
+    },
+    {
+      "id": "his-pred-009",
+      "topic": "Guerra de la Independencia y crisis de la monarquía borbónica",
+      "block": "Agrupación II - Bloque 5",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Aparece en el histórico 2023-24 como tema y en 2024-25 como documento mediante textos y referencias al 2 de mayo y a la invasión napoleónica.",
+      "likelyQuestions": [
+        "Explique la crisis de la monarquía borbónica y la Guerra de la Independencia",
+        "Contextualice un documento relativo al levantamiento del 2 de mayo o a la ocupación francesa",
+        "Desarrolle causas, desarrollo y consecuencias de la Guerra de la Independencia"
+      ],
+      "studyTips": "No la estudies solo como guerra: enlázala con Bayona, juntas, resistencia, Cádiz y arranque del liberalismo.",
+      "relatedFlashcardTopics": [
+        "Guerra de la Independencia",
+        "Crisis borbónica",
+        "Bayona",
+        "2 de mayo de 1808",
+        "Juntas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "documento histórico y tema largo"
+      }
+    },
+    {
+      "id": "his-pred-010",
+      "topic": "Cortes de Cádiz y Constitución de 1812",
+      "block": "Agrupación II - Bloque 5",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Las orientaciones la incluyen como unidad central del bloque 5 y suele ser uno de los núcleos más rentables para documento o desarrollo.",
+      "likelyQuestions": [
+        "Explique los inicios del liberalismo en España: Cortes de Cádiz y Constitución de 1812",
+        "Analice un documento constitucional de 1812 o relativo a la soberanía nacional",
+        "Relacione Guerra de la Independencia y revolución liberal gaditana"
+      ],
+      "studyTips": "Lleva muy bien principios, contexto y límites de la Constitución de 1812.",
+      "relatedFlashcardTopics": [
+        "Cortes de Cádiz",
+        "Constitución de 1812",
+        "Liberalismo",
+        "Soberanía nacional"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema clásico de desarrollo"
+      }
+    },
+    {
+      "id": "his-pred-011",
+      "topic": "Regencias, primera guerra carlista y revolución liberal",
+      "block": "Agrupación II - Bloque 6",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Sale con fuerza en 2024-25 como uno de los temas ofertados y encaja muy bien con la estructura del bloque 6.",
+      "likelyQuestions": [
+        "Explique el período de regencias durante el reinado de Isabel II y la Primera Guerra Carlista",
+        "Relacione la cuestión sucesoria con el carlismo y la construcción del Estado liberal",
+        "Desarrolle el proceso de revolución liberal entre 1833 y 1843"
+      ],
+      "studyTips": "No separarlo todo: el mejor enfoque es enlazar regencias, guerra carlista y revolución liberal en una sola línea narrativa.",
+      "relatedFlashcardTopics": [
+        "Regencias",
+        "Primera Guerra Carlista",
+        "Isabel II",
+        "Revolución liberal"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema cronológico"
+      }
+    },
+    {
+      "id": "his-pred-012",
+      "topic": "Construcción del Estado liberal durante el reinado efectivo de Isabel II",
+      "block": "Agrupación II - Bloque 6",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.89,
+      "reason": "Aparece ya en 2024-25 y es una pieza central del bloque 6 en orientaciones.",
+      "likelyQuestions": [
+        "Construcción y evolución del Estado liberal durante el reinado efectivo de Isabel II",
+        "Explique las principales etapas políticas del reinado de Isabel II",
+        "Relacione moderados, progresistas y constituciones en la evolución del Estado liberal"
+      ],
+      "studyTips": "Prepara bien moderados, progresistas, Constitución de 1845, Bienio Progresista y crisis final del reinado.",
+      "relatedFlashcardTopics": [
+        "Isabel II",
+        "Estado liberal",
+        "Moderados",
+        "Progresistas",
+        "Constitución de 1845"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema político"
+      }
+    },
+    {
+      "id": "his-pred-013",
+      "topic": "Desamortización y cambios agrarios",
+      "block": "Agrupación II - Bloque 8",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.98,
+      "reason": "Es uno de los temas más repetidos de todo el lote: sale en 2023-24 como tema, en 2024-25 como tema y también como documento con Mendizábal.",
+      "likelyQuestions": [
+        "Desarrolle el proceso de desamortización y los cambios agrarios del siglo XIX",
+        "Analice un texto de Mendizábal o un documento sobre propiedad de la tierra",
+        "Explique la importancia y consecuencias de la desamortización"
+      ],
+      "studyTips": "Es clave dominar causas, objetivos, medidas, beneficiarios y consecuencias sociales y agrarias.",
+      "relatedFlashcardTopics": [
+        "Desamortización",
+        "Mendizábal",
+        "Madoz",
+        "Cambios agrarios",
+        "Propiedad de la tierra"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "documento económico y tema largo"
+      }
+    },
+    {
+      "id": "his-pred-014",
+      "topic": "Industrialización, ferrocarril y movimiento obrero",
+      "block": "Agrupación II - Bloque 8",
+      "sectionType": "documento_o_tema",
+      "confidence": "alta",
+      "score": 0.88,
+      "reason": "En 2024-25 aparece la Ley general de ferrocarriles de 1855 y las orientaciones subrayan la transición al capitalismo y el movimiento obrero.",
+      "likelyQuestions": [
+        "Analice un documento sobre la Ley de Ferrocarriles y contextualice su importancia",
+        "Explique la transición al capitalismo en el siglo XIX: industrialización y movimiento obrero",
+        "Relacione ferrocarril, capital extranjero y modernización económica en la España del XIX"
+      ],
+      "studyTips": "Conviene estudiar juntos ferrocarril, industrialización desigual y nacimiento del movimiento obrero.",
+      "relatedFlashcardTopics": [
+        "Industrialización",
+        "Ferrocarril",
+        "Ley de 1855",
+        "Movimiento obrero",
+        "Capitalismo en España"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "documento económico"
+      }
+    },
+    {
+      "id": "his-pred-015",
+      "topic": "Restauración canovista: implantación y funcionamiento del sistema",
+      "block": "Agrupación II - Bloque 7",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Se repite con mucha fuerza en 2023-24 y vuelve a aparecer en 2024-25 como uno de los temas ofertados.",
+      "likelyQuestions": [
+        "Explique la implantación del régimen de la Restauración y el funcionamiento del sistema canovista",
+        "Desarrolle las características básicas de la Restauración borbónica",
+        "Relacione turnismo, caciquismo y Constitución de 1876"
+      ],
+      "studyTips": "Lleva bien la lógica del sistema: Cánovas, Constitución de 1876, bipartidismo, turno pacífico y fraude electoral.",
+      "relatedFlashcardTopics": [
+        "Restauración",
+        "Sistema canovista",
+        "Turnismo",
+        "Caciquismo",
+        "Constitución de 1876"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema clásico"
+      }
+    },
+    {
+      "id": "his-pred-016",
+      "topic": "Alfonso XII, Regencia y alternancia conservadora y liberal",
+      "block": "Agrupación II - Bloque 7",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "En 2024-25 se ve como tema ofertado y complementa muy bien el enfoque más estructural del sistema canovista.",
+      "likelyQuestions": [
+        "Explique el régimen de la Restauración durante Alfonso XII y la Regencia",
+        "Desarrolle la alternancia conservadora y liberal",
+        "Contextualice el Manifiesto de Sandhurst y la restauración de la monarquía"
+      ],
+      "studyTips": "Ten preparada una versión institucional y otra más cronológica con Alfonso XII, Regencia y partidos dinásticos.",
+      "relatedFlashcardTopics": [
+        "Alfonso XII",
+        "Regencia de María Cristina",
+        "Alternancia",
+        "Sandhurst",
+        "Partidos dinásticos"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema político-institucional"
+      }
+    },
+    {
+      "id": "his-pred-017",
+      "topic": "Guerra colonial y crisis de 1898",
+      "block": "Agrupación II - Bloque 7",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Aparece en 2023-24 varias veces como tema y en las orientaciones de 2025-26 el Tratado de París de 1898 figura como documento modelo.",
+      "likelyQuestions": [
+        "Explique la guerra colonial y la crisis de 1898",
+        "Analice un documento como el Tratado de París de 1898",
+        "Relacione insurrección cubana, intervención de Estados Unidos y crisis del sistema de la Restauración"
+      ],
+      "studyTips": "Prepárala completa: Cuba, Filipinas, EEUU, derrota, regeneracionismo e impacto moral y político.",
+      "relatedFlashcardTopics": [
+        "Crisis de 1898",
+        "Guerra de Cuba",
+        "Tratado de París",
+        "Regeneracionismo"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema y comentario de tratado"
+      }
+    },
+    {
+      "id": "his-pred-018",
+      "topic": "Alfonso XIII y crisis de la Restauración hasta 1917",
+      "block": "Agrupación III - Bloque 9",
+      "sectionType": "tema_o_documento",
+      "confidence": "alta",
+      "score": 0.91,
+      "reason": "En 2024-25 aparece como tema y como documento a través de Antonio Maura y la crítica al sistema.",
+      "likelyQuestions": [
+        "Explique los intentos de regeneración del sistema político durante el reinado de Alfonso XIII",
+        "Contextualice un texto de Maura o de crítica al sistema parlamentario de la Restauración",
+        "Relacione regeneracionismo, crisis política y desgaste del sistema"
+      ],
+      "studyTips": "Lleva bien Maura, Canalejas, problemas estructurales del sistema y camino hacia la crisis de 1917.",
+      "relatedFlashcardTopics": [
+        "Alfonso XIII",
+        "Regeneracionismo",
+        "Antonio Maura",
+        "Crisis de la Restauración"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema político con documento"
+      }
+    },
+    {
+      "id": "his-pred-019",
+      "topic": "Crisis de 1917 y revolución de 1917",
+      "block": "Agrupación III - Bloque 9",
+      "sectionType": "documento",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "En 2024-25 aparece el manifiesto de huelga de agosto de 1917 y las orientaciones incluyen esta unidad de forma expresa.",
+      "likelyQuestions": [
+        "Contextualice un documento sobre la huelga general de 1917",
+        "Explique la crisis de 1917 y sus tres frentes",
+        "Relacione juntas de defensa, asamblea de parlamentarios y huelga general"
+      ],
+      "studyTips": "Muy importante memorizar la triple crisis: militar, política y social.",
+      "relatedFlashcardTopics": [
+        "Crisis de 1917",
+        "Huelga general",
+        "Juntas de Defensa",
+        "Asamblea de Parlamentarios"
+      ],
+      "evidence": {
+        "seenInYears": [2025],
+        "orientationMatch": "alto",
+        "questionPattern": "comentario de texto político-social"
+      }
+    },
+    {
+      "id": "his-pred-020",
+      "topic": "Dictadura de Primo de Rivera",
+      "block": "Agrupación III - Bloque 9",
+      "sectionType": "tema",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Se repite varias veces en 2023-24 y sigue presente en cuestiones del histórico reciente.",
+      "likelyQuestions": [
+        "Explique la Dictadura de Primo de Rivera y sus etapas",
+        "Describa el directorio militar y el directorio civil",
+        "Relacione la dictadura con la crisis final de la Restauración"
+      ],
+      "studyTips": "Lleva muy claras causas, etapas, políticas y razones de la caída del régimen.",
+      "relatedFlashcardTopics": [
+        "Primo de Rivera",
+        "Directorio militar",
+        "Directorio civil",
+        "Crisis de la Restauración"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema cronológico"
+      }
+    },
+    {
+      "id": "his-pred-021",
+      "topic": "Segunda República: implantación y Constitución de 1931",
+      "block": "Agrupación III - Bloque 10",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.97,
+      "reason": "Es uno de los núcleos con más presencia: sale en 2023-24, en 2024-25 y además la Constitución de 1931 figura como documento modelo en las orientaciones.",
+      "likelyQuestions": [
+        "Explique la implantación de la Segunda República y la Constitución de 1931",
+        "Analice un fragmento constitucional de 1931",
+        "Relacione la caída de la monarquía con el nuevo régimen republicano"
+      ],
+      "studyTips": "Estudia el tema con doble enfoque: proclamación/contexto y contenido constitucional.",
+      "relatedFlashcardTopics": [
+        "Segunda República",
+        "Constitución de 1931",
+        "Proclamación republicana",
+        "Reformas republicanas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "documento constitucional y tema largo"
+      }
+    },
+    {
+      "id": "his-pred-022",
+      "topic": "Segunda República: bienio reformista, bienio conservador y Frente Popular",
+      "block": "Agrupación III - Bloque 10",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Aparece repetidamente en 2023-24 y también en 2024-25 como uno de los temas ofertados.",
+      "likelyQuestions": [
+        "Explique la evolución política de la Segunda República: bienio reformista, bienio conservador y Frente Popular",
+        "Desarrolle las principales reformas republicanas y las reacciones antidemocráticas",
+        "Relacione la reforma agraria, la conflictividad social y la polarización política"
+      ],
+      "studyTips": "Llévalo por etapas con reformas, oposición y crisis de cada una.",
+      "relatedFlashcardTopics": [
+        "Bienio reformista",
+        "Bienio conservador",
+        "Frente Popular",
+        "Reformas republicanas"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema de etapas"
+      }
+    },
+    {
+      "id": "his-pred-023",
+      "topic": "Guerra Civil: evolución militar y consecuencias",
+      "block": "Agrupación III - Bloque 10",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.94,
+      "reason": "En las orientaciones aparece como tema modelo y en 2023-24 la Guerra Civil vuelve a repetirse con fuerza.",
+      "likelyQuestions": [
+        "Explique la sublevación militar y la evolución militar de la Guerra Civil",
+        "Desarrolle las consecuencias demográficas, económicas y políticas de la guerra",
+        "Relacione el desarrollo militar del conflicto con la derrota de la República"
+      ],
+      "studyTips": "Estructura la respuesta en tres partes: sublevación y fracaso del golpe, fases militares, consecuencias.",
+      "relatedFlashcardTopics": [
+        "Guerra Civil",
+        "Sublevación militar",
+        "Fases militares",
+        "Consecuencias de la guerra"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema largo de síntesis"
+      }
+    },
+    {
+      "id": "his-pred-024",
+      "topic": "Guerra Civil: evolución política de ambos bandos y dimensión internacional",
+      "block": "Agrupación III - Bloque 10",
+      "sectionType": "tema_o_documento",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "La evolución política e internacional está explícita en orientaciones y ha aparecido en el histórico 2023-24.",
+      "likelyQuestions": [
+        "Explique la evolución política de ambos bandos durante la Guerra Civil",
+        "Relacione la Guerra Civil con el contexto internacional de entreguerras",
+        "Contextualice una imagen o documento sobre julio de 1936 o la intervención extranjera"
+      ],
+      "studyTips": "No te quedes solo en batallas: estudia también juntas, gobierno republicano, unificación franquista y ayuda exterior.",
+      "relatedFlashcardTopics": [
+        "Bandos de la Guerra Civil",
+        "Intervención internacional",
+        "No intervención",
+        "Apoyos exteriores"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema analítico"
+      }
+    },
+    {
+      "id": "his-pred-025",
+      "topic": "Franquismo: creación del Estado, bases ideológicas, autarquía y consolidación",
+      "block": "Agrupación III - Bloque 11",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.95,
+      "reason": "Aparece varias veces en 2023-24 y en 2024-25 vuelve a figurar como tema ofertado.",
+      "likelyQuestions": [
+        "Explique la creación del Estado franquista: bases ideológicas, autarquía y consolidación",
+        "Desarrolle los apoyos sociales e ideológicos del franquismo",
+        "Relacione guerra, represión y construcción del nuevo Estado"
+      ],
+      "studyTips": "Ten claras las familias del régimen, la autarquía, la represión y la institucionalización inicial.",
+      "relatedFlashcardTopics": [
+        "Franquismo",
+        "Autarquía",
+        "Nacionalcatolicismo",
+        "Apoyos sociales del régimen"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema clásico"
+      }
+    },
+    {
+      "id": "his-pred-026",
+      "topic": "Franquismo: desarrollismo y crisis final",
+      "block": "Agrupación III - Bloque 11",
+      "sectionType": "tema_o_documento",
+      "confidence": "alta",
+      "score": 0.9,
+      "reason": "Aparece en 2024-25 y es complementario al primer franquismo; además hay documentos de discurso franquista tardío.",
+      "likelyQuestions": [
+        "Explique el Estado franquista desde el desarrollismo hasta la crisis final (1959-1975)",
+        "Contextualice un discurso de Franco en los años sesenta",
+        "Relacione apertura económica, cambio social y crisis del régimen"
+      ],
+      "studyTips": "Estúdialo como una etapa distinta del primer franquismo: tecnocracia, desarrollo, oposición y crisis final.",
+      "relatedFlashcardTopics": [
+        "Desarrollismo",
+        "Tecnócratas",
+        "Franquismo tardío",
+        "Crisis final del régimen"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema y comentario de discurso"
+      }
+    },
+    {
+      "id": "his-pred-027",
+      "topic": "Transición a la democracia (1975-1978)",
+      "block": "Agrupación III - Bloque 12",
+      "sectionType": "tema",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Se repite en 2023-24 y aparece también en 2024-25 como tema ofertado, además de ser un núcleo obligado del bloque 12.",
+      "likelyQuestions": [
+        "Explique el proceso de transición a la democracia actual (1975-1978)",
+        "Desarrolle los principales hitos de la transición hasta la Constitución",
+        "Relacione reforma política, elecciones de 1977 y consenso constitucional"
+      ],
+      "studyTips": "Haz una línea temporal muy clara con muerte de Franco, reforma política, legalización de partidos, elecciones y Constitución.",
+      "relatedFlashcardTopics": [
+        "Transición",
+        "Reforma política",
+        "Adolfo Suárez",
+        "Elecciones de 1977"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "tema cronológico"
+      }
+    },
+    {
+      "id": "his-pred-028",
+      "topic": "Constitución de 1978 y primeros gobiernos democráticos",
+      "block": "Agrupación III - Bloque 12",
+      "sectionType": "documento_o_tema",
+      "confidence": "muy alta",
+      "score": 0.96,
+      "reason": "Las orientaciones la incluyen como tema modelo, en 2024-25 aparece en temas y en el histórico reciente se ve también como documento.",
+      "likelyQuestions": [
+        "Explique la Constitución de 1978 y los primeros gobiernos democráticos",
+        "Analice un fragmento de la Constitución de 1978",
+        "Contextualice el texto constitucional en la etapa de transición"
+      ],
+      "studyTips": "Es clave dominar principios constitucionales, Estado de derecho, autonomías y primeros gobiernos de UCD.",
+      "relatedFlashcardTopics": [
+        "Constitución de 1978",
+        "Monarquía parlamentaria",
+        "Estado autonómico",
+        "Primeros gobiernos democráticos"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "muy alto",
+        "questionPattern": "documento constitucional y tema"
+      }
+    },
+    {
+      "id": "his-pred-029",
+      "topic": "Etapa socialista: modernización e integración europea",
+      "block": "Agrupación III - Bloque 12",
+      "sectionType": "tema",
+      "confidence": "media-alta",
+      "score": 0.84,
+      "reason": "Está en orientaciones y aparece en el histórico 2024-25, aunque con menos peso que transición o Constitución de 1978.",
+      "likelyQuestions": [
+        "Explique la etapa socialista: modernización e integración europea (1982-1996)",
+        "Relacione los gobiernos de Felipe González con la integración europea",
+        "Desarrolle las principales transformaciones económicas y sociales de la etapa socialista"
+      ],
+      "studyTips": "Lleva un esquema simple: mayoría absoluta, reconversión, Estado del bienestar, CEE y modernización.",
+      "relatedFlashcardTopics": [
+        "Felipe González",
+        "Etapa socialista",
+        "Integración europea",
+        "Modernización"
+      ],
+      "evidence": {
+        "seenInYears": [2024, 2025],
+        "orientationMatch": "alto",
+        "questionPattern": "tema contemporáneo"
+      }
+    },
+    {
+      "id": "his-pred-030",
+      "topic": "Alternancia política en democracia",
+      "block": "Agrupación III - Bloque 12",
+      "sectionType": "tema",
+      "confidence": "media",
+      "score": 0.78,
+      "reason": "Figura en orientaciones y en algunos modelos del histórico amplio, aunque parece menos prioritaria que transición, Constitución o etapa socialista.",
+      "likelyQuestions": [
+        "Explique la alternancia política en democracia (1996-2012)",
+        "Relacione los cambios de gobierno con la consolidación del sistema democrático",
+        "Resuma la evolución política española desde finales del siglo XX hasta comienzos del XXI"
+      ],
+      "studyTips": "Úsalo como tema complementario, no como primera prioridad.",
+      "relatedFlashcardTopics": [
+        "Alternancia política",
+        "Democracia española",
+        "Consolidación democrática",
+        "España contemporánea"
+      ],
+      "evidence": {
+        "seenInYears": [2024],
+        "orientationMatch": "medio-alto",
+        "questionPattern": "tema de cierre cronológico"
+      }
+    }
+  ],
+  "generalTips": "En Historia de España 2026 conviene estudiar por estructura real de examen. Primero, lleva muy dominadas las cuestiones de la Agrupación I porque son fijas y suelen pedir definición, comparación o explicación breve. Segundo, prepara parejas de documento y tema por itinerarios: si eliges un documento de la Agrupación II, el tema vendrá de la III, y al revés. Tercero, prioriza especialmente estos núcleos: romanización, mozárabe/mudéjar, Carlos I y Felipe II, Nueva Planta, Guerra de la Independencia, Cortes de Cádiz, desamortizaciones, Restauración, crisis de 1898, Segunda República, Guerra Civil, franquismo, transición y Constitución de 1978."
+}

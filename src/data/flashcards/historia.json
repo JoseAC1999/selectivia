@@ -1,0 +1,1285 @@
+{
+  "subject": "historia",
+  "flashcards": [
+    {
+      "id": "historia-001",
+      "front": "¿Qué fue la romanización?",
+      "back": "Proceso de adopción de la cultura, las leyes, la lengua y las formas de vida romanas por los pueblos de la Península Ibérica.",
+      "topic": "Romanización",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-002",
+      "front": "¿Qué medios facilitaron la romanización de la Península Ibérica?",
+      "back": "El ejército, las ciudades, las calzadas, la administración, el derecho romano y la difusión del latín.",
+      "topic": "Romanización",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-003",
+      "front": "¿Quiénes eran los mozárabes?",
+      "back": "Cristianos que vivían en territorio musulmán conservando su religión, aunque influidos por la cultura andalusí.",
+      "topic": "Al-Ándalus y sociedad medieval",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-004",
+      "front": "¿Quiénes eran los mudéjares?",
+      "back": "Musulmanes que permanecieron en territorios conquistados por los cristianos manteniendo inicialmente su religión y costumbres.",
+      "topic": "Al-Ándalus y sociedad medieval",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-005",
+      "front": "¿En qué se diferenciaban mozárabes y mudéjares?",
+      "back": "Los mozárabes eran cristianos en territorio musulmán; los mudéjares, musulmanes en territorio cristiano.",
+      "topic": "Al-Ándalus y sociedad medieval",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-006",
+      "front": "¿Qué fue la monarquía visigoda?",
+      "back": "El reino establecido por los visigodos en Hispania tras la caída de Roma, desaparecido con la invasión musulmana de 711.",
+      "topic": "Monarquía visigoda",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-007",
+      "front": "¿Qué ocurrió en 711 en la historia de la Península Ibérica?",
+      "back": "La invasión musulmana puso fin a la monarquía visigoda y dio inicio a una nueva etapa histórica.",
+      "topic": "Fin de la monarquía visigoda",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-008",
+      "front": "¿Qué se entiende por Reconquista?",
+      "back": "Proceso histórico de expansión de los reinos cristianos sobre Al-Ándalus durante la Edad Media.",
+      "topic": "Edad Media peninsular",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-009",
+      "front": "¿Qué caracteriza al mapa político peninsular de la Edad Media según las orientaciones?",
+      "back": "Su cambio constante por la coexistencia de varios poderes cristianos y musulmanes entre 711 y 1474.",
+      "topic": "Edad Media peninsular",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-010",
+      "front": "¿Qué significa la expresión 'tres culturas' en la Edad Media hispánica?",
+      "back": "Hace referencia a la convivencia e interacción de cristianos, musulmanes y judíos en la Península Ibérica.",
+      "topic": "Tres culturas",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-011",
+      "front": "¿Qué fue la Monarquía Hispánica?",
+      "back": "La unión dinástica de diversos territorios bajo los Reyes Católicos y sus sucesores, base de la expansión española.",
+      "topic": "Monarquía Hispánica",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-012",
+      "front": "¿Qué monarcas tuvieron los reinados más amplios del siglo XVI en España?",
+      "back": "Carlos I y Felipe II, principales soberanos de la Monarquía Hispánica en ese siglo.",
+      "topic": "Monarquía Hispánica del siglo XVI",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-013",
+      "front": "¿Cómo fue la política exterior de Carlos I?",
+      "back": "Tuvo un carácter universal e imperial, centrado en Europa y en la defensa de sus territorios dinásticos.",
+      "topic": "Carlos I",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-014",
+      "front": "¿Cómo fue la política exterior de Felipe II?",
+      "back": "Se orientó a la defensa del catolicismo, del Imperio hispánico y de la hegemonía española en Europa.",
+      "topic": "Felipe II",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-015",
+      "front": "¿Qué fueron los Decretos de Nueva Planta?",
+      "back": "Normas aprobadas a comienzos del siglo XVIII que suprimieron fueros e instituciones propias de la antigua Corona de Aragón.",
+      "topic": "Primeros Borbones",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-016",
+      "front": "¿Por qué se abolieron los fueros de la antigua Corona de Aragón?",
+      "back": "Para castigar el apoyo al archiduque Carlos y reforzar la centralización política borbónica tras la Guerra de Sucesión.",
+      "topic": "Decretos de Nueva Planta",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-017",
+      "front": "¿Qué buscaba el reformismo de los primeros Borbones?",
+      "back": "Modernizar y centralizar la monarquía mediante reformas administrativas, fiscales y militares inspiradas en el modelo francés.",
+      "topic": "Reformismo borbónico",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-018",
+      "front": "¿Qué fue la crisis del Antiguo Régimen en España?",
+      "back": "El proceso de quiebra del sistema absolutista y estamental que abrió paso al liberalismo entre finales del XVIII y comienzos del XIX.",
+      "topic": "Crisis del Antiguo Régimen",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-019",
+      "front": "¿Qué fue la Guerra de la Independencia española?",
+      "back": "El conflicto entre 1808 y 1814 contra la ocupación napoleónica, clave en la crisis de la monarquía borbónica.",
+      "topic": "Guerra de la Independencia",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-020",
+      "front": "¿Qué provocó la Guerra de la Independencia?",
+      "back": "La intervención napoleónica en España, las abdicaciones de Bayona y el rechazo popular a la ocupación francesa.",
+      "topic": "Guerra de la Independencia",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-021",
+      "front": "¿Qué fueron las Cortes de Cádiz?",
+      "back": "Asamblea reunida durante la Guerra de la Independencia que impulsó el primer gran proyecto liberal español.",
+      "topic": "Cortes de Cádiz",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-022",
+      "front": "¿Qué representó la Constitución de 1812?",
+      "back": "La primera constitución liberal española, basada en la soberanía nacional, la división de poderes y la limitación del absolutismo.",
+      "topic": "Constitución de 1812",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-023",
+      "front": "¿Qué principio político defendía la Constitución de 1812 frente al absolutismo?",
+      "back": "La soberanía nacional, según la cual el poder reside en la nación y no en el monarca absoluto.",
+      "topic": "Constitución de 1812",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-024",
+      "front": "¿Qué ocurrió con el absolutismo durante el reinado de Fernando VII?",
+      "back": "Fue restaurado en 1814, aunque el periodo estuvo marcado por intentos liberales y cambios políticos inestables.",
+      "topic": "Fernando VII",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-025",
+      "front": "¿Qué caracteriza a los intentos liberales durante el reinado de Fernando VII?",
+      "back": "La oposición al absolutismo mediante pronunciamientos y etapas de gobierno liberal, como el Trienio Liberal.",
+      "topic": "Fernando VII",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-026",
+      "front": "¿Qué fueron las regencias durante el reinado de Isabel II?",
+      "back": "La etapa inicial de su reinado, entre 1833 y 1843, en la que gobernaron regentes mientras se consolidaba la revolución liberal.",
+      "topic": "Regencias de Isabel II",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-027",
+      "front": "¿Qué fue la Primera Guerra Carlista?",
+      "back": "Conflicto civil originado por la sucesión al trono y por el enfrentamiento entre absolutismo carlista y liberalismo isabelino.",
+      "topic": "Primera Guerra Carlista",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-028",
+      "front": "¿Qué se consolidó durante el reinado efectivo de Isabel II?",
+      "back": "La construcción y evolución del Estado liberal español entre 1843 y 1868.",
+      "topic": "Reinado de Isabel II",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-029",
+      "front": "¿Qué fue el Sexenio Democrático?",
+      "back": "Periodo entre 1868 y 1874 marcado por la Revolución de 1868, la Constitución de 1869, Amadeo de Saboya y la Primera República.",
+      "topic": "Sexenio Democrático",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-030",
+      "front": "¿Qué importancia tuvo la Revolución de 1868?",
+      "back": "Derrocó a Isabel II e inició un intento de democratización política durante el Sexenio Democrático.",
+      "topic": "Revolución de 1868",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-031",
+      "front": "¿Qué estableció la Constitución de 1869?",
+      "back": "Un modelo liberal-democrático con amplios derechos y el reconocimiento del sufragio universal masculino.",
+      "topic": "Constitución de 1869",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-032",
+      "front": "¿Quién fue Amadeo de Saboya en la historia de España?",
+      "back": "Rey de España durante una etapa del Sexenio Democrático, cuyo reinado estuvo marcado por gran inestabilidad política.",
+      "topic": "Amadeo de Saboya",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-033",
+      "front": "¿Qué fue el primer ensayo republicano en España?",
+      "back": "La Primera República, proclamada en 1873, que fracasó por la división interna y la conflictividad política y social.",
+      "topic": "Primera República",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-034",
+      "front": "¿Qué fue la Restauración borbónica?",
+      "back": "El régimen político iniciado en 1874 con el regreso de los Borbones y el diseño del sistema canovista.",
+      "topic": "Restauración borbónica",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-035",
+      "front": "¿Qué fue el sistema canovista?",
+      "back": "Modelo político de la Restauración basado en la monarquía constitucional, el turno de partidos y la manipulación electoral.",
+      "topic": "Sistema canovista",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-036",
+      "front": "¿Qué significó la alternancia conservadora y liberal en la Restauración?",
+      "back": "El turno pacífico en el poder entre conservadores y liberales para dar estabilidad al régimen.",
+      "topic": "Restauración borbónica",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-037",
+      "front": "¿Qué papel tuvieron Alfonso XII y la Regencia en la Restauración?",
+      "back": "Representaron la consolidación del régimen restauracionista y su continuidad hasta la mayoría de edad de Alfonso XIII.",
+      "topic": "Restauración borbónica",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-038",
+      "front": "¿Qué fue la crisis de 1898?",
+      "back": "La derrota frente a Estados Unidos y la pérdida de las últimas colonias, que provocó una profunda crisis nacional.",
+      "topic": "Crisis de 1898",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-039",
+      "front": "¿Qué territorios perdió España en 1898 según el tratado con Estados Unidos?",
+      "back": "Cuba, Puerto Rico, Guam y Filipinas quedaron fuera de la soberanía española tras la guerra hispano-estadounidense.",
+      "topic": "Tratado de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-040",
+      "front": "¿Qué importancia tuvo el Tratado de 1898?",
+      "back": "Selló la derrota colonial española y simbolizó el final del antiguo imperio ultramarino.",
+      "topic": "Tratado de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-041",
+      "front": "¿Qué fueron las desamortizaciones del siglo XIX?",
+      "back": "Procesos de expropiación y venta de bienes amortizados, sobre todo eclesiásticos y municipales, para sanear la Hacienda y transformar la propiedad.",
+      "topic": "Desamortizaciones",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-042",
+      "front": "¿Qué cambios agrarios impulsaron las desamortizaciones?",
+      "back": "Favorecieron la privatización de tierras y alteraron la estructura de la propiedad, aunque sin resolver la desigualdad agraria.",
+      "topic": "Cambios agrarios del siglo XIX",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-043",
+      "front": "¿Qué significa transición al capitalismo en la España del siglo XIX?",
+      "back": "El paso desde una economía del Antiguo Régimen hacia relaciones económicas capitalistas basadas en propiedad privada, mercado e industria.",
+      "topic": "Transición al capitalismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-044",
+      "front": "¿Cómo fue la industrialización española del siglo XIX según las orientaciones?",
+      "back": "Fue un proceso insuficiente y desigual, con importantes limitaciones frente a otros países europeos.",
+      "topic": "Industrialización",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-045",
+      "front": "¿Qué fue el movimiento obrero en la España del siglo XIX?",
+      "back": "Conjunto de organizaciones e ideas surgidas para defender los intereses de los trabajadores frente a las condiciones del capitalismo industrial.",
+      "topic": "Movimiento obrero",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-046",
+      "front": "¿Qué se intentó durante el reinado de Alfonso XIII entre 1902 y 1917?",
+      "back": "Se intentó regenerar el sistema político de la Restauración sin alterar sus bases esenciales.",
+      "topic": "Alfonso XIII y regeneracionismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-047",
+      "front": "¿Qué fue el regeneracionismo?",
+      "back": "Corriente crítica surgida tras 1898 que defendía reformas para modernizar el sistema político y social español.",
+      "topic": "Regeneracionismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-048",
+      "front": "¿Qué supuso la crisis de 1917?",
+      "back": "Una grave quiebra del sistema de la Restauración por la coincidencia de conflictos políticos, sociales y militares.",
+      "topic": "Crisis de 1917",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-049",
+      "front": "¿Qué fue la Dictadura de Primo de Rivera?",
+      "back": "Régimen autoritario establecido entre 1923 y 1930 con apoyo del rey Alfonso XIII para frenar la crisis del sistema restauracionista.",
+      "topic": "Dictadura de Primo de Rivera",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-050",
+      "front": "¿Por qué cayó la monarquía de Alfonso XIII?",
+      "back": "Por el desgaste del sistema de la Restauración, la dictadura de Primo de Rivera y el crecimiento de la oposición republicana.",
+      "topic": "Caída de la Monarquía",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-051",
+      "front": "¿Qué fue la Segunda República española?",
+      "back": "Régimen democrático proclamado en 1931 que impulsó reformas políticas, sociales y territoriales hasta 1939.",
+      "topic": "Segunda República",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-052",
+      "front": "¿Qué establecía el artículo 1 de la Constitución de 1931?",
+      "back": "Definía a España como una República democrática de trabajadores organizada en régimen de libertad y justicia.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-053",
+      "front": "¿Qué principio recogía la Constitución de 1931 sobre la igualdad?",
+      "back": "Que todos los españoles eran iguales ante la ley.",
+      "topic": "Constitución de 1931",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-054",
+      "front": "¿Qué relación establecía la Constitución de 1931 entre Estado y religión?",
+      "back": "Establecía un Estado sin religión oficial y limitaba la influencia institucional de la Iglesia.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-055",
+      "front": "¿Qué reconocía la Constitución de 1931 sobre las regiones autónomas?",
+      "back": "Permitía que provincias con rasgos comunes pudieran organizarse en regiones autónomas dentro del Estado integral.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-056",
+      "front": "¿Qué fue el bienio reformista de la Segunda República?",
+      "back": "La primera etapa republicana, marcada por un amplio programa de reformas políticas, sociales, militares y educativas.",
+      "topic": "Segunda República",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-057",
+      "front": "¿Qué fue el bienio conservador de la Segunda República?",
+      "back": "La etapa en la que fuerzas de derecha frenaron o revisaron parte de las reformas iniciadas en 1931.",
+      "topic": "Segunda República",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-058",
+      "front": "¿Qué fue el Frente Popular?",
+      "back": "Coalición de izquierdas vencedora en las elecciones de 1936, en el contexto previo a la Guerra Civil.",
+      "topic": "Frente Popular",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-059",
+      "front": "¿Qué originó la Guerra Civil española de 1936-1939?",
+      "back": "La sublevación militar contra la Segunda República, en un contexto de fuerte polarización política y social.",
+      "topic": "Guerra Civil",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-060",
+      "front": "¿Qué fue la sublevación militar de 1936?",
+      "back": "El levantamiento de una parte del ejército contra el gobierno republicano que desencadenó la Guerra Civil.",
+      "topic": "Sublevación militar de 1936",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-061",
+      "front": "¿Cómo influyó el contexto internacional en la Guerra Civil española?",
+      "back": "La guerra se desarrolló en un clima de crisis internacional y recibió apoyos e interferencias extranjeras en ambos bandos.",
+      "topic": "Guerra Civil y contexto internacional",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-062",
+      "front": "¿Qué consecuencias generales tuvo la Guerra Civil española?",
+      "back": "Provocó una enorme destrucción humana, económica y social, y abrió paso a la dictadura franquista.",
+      "topic": "Consecuencias de la Guerra Civil",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-063",
+      "front": "¿Qué fue el Estado franquista?",
+      "back": "La dictadura implantada por Franco desde 1939, basada en el autoritarismo, la represión y la concentración del poder.",
+      "topic": "Estado franquista",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-064",
+      "front": "¿Qué significa autarquía en el primer franquismo?",
+      "back": "Política económica de autosuficiencia e intervención estatal que buscaba reducir la dependencia exterior.",
+      "topic": "Primer franquismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-065",
+      "front": "¿Qué se entiende por consolidación del franquismo entre 1939 y 1959?",
+      "back": "El afianzamiento político e institucional de la dictadura tras la Guerra Civil y en los primeros años de posguerra.",
+      "topic": "Primer franquismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-066",
+      "front": "¿Qué fue el desarrollismo franquista?",
+      "back": "Etapa de crecimiento económico y modernización relativa desde finales de los años cincuenta dentro de la dictadura.",
+      "topic": "Franquismo desarrollista",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-067",
+      "front": "¿Qué ocurrió en la entrevista de Hendaya de 1940?",
+      "back": "Fue el encuentro entre Franco y Hitler en el contexto de la Segunda Guerra Mundial para tratar la posición española.",
+      "topic": "Franquismo y relaciones internacionales",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-068",
+      "front": "¿Qué revela la entrevista de Hendaya sobre el franquismo?",
+      "back": "Muestra la relevancia de la política exterior del régimen y su relación con las potencias fascistas en 1940.",
+      "topic": "Franquismo y relaciones internacionales",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-069",
+      "front": "¿Qué fue la Transición española?",
+      "back": "Proceso político entre 1975 y 1978 que llevó de la dictadura franquista a un sistema democrático.",
+      "topic": "Transición a la democracia",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-070",
+      "front": "¿Qué importancia tuvo 1975 en la historia de España?",
+      "back": "Marcó el inicio de la normalización democrática tras el final de la dictadura franquista.",
+      "topic": "Transición a la democracia",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-071",
+      "front": "¿Qué representa la Constitución de 1978?",
+      "back": "La norma fundamental de la democracia española, base del nuevo sistema político tras la Transición.",
+      "topic": "Constitución de 1978",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-072",
+      "front": "¿Qué etapa cubren los primeros gobiernos democráticos señalados en las orientaciones?",
+      "back": "El periodo comprendido entre 1978 y 1982, tras la aprobación de la Constitución.",
+      "topic": "Primeros gobiernos democráticos",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-073",
+      "front": "¿Qué se entiende por normalización democrática de España?",
+      "back": "La consolidación de instituciones democráticas estables tras el franquismo y la integración plena en el sistema europeo.",
+      "topic": "Normalización democrática",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-074",
+      "front": "¿Qué caracteriza a la etapa socialista entre 1982 y 1996?",
+      "back": "Se asocia con un proceso de modernización del país y de integración europea.",
+      "topic": "Etapa socialista",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-075",
+      "front": "¿Qué significa integración europea en la España democrática?",
+      "back": "La incorporación plena de España a los marcos políticos y económicos de Europa occidental durante la democracia.",
+      "topic": "Integración europea",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-076",
+      "front": "¿Qué se entiende por alternancia política en democracia?",
+      "back": "La sucesión en el gobierno de distintas fuerzas políticas dentro de un sistema democrático estable.",
+      "topic": "Alternancia política",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-077",
+      "front": "¿Qué periodo identifican las orientaciones como alternancia política en democracia?",
+      "back": "El comprendido entre 1996 y 2012 dentro de la España democrática.",
+      "topic": "Alternancia política",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-078",
+      "front": "¿Qué rasgo común comparten liberalismo y absolutismo en el siglo XIX español según las orientaciones?",
+      "back": "Constituyen el eje principal del conflicto político durante la crisis del Antiguo Régimen.",
+      "topic": "Liberalismo frente a Absolutismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-079",
+      "front": "¿Qué relación existe entre la crisis de la Restauración y la caída de la monarquía?",
+      "back": "El desgaste del sistema restauracionista desembocó en el fin de la monarquía y la proclamación de la Segunda República.",
+      "topic": "Crisis de la Restauración",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-080",
+      "front": "¿Qué gran proceso histórico recogen las orientaciones desde 1931 hasta 2012?",
+      "back": "El paso de la República a la Guerra Civil, la dictadura franquista y la consolidación de la democracia en España.",
+      "topic": "Historia de España contemporánea",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-081",
+      "front": "¿Qué rasgo define la expansión mundial de la Monarquía Hispánica entre 1474 y 1700?",
+      "back": "La ampliación de sus dominios fuera de Europa y la proyección global del poder de la monarquía.",
+      "topic": "Expansión mundial de la Monarquía Hispánica",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-082",
+      "front": "¿Qué modelo político impulsaron los primeros Borbones en España?",
+      "back": "Un modelo centralizador y reformista inspirado en la monarquía francesa.",
+      "topic": "Primeros Borbones",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-083",
+      "front": "¿Qué enfrentamiento político marcó la etapa 1788-1833 en España?",
+      "back": "La pugna entre liberalismo y absolutismo durante la crisis del Antiguo Régimen.",
+      "topic": "Liberalismo frente a Absolutismo",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-084",
+      "front": "¿Qué caracteriza la construcción del Estado liberal en España entre 1833 y 1874?",
+      "back": "Fue un proceso conflictivo, con cambios de régimen, guerras civiles y tensiones políticas constantes.",
+      "topic": "Construcción del Estado liberal",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-085",
+      "front": "¿Qué problema económico general señala el documento para la España del siglo XIX?",
+      "back": "Un desarrollo insuficiente pese a las transformaciones agrarias, la industrialización y el avance del capitalismo.",
+      "topic": "Economía del siglo XIX",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-086",
+      "front": "¿Qué crisis abarca el periodo 1902-1931 en la historia de España?",
+      "back": "La crisis del sistema de la Restauración y la caída de la monarquía.",
+      "topic": "Crisis del sistema de la Restauración",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-087",
+      "front": "¿Qué etapa histórica española se desarrolla entre 1931 y 1939 según las orientaciones?",
+      "back": "La Segunda República y la Guerra Civil en un contexto de crisis internacional.",
+      "topic": "Segunda República y Guerra Civil",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-088",
+      "front": "¿Qué periodo cubre la dictadura franquista según el documento oficial?",
+      "back": "Desde 1939 hasta 1975.",
+      "topic": "Dictadura franquista",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-089",
+      "front": "¿Qué gran cambio histórico comienza en España desde 1975 según las orientaciones?",
+      "back": "La normalización democrática y la integración en Europa.",
+      "topic": "España democrática",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-090",
+      "front": "¿Qué papel tuvo la crisis de la monarquía borbónica en el inicio del liberalismo español?",
+      "back": "Abrió un periodo de ruptura política que permitió la aparición de instituciones y principios liberales.",
+      "topic": "Crisis de la monarquía borbónica",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-091",
+      "front": "¿Qué relación existe entre la Guerra de la Independencia y las Cortes de Cádiz?",
+      "back": "La guerra creó el contexto en el que se reunieron las Cortes de Cádiz y se elaboró la Constitución de 1812.",
+      "topic": "Guerra de la Independencia y Cortes de Cádiz",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-092",
+      "front": "¿Qué idea política rompía con el Antiguo Régimen en la Constitución de 1812?",
+      "back": "La limitación del poder absoluto del rey mediante un marco constitucional liberal.",
+      "topic": "Constitución de 1812",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-093",
+      "front": "¿Qué conflicto se vinculó a la revolución liberal durante las regencias de Isabel II?",
+      "back": "La Primera Guerra Carlista, que enfrentó a absolutistas y liberales.",
+      "topic": "Regencias de Isabel II",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-094",
+      "front": "¿Qué hecho abrió el Sexenio Democrático?",
+      "back": "La Revolución de 1868, que expulsó del trono a Isabel II.",
+      "topic": "Sexenio Democrático",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-095",
+      "front": "¿Qué rasgo político novedoso introdujo la Constitución de 1869?",
+      "back": "Un modelo más democrático que amplió derechos y reforzó la legitimidad representativa.",
+      "topic": "Constitución de 1869",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-096",
+      "front": "¿Por qué fracasó el primer ensayo republicano en España?",
+      "back": "Por la inestabilidad política, la división interna y la acumulación de conflictos abiertos.",
+      "topic": "Primera República",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-097",
+      "front": "¿Qué pretendía la implantación del régimen de la Restauración?",
+      "back": "Recuperar la estabilidad política mediante la monarquía borbónica y un sistema controlado de alternancia.",
+      "topic": "Implantación de la Restauración",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-098",
+      "front": "¿Qué finalidad tenía la alternancia entre conservadores y liberales en la Restauración?",
+      "back": "Asegurar la continuidad del régimen evitando cambios bruscos y conflictos de poder.",
+      "topic": "Sistema de la Restauración",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-099",
+      "front": "¿Qué dimensión tuvo la guerra colonial de 1898 para España?",
+      "back": "Fue una crisis política y moral que evidenció la debilidad del régimen y el fin del imperio colonial.",
+      "topic": "Guerra colonial y crisis de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-100",
+      "front": "¿Qué efecto general tuvieron las desamortizaciones sobre la propiedad agraria?",
+      "back": "Transformaron la titularidad de la tierra al sacar al mercado bienes antes amortizados.",
+      "topic": "Desamortizaciones",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-101",
+      "front": "¿Qué relación hubo entre industrialización y movimiento obrero en la España del siglo XIX?",
+      "back": "El avance industrial generó nuevas condiciones laborales que impulsaron la organización obrera.",
+      "topic": "Industrialización y movimiento obrero",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-102",
+      "front": "¿Qué objetivo perseguían los intentos de regeneración del sistema político durante el reinado de Alfonso XIII?",
+      "back": "Corregir el desgaste de la Restauración sin desmontar completamente su estructura.",
+      "topic": "Alfonso XIII",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-103",
+      "front": "¿Qué evidenció la revolución de 1917 en España?",
+      "back": "La profunda crisis del sistema político de la Restauración y su incapacidad para integrar las demandas sociales y políticas.",
+      "topic": "Revolución de 1917",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-104",
+      "front": "¿Qué relación tuvo la Dictadura de Primo de Rivera con la crisis de la Restauración?",
+      "back": "Fue una salida autoritaria al agotamiento del sistema restauracionista.",
+      "topic": "Dictadura de Primo de Rivera",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-105",
+      "front": "¿Qué significó la implantación de la Segunda República en 1931?",
+      "back": "La sustitución de la monarquía por un régimen democrático con vocación reformista.",
+      "topic": "Implantación de la Segunda República",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-106",
+      "front": "¿Qué definición del poder político aparece en el artículo 1 de la Constitución de 1931?",
+      "back": "Que los poderes de todos los órganos del Estado emanan del pueblo.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-107",
+      "front": "¿Qué modelo territorial definía la Constitución de 1931 como 'Estado integral'?",
+      "back": "Un Estado unitario compatible con la autonomía de municipios y regiones.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-108",
+      "front": "¿Qué colores tenía la bandera de la República española según la Constitución de 1931?",
+      "back": "Roja, amarilla y morada.",
+      "topic": "Constitución de 1931",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-109",
+      "front": "¿Qué establecía la Constitución de 1931 sobre el idioma oficial?",
+      "back": "Que el castellano era el idioma oficial de la República y todo español debía saberlo y tenía derecho a usarlo.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-110",
+      "front": "¿Qué reconocía la Constitución de 1931 respecto a las lenguas de provincias o regiones?",
+      "back": "Que podían ser reconocidas por las leyes del Estado junto al castellano oficial.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-111",
+      "front": "¿Qué condiciones debían cumplir varias provincias para organizarse en región autónoma según el artículo 11 de 1931?",
+      "back": "Ser limítrofes y compartir características históricas, culturales y económicas comunes.",
+      "topic": "Constitución de 1931",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-112",
+      "front": "¿Qué medida anticlerical incluía el artículo 26 de la Constitución de 1931?",
+      "back": "La extinción del presupuesto del Clero en un plazo máximo de dos años.",
+      "topic": "Constitución de 1931",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-113",
+      "front": "¿Qué órdenes religiosas podían ser disueltas según el artículo 26 de la Constitución de 1931?",
+      "back": "Las que impusieran un voto especial de obediencia a una autoridad distinta de la legítima del Estado.",
+      "topic": "Constitución de 1931",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-114",
+      "front": "¿Qué etapas políticas diferencian las orientaciones dentro de la Segunda República?",
+      "back": "El bienio reformista, el bienio conservador y el gobierno del Frente Popular.",
+      "topic": "Segunda República",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-115",
+      "front": "¿Qué dos dimensiones del conflicto de 1936-1939 subrayan las orientaciones?",
+      "back": "La evolución militar de la guerra y la evolución política en ambos bandos con sus relaciones internacionales.",
+      "topic": "Guerra Civil",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-116",
+      "front": "¿Qué significa hablar de evolución militar del conflicto en la Guerra Civil?",
+      "back": "Analizar el desarrollo bélico de la guerra desde la sublevación inicial hasta el desenlace final.",
+      "topic": "Guerra Civil",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-117",
+      "front": "¿Qué importancia tienen las relaciones internacionales en la Guerra Civil española?",
+      "back": "Ayudan a entender que el conflicto se insertó en una crisis internacional más amplia.",
+      "topic": "Guerra Civil y relaciones internacionales",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-118",
+      "front": "¿Qué bases del Estado franquista destacan las orientaciones para 1939-1959?",
+      "back": "Sus bases ideológicas, la autarquía y la consolidación del régimen.",
+      "topic": "Primer franquismo",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-119",
+      "front": "¿Qué cambio marca el franquismo entre 1959 y 1975 según el documento?",
+      "back": "El paso del desarrollismo a la crisis final del régimen.",
+      "topic": "Franquismo 1959-1975",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-120",
+      "front": "¿Qué finalidad tuvo el proceso de transición a la democracia actual entre 1975 y 1978?",
+      "back": "Sustituir la dictadura por un sistema democrático basado en el pluralismo y la legalidad constitucional.",
+      "topic": "Transición a la democracia",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-121",
+      "front": "¿Qué une a la Constitución de 1978 y los primeros gobiernos democráticos?",
+      "back": "Forman la base política e institucional de la nueva democracia española.",
+      "topic": "Constitución de 1978 y primeros gobiernos democráticos",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-122",
+      "front": "¿Qué dos procesos asocia el documento a la etapa socialista de 1982 a 1996?",
+      "back": "La modernización de España y su integración europea.",
+      "topic": "Etapa socialista",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-123",
+      "front": "¿Qué valor histórico tiene la alternancia política entre 1996 y 2012?",
+      "back": "Muestra la consolidación del sistema democrático mediante cambios de gobierno dentro de la normalidad institucional.",
+      "topic": "Alternancia política en democracia",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-124",
+      "front": "¿Qué documento de 1812 aparece como modelo en las orientaciones?",
+      "back": "La Constitución política de la Monarquía española aprobada en Cádiz.",
+      "topic": "Constitución de 1812",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-125",
+      "front": "¿Dónde fue promulgada la Constitución de 1812?",
+      "back": "En Cádiz, durante la Guerra de la Independencia.",
+      "topic": "Constitución de 1812",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-126",
+      "front": "¿Qué conflicto internacional aparece reflejado en el Tratado entre España y Estados Unidos de 1898?",
+      "back": "La guerra hispano-estadounidense que culminó con la pérdida de las últimas colonias españolas.",
+      "topic": "Tratado de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-127",
+      "front": "¿Qué decisión tomó España respecto a Cuba en el Tratado de 1898?",
+      "back": "Renunció a todo derecho de soberanía y propiedad sobre la isla.",
+      "topic": "Tratado de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-128",
+      "front": "¿Qué islas del Caribe y el Pacífico cedió España a Estados Unidos en 1898 además de Filipinas?",
+      "back": "Puerto Rico y Guam, junto con otras islas bajo soberanía española en las Islas Occidentales.",
+      "topic": "Tratado de 1898",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-129",
+      "front": "¿Qué compensación económica recibió España por la cesión de Filipinas en 1898?",
+      "back": "Veinte millones de dólares pagados por Estados Unidos.",
+      "topic": "Tratado de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-130",
+      "front": "¿Qué importancia histórica tiene el Tratado de 1898 para comprender la Restauración?",
+      "back": "Ayuda a entender la crisis final del sistema por el impacto de la derrota colonial.",
+      "topic": "Crisis de 1898",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-131",
+      "front": "¿Qué idea de soberanía política aparece en la Constitución de 1931?",
+      "back": "Que la legitimidad del poder procede del pueblo.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-132",
+      "front": "¿Qué principio de igualdad recoge expresamente el artículo 2 de la Constitución de 1931?",
+      "back": "La igualdad de todos los españoles ante la ley.",
+      "topic": "Constitución de 1931",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-133",
+      "front": "¿Qué rasgo laico del Estado republicano aparece en el artículo 3 de la Constitución de 1931?",
+      "back": "La inexistencia de una religión oficial del Estado.",
+      "topic": "Constitución de 1931",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-134",
+      "front": "¿Qué relación plantea la Constitución de 1931 entre unidad del Estado y autonomía territorial?",
+      "back": "Compatibiliza un Estado integral con la autonomía de municipios y regiones.",
+      "topic": "Constitución de 1931",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-135",
+      "front": "¿Qué muestra la mención a Hendaya de 1940 en el estudio del franquismo?",
+      "back": "Que la política exterior del régimen es clave para comprender su posición en la Europa de la Segunda Guerra Mundial.",
+      "topic": "Franquismo y contexto internacional",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-136",
+      "front": "¿Qué relación cronológica existe entre la Segunda República y la Guerra Civil según las orientaciones?",
+      "back": "La República se desarrolla desde 1931 y la Guerra Civil ocupa la fase final entre 1936 y 1939.",
+      "topic": "Segunda República y Guerra Civil",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-137",
+      "front": "¿Qué relación cronológica existe entre la Guerra Civil y la dictadura franquista?",
+      "back": "La victoria franquista en 1939 dio paso inmediato a la dictadura de Franco.",
+      "topic": "Guerra Civil y franquismo",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-138",
+      "front": "¿Qué tipo de régimen sustituyó a la Segunda República tras la Guerra Civil?",
+      "back": "Un Estado dictatorial encabezado por Franco.",
+      "topic": "Fin de la Segunda República",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-139",
+      "front": "¿Qué evolución general de la España contemporánea permiten estudiar juntos los bloques 9 al 12?",
+      "back": "La crisis de la monarquía, la República, la guerra, la dictadura y la consolidación democrática.",
+      "topic": "España contemporánea",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-140",
+      "front": "¿Qué oposición ideológica resume el conflicto político español de comienzos del siglo XIX?",
+      "back": "La oposición entre los partidarios del absolutismo y los defensores del liberalismo.",
+      "topic": "Crisis del Antiguo Régimen",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-141",
+      "front": "¿Qué relación existe entre las desamortizaciones y la transición al capitalismo?",
+      "back": "Las desamortizaciones favorecieron la mercantilización de la tierra dentro del cambio hacia una economía capitalista.",
+      "topic": "Cambios agrarios y capitalismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-142",
+      "front": "¿Qué gran limitación tuvo el desarrollo económico español del siglo XIX según las orientaciones?",
+      "back": "Que fue insuficiente, pese a las reformas agrarias y a la industrialización.",
+      "topic": "Economía del siglo XIX",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-143",
+      "front": "¿Qué papel jugó el rey en la Restauración según la fórmula 'Alfonso XII y la Regencia'?",
+      "back": "El rey y la regencia actuaron como ejes de continuidad del sistema restauracionista.",
+      "topic": "Restauración borbónica",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-144",
+      "front": "¿Qué relación existe entre el reformismo borbónico del siglo XVIII y los Decretos de Nueva Planta?",
+      "back": "Ambos formaron parte del proceso de centralización política de la nueva monarquía borbónica.",
+      "topic": "Reformismo borbónico",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-145",
+      "front": "¿Qué conflicto dinástico y político se desarrolló durante las regencias de Isabel II?",
+      "back": "La Primera Guerra Carlista, ligada al rechazo carlista del nuevo orden liberal.",
+      "topic": "Primera Guerra Carlista",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-146",
+      "front": "¿Qué muestra el paso de Amadeo de Saboya a la Primera República en el Sexenio Democrático?",
+      "back": "La dificultad para estabilizar un nuevo sistema político tras la caída de Isabel II.",
+      "topic": "Sexenio Democrático",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-147",
+      "front": "¿Qué indica la expresión 'caída de la Monarquía' en el bloque 9?",
+      "back": "El final del reinado de Alfonso XIII y el paso a la Segunda República en 1931.",
+      "topic": "Caída de la Monarquía",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-148",
+      "front": "¿Qué continuidad histórica subraya el documento entre 1975 y 2012?",
+      "back": "La consolidación progresiva de la democracia española tras la Transición.",
+      "topic": "Democracia española",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-149",
+      "front": "¿Qué papel tiene la crisis internacional en el estudio de la Guerra Civil según las orientaciones?",
+      "back": "Permite situar el conflicto español dentro de un contexto europeo e internacional más amplio.",
+      "topic": "Guerra Civil y crisis internacional",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-150",
+      "front": "¿Qué transformación política general se produce en España entre 1808 y 1812?",
+      "back": "El inicio del paso desde el absolutismo hacia el constitucionalismo liberal.",
+      "topic": "Orígenes del liberalismo español",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-151",
+      "front": "¿Qué rasgo diferencia al franquismo del periodo democrático iniciado en 1975?",
+      "back": "El franquismo fue una dictadura, mientras que el periodo posterior se basa en instituciones democráticas.",
+      "topic": "Franquismo y democracia",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-152",
+      "front": "¿Qué relación existe entre el regeneracionismo y la crisis de 1898?",
+      "back": "El regeneracionismo surgió como respuesta crítica al desastre colonial y al deterioro del sistema político.",
+      "topic": "Regeneracionismo",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-153",
+      "front": "¿Qué reveló la crisis del sistema de la Restauración sobre la monarquía de Alfonso XIII?",
+      "back": "Que el régimen había perdido capacidad para integrar la conflictividad social y política del país.",
+      "topic": "Crisis de la Restauración",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-154",
+      "front": "¿Qué pretende explicar el estudio de la evolución política en ambos bandos durante la Guerra Civil?",
+      "back": "Cómo cambiaron sus estructuras de poder, sus decisiones y su organización durante el conflicto.",
+      "topic": "Guerra Civil",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-155",
+      "front": "¿Qué transición económica destaca el documento para el siglo XIX español?",
+      "back": "La transición al capitalismo, vinculada a la industrialización y al movimiento obrero.",
+      "topic": "Transición al capitalismo",
+      "difficulty": 1,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-156",
+      "front": "¿Qué continuidad institucional supone la Regencia dentro de la Restauración?",
+      "back": "Garantiza la permanencia del sistema monárquico cuando el rey no puede ejercer directamente el poder.",
+      "topic": "Regencia en la Restauración",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-157",
+      "front": "¿Qué evidencia histórica ofrece el artículo 26 de la Constitución de 1931 sobre la Segunda República?",
+      "back": "Muestra su voluntad de limitar el poder e influencia de la Iglesia en el Estado.",
+      "topic": "Constitución de 1931 y cuestión religiosa",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-158",
+      "front": "¿Qué rasgo de la Segunda República refleja la regulación de las regiones autónomas en 1931?",
+      "back": "Su intento de dar respuesta política a la diversidad territorial dentro del nuevo régimen.",
+      "topic": "Constitución de 1931 y autonomía",
+      "difficulty": 2,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-159",
+      "front": "¿Qué gran arco cronológico de cambio político cubre el documento desde Fernando VII hasta la Constitución de 1978?",
+      "back": "El paso desde el absolutismo y la construcción del liberalismo hasta la democracia constitucional.",
+      "topic": "Evolución política de España",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    },
+    {
+      "id": "historia-160",
+      "front": "¿Qué hilo conductor une las orientaciones desde la Guerra de la Independencia hasta la alternancia política en democracia?",
+      "back": "La larga construcción de un Estado liberal, su crisis, la dictadura y la consolidación final de la democracia.",
+      "topic": "Historia política contemporánea de España",
+      "difficulty": 3,
+      "fromOrientaciones": true
+    }
+  ]
+}

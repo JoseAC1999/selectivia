@@ -1,0 +1,517 @@
+{
+"subject": "quimica",
+"analysisYear": 2026,
+"sourceSummary": {
+"orientationYear": "2025-26",
+"pastExamYearsAnalyzed": [2024, 2025],
+"weighting": {
+"2025": 1.0,
+"2024": 0.7
+},
+"notes": "La ponderación prioriza 2025 porque ya usa el mismo modelo de 5 preguntas descrito en las orientaciones 2025-26. El curso 2024 aporta recurrencias temáticas y tipos de ejercicio, pero con menor peso al venir de un modelo anterior de 3 bloques."
+},
+"predictions": [
+{
+"id": "qui-pred-001",
+"topic": "Configuración electrónica, grupo, periodo y tendencias periódicas",
+"block": "A. Enlace químico y estructura de la materia",
+"sectionType": "cuestiones",
+"confidence": "muy alta",
+"score": 0.96,
+"reason": "En 2025 la Pregunta 1 dedica de forma reiterada una opción completa a configuración electrónica, grupo, periodo, especies isoelectrónicas y comparación de radio, electronegatividad o energía de ionización. En 2024 también fue uno de los núcleos más repetidos del bloque teórico.",
+"likelyQuestions": [
+"A partir de varios números atómicos, determine grupo y periodo, escriba configuraciones electrónicas y compare radio atómico o energía de ionización.",
+"Justifique la veracidad o falsedad de afirmaciones sobre especies isoelectrónicas, isótopos y números cuánticos.",
+"Escriba la configuración electrónica del ion más estable de varios elementos e indique cuál presenta mayor electronegatividad."
+],
+"studyTips": "Practica el recorrido completo: Z -> configuración -> bloque/grupo/periodo -> ion estable -> tendencia periódica. No memorices solo flechas de variación; acostúmbrate a justificar con carga nuclear efectiva, capa de valencia y apantallamiento.",
+"relatedFlashcardTopics": [
+"Configuración electrónica",
+"Iones isoelectrónicos",
+"Grupo y periodo",
+"Radio atómico",
+"Energía de ionización",
+"Electronegatividad"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "pregunta corta de justificación o identificación con varios apartados encadenados"
+}
+},
+{
+"id": "qui-pred-002",
+"topic": "Números cuánticos, orbitales y electrones desapareados",
+"block": "A. Enlace químico y estructura de la materia",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.91,
+"reason": "Las orientaciones 2025-26 refuerzan explícitamente números cuánticos, principio de exclusión de Pauli y estructura electrónica. En 2025 aparecieron varias veces combinaciones de números cuánticos, orbitales y electrones desapareados; en 2024 también hubo presencia sostenida.",
+"likelyQuestions": [
+"Indique si una combinación de números cuánticos es posible y justifique la respuesta.",
+"Razone si un átomo presenta electrones desapareados en orbitales p o d.",
+"Determine un conjunto posible de números cuánticos para el electrón diferenciador de un elemento."
+],
+"studyTips": "Haz tablas muy cortas con el significado de n, l, m y s, y entrena preguntas de validación rápida: rango permitido de cada número, relación con el tipo de orbital y número de electrones desapareados.",
+"relatedFlashcardTopics": [
+"Números cuánticos",
+"Electrón diferenciador",
+"Orbitales s p d",
+"Principio de Pauli",
+"Regla de Hund"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "verdadero o falso y justificación corta sobre estructura electrónica"
+}
+},
+{
+"id": "qui-pred-003",
+"topic": "Geometría molecular, polaridad e hibridación",
+"block": "A. Enlace químico y estructura de la materia",
+"sectionType": "cuestiones",
+"confidence": "muy alta",
+"score": 0.95,
+"reason": "En 2025 la otra gran opción recurrente de la Pregunta 1 fue TRPECV, pares libres, geometría, hibridación y polaridad. En 2024 también se repitieron comparaciones BF3, PF3, NCl3, CH4 o CH3Cl, por lo que es uno de los patrones más estables del histórico.",
+"likelyQuestions": [
+"Dadas varias moléculas, indique si el átomo central tiene pares libres, qué geometría presenta y si la molécula es polar.",
+"Justifique la hibridación del átomo central en moléculas sencillas.",
+"Explique por qué dos moléculas con enlaces polares pueden diferir en su polaridad global."
+],
+"studyTips": "No estudies geometría y polaridad por separado. Para cada molécula haz siempre la secuencia Lewis -> pares enlazantes y libres -> geometría electrónica -> geometría molecular -> polaridad -> hibridación.",
+"relatedFlashcardTopics": [
+"Lewis",
+"TRPECV",
+"Pares libres",
+"Geometría molecular",
+"Polaridad",
+"Hibridación sp sp2 sp3"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "comparación entre dos o tres moléculas con justificación estructural"
+}
+},
+{
+"id": "qui-pred-004",
+"topic": "Tipo de enlace y relación con propiedades macroscópicas",
+"block": "A. Enlace químico y estructura de la materia",
+"sectionType": "cuestiones",
+"confidence": "alta",
+"score": 0.88,
+"reason": "Las orientaciones insisten en justificar propiedades a partir del tipo de enlace y de las fuerzas intermoleculares. En 2025 apareció como opción explícita de la Pregunta 1 y en 2024 fue muy habitual relacionar enlace con solubilidad, conductividad y punto de fusión.",
+"likelyQuestions": [
+"Identifique el tipo de enlace de varias sustancias y explique su solubilidad, conductividad o punto de fusión.",
+"Justifique por qué una sustancia iónica se disuelve en agua y otra covalente apolar no.",
+"Explique las diferencias entre un sólido metálico, una sustancia molecular y un cristal iónico."
+],
+"studyTips": "Organiza un cuadro de doble entrada: enlace iónico, covalente polar, covalente apolar y metálico frente a conductividad, solubilidad y estado físico. Esa relación es la que suelen pedir, no solo el nombre del enlace.",
+"relatedFlashcardTopics": [
+"Enlace iónico",
+"Enlace covalente",
+"Enlace metálico",
+"Fuerzas intermoleculares",
+"Solubilidad",
+"Punto de fusión"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "alto",
+"questionPattern": "explicación de propiedades de sustancias concretas"
+}
+},
+{
+"id": "qui-pred-005",
+"topic": "Equilibrio químico y principio de Le Châtelier",
+"block": "B. Reacciones químicas",
+"sectionType": "cuestiones",
+"confidence": "muy alta",
+"score": 0.94,
+"reason": "En 2025 apareció varias veces en la Pregunta 2 como cuestión conceptual y en la Pregunta 3 como problema numérico de Kc o Kp. En 2024 fue uno de los ejes más frecuentes tanto en bloque teórico como en problemas con gases o sólidos.",
+"likelyQuestions": [
+"Explique cómo afecta un cambio de temperatura, presión o concentración al equilibrio de una reacción.",
+"Razone el desplazamiento del equilibrio y la evolución de concentraciones al añadir reactivos o productos.",
+"Calcule Kc, Kp o el grado de disociación a partir de datos de presión o concentración en el equilibrio."
+],
+"studyTips": "Distingue muy bien tres planos: desplazamiento del equilibrio, cambio en cantidades y cambio en el valor de K. Muchos errores vienen de mezclarlos. Practica especialmente equilibrios heterogéneos y con gases.",
+"relatedFlashcardTopics": [
+"Le Châtelier",
+"Kc y Kp",
+"Grado de disociación",
+"Equilibrios heterogéneos",
+"Cociente de reacción"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "cuestión de razonamiento y problema numérico con gases"
+}
+},
+{
+"id": "qui-pred-006",
+"topic": "Ácido-base: Brønsted-Lowry, hidrólisis, tampón y pH",
+"block": "B. Reacciones químicas",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.95,
+"reason": "Las orientaciones dedican bastante detalle a pares conjugados, hidrólisis, pH y neutralización. En 2025 apareció tanto en cuestiones conceptuales como en problemas de preparación de disoluciones, neutralización y cálculo de pH; en 2024 también fue uno de los bloques más persistentes.",
+"likelyQuestions": [
+"Justifique el comportamiento ácido, básico o neutro de una disolución salina y escriba la reacción de hidrólisis.",
+"Explique qué ocurre con el pH al añadir una sal de ácido débil o base débil a una disolución.",
+"Calcule el pH de una disolución de ácido o base y determine el volumen necesario para neutralizarla."
+],
+"studyTips": "Separa los casos fuertes y débiles. Cuando haya sal, decide primero de dónde procede: ácido fuerte-base fuerte, ácido fuerte-base débil o ácido débil-base fuerte. Eso te orienta antes de empezar a calcular.",
+"relatedFlashcardTopics": [
+"Brønsted-Lowry",
+"Pares conjugados",
+"Hidrólisis",
+"Ka y Kb",
+"pH",
+"Neutralización"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "pregunta conceptual más problema de pH o valoración"
+}
+},
+{
+"id": "qui-pred-007",
+"topic": "Solubilidad y producto de solubilidad",
+"block": "B. Reacciones químicas",
+"sectionType": "mixto",
+"confidence": "alta",
+"score": 0.9,
+"reason": "En 2025 tuvo presencia relevante tanto como cuestión conceptual como en problemas de Ks, precipitación e ion común. En 2024 también salió con mucha frecuencia en problemas numéricos. Además, las orientaciones lo refuerzan dentro de equilibrio heterogéneo.",
+"likelyQuestions": [
+"Escriba la expresión de Ks en función de la solubilidad molar y calcule la solubilidad de una sal poco soluble.",
+"Razone si precipita una sal al mezclar dos disoluciones.",
+"Explique cómo cambia la solubilidad al añadir un ion común o al variar el pH."
+],
+"studyTips": "Entrena tres formatos por separado: pasar de solubilidad a Ks, comprobar precipitación con el producto iónico y justificar el efecto de ion común. Son mecánicas distintas y conviene automatizarlas.",
+"relatedFlashcardTopics": [
+"Ks",
+"Solubilidad molar",
+"Producto iónico",
+"Ion común",
+"Precipitación"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "alto",
+"questionPattern": "problema numérico corto y razonamiento sobre precipitado"
+}
+},
+{
+"id": "qui-pred-008",
+"topic": "Redox, pilas galvánicas y electrólisis",
+"block": "B. Reacciones químicas",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.94,
+"reason": "En 2025 aparecieron varias cuestiones de pila, electrólisis, potencial de celda y leyes de Faraday, además de preguntas contextualizadas en la Pregunta 5. En 2024 también fue uno de los temas más repetidos del bloque de reacciones.",
+"likelyQuestions": [
+"Escriba las semirreacciones de una pila, identifique ánodo y cátodo y calcule el potencial estándar.",
+"Explique en qué sentido fluyen los electrones y justifique la espontaneidad del proceso.",
+"Calcule tiempo, intensidad o masa depositada en una electrólisis aplicando las leyes de Faraday."
+],
+"studyTips": "Usa siempre la misma rutina: comparar potenciales de reducción, decidir qué se reduce y qué se oxida, escribir semirreacciones, sumar electrones y solo después pasar a cálculos de Eº o Faraday.",
+"relatedFlashcardTopics": [
+"Oxidación y reducción",
+"Ánodo y cátodo",
+"Potencial estándar",
+"Pilas galvánicas",
+"Electrólisis",
+"Leyes de Faraday"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "cuestión conceptual y problema aplicado en contexto industrial o metálico"
+}
+},
+{
+"id": "qui-pred-009",
+"topic": "Termodinámica: entalpía, entropía y espontaneidad",
+"block": "B. Reacciones químicas",
+"sectionType": "mixto",
+"confidence": "alta",
+"score": 0.89,
+"reason": "En 2025 ya aparece como cuestión conceptual y como problema de entropía y temperatura de espontaneidad. En 2024 estuvo muy presente en problemas de entalpía de reacción y en cuestiones sobre espontaneidad, aunque el peso relativo fue algo menor que equilibrio o ácido-base.",
+"likelyQuestions": [
+"Razone si una afirmación sobre espontaneidad, entropía o entalpía es verdadera o falsa.",
+"Calcule la variación de entropía de una reacción y determine a partir de qué temperatura será espontánea.",
+"Explique en qué condiciones coinciden el calor de reacción a presión constante y a volumen constante."
+],
+"studyTips": "Practica signos y significado físico. No te limites a la fórmula de Gibbs: interpreta siempre si aumentan los moles gaseosos, si el sistema gana desorden y qué papel juega la temperatura.",
+"relatedFlashcardTopics": [
+"Entalpía",
+"Entropía",
+"Energía de Gibbs",
+"Espontaneidad",
+"Ley de Hess",
+"Delta n gas"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "alto",
+"questionPattern": "verdadero o falso más problema de cálculo energético"
+}
+},
+{
+"id": "qui-pred-010",
+"topic": "Cinética química: ecuación de velocidad, orden y catalizador",
+"block": "B. Reacciones químicas",
+"sectionType": "cuestiones",
+"confidence": "media-alta",
+"score": 0.82,
+"reason": "Aparece con claridad en las orientaciones y en el modelo 2025 de la Pregunta 2. Históricamente ha salido menos que equilibrio, ácido-base o redox, pero el nuevo modelo la ha reforzado en formato breve, por lo que sigue siendo una apuesta razonable.",
+"likelyQuestions": [
+"A partir de una ecuación de velocidad, indique orden total y unidades de la constante cinética.",
+"Razone si la velocidad permanece constante durante la reacción y cómo afecta un catalizador.",
+"Explique la relación entre velocidad de desaparición de reactivos y aparición de productos."
+],
+"studyTips": "Aprende a deducir unidades de k sin improvisar: escribe antes las unidades de velocidad y de concentración. También conviene dominar bien la diferencia entre estequiometría global y orden de reacción.",
+"relatedFlashcardTopics": [
+"Velocidad de reacción",
+"Orden total",
+"Constante de velocidad",
+"Catalizador",
+"Teoría de colisiones"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "alto",
+"questionPattern": "cuestión directa de razonamiento con ley de velocidad"
+}
+},
+{
+"id": "qui-pred-011",
+"topic": "Problema de equilibrio gaseoso con Kc, Kp y grado de disociación",
+"block": "B. Reacciones químicas",
+"sectionType": "problema",
+"confidence": "alta",
+"score": 0.91,
+"reason": "La Pregunta 3 del modelo vigente ya ha incluido este formato varias veces en 2025, y en 2024 fue uno de los problemas más repetidos del bloque C antiguo. La continuidad entre ambos modelos es clara.",
+"likelyQuestions": [
+"A partir de masas, volumen y presión total en el equilibrio, calcule la composición, Kp y Kc.",
+"Determine el grado de disociación y las concentraciones de equilibrio de un sistema gaseoso.",
+"Resuelva un equilibrio con sólidos y gases donde solo contribuyen al valor de K las especies gaseosas."
+],
+"studyTips": "Antes de calcular, construye una tabla inicial-cambio-equilibrio y decide qué especies entran en la constante. En equilibrios con sólidos, tacharlos del planteamiento evita muchos errores.",
+"relatedFlashcardTopics": [
+"Tabla ICE",
+"Kc",
+"Kp",
+"Grado de disociación",
+"Presión parcial"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "problema largo de gases o descomposición con datos de presión"
+}
+},
+{
+"id": "qui-pred-012",
+"topic": "Problema de pH, disoluciones comerciales y neutralización",
+"block": "B. Reacciones químicas",
+"sectionType": "problema",
+"confidence": "alta",
+"score": 0.9,
+"reason": "En 2025 se han repetido problemas de preparación de disoluciones a partir de reactivos comerciales, cálculo de molaridad, pH y neutralización. En 2024 esa línea también apareció con frecuencia en el modelo antiguo.",
+"likelyQuestions": [
+"Prepare una disolución a partir de un reactivo comercial de densidad y riqueza conocidas y calcule su molaridad.",
+"Calcule el pH de la disolución obtenida y el volumen necesario para neutralizar una alícuota.",
+"Determine el grado de disociación o la constante de una base o un ácido débil a partir del pH."
+],
+"studyTips": "Domina bien el encadenado riqueza -> masa de soluto -> moles -> molaridad. En neutralización, pasa siempre por la estequiometría antes de aplicar fórmulas de pH.",
+"relatedFlashcardTopics": [
+"Riqueza en masa",
+"Densidad",
+"Molaridad",
+"pH",
+"Neutralización",
+"Diluciones"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "alto",
+"questionPattern": "problema de laboratorio con reactivo comercial y valoración"
+}
+},
+{
+"id": "qui-pred-013",
+"topic": "Ajuste redox por ion-electrón y estequiometría asociada",
+"block": "B. Reacciones químicas",
+"sectionType": "problema",
+"confidence": "alta",
+"score": 0.9,
+"reason": "En 2025 ya ha aparecido en problemas y en preguntas contextualizadas, y en 2024 fue muy recurrente en el antiguo bloque de problemas. Además, los criterios específicos de corrección de las orientaciones subrayan expresamente el método ion-electrón.",
+"likelyQuestions": [
+"Ajuste una reacción molecular e iónica por el método del ion-electrón.",
+"A partir de la ecuación ajustada, calcule el volumen o la masa de un reactivo necesario.",
+"Identifique agente oxidante y agente reductor y relacione los cambios de número de oxidación."
+],
+"studyTips": "Practica el método con una secuencia fija: separar semirreacciones, balancear O y H, ajustar carga con electrones y recombinar. Sin automatismo en ese algoritmo se pierde mucho tiempo.",
+"relatedFlashcardTopics": [
+"Método ion-electrón",
+"Números de oxidación",
+"Agente oxidante",
+"Agente reductor",
+"Estequiometría redox"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "problema de ajuste más cálculo estequiométrico"
+}
+},
+{
+"id": "qui-pred-014",
+"topic": "Nomenclatura y formulación orgánica",
+"block": "C. Química orgánica",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.97,
+"reason": "La Pregunta 4 del nuevo modelo siempre arranca con nombre o fórmula de compuestos orgánicos, y la orientación mantiene de forma explícita la exigencia de nomenclatura IUPAC. En el modelo antiguo también había formulación orgánica en el bloque A.",
+"likelyQuestions": [
+"Nombre o formule alcoholes, ácidos, amidas, éteres, nitrilos, alquenos, alquinos o aromáticos sencillos.",
+"Reconozca compuestos con más de una función y escriba su nombre sistemático.",
+"Relacione una fórmula semidesarrollada con su nombre correcto."
+],
+"studyTips": "No estudies los grupos funcionales aislados. Mezcla series en el mismo entrenamiento, porque el examen suele alternar amidas, ácidos, éteres, nitrilos, alquenos y aromáticos en una misma subpregunta.",
+"relatedFlashcardTopics": [
+"Alcohol",
+"Ácido carboxílico",
+"Amida",
+"Éter",
+"Nitrilo",
+"Alqueno",
+"Alquino",
+"Aromático"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "subapartados de nombrar o formular compuestos orgánicos variados"
+}
+},
+{
+"id": "qui-pred-015",
+"topic": "Reacciones orgánicas e isomería",
+"block": "C. Química orgánica",
+"sectionType": "mixto",
+"confidence": "muy alta",
+"score": 0.94,
+"reason": "En 2025 la parte optativa de la Pregunta 4 repite combustión, deshidratación, hidrogenación, adición, formación de alcoholes e isomería. En 2024 ya aparecían de forma muy constante adición, eliminación, esterificación e identificación de isómeros.",
+"likelyQuestions": [
+"Escriba la reacción de combustión, hidrogenación o deshidratación de un compuesto orgánico sencillo.",
+"Dibuje un isómero de función, de cadena o geométrico de un compuesto dado.",
+"Transforme un alqueno en un alcohol o justifique el tipo de isomería entre dos compuestos."
+],
+"studyTips": "Trabaja por familias de transformación: adición al doble enlace, eliminación de agua, oxidación suave y esterificación. En isomería, clasifica antes de dibujar: cadena, posición, función o geométrica.",
+"relatedFlashcardTopics": [
+"Combustión",
+"Adición",
+"Hidrogenación",
+"Deshidratación",
+"Isomería de cadena",
+"Isomería de función",
+"Isomería geométrica"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "pregunta orgánica con parte fija de formulación y parte aplicada de reacciones o isomería"
+}
+},
+{
+"id": "qui-pred-016",
+"topic": "Pregunta contextual obligatoria con mezcla de redox, ácido-base, solubilidad y formulación",
+"block": "Transversal según orientaciones",
+"sectionType": "competencial",
+"confidence": "muy alta",
+"score": 0.98,
+"reason": "La orientación 2025-26 fija una Pregunta 5 obligatoria, contextualizada y sin optatividad. En todos los exámenes de 2025 esa pregunta integra texto aplicado, un apartado de cálculo, otro de química contextual y un cierre de formulación/nomenclatura.",
+"likelyQuestions": [
+"A partir de un texto sobre metales, fármacos, alimentos o materiales, resuelva un cálculo de pH, electrólisis, pila o solubilidad.",
+"Justifique qué metal puede actuar como ánodo de sacrificio o qué reacción tiene lugar en una electrólisis o neutralización.",
+"Nombre o formule los compuestos destacados en un texto de contexto cotidiano o industrial."
+],
+"studyTips": "No la prepares como teoría aislada. Entrena lectura selectiva: subrayar datos, identificar el bloque químico dominante y localizar qué compuestos hay que formular. Suele mezclar contexto con destrezas muy clásicas.",
+"relatedFlashcardTopics": [
+"Lectura de enunciado contextual",
+"Datos útiles",
+"Redox aplicado",
+"Ácido-base aplicado",
+"Solubilidad aplicada",
+"Formulación en contexto"
+],
+"evidence": {
+"seenInYears": [2025],
+"orientationMatch": "muy alto",
+"questionPattern": "texto competencial obligatorio con varios apartados de distinta naturaleza"
+}
+},
+{
+"id": "qui-pred-017",
+"topic": "Material de laboratorio, preparación de disoluciones y seguridad",
+"block": "Uso del lenguaje científico y prácticas de laboratorio",
+"sectionType": "competencial",
+"confidence": "media-alta",
+"score": 0.8,
+"reason": "Las orientaciones 2025-26 señalan expresamente que podrán hacerse preguntas sobre material e instrumentos de laboratorio y normas de seguridad. En 2025 ya se vio al menos una aplicación clara al elegir material para preparar disoluciones, y el peso competencial del nuevo modelo favorece este tipo de apartado.",
+"likelyQuestions": [
+"Indique qué material de laboratorio usaría para preparar una disolución de concentración dada.",
+"Seleccione el procedimiento correcto de medida o trasvase para una preparación volumétrica.",
+"Interprete información básica de seguridad o gestión de residuos en una etiqueta o contexto experimental."
+],
+"studyTips": "Repasa funciones muy concretas de matraz aforado, bureta, vaso de precipitados, embudo y espátula. Lo probable no es una pregunta teórica larga, sino una decisión práctica dentro de un ejercicio contextual.",
+"relatedFlashcardTopics": [
+"Matraz aforado",
+"Bureta",
+"Vaso de precipitados",
+"Embudo",
+"Espátula",
+"Seguridad en laboratorio"
+],
+"evidence": {
+"seenInYears": [2025],
+"orientationMatch": "muy alto",
+"questionPattern": "subapartado práctico dentro de una pregunta contextual"
+}
+},
+{
+"id": "qui-pred-018",
+"topic": "Formulación y nomenclatura inorgánica en contexto",
+"block": "Transversal",
+"sectionType": "mixto",
+"confidence": "alta",
+"score": 0.87,
+"reason": "Aunque el modelo 2025 ya no reserva una pregunta independiente solo para formulación, las orientaciones insisten en que la nomenclatura inorgánica y orgánica puede ser objeto de evaluación. En 2025 aparece de forma estable al final de la Pregunta 5 y en 2024 era un bloque propio del examen.",
+"likelyQuestions": [
+"Nombre o formule sales, óxidos, hidróxidos o ácidos que aparezcan en un texto contextualizado.",
+"Reconozca la formulación correcta de compuestos inorgánicos frecuentes de uso industrial o cotidiano.",
+"Complete un apartado final de formulación relacionado con el contexto del ejercicio."
+],
+"studyTips": "No relegues la inorgánica por el cambio de modelo. Ahora suele entrar integrada en contexto, así que conviene repasar nomenclatura funcional y sales oxoácidas junto con óxidos, hidróxidos y haluros.",
+"relatedFlashcardTopics": [
+"Óxidos",
+"Hidróxidos",
+"Oxoácidos",
+"Sales",
+"Peróxidos",
+"Nomenclatura IUPAC"
+],
+"evidence": {
+"seenInYears": [2024, 2025],
+"orientationMatch": "muy alto",
+"questionPattern": "subapartado final de nombrar o formular compuestos inorgánicos"
+}
+}
+],
+"generalTips": "Prioriza el modelo real 2025: Pregunta 1 de estructura atómica o enlace; Pregunta 2 de teoría de reacciones; Pregunta 3 de problema numérico; Pregunta 4 de orgánica; y Pregunta 5 contextual obligatoria. Estudia por rutinas de resolución, no por listas aisladas. En bloque A, entrena justificación breve y comparativa. En bloque B, domina plantillas de cálculo para equilibrio, pH, Ks, redox y Faraday. En bloque C, combina nomenclatura con reacciones e isomería. Y reserva tiempo específico para preguntas contextualizadas con lectura de datos, formulación final y posible material de laboratorio."
+}
