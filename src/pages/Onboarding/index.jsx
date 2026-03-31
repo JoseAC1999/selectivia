@@ -12,11 +12,36 @@ export default function Onboarding() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (!name.trim()) {
-      setError('Por favor, dinos cómo te llamas.')
-      return
-    }
-    completeOnboarding(name.trim(), examDate || null)
+    const normalizedName = name.trim() || 'Estudiante'
+    const normalizedDate = examDate || null
+    completeOnboarding(normalizedName, normalizedDate)
+
+    requestAnimationFrame(() => {
+      const state = useStudyStore.getState()
+      if (!state.hasCompletedOnboarding) {
+        useStudyStore.setState({
+          userName: normalizedName,
+          examDate: normalizedDate,
+          hasCompletedOnboarding: true,
+        })
+      }
+
+      try {
+        const raw = localStorage.getItem('selectivia-store')
+        const parsed = raw ? JSON.parse(raw) : {}
+        const next = {
+          ...parsed,
+          version: 2,
+          state: {
+            ...(parsed?.state ?? {}),
+            userName: normalizedName,
+            examDate: normalizedDate,
+            hasCompletedOnboarding: true,
+          },
+        }
+        localStorage.setItem('selectivia-store', JSON.stringify(next))
+      } catch {}
+    })
   }
 
   return (
@@ -112,7 +137,7 @@ export default function Onboarding() {
               type="text"
               value={name}
               onChange={(e) => { setName(e.target.value); setError('') }}
-              placeholder="Tu nombre"
+              placeholder="Tu nombre (opcional)"
               autoFocus
               style={{
                 width: '100%',
@@ -129,9 +154,7 @@ export default function Onboarding() {
               onFocus={(e) => { if (!error) e.target.style.borderColor = '#7C3AED' }}
               onBlur={(e) => { if (!error) e.target.style.borderColor = 'var(--border)' }}
             />
-            {error && (
-              <p style={{ fontSize: 12, color: '#EF4444', marginTop: 6 }}>{error}</p>
-            )}
+            {error && <p style={{ fontSize: 12, color: '#EF4444', marginTop: 6 }}>{error}</p>}
           </div>
 
           {/* Fecha de selectividad */}
