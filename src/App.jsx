@@ -1,7 +1,8 @@
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import useStudyStore from './store/useStudyStore.js'
+import { readOnboardingSnapshot } from './lib/onboardingStorage.js'
 
 const Dashboard = lazy(() => import('./pages/Dashboard/index.jsx'))
 const ExamenesOficiales = lazy(() => import('./pages/ExamenesOficiales/index.jsx'))
@@ -50,6 +51,7 @@ function AppLoader() {
 }
 
 export default function App() {
+  const [onboardingSnapshot] = useState(() => readOnboardingSnapshot())
   const hasHydrated = useStudyStore((s) => s.hasHydrated)
   const hasCompletedOnboarding = useStudyStore((s) => s.hasCompletedOnboarding)
   const darkMode = useStudyStore((s) => s.darkMode)
@@ -62,11 +64,32 @@ export default function App() {
     }
   }, [darkMode])
 
+  useEffect(() => {
+    if (!hasHydrated || !onboardingSnapshot.completed) return
+
+    const state = useStudyStore.getState()
+    if (
+      state.hasCompletedOnboarding &&
+      state.userName === onboardingSnapshot.userName &&
+      state.examDate === onboardingSnapshot.examDate
+    ) {
+      return
+    }
+
+    useStudyStore.setState({
+      userName: onboardingSnapshot.userName,
+      examDate: onboardingSnapshot.examDate,
+      hasCompletedOnboarding: true,
+    })
+  }, [hasHydrated, onboardingSnapshot])
+
+  const effectiveHasCompletedOnboarding = hasCompletedOnboarding || onboardingSnapshot.completed
+
   if (!hasHydrated) {
     return <AppLoader />
   }
 
-  if (!hasCompletedOnboarding) {
+  if (!effectiveHasCompletedOnboarding) {
     return (
       <Suspense fallback={<AppLoader />}>
         <Onboarding />

@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { clearOnboardingSnapshot, readOnboardingSnapshot, writeOnboardingSnapshot } from '../lib/onboardingStorage.js'
 
 /** @typedef {{ biologia: number, fisica: number, historia: number, lengua: number, ingles: number, 'mates-sociales': number, matematicas: number, quimica: number }} SubjectProgress */
 
@@ -16,6 +17,7 @@ const DEFAULT_PROGRESS = {
 
 const POMODORO_WORK_MINS = 25
 const POMODORO_BREAK_MINS = 5
+const onboardingBootstrap = readOnboardingSnapshot()
 
 const safePersistStorage =
   typeof window === 'undefined'
@@ -115,7 +117,7 @@ const useStudyStore = create(
       flashcardWrongIds: {},
 
       /** Fecha de selectividad elegida por el usuario (ISO date string YYYY-MM-DD) */
-      examDate: null,
+      examDate: onboardingBootstrap.examDate,
 
       /**
        * Días del plan de estudio marcados como completados
@@ -133,10 +135,10 @@ const useStudyStore = create(
       darkMode: true,
 
       /** Nombre del usuario */
-      userName: '',
+      userName: onboardingBootstrap.userName,
 
       /** Si el usuario ha completado el onboarding inicial */
-      hasCompletedOnboarding: false,
+      hasCompletedOnboarding: onboardingBootstrap.completed,
       /** Si el estado persistido ya se ha rehidratado */
       hasHydrated: false,
 
@@ -229,21 +231,25 @@ const useStudyStore = create(
         })),
 
       /** Completa el onboarding guardando nombre y fecha */
-      completeOnboarding: (name, date) =>
+      completeOnboarding: (name, date) => {
+        writeOnboardingSnapshot(name, date || null)
         set({
           userName: name,
           examDate: date || null,
           hasCompletedOnboarding: true,
           uiToast: { id: Date.now(), message: `Bienvenido${name ? `, ${name}` : ''}` },
-        }),
+        })
+      },
 
       /** Actualiza el perfil del usuario */
-      updateProfile: (name, date) =>
+      updateProfile: (name, date) => {
+        writeOnboardingSnapshot(name, date || null)
         set({
           userName: name,
           examDate: date || null,
           uiToast: { id: Date.now(), message: 'Perfil actualizado' },
-        }),
+        })
+      },
 
       /** Alterna el modo oscuro/claro */
       toggleDarkMode: () => set((s) => ({
@@ -370,7 +376,8 @@ const useStudyStore = create(
         }),
 
       /** Resetea todo el progreso */
-      reset: () =>
+      reset: () => {
+        clearOnboardingSnapshot()
         set({
           progress: { ...DEFAULT_PROGRESS },
           streak: 0,
@@ -396,7 +403,8 @@ const useStudyStore = create(
           userName: '',
           hasCompletedOnboarding: false,
           uiToast: null,
-        }),
+        })
+      },
     }),
     {
       name: 'selectivia-store',
@@ -422,10 +430,13 @@ const useStudyStore = create(
         timer.sessionCount = Math.max(1, Math.floor(toNumber(timer.sessionCount, 1)))
         timer.selectedSubject = typeof timer.selectedSubject === 'string' ? timer.selectedSubject : 'biologia'
 
-        const persistedUserName = typeof state.userName === 'string' ? state.userName : currentState.userName
+        const persistedUserName =
+          typeof state.userName === 'string' && state.userName.trim().length > 0
+            ? state.userName
+            : currentState.userName
         const inferredOnboarding =
           typeof state.hasCompletedOnboarding === 'boolean'
-            ? state.hasCompletedOnboarding
+            ? state.hasCompletedOnboarding || currentState.hasCompletedOnboarding
             : persistedUserName.trim().length > 0
 
         return {

@@ -1,56 +1,26 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 
 export default function Onboarding() {
+  const navigate = useNavigate()
   const completeOnboarding = useStudyStore((s) => s.completeOnboarding)
   const isMobile = useIsMobile()
   const [name, setName] = useState('')
   const [examDate, setExamDate] = useState('')
   const [error, setError] = useState('')
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function submitOnboarding() {
     const normalizedName = name.trim() || 'Estudiante'
     const normalizedDate = examDate || null
     completeOnboarding(normalizedName, normalizedDate)
+    navigate('/', { replace: true })
 
-    requestAnimationFrame(() => {
-      const state = useStudyStore.getState()
-      if (!state.hasCompletedOnboarding) {
-        useStudyStore.setState({
-          userName: normalizedName,
-          examDate: normalizedDate,
-          hasCompletedOnboarding: true,
-        })
-      }
-
-      try {
-        const raw = localStorage.getItem('selectivia-store')
-        const parsed = raw ? JSON.parse(raw) : {}
-        const next = {
-          ...parsed,
-          version: 2,
-          state: {
-            ...(parsed?.state ?? {}),
-            userName: normalizedName,
-            examDate: normalizedDate,
-            hasCompletedOnboarding: true,
-          },
-        }
-        localStorage.setItem('selectivia-store', JSON.stringify(next))
-      } catch {}
-
-      window.setTimeout(() => {
-        if (window.location.pathname !== '/') {
-          window.location.assign('/')
-          return
-        }
-
-        window.location.reload()
-      }, 80)
-    })
+    window.setTimeout(() => {
+      window.location.replace('/')
+    }, 150)
   }
 
   return (
@@ -132,7 +102,7 @@ export default function Onboarding() {
         </div>
 
         {/* Formulario */}
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <form onSubmit={(e) => { e.preventDefault(); submitOnboarding() }} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Nombre */}
           <div>
             <label
@@ -201,7 +171,8 @@ export default function Onboarding() {
 
           {/* Botón */}
           <motion.button
-            type="submit"
+            type="button"
+            onClick={submitOnboarding}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             style={{
