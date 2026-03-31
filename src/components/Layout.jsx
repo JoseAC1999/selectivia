@@ -361,6 +361,59 @@ export default function Layout({ children }) {
       {/* ── Contenido principal ────────────────────────────────────── */}
       <main className="flex-1 flex flex-col overflow-hidden">
         <div
+          className="md:hidden sticky top-0 z-40 border-b"
+          style={{
+            backgroundColor: 'color-mix(in srgb, var(--bg-base) 92%, transparent)',
+            borderColor: 'var(--border)',
+            backdropFilter: 'blur(16px)',
+          }}
+        >
+          <div className="flex items-center justify-between gap-3 px-4 py-3">
+            <button
+              onClick={() => setShowProfileModal(true)}
+              className="flex min-w-0 items-center gap-3 rounded-xl px-3 py-2 text-left"
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+              }}
+            >
+              <div
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
+                style={{ background: 'linear-gradient(135deg, #7C3AED, #06B6D4)' }}
+              >
+                S
+              </div>
+              <div className="min-w-0">
+                <p
+                  className="truncate text-sm font-semibold"
+                  style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+                >
+                  SelectivIA
+                </p>
+                <p className="truncate text-[11px]" style={{ color: 'var(--text-muted)' }}>
+                  Editar perfil
+                </p>
+              </div>
+            </button>
+
+            <button
+              onClick={toggleDarkMode}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontSize: 18,
+              }}
+              title={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+            >
+              {darkMode ? '☀️' : '🌙'}
+            </button>
+          </div>
+        </div>
+        <div
           className="flex-1 overflow-y-auto md:pb-0"
           style={{ paddingBottom: 'calc(84px + env(safe-area-inset-bottom))' }}
         >
