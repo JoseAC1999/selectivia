@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
+import { useLocation } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
@@ -323,6 +324,7 @@ function RatingButtons({ onRate, isMobile }) {
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
 
 export default function Flashcards() {
+  const location = useLocation()
   const isMobile = useIsMobile()
   const [step, setStep] = useState('subjects')
   const [selectedSubject, setSelectedSubject] = useState(null)
@@ -350,6 +352,7 @@ export default function Flashcards() {
   const [sessionStudied, setSessionStudied] = useState(0)
   const [sessionCorrect, setSessionCorrect] = useState(0)
   const [sessionDone, setSessionDone] = useState(false)
+  const [touchStartX, setTouchStartX] = useState(null)
 
   const flashcardHistory   = useStudyStore(s => s.flashcardHistory)
   const flashcardWrongIds  = useStudyStore(s => s.flashcardWrongIds)
@@ -385,6 +388,15 @@ export default function Flashcards() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (step !== 'subjects') return
+    const targetSlug = location.state?.subject
+    if (!targetSlug) return
+    const subject = SUBJECTS.find((s) => s.slug === targetSlug)
+    if (!subject) return
+    handleSelectSubject(subject)
+  }, [location.state, step])
 
   // Construir/actualizar cola cuando cambia el topic o se arranca la sesión
   const startSession = useCallback(() => {
@@ -438,6 +450,21 @@ export default function Flashcards() {
       setQueueIndex(nextIdx)
       setFlipped(false)
     }
+  }
+
+  function handleTouchStart(event) {
+    if (!isMobile) return
+    setTouchStartX(event.changedTouches?.[0]?.clientX ?? null)
+  }
+
+  function handleTouchEnd(event) {
+    if (!isMobile || !flipped || touchStartX == null) return
+    const endX = event.changedTouches?.[0]?.clientX ?? touchStartX
+    const deltaX = endX - touchStartX
+    if (Math.abs(deltaX) < 70) return
+    if (deltaX > 0) handleRate(2)
+    else handleRate(0)
+    setTouchStartX(null)
   }
 
   function handleBack() {
@@ -677,6 +704,8 @@ export default function Flashcards() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.2 }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <FlipCard
               card={currentCard}
@@ -699,6 +728,11 @@ export default function Flashcards() {
               >
                 Haz clic en la tarjeta para ver la respuesta
               </motion.p>
+            )}
+            {flipped && isMobile && (
+              <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-muted)', marginTop: 10 }}>
+                Desliza derecha = Lo sabía · izquierda = No lo sabía
+              </p>
             )}
           </motion.div>
         </AnimatePresence>

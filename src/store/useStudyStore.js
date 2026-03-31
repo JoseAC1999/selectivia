@@ -14,6 +14,9 @@ const DEFAULT_PROGRESS = {
   quimica: 0,
 }
 
+const POMODORO_WORK_MINS = 25
+const POMODORO_BREAK_MINS = 5
+
 const useStudyStore = create(
   persist(
     (set, get) => ({
@@ -28,7 +31,7 @@ const useStudyStore = create(
 
       /**
        * Historial de tests
-       * @type {Array<{ subject: string, score: number, wrongAnswers: string[], date: string }>}
+       * @type {Array<{ subject: string, score: number, wrongAnswers: string[], date: string, label?: string, questionType?: string }>}
        */
       testHistory: [],
 
@@ -37,6 +40,18 @@ const useStudyStore = create(
        * @type {Array<{ subject: string, duration: number, date: string }>}
        */
       pomodoroSessions: [],
+      /**
+       * Estado global del temporizador Pomodoro
+       * @type {{ isWork: boolean, secondsLeft: number, running: boolean, endAt: number|null, sessionCount: number, selectedSubject: string }}
+       */
+      pomodoroTimer: {
+        isWork: true,
+        secondsLeft: POMODORO_WORK_MINS * 60,
+        running: false,
+        endAt: null,
+        sessionCount: 1,
+        selectedSubject: 'biologia',
+      },
 
       /**
        * IDs de exámenes oficiales completados
@@ -96,7 +111,7 @@ const useStudyStore = create(
         })),
 
       /** Registra un resultado de test y actualiza racha */
-      addTestResult: (subject, score, wrongAnswers = [], label = '') => {
+      addTestResult: (subject, score, wrongAnswers = [], label = '', questionType = 'desarrollo') => {
         const today = new Date().toISOString().split('T')[0]
         const state = get()
 
@@ -112,7 +127,7 @@ const useStudyStore = create(
         set((s) => ({
           testHistory: [
             ...s.testHistory,
-            { subject, score, wrongAnswers, date: new Date().toISOString(), label },
+            { subject, score, wrongAnswers, date: new Date().toISOString(), label, questionType },
           ],
           streak: newStreak,
           lastStudiedDate: today,
@@ -210,6 +225,104 @@ const useStudyStore = create(
           uiToast: { id: Date.now(), message: `Pomodoro completado: ${duration} min` },
         })),
 
+      /** Selecciona materia para el Pomodoro activo */
+      setPomodoroSubject: (subject) =>
+        set((s) => ({
+          pomodoroTimer: {
+            ...s.pomodoroTimer,
+            selectedSubject: subject,
+          },
+        })),
+
+      /** Inicia el temporizador Pomodoro global */
+      startPomodoro: () =>
+        set((s) => {
+          if (s.pomodoroTimer.running) return {}
+          return {
+            pomodoroTimer: {
+              ...s.pomodoroTimer,
+              running: true,
+              endAt: Date.now() + s.pomodoroTimer.secondsLeft * 1000,
+            },
+          }
+        }),
+
+      /** Pausa el temporizador Pomodoro global */
+      pausePomodoro: () =>
+        set((s) => {
+          if (!s.pomodoroTimer.running || !s.pomodoroTimer.endAt) return {}
+          const secondsLeft = Math.max(0, Math.ceil((s.pomodoroTimer.endAt - Date.now()) / 1000))
+          return {
+            pomodoroTimer: {
+              ...s.pomodoroTimer,
+              running: false,
+              endAt: null,
+              secondsLeft,
+            },
+          }
+        }),
+
+      /** Resetea el Pomodoro global al estado inicial */
+      resetPomodoro: () =>
+        set((s) => ({
+          pomodoroTimer: {
+            ...s.pomodoroTimer,
+            isWork: true,
+            secondsLeft: POMODORO_WORK_MINS * 60,
+            running: false,
+            endAt: null,
+            sessionCount: 1,
+          },
+        })),
+
+      /** Sincroniza el reloj con tiempo real (permite navegar sin que se pare) */
+      syncPomodoroClock: () =>
+        set((s) => {
+          const timer = s.pomodoroTimer
+          if (!timer.running || !timer.endAt) return {}
+
+          const secondsLeft = Math.max(0, Math.ceil((timer.endAt - Date.now()) / 1000))
+          if (secondsLeft > 0) {
+            if (secondsLeft === timer.secondsLeft) return {}
+            return {
+              pomodoroTimer: {
+                ...timer,
+                secondsLeft,
+              },
+            }
+          }
+
+          if (timer.isWork) {
+            const nextSessionCount = timer.sessionCount + 1
+            return {
+              pomodoroSessions: [
+                ...s.pomodoroSessions,
+                { subject: timer.selectedSubject, duration: POMODORO_WORK_MINS, date: new Date().toISOString() },
+              ],
+              pomodoroTimer: {
+                ...timer,
+                running: false,
+                endAt: null,
+                isWork: false,
+                secondsLeft: POMODORO_BREAK_MINS * 60,
+                sessionCount: nextSessionCount,
+              },
+              uiToast: { id: Date.now(), message: `Pomodoro completado: ${POMODORO_WORK_MINS} min` },
+            }
+          }
+
+          return {
+            pomodoroTimer: {
+              ...timer,
+              running: false,
+              endAt: null,
+              isWork: true,
+              secondsLeft: POMODORO_WORK_MINS * 60,
+            },
+            uiToast: { id: Date.now(), message: 'Descanso completado' },
+          }
+        }),
+
       /** Resetea todo el progreso */
       reset: () =>
         set({
@@ -218,6 +331,14 @@ const useStudyStore = create(
           lastStudiedDate: null,
           testHistory: [],
           pomodoroSessions: [],
+          pomodoroTimer: {
+            isWork: true,
+            secondsLeft: POMODORO_WORK_MINS * 60,
+            running: false,
+            endAt: null,
+            sessionCount: 1,
+            selectedSubject: 'biologia',
+          },
           completedExams: [],
           flashcardHistory: [],
           flashcardWrongIds: {},
@@ -239,6 +360,7 @@ const useStudyStore = create(
         lastStudiedDate: state.lastStudiedDate,
         testHistory: state.testHistory,
         pomodoroSessions: state.pomodoroSessions,
+        pomodoroTimer: state.pomodoroTimer,
         completedExams: state.completedExams,
         flashcardHistory: state.flashcardHistory,
         flashcardWrongIds: state.flashcardWrongIds,

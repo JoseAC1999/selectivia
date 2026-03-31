@@ -132,6 +132,7 @@ export default function Tests() {
   const [answers, setAnswers] = useState([])           // array de strings
   const [revealed, setRevealed] = useState(false)
   const [results, setResults] = useState([])           // { card, userAnswer, selfScore: 0|1|2 }
+  const [touchStartX, setTouchStartX] = useState(null)
 
   // Cronómetro
   const [elapsed, setElapsed] = useState(0)
@@ -224,13 +225,27 @@ export default function Tests() {
       const totalScore = newResults.reduce((s, r) => s + (r.selfScore === 2 ? 1 : r.selfScore === 1 ? 0.5 : 0), 0)
       const score = Math.round((totalScore / questions.length) * 100) / 10  // sobre 10
       const wrongTopics = newResults.filter(r => r.selfScore === 0).map(r => r.card.topic)
-      addTestResult(selectedSubject.slug, score, wrongTopics, `Test ${selectedSubject.name}`)
+      addTestResult(selectedSubject.slug, score, wrongTopics, `Test ${selectedSubject.name}`, 'test')
       setStep('results')
     } else {
       setCurrentIdx(i => i + 1)
       setRevealed(false)
       setTimerActive(true)
     }
+  }
+
+  function handleTestTouchStart(event) {
+    if (!isMobile) return
+    setTouchStartX(event.changedTouches?.[0]?.clientX ?? null)
+  }
+
+  function handleTestTouchEnd(event) {
+    if (!isMobile || !revealed || touchStartX == null) return
+    const endX = event.changedTouches?.[0]?.clientX ?? touchStartX
+    const deltaX = endX - touchStartX
+    if (Math.abs(deltaX) < 70) return
+    handleSelfScore(deltaX > 0 ? 2 : 0)
+    setTouchStartX(null)
   }
 
   function handleBackToSubjects() {
@@ -506,6 +521,8 @@ export default function Tests() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.2 }}
+            onTouchStart={handleTestTouchStart}
+            onTouchEnd={handleTestTouchEnd}
           >
             {/* Pregunta */}
             <div style={{
@@ -697,6 +714,12 @@ export default function Tests() {
                   </div>
                 </div>
               </motion.div>
+            )}
+
+            {revealed && isMobile && (
+              <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-muted)', marginTop: 8, marginBottom: 12 }}>
+                Desliza derecha = Perfecto · izquierda = No lo sabía
+              </p>
             )}
 
             {/* Botón de revelar */}

@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
@@ -244,9 +244,15 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
 // ─── PÁGINA PRINCIPAL ─────────────────────────────────────────────────────────
 
 export default function Predicciones2026() {
+  const location = useLocation()
   const navigate = useNavigate()
-  const [selectedSlug, setSelectedSlug] = useState(SUBJECTS[0].slug)
+  const initialSlug = SUBJECTS.some((s) => s.slug === location.state?.subject)
+    ? location.state.subject
+    : SUBJECTS[0].slug
+  const [selectedSlug, setSelectedSlug] = useState(initialSlug)
   const [activeFilter, setActiveFilter] = useState('todas')
+  const [visibleCount, setVisibleCount] = useState(8)
+  const contentRef = useRef(null)
 
   const selectedSubject = SUBJECTS.find(s => s.slug === selectedSlug)
 
@@ -265,13 +271,30 @@ export default function Predicciones2026() {
     if (activeFilter === 'todas') return allPredictions
     return allPredictions.filter(p => normalizeConfidence(p.confidence) === activeFilter)
   }, [allPredictions, activeFilter])
+  const visiblePredictions = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount])
 
   const muyAltaCount = countByLevel['muy-alta'] ?? 0
 
   function handleSelectSubject(slug) {
     setSelectedSlug(slug)
     setActiveFilter('todas')
+    setVisibleCount(8)
+    window.setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 60)
   }
+
+  useEffect(() => {
+    if (!location.state?.subject) return
+    if (!SUBJECTS.some((s) => s.slug === location.state.subject)) return
+    setSelectedSlug(location.state.subject)
+    setActiveFilter('todas')
+    setVisibleCount(8)
+  }, [location.state])
+
+  useEffect(() => {
+    setVisibleCount(8)
+  }, [selectedSlug, activeFilter])
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)', color: 'var(--text-primary)' }}>
@@ -318,7 +341,7 @@ export default function Predicciones2026() {
           </motion.aside>
 
           {/* Contenido principal */}
-          <div className="flex-1 min-w-0">
+          <div ref={contentRef} className="flex-1 min-w-0">
 
             {/* Resumen */}
             <AnimatePresence mode="wait">
@@ -400,7 +423,7 @@ export default function Predicciones2026() {
                     <p>No hay predicciones para este filtro</p>
                   </div>
                 ) : (
-                  filtered.map((pred, i) => (
+                  visiblePredictions.map((pred, i) => (
                     <PredictionCard
                       key={pred.id ?? i}
                       prediction={pred}
@@ -408,6 +431,19 @@ export default function Predicciones2026() {
                       onStudyFlashcards={() => navigate('/flashcards', { state: { subject: selectedSlug } })}
                     />
                   ))
+                )}
+                {filtered.length > visiblePredictions.length && (
+                  <button
+                    onClick={() => setVisibleCount((value) => value + 8)}
+                    className="mt-2 w-full rounded-xl border px-4 py-2.5 text-sm font-semibold transition"
+                    style={{
+                      borderColor: 'var(--border)',
+                      background: 'var(--bg-card)',
+                      color: 'var(--text-secondary)',
+                    }}
+                  >
+                    Cargar más predicciones ({filtered.length - visiblePredictions.length} restantes)
+                  </button>
                 )}
               </motion.div>
             </AnimatePresence>

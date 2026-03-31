@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../store/useStudyStore.js'
 import useGlobalSearch from '../hooks/useGlobalSearch.js'
+import { generateAdaptivePlan } from '../lib/adaptivePlan.js'
+import { preloadRoute } from '../lib/preloadRoutes.js'
 
 /** Definición de las secciones de navegación */
 const NAV_ITEMS = [
@@ -88,8 +90,7 @@ const NAV_ITEMS = [
   },
 ]
 
-const MOBILE_PRIMARY_ITEMS = NAV_ITEMS.slice(0, 4)
-const MOBILE_MORE_ITEMS = NAV_ITEMS.slice(4)
+const MOBILE_ITEMS = NAV_ITEMS
 
 /** Indicador circular de progreso pequeño */
 function ProgressDot({ value }) {
@@ -116,11 +117,14 @@ function ProgressDot({ value }) {
 }
 
 /** Elemento de navegación individual */
-function NavItem({ item, progress, isMobile = false }) {
+function NavItem({ item, progress, isMobile = false, badgeCount = 0, hasIndicator = false }) {
   return (
     <NavLink
       to={item.path}
       end={item.path === '/'}
+      onMouseEnter={() => preloadRoute(item.path)}
+      onFocus={() => preloadRoute(item.path)}
+      onTouchStart={() => preloadRoute(item.path)}
       className={({ isActive }) =>
         [
           'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200',
@@ -137,40 +141,38 @@ function NavItem({ item, progress, isMobile = false }) {
       {({ isActive }) => (
         <>
           <span
-            style={{ color: isActive ? '#7C3AED' : 'var(--text-muted)' }}
+            style={{ color: isActive ? '#7C3AED' : 'var(--text-muted)', position: 'relative' }}
             className="transition-colors duration-200"
           >
             {item.icon}
+            {(hasIndicator || badgeCount > 0) && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: -4,
+                  right: -6,
+                  minWidth: badgeCount > 0 ? 14 : 8,
+                  height: badgeCount > 0 ? 14 : 8,
+                  borderRadius: 999,
+                  fontSize: 9,
+                  fontWeight: 700,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#EF4444',
+                  color: '#fff',
+                  padding: badgeCount > 0 ? '0 4px' : 0,
+                }}
+              >
+                {badgeCount > 0 ? (badgeCount > 9 ? '9+' : badgeCount) : ''}
+              </span>
+            )}
           </span>
           <span className={isMobile ? 'text-[10px] leading-tight' : ''}>{item.label}</span>
           {!isMobile && progress != null && <ProgressDot value={progress} />}
         </>
       )}
     </NavLink>
-  )
-}
-
-function MobileMenuButton({ onClick, isOpen }) {
-  return (
-    <button
-      onClick={onClick}
-      className={[
-        'min-w-[4.5rem] flex flex-col items-center gap-1 rounded-lg px-2 py-2 text-center text-xs font-medium transition-all duration-200',
-        isOpen ? 'bg-[#7C3AED]/10 shadow-[0_0_20px_rgba(124,58,237,0.15)]' : '',
-      ].join(' ')}
-      style={{ color: isOpen ? 'var(--text-primary)' : 'var(--text-secondary)' }}
-      aria-expanded={isOpen}
-      aria-label="Abrir mas opciones"
-    >
-      <span style={{ color: isOpen ? '#7C3AED' : 'var(--text-muted)' }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-          <circle cx="12" cy="5" r="1.5" />
-          <circle cx="12" cy="12" r="1.5" />
-          <circle cx="12" cy="19" r="1.5" />
-        </svg>
-      </span>
-      <span className="text-[10px] leading-tight">Mas</span>
-    </button>
   )
 }
 
@@ -481,6 +483,10 @@ function ProfileModal({ onClose }) {
 export default function Layout({ children }) {
   const navigate = useNavigate()
   const progress = useStudyStore((s) => s.progress)
+  const flashcardWrongIds = useStudyStore((s) => s.flashcardWrongIds)
+  const testHistory = useStudyStore((s) => s.testHistory)
+  const studyHoursPerDay = useStudyStore((s) => s.studyHoursPerDay)
+  const studyPlanCompleted = useStudyStore((s) => s.studyPlanCompleted)
   const streak = useStudyStore((s) => s.streak)
   const soundMuted = useStudyStore((s) => s.soundMuted)
   const toggleMute = useStudyStore((s) => s.toggleMute)
@@ -490,8 +496,9 @@ export default function Layout({ children }) {
   const examDate = useStudyStore((s) => s.examDate)
   const uiToast = useStudyStore((s) => s.uiToast)
   const clearToast = useStudyStore((s) => s.clearToast)
+  const pomodoroTimer = useStudyStore((s) => s.pomodoroTimer)
+  const syncPomodoroClock = useStudyStore((s) => s.syncPomodoroClock)
   const [showProfileModal, setShowProfileModal] = useState(false)
-  const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const { loading: searchLoading, results: searchResults } = useGlobalSearch(showSearch, searchQuery)
@@ -506,11 +513,35 @@ export default function Layout({ children }) {
       : `Faltan ${daysLeft} dias`
     : 'Configura tu fecha de selectividad'
 
+  const pendingPlanCount = useMemo(() => {
+    if (!examDate) return 0
+    const today = new Date().toISOString().split('T')[0]
+    const plan = generateAdaptivePlan({
+      examDate,
+      progress,
+      flashcardWrongIds,
+      hoursPerDay: studyHoursPerDay,
+      testHistory,
+      studyPlanCompleted,
+    })
+    return plan
+      .filter((day) => day.date >= today && !studyPlanCompleted.includes(day.date))
+      .slice(0, 7)
+      .length
+  }, [examDate, progress, flashcardWrongIds, studyHoursPerDay, testHistory, studyPlanCompleted])
+
   useEffect(() => {
     if (!uiToast) return undefined
     const timeoutId = window.setTimeout(() => clearToast(), 2200)
     return () => window.clearTimeout(timeoutId)
   }, [uiToast, clearToast])
+
+  useEffect(() => {
+    if (!pomodoroTimer.running) return undefined
+    syncPomodoroClock()
+    const intervalId = window.setInterval(() => syncPomodoroClock(), 1000)
+    return () => window.clearInterval(intervalId)
+  }, [pomodoroTimer.running, syncPomodoroClock])
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -533,6 +564,12 @@ export default function Layout({ children }) {
     setSearchQuery('')
   }
 
+  function formatPomodoroTime(totalSeconds) {
+    const mins = Math.floor(totalSeconds / 60).toString().padStart(2, '0')
+    const secs = (totalSeconds % 60).toString().padStart(2, '0')
+    return `${mins}:${secs}`
+  }
+
   return (
     <>
     <AnimatePresence>
@@ -551,108 +588,6 @@ export default function Layout({ children }) {
           loading={searchLoading}
           results={searchResults}
         />
-      )}
-    </AnimatePresence>
-    <AnimatePresence>
-      {showMobileMenu && (
-        <>
-          <motion.button
-            type="button"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            onClick={() => setShowMobileMenu(false)}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 55,
-              border: 'none',
-              background: 'rgba(0,0,0,0.45)',
-            }}
-            aria-label="Cerrar menu"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed left-3 right-3 z-[60]"
-            style={{
-              bottom: 'calc(82px + env(safe-area-inset-bottom))',
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: 18,
-              padding: 14,
-              boxShadow: '0 24px 80px rgba(0,0,0,0.28)',
-            }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 8, marginBottom: 10 }}>
-              {MOBILE_MORE_ITEMS.map((item) => (
-                <div key={item.path} onClick={() => setShowMobileMenu(false)}>
-                  <NavItem item={item} isMobile />
-                </div>
-              ))}
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-              <button
-                onClick={() => {
-                  setShowProfileModal(true)
-                  setShowMobileMenu(false)
-                }}
-                style={{
-                  minHeight: 48,
-                  borderRadius: 12,
-                  border: '1px solid var(--border)',
-                  background: 'var(--bg-base)',
-                  color: 'var(--text-primary)',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                Perfil
-              </button>
-              <button
-                onClick={() => {
-                  toggleDarkMode()
-                  setShowMobileMenu(false)
-                }}
-                style={{
-                  minHeight: 48,
-                  borderRadius: 12,
-                  border: '1px solid var(--border)',
-                  background: 'var(--bg-base)',
-                  color: 'var(--text-primary)',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                {darkMode ? 'Modo claro' : 'Modo oscuro'}
-              </button>
-              <button
-                onClick={() => {
-                  toggleMute()
-                  setShowMobileMenu(false)
-                }}
-                style={{
-                  minHeight: 48,
-                  borderRadius: 12,
-                  border: '1px solid var(--border)',
-                  background: 'var(--bg-base)',
-                  color: 'var(--text-primary)',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  gridColumn: '1 / -1',
-                }}
-              >
-                {soundMuted ? 'Activar sonidos' : 'Silenciar sonidos'}
-              </button>
-            </div>
-          </motion.div>
-        </>
       )}
     </AnimatePresence>
     <div className="flex overflow-hidden" style={{ backgroundColor: 'var(--bg-base)', minHeight: '100dvh' }}>
@@ -701,7 +636,13 @@ export default function Layout({ children }) {
         {/* Nav links */}
         <nav className="flex flex-col gap-1 px-3 py-4 flex-1 overflow-y-auto">
           {NAV_ITEMS.map((item) => (
-            <NavItem key={item.path} item={item} progress={progress[item.subject]} />
+            <NavItem
+              key={item.path}
+              item={item}
+              progress={progress[item.subject]}
+              hasIndicator={item.path === '/pomodoro' && pomodoroTimer.running}
+              badgeCount={item.path === '/calendario' ? pendingPlanCount : 0}
+            />
           ))}
         </nav>
 
@@ -794,6 +735,20 @@ export default function Layout({ children }) {
             <div className="flex items-center gap-2">
               <SearchButton onClick={() => setShowSearch(true)} compact />
               <button
+                onClick={toggleMute}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: 18,
+                }}
+                title={soundMuted ? 'Activar sonidos' : 'Silenciar sonidos'}
+              >
+                {soundMuted ? '🔇' : '🔊'}
+              </button>
+              <button
                 onClick={toggleDarkMode}
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
                 style={{
@@ -809,6 +764,31 @@ export default function Layout({ children }) {
               </button>
             </div>
           </div>
+          {pomodoroTimer.running && (
+            <button
+              onClick={() => navigate('/pomodoro')}
+              className="mx-4 mb-3 flex w-auto items-center justify-between rounded-xl px-3 py-2 text-left"
+              style={{
+                background: pomodoroTimer.isWork
+                  ? 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.16))'
+                  : 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(245,158,11,0.16))',
+                border: `1px solid ${pomodoroTimer.isWork ? 'rgba(124,58,237,0.45)' : 'rgba(16,185,129,0.45)'}`,
+                color: 'var(--text-primary)',
+                cursor: 'pointer',
+              }}
+              aria-label="Abrir Pomodoro en curso"
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: 16 }}>{pomodoroTimer.isWork ? '🍅' : '☕'}</span>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>
+                  {pomodoroTimer.isWork ? 'Pomodoro activo' : 'Descanso activo'}
+                </span>
+              </div>
+              <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: 16 }}>
+                {formatPomodoroTime(pomodoroTimer.secondsLeft)}
+              </span>
+            </button>
+          )}
         </div>
         <div
           className="flex-1 overflow-y-auto md:pb-0"
@@ -827,10 +807,15 @@ export default function Layout({ children }) {
           padding: '10px 8px calc(10px + env(safe-area-inset-bottom))',
         }}
       >
-        {MOBILE_PRIMARY_ITEMS.map((item) => (
-          <NavItem key={item.path} item={item} isMobile />
+        {MOBILE_ITEMS.map((item) => (
+          <NavItem
+            key={item.path}
+            item={item}
+            isMobile
+            hasIndicator={item.path === '/pomodoro' && pomodoroTimer.running}
+            badgeCount={item.path === '/calendario' ? pendingPlanCount : 0}
+          />
         ))}
-        <MobileMenuButton onClick={() => setShowMobileMenu((v) => !v)} isOpen={showMobileMenu} />
       </nav>
     </div>
     <AnimatePresence>

@@ -8,6 +8,7 @@ import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META as PLAN_SUBJECT_META, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
+import { preloadRoute } from '../../lib/preloadRoutes.js'
 
 // Totales de preguntas por materia (de src/data/ebau/)
 const TOTAL_QUESTIONS = {
@@ -66,6 +67,8 @@ function SubjectCard({ slug, meta, pct, custom }) {
       animate="visible"
       whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
       onClick={() => navigate('/examenes')}
+      onMouseEnter={() => preloadRoute('/examenes')}
+      onTouchStart={() => preloadRoute('/examenes')}
       style={{
         background: 'var(--bg-card)',
         border: '1px solid var(--border)',
@@ -221,16 +224,18 @@ export default function Dashboard() {
 
   // ── Plan de estudio: próximos 3 días ──
   const today = new Date().toISOString().split('T')[0]
-  const nextPlanDays = useMemo(() => {
-    const plan = generateAdaptivePlan({
+  const adaptivePlan = useMemo(() => {
+    return generateAdaptivePlan({
       examDate,
       progress,
       flashcardWrongIds,
       hoursPerDay: studyHoursPerDay,
       testHistory,
+      studyPlanCompleted,
     })
-
-    return plan.slice(0, 3).map((day, i) => ({
+  }, [examDate, progress, flashcardWrongIds, studyHoursPerDay, studyPlanCompleted, testHistory])
+  const nextPlanDays = useMemo(() => {
+    return adaptivePlan.slice(0, 3).map((day, i) => ({
       date: day.date,
       label: i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : new Date(day.date).toLocaleDateString('es-ES', { weekday: 'short' }),
       subject: day.focusSubject,
@@ -238,7 +243,56 @@ export default function Dashboard() {
       rationale: day.tasks[0]?.rationale ?? '',
       completed: studyPlanCompleted.includes(day.date),
     }))
-  }, [examDate, progress, flashcardWrongIds, studyHoursPerDay, studyPlanCompleted, testHistory])
+  }, [adaptivePlan, studyPlanCompleted])
+  const missedRecentDays = adaptivePlan[0]?.missedRecentDays ?? 0
+  const urgencyMode = adaptivePlan[0]?.urgencyMode ?? false
+  const daysLeft = examDate
+    ? Math.max(0, Math.ceil((new Date(examDate) - new Date(today)) / 86400000))
+    : null
+
+  const weeklyTargetHours = Math.min(42, Math.max(7, Math.round(studyHoursPerDay * 7)))
+  const weeklyHoursValue = Number(totalWeekHours)
+  const weeklyObjectivePct = Math.min(100, Math.round((weeklyHoursValue / weeklyTargetHours) * 100))
+
+  const questionTypeStats = useMemo(() => {
+    const recentHistory = testHistory.slice(-30)
+    const map = new Map()
+    for (const entry of recentHistory) {
+      const type = entry.questionType || 'desarrollo'
+      if (!map.has(type)) map.set(type, { type, count: 0, avg: 0, total: 0 })
+      const current = map.get(type)
+      current.count += 1
+      current.total += entry.score
+      current.avg = current.total / current.count
+    }
+    return [...map.values()].sort((a, b) => b.count - a.count)
+  }, [testHistory])
+
+  const achievements = useMemo(() => {
+    const list = []
+    if (streak >= 3) list.push(`Racha activa de ${streak} días`)
+    if (weeklyHoursValue >= weeklyTargetHours) list.push('Objetivo semanal de horas completado')
+    const recentScores = testHistory.slice(-5).map((entry) => entry.score)
+    if (recentScores.length >= 3 && recentScores.reduce((a, b) => a + b, 0) / recentScores.length >= 7) {
+      list.push('Rendimiento alto en los últimos tests')
+    }
+    if (Object.values(flashcardWrongIds).reduce((sum, ids) => sum + ids.length, 0) === 0 && testHistory.length > 0) {
+      list.push('Sin tarjetas pendientes de repaso')
+    }
+    return list.slice(0, 3)
+  }, [streak, weeklyHoursValue, weeklyTargetHours, testHistory, flashcardWrongIds])
+
+  const reminders = useMemo(() => {
+    const list = []
+    if (daysLeft != null) {
+      if (daysLeft <= 7) list.push(`Semana clave: quedan ${daysLeft} días para el examen`)
+      else if (daysLeft <= 21) list.push(`Fase de consolidación: quedan ${daysLeft} días`)
+    }
+    if (urgencyMode) list.push('Modo urgencia activo: prioriza simulacros y autocorrección')
+    if (missedRecentDays > 0) list.push(`Tienes ${missedRecentDays} días recientes sin marcar en el plan`)
+    if (weeklyHoursValue < weeklyTargetHours * 0.65) list.push('Ritmo bajo esta semana: intenta un bloque Pomodoro extra diario')
+    return list.slice(0, 3)
+  }, [daysLeft, urgencyMode, missedRecentDays, weeklyHoursValue, weeklyTargetHours])
 
   // ── Función para cargar tarjetas de repaso ──
   async function handleStartRepaso() {
@@ -411,6 +465,46 @@ export default function Dashboard() {
           </motion.div>
         </div>
 
+        <section style={{ marginBottom: 32 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.1fr 1fr 1fr', gap: 12 }}>
+            <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 14, padding: '14px 16px' }}>
+              <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>Objetivo semanal</p>
+              <p style={{ margin: '0 0 8px', fontSize: 11, color: 'var(--text-muted)' }}>
+                {weeklyHoursValue.toFixed(1)}h / {weeklyTargetHours}h
+              </p>
+              <div style={{ height: 6, borderRadius: 99, overflow: 'hidden', background: 'var(--border)' }}>
+                <div style={{ width: `${weeklyObjectivePct}%`, height: '100%', background: '#10B981' }} />
+              </div>
+            </div>
+
+            <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 14, padding: '14px 16px' }}>
+              <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>Logros útiles</p>
+              {achievements.length === 0 ? (
+                <p style={{ margin: 0, fontSize: 11, color: 'var(--text-muted)' }}>Aún sin hitos esta semana.</p>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {achievements.map((item) => (
+                    <div key={item} style={{ fontSize: 11, color: 'var(--text-secondary)' }}>• {item}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 14, padding: '14px 16px' }}>
+              <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>Recordatorios suaves</p>
+              {reminders.length === 0 ? (
+                <p style={{ margin: 0, fontSize: 11, color: 'var(--text-muted)' }}>Vas con buen ritmo, sigue así.</p>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {reminders.map((item) => (
+                    <div key={item} style={{ fontSize: 11, color: 'var(--text-secondary)' }}>• {item}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
         {/* ── Acciones rápidas ── */}
         <section style={{ marginBottom: 36 }}>
           <h2 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14, fontFamily: '"Space Grotesk", sans-serif' }}>
@@ -427,6 +521,7 @@ export default function Dashboard() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate(action.path)}
+                onTouchStart={() => preloadRoute(action.path)}
                 style={{
                   background: 'var(--bg-elevated)',
                   border: '1px solid var(--border)',
@@ -435,7 +530,11 @@ export default function Dashboard() {
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
                   transition: 'border-color 0.2s, background 0.2s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = `${action.color}70`; e.currentTarget.style.background = `${action.color}12` }}
+                onMouseEnter={e => {
+                  preloadRoute(action.path)
+                  e.currentTarget.style.borderColor = `${action.color}70`
+                  e.currentTarget.style.background = `${action.color}12`
+                }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--bg-elevated)' }}
               >
                 <span style={{ fontSize: 24 }}>{action.icon}</span>
@@ -725,6 +824,43 @@ export default function Dashboard() {
             </div>
           </section>
         )}
+
+        <section style={{ marginBottom: 30 }}>
+          <h2 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 12, fontFamily: '"Space Grotesk", sans-serif' }}>
+            Historial por tipo de pregunta
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, minmax(0, 1fr))', gap: 10 }}>
+            {questionTypeStats.length === 0 ? (
+              <div style={{
+                gridColumn: '1 / -1',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border)',
+                borderRadius: 12,
+                padding: '12px 14px',
+                fontSize: 12,
+                color: 'var(--text-muted)',
+              }}>
+                Aún no hay datos por tipo. Se irá llenando al completar tests y exámenes.
+              </div>
+            ) : (
+              questionTypeStats.map((item) => (
+                <div
+                  key={item.type}
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 12,
+                    padding: '12px 14px',
+                  }}
+                >
+                  <p style={{ margin: '0 0 4px', fontSize: 11, color: 'var(--text-muted)', textTransform: 'capitalize' }}>{item.type}</p>
+                  <p style={{ margin: '0 0 6px', fontSize: 18, fontWeight: 700, color: 'var(--text-primary)' }}>{item.avg.toFixed(1)}</p>
+                  <p style={{ margin: 0, fontSize: 10, color: 'var(--text-muted)' }}>{item.count} intentos recientes</p>
+                </div>
+              ))
+            )}
+          </div>
+        </section>
 
         {/* ── Historial de exámenes ── */}
         <section>

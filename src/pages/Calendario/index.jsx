@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META, addDays, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
@@ -76,6 +77,7 @@ function CalendarDay({ dateStr, today, examDate, isCompleted, isPlan, planTasks,
 
 // ── Página principal ──────────────────────────────────────────────────────────
 export default function Calendario() {
+  const navigate = useNavigate()
   const isMobile = useIsMobile()
   const {
     examDate, setExamDate,
@@ -91,6 +93,18 @@ export default function Calendario() {
   })
   const [expandedDay, setExpandedDay] = useState(null)
 
+  function openTask(task) {
+    if (task.kind === 'flashcards') {
+      navigate('/flashcards', { state: { subject: task.subject } })
+      return
+    }
+    if (task.kind === 'exam') {
+      navigate('/examenes', { state: { subject: task.subject } })
+      return
+    }
+    navigate('/predicciones', { state: { subject: task.subject } })
+  }
+
   // Días restantes
   const daysLeft = examDate ? Math.max(0, daysBetween(today, examDate)) : null
   const urgColor = daysLeft !== null ? urgencyColor(daysLeft) : '#71717A'
@@ -98,8 +112,8 @@ export default function Calendario() {
   // Plan generado
   const plan = useMemo(() => generateAdaptivePlan({
     examDate, progress, flashcardWrongIds,
-    hoursPerDay: studyHoursPerDay, testHistory,
-  }), [examDate, progress, flashcardWrongIds, studyHoursPerDay, testHistory])
+    hoursPerDay: studyHoursPerDay, testHistory, studyPlanCompleted,
+  }), [examDate, progress, flashcardWrongIds, studyHoursPerDay, testHistory, studyPlanCompleted])
 
   const planByDate = useMemo(() => {
     const m = {}
@@ -284,7 +298,6 @@ export default function Calendario() {
                     isPlan={dateStr ? !!planByDate[dateStr] : false}
                     planTasks={dateStr ? planByDate[dateStr] : []}
                     onClick={(d) => {
-                      toggleStudyPlanDay(d)
                       setExpandedDay(prev => prev === d ? null : d)
                     }}
                   />
@@ -342,11 +355,18 @@ export default function Calendario() {
                       {planByDate[expandedDay].map((task, i) => {
                         const meta = SUBJECT_META[task.subject]
                         return (
-                          <div key={i} style={{
+                          <button
+                            key={i}
+                            onClick={() => openTask(task)}
+                            style={{
                             display: 'flex', alignItems: 'center', gap: 10,
                             padding: '10px 12px', borderRadius: 10,
                             background: `${meta.color}0e`, border: `1px solid ${meta.color}25`,
-                          }}>
+                            cursor: 'pointer',
+                            width: '100%',
+                            textAlign: 'left',
+                          }}
+                          >
                             <span style={{ fontSize: 18 }}>{meta.icon}</span>
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{meta.name}</div>
@@ -360,7 +380,7 @@ export default function Calendario() {
                             <span style={{ fontSize: 10, color: meta.color, whiteSpace: 'nowrap' }}>
                               {task.mins}min
                             </span>
-                          </div>
+                          </button>
                         )
                       })}
                     </div>

@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 import confetti from 'canvas-confetti'
 import useStudyStore from '../../store/useStudyStore.js'
 import PDF_PATHS from '../../data/pdf-paths.json'
 import { playConfetti } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { assessAnswerAgainstText, assessChecklistCoverage } from '../../lib/localAssessment.js'
+import { buildTomorrowTasks, inferQuestionType } from '../../lib/examFeedback.js'
 import biologiaData from '../../data/ebau/biologia.json'
 import historiaData from '../../data/ebau/historia.json'
 import inglesData from '../../data/ebau/ingles.json'
@@ -511,6 +513,7 @@ const stepAnim = {
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
 
 export default function ExamenesOficiales() {
+  const location = useLocation()
   const isMobile = useIsMobile()
   // Navegación por pasos
   const [step, setStep] = useState('subjects')
@@ -524,6 +527,7 @@ export default function ExamenesOficiales() {
   // Selección de año y examen
   const [selectedYear, setSelectedYear] = useState(2024)
   const [examIndex, setExamIndex] = useState(0)
+  const [visibleExams, setVisibleExams] = useState(8)
 
   // Modo revisión
   const [showAnswer, setShowAnswer] = useState(false)
@@ -584,14 +588,19 @@ export default function ExamenesOficiales() {
 
   // Si hay estructura EBAU, solo puntúan los grupos que el alumno ha seleccionado.
   // En modo flat (sin estructura), todos los ítems marcados suman.
-  const liveScore = ebauStructure
+  const rawLiveScore = ebauStructure
     ? checklistItems.filter(i => selectedGroups.has(i.groupId) && i.checked).reduce((s, i) => s + i.points, 0)
     : checklistItems.reduce((s, i) => i.checked ? s + i.points : s, 0)
 
-  // maxPossibleScore = suma de puntos de los grupos seleccionados (cap 10)
-  const maxPossibleScore = ebauStructure
-    ? Math.min(10, checklistItems.filter(i => selectedGroups.has(i.groupId)).reduce((s, i) => s + i.points, 0))
-    : Math.min(10, checklistItems.reduce((s, i) => s + i.points, 0))
+  // Puntos máximos brutos disponibles según criterios seleccionados.
+  const rawMaxPossibleScore = ebauStructure
+    ? checklistItems.filter(i => selectedGroups.has(i.groupId)).reduce((s, i) => s + i.points, 0)
+    : checklistItems.reduce((s, i) => s + i.points, 0)
+
+  // Nota normalizada siempre sobre 10.
+  const liveScore = rawMaxPossibleScore > 0
+    ? Math.min(10, Math.round((rawLiveScore / rawMaxPossibleScore) * 1000) / 100)
+    : 0
 
   const scoreColor = liveScore >= 7 ? '#10B981' : liveScore >= 5 ? '#F59E0B' : '#EF4444'
   const checklistSuggestion = useChecklist
@@ -600,6 +609,12 @@ export default function ExamenesOficiales() {
   const fallbackSuggestion = activeExam
     ? assessAnswerAgainstText(userAnswer, activeExam.rawAnswer || activeExam.rawQuestion, activeExam.rawQuestion)
     : null
+  const tomorrowTasks = buildTomorrowTasks({
+    checklistItems,
+    selectedGroups,
+    fallbackSuggestion,
+    maxTasks: 3,
+  })
 
   // ── Efectos ─────────────────────────────────────────────────────────────────
 
@@ -643,6 +658,15 @@ export default function ExamenesOficiales() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (step !== 'subjects') return
+    const targetSlug = location.state?.subject
+    if (!targetSlug) return
+    const subject = SUBJECTS.find((s) => s.slug === targetSlug)
+    if (!subject) return
+    handleSelectSubject(subject)
+  }, [location.state, step])
+
   // ── Manejadores de eventos ──────────────────────────────────────────────────
 
   async function handleSelectSubject(subject) {
@@ -664,6 +688,7 @@ export default function ExamenesOficiales() {
       const years = [...new Set(data.questions.map(q => q.year))].sort()
       setSelectedYear(years[0] ?? 2024)
       setExamIndex(0)
+      setVisibleExams(8)
       setStep('exams')
     } catch {
       setLoadError(`Error al cargar los datos de ${subject.name}. Inténtalo de nuevo.`)
@@ -676,6 +701,7 @@ export default function ExamenesOficiales() {
   function handleYearChange(year) {
     setSelectedYear(year)
     setExamIndex(0)
+    setVisibleExams(8)
   }
 
   function handleEnterRevision(idx) {
@@ -704,10 +730,11 @@ export default function ExamenesOficiales() {
   function handleSaveAndFinish() {
     const hasChecklist = checklistItems.length > 0
     const score = hasChecklist
-      ? Math.min(10, Math.round(checklistItems.reduce((s, i) => i.checked ? s + i.points : s, 0) * 100) / 100)
+      ? liveScore
       : Math.min(10, Math.max(0, parseFloat(examScore) || 0))
     const examLabel = activeExam ? formatExamLabel(activeExam) : ''
-    addTestResult(selectedSubject.slug, score, [], examLabel)
+    const questionType = inferQuestionType(selectedSubject.slug, activeExam)
+    addTestResult(selectedSubject.slug, score, [], examLabel, questionType)
     if (activeExam) markExamCompleted(activeExam.id, selectedSubject.slug)
     if (score >= 5) {
       playConfetti()
@@ -919,7 +946,7 @@ export default function ExamenesOficiales() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filteredExams.map((exam, idx) => (
+                {filteredExams.slice(0, visibleExams).map((exam, idx) => (
                   <ExamCard
                     key={exam.id}
                     exam={exam}
@@ -929,6 +956,24 @@ export default function ExamenesOficiales() {
                     completed={completedExams.some(e => e.id === exam.id)}
                   />
                 ))}
+                {filteredExams.length > visibleExams && (
+                  <button
+                    onClick={() => setVisibleExams((value) => value + 8)}
+                    style={{
+                      gridColumn: '1 / -1',
+                      padding: '11px 14px',
+                      borderRadius: 10,
+                      border: '1px solid var(--border)',
+                      background: 'var(--bg-card)',
+                      color: 'var(--text-secondary)',
+                      fontSize: 13,
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Cargar más exámenes ({filteredExams.length - visibleExams} restantes)
+                  </button>
+                )}
               </div>
             )}
           </motion.div>
@@ -1478,6 +1523,35 @@ export default function ExamenesOficiales() {
                   </p>
                 </div>
 
+                <div style={{
+                  background: 'var(--bg-card)', border: '1px solid var(--border)',
+                  borderRadius: 12, padding: '16px 18px', marginBottom: 18,
+                }}>
+                  <div style={{
+                    fontSize: 10, color: 'var(--text-secondary)', fontWeight: 700,
+                    textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 10,
+                  }}>
+                    Qué repasar mañana (3 tareas)
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {tomorrowTasks.map((task, idx) => (
+                      <div
+                        key={`${task.kind}-${idx}`}
+                        style={{
+                          borderRadius: 9,
+                          padding: '9px 11px',
+                          background: `${selectedSubject.color}10`,
+                          border: `1px solid ${selectedSubject.color}35`,
+                          color: 'var(--text-primary)',
+                          fontSize: 12,
+                        }}
+                      >
+                        {idx + 1}. {task.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {useChecklist ? (
                   /* ─── MODO CHECKLIST ─── */
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5" style={{ marginBottom: 20, alignItems: 'start' }}>
@@ -1531,13 +1605,13 @@ export default function ExamenesOficiales() {
                               {fmtPts(liveScore)}
                             </motion.span>
                             <span style={{ fontSize: 18, color: 'var(--text-muted)' }}>
-                              / {fmtPts(maxPossibleScore > 0 ? maxPossibleScore : 10)}
+                              / 10
                             </span>
                           </div>
                           {/* Barra de progreso */}
                           <div style={{ background: 'var(--border)', borderRadius: 6, height: 8, overflow: 'hidden' }}>
                             <motion.div
-                              animate={{ width: `${maxPossibleScore > 0 ? (liveScore / maxPossibleScore) * 100 : 0}%` }}
+                              animate={{ width: `${(liveScore / 10) * 100}%` }}
                               transition={{ duration: 0.3, ease: 'easeOut' }}
                               style={{ height: '100%', borderRadius: 6, background: scoreColor }}
                             />
@@ -1556,7 +1630,7 @@ export default function ExamenesOficiales() {
                               <div>
                                 <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Sugerencia automática</div>
                                 <div style={{ fontSize: 14, fontWeight: 700, color: selectedSubject.color }}>
-                                  {fmtPts(checklistSuggestion.suggestedPoints)} / {fmtPts(maxPossibleScore > 0 ? maxPossibleScore : checklistSuggestion.maxPoints)}
+                                  {fmtPts(rawMaxPossibleScore > 0 ? Math.min(10, Math.round((checklistSuggestion.suggestedPoints / rawMaxPossibleScore) * 1000) / 100) : 0)} / 10
                                 </div>
                               </div>
                               <button
@@ -1623,7 +1697,7 @@ export default function ExamenesOficiales() {
                                       {bloque.label}
                                     </span>
                                     <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                                      Elige {bloque.maxChoices} de {bloque.questions.length} · máx. {fmtPts(bloque.maxPts)} pts
+                                  Elige {bloque.maxChoices} de {bloque.questions.length} · máx. {fmtPts(bloque.maxPts)} pts
                                     </span>
                                   </div>
                                   {selectedInBloque.length > 0 && (
@@ -1859,10 +1933,15 @@ export default function ExamenesOficiales() {
                               )}
                             </div>
                           ))}
+                            </div>
+                          )}
+                          {rawMaxPossibleScore > 0 && (
+                            <div style={{ marginTop: 8, fontSize: 11, color: 'var(--text-muted)' }}>
+                              Criterios marcados: {fmtPts(rawLiveScore)} / {fmtPts(rawMaxPossibleScore)} puntos brutos
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  </div>
+                      </div>
                 ) : (
                   /* ─── MODO FALLBACK (sin criterios parseables) ─── */
                   <>

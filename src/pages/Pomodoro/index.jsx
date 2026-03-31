@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import { playPomodoroComplete, playBreakComplete } from '../../lib/sounds.js'
@@ -60,20 +60,21 @@ function StatsTooltip({ active, payload }) {
 
 // ── Componente principal ─────────────────────────────────────────────────────
 export default function Pomodoro() {
-  const addPomodoroSession = useStudyStore(s => s.addPomodoroSession)
   const pomodoroSessions = useStudyStore(s => s.pomodoroSessions)
+  const pomodoroTimer = useStudyStore(s => s.pomodoroTimer)
+  const startPomodoro = useStudyStore(s => s.startPomodoro)
+  const pausePomodoro = useStudyStore(s => s.pausePomodoro)
+  const resetPomodoro = useStudyStore(s => s.resetPomodoro)
+  const setPomodoroSubject = useStudyStore(s => s.setPomodoroSubject)
   const userName = useStudyStore(s => s.userName)
   const isMobile = useIsMobile()
 
-  // Estado del timer
-  const [isWork, setIsWork] = useState(true)
-  const [secondsLeft, setSecondsLeft] = useState(WORK_MINS * 60)
-  const [running, setRunning] = useState(false)
-  const [sessionCount, setSessionCount] = useState(1)
-  const [selectedSubject, setSelectedSubject] = useState('biologia')
+  const { isWork, secondsLeft, running, sessionCount, selectedSubject } = pomodoroTimer
   const [completedMsg, setCompletedMsg] = useState(null)
 
-  const intervalRef = useRef(null)
+  const prevRunningRef = useRef(running)
+  const prevIsWorkRef = useRef(isWork)
+  const prevSessionCountRef = useRef(sessionCount)
 
   // Duración total en segundos del modo actual
   const totalSeconds = isWork ? WORK_MINS * 60 : BREAK_MINS * 60
@@ -92,63 +93,47 @@ export default function Pomodoro() {
     return `${m}:${s}`
   }
 
-  // Completar sesión
-  const handleComplete = useCallback(() => {
-    setRunning(false)
-    clearInterval(intervalRef.current)
-
-    if (isWork) {
-      playPomodoroComplete()
-      // Guardar sesión de trabajo
-      addPomodoroSession(selectedSubject, WORK_MINS)
-      const baseMsg = WORK_MESSAGES[Math.floor(Math.random() * WORK_MESSAGES.length)]
-      const msg = userName ? `¡Bien hecho, ${userName}! 💪 Sesión completada.` : baseMsg
-      setCompletedMsg(msg)
-      // Confetti al completar ciclo de 4 sesiones
-      const newCount = sessionCount + 1
-      if (newCount % SESSIONS_PER_CYCLE === 1) {
-        confetti({ particleCount: 180, spread: 80, colors: ['#7C3AED', '#06B6D4', '#10B981'], origin: { y: 0.6 } })
-      }
-      // Pasar a descanso
-      setIsWork(false)
-      setSecondsLeft(BREAK_MINS * 60)
-      setSessionCount(newCount)
-    } else {
-      playBreakComplete()
-      const msg = BREAK_MESSAGES[Math.floor(Math.random() * BREAK_MESSAGES.length)]
-      setCompletedMsg(msg)
-      // Pasar a trabajo
-      setIsWork(true)
-      setSecondsLeft(WORK_MINS * 60)
+  useEffect(() => {
+    if (!prevRunningRef.current && running) {
+      prevRunningRef.current = running
+      prevIsWorkRef.current = isWork
+      prevSessionCountRef.current = sessionCount
+      return
     }
 
-    // Ocultar mensaje tras 4 segundos
-    setTimeout(() => setCompletedMsg(null), 4000)
-  }, [isWork, selectedSubject, addPomodoroSession])
-
-  // Tick del timer
-  useEffect(() => {
-    if (!running) return
-    intervalRef.current = setInterval(() => {
-      setSecondsLeft(s => {
-        if (s <= 1) {
-          handleComplete()
-          return 0
+    if (prevRunningRef.current && !running) {
+      if (prevIsWorkRef.current && !isWork) {
+        playPomodoroComplete()
+        const baseMsg = WORK_MESSAGES[Math.floor(Math.random() * WORK_MESSAGES.length)]
+        const msg = userName ? `¡Bien hecho, ${userName}! 💪 Sesión completada.` : baseMsg
+        setCompletedMsg(msg)
+        if (sessionCount !== prevSessionCountRef.current && sessionCount % SESSIONS_PER_CYCLE === 1) {
+          confetti({ particleCount: 180, spread: 80, colors: ['#7C3AED', '#06B6D4', '#10B981'], origin: { y: 0.6 } })
         }
-        return s - 1
-      })
-    }, 1000)
-    return () => clearInterval(intervalRef.current)
-  }, [running, handleComplete])
+      } else if (!prevIsWorkRef.current && isWork) {
+        playBreakComplete()
+        const msg = BREAK_MESSAGES[Math.floor(Math.random() * BREAK_MESSAGES.length)]
+        setCompletedMsg(msg)
+      }
+      const timeoutId = setTimeout(() => setCompletedMsg(null), 4000)
+      prevRunningRef.current = running
+      prevIsWorkRef.current = isWork
+      prevSessionCountRef.current = sessionCount
+      return () => clearTimeout(timeoutId)
+    }
 
-  const handleStartPause = () => setRunning(r => !r)
+    prevRunningRef.current = running
+    prevIsWorkRef.current = isWork
+    prevSessionCountRef.current = sessionCount
+  }, [running, isWork, sessionCount, userName])
+
+  const handleStartPause = () => {
+    if (running) pausePomodoro()
+    else startPomodoro()
+  }
 
   const handleReset = () => {
-    setRunning(false)
-    clearInterval(intervalRef.current)
-    setIsWork(true)
-    setSecondsLeft(WORK_MINS * 60)
-    setSessionCount(1)
+    resetPomodoro()
     setCompletedMsg(null)
   }
 
@@ -286,7 +271,7 @@ export default function Pomodoro() {
                 {Object.entries(SUBJECT_META).map(([slug, meta]) => (
                   <button
                     key={slug}
-                    onClick={() => !running && setSelectedSubject(slug)}
+                    onClick={() => !running && setPomodoroSubject(slug)}
                     title={meta.name}
                     style={{
                       padding: '8px 4px', borderRadius: 10, fontSize: 18,
