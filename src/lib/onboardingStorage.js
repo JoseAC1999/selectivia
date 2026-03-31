@@ -1,3 +1,5 @@
+import { normalizeExamDate } from './examDate.js'
+
 const ONBOARDING_STORAGE_KEY = 'selectivia-onboarding'
 
 export function readOnboardingSnapshot() {
@@ -13,7 +15,7 @@ export function readOnboardingSnapshot() {
     return {
       completed: Boolean(parsed?.completed),
       userName: typeof parsed?.userName === 'string' ? parsed.userName : '',
-      examDate: typeof parsed?.examDate === 'string' ? parsed.examDate : null,
+      examDate: normalizeExamDate(parsed?.examDate),
     }
   } catch {
     return { completed: false, userName: '', examDate: null }
@@ -29,7 +31,7 @@ export function writeOnboardingSnapshot(userName, examDate) {
       JSON.stringify({
         completed: true,
         userName: typeof userName === 'string' ? userName : '',
-        examDate: typeof examDate === 'string' ? examDate : null,
+        examDate: normalizeExamDate(examDate),
       })
     )
   } catch {}

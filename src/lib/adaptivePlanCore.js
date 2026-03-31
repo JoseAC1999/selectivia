@@ -1,3 +1,5 @@
+import { normalizeExamDate } from './examDate.js'
+
 export const SUBJECT_META = {
   biologia: { name: 'Biología', color: '#10B981', icon: '🧬' },
   historia: { name: 'Historia', color: '#F59E0B', icon: '🏛️' },
@@ -130,14 +132,15 @@ export function generateAdaptivePlanCore({
   const safeStudyPlanCompleted = Array.isArray(studyPlanCompleted) ? studyPlanCompleted : []
 
   const today = toDateStr(new Date())
-  if (!examDate || examDate <= today) return []
-  const days = daysBetween(today, examDate)
+  const normalizedExamDate = normalizeExamDate(examDate)
+  if (!normalizedExamDate || normalizedExamDate <= today) return []
+  const days = daysBetween(today, normalizedExamDate)
   if (days <= 0 || days > 300) return []
 
   const minsPerDayBase = hoursPerDay * 60
   const urgencyMode = days <= 14
   const weakTopicsMap = buildWeakTopicMap(safeTestHistory)
-  const missedRecentDays = countMissedRecentDays(today, examDate, safeStudyPlanCompleted)
+  const missedRecentDays = countMissedRecentDays(today, normalizedExamDate, safeStudyPlanCompleted)
   const recoveryBoostDays = Math.min(5, missedRecentDays)
 
   const subjectStats = SUBJECTS

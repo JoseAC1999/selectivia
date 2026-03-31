@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META, addDays, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
+import { getDaysUntilExam } from '../../lib/examDate.js'
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -13,10 +14,6 @@ const DAY_NAMES = ['L','M','X','J','V','S','D']
 
 function toDateStr(d) {
   return d.toISOString().split('T')[0]
-}
-
-function daysBetween(a, b) {
-  return Math.round((new Date(b) - new Date(a)) / 86400000)
 }
 
 function urgencyColor(days) {
@@ -106,7 +103,8 @@ export default function Calendario() {
   }
 
   // Días restantes
-  const daysLeft = examDate ? Math.max(0, daysBetween(today, examDate)) : null
+  const daysLeftRaw = getDaysUntilExam(examDate)
+  const daysLeft = daysLeftRaw == null ? null : Math.max(0, daysLeftRaw)
   const urgColor = daysLeft !== null ? urgencyColor(daysLeft) : '#71717A'
 
   // Plan generado

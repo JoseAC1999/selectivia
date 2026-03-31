@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../store/useStudyStore.js'
 import useGlobalSearch from '../hooks/useGlobalSearch.js'
 import { generateAdaptivePlan } from '../lib/adaptivePlan.js'
+import { getDaysUntilExam, isValidExamDate } from '../lib/examDate.js'
 import { preloadRoute } from '../lib/preloadRoutes.js'
 
 /** Definición de las secciones de navegación */
@@ -503,9 +504,8 @@ export default function Layout({ children }) {
   const [searchQuery, setSearchQuery] = useState('')
   const { loading: searchLoading, results: searchResults } = useGlobalSearch(showSearch, searchQuery)
 
-  const daysLeft = examDate
-    ? Math.max(0, Math.ceil((new Date(examDate) - new Date(new Date().toISOString().split('T')[0])) / 86400000))
-    : null
+  const daysLeftRaw = getDaysUntilExam(examDate)
+  const daysLeft = daysLeftRaw == null ? null : Math.max(0, daysLeftRaw)
 
   const mobileSummary = daysLeft != null
     ? daysLeft === 0
@@ -514,7 +514,7 @@ export default function Layout({ children }) {
     : 'Configura tu fecha de selectividad'
 
   const pendingPlanCount = useMemo(() => {
-    if (!examDate) return 0
+    if (!isValidExamDate(examDate)) return 0
     const today = new Date().toISOString().split('T')[0]
     const plan = generateAdaptivePlan({
       examDate,

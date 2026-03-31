@@ -8,6 +8,7 @@ import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META as PLAN_SUBJECT_META, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
+import { getDaysUntilExam } from '../../lib/examDate.js'
 import { preloadRoute } from '../../lib/preloadRoutes.js'
 
 // Totales de preguntas por materia (de src/data/ebau/)
@@ -249,9 +250,8 @@ export default function Dashboard() {
   }, [adaptivePlan, studyPlanCompleted])
   const missedRecentDays = adaptivePlan[0]?.missedRecentDays ?? 0
   const urgencyMode = adaptivePlan[0]?.urgencyMode ?? false
-  const daysLeft = examDate
-    ? Math.max(0, Math.ceil((new Date(examDate) - new Date(today)) / 86400000))
-    : null
+  const daysLeftRaw = getDaysUntilExam(examDate)
+  const daysLeft = daysLeftRaw == null ? null : Math.max(0, daysLeftRaw)
 
   const weeklyTargetHours = Math.min(42, Math.max(7, Math.round(studyHoursPerDay * 7)))
   const weeklyHoursValue = Number(totalWeekHours)

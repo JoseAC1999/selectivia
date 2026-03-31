@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { normalizeExamDate } from '../lib/examDate.js'
 import { clearOnboardingSnapshot, readOnboardingSnapshot, writeOnboardingSnapshot } from '../lib/onboardingStorage.js'
 
 /** @typedef {{ biologia: number, fisica: number, historia: number, lengua: number, ingles: number, 'mates-sociales': number, matematicas: number, quimica: number }} SubjectProgress */
@@ -117,7 +118,7 @@ const useStudyStore = create(
       flashcardWrongIds: {},
 
       /** Fecha de selectividad elegida por el usuario (ISO date string YYYY-MM-DD) */
-      examDate: onboardingBootstrap.examDate,
+      examDate: normalizeExamDate(onboardingBootstrap.examDate),
 
       /**
        * Días del plan de estudio marcados como completados
@@ -217,7 +218,11 @@ const useStudyStore = create(
       },
 
       /** Establece la fecha del examen de selectividad */
-      setExamDate: (date) => set({ examDate: date }),
+      setExamDate: (date) => {
+        const normalizedDate = normalizeExamDate(date)
+        writeOnboardingSnapshot(get().userName, normalizedDate)
+        set({ examDate: normalizedDate })
+      },
 
       /** Actualiza las horas de estudio diarias */
       setStudyHoursPerDay: (hours) => set({ studyHoursPerDay: hours }),
@@ -232,10 +237,11 @@ const useStudyStore = create(
 
       /** Completa el onboarding guardando nombre y fecha */
       completeOnboarding: (name, date) => {
-        writeOnboardingSnapshot(name, date || null)
+        const normalizedDate = normalizeExamDate(date)
+        writeOnboardingSnapshot(name, normalizedDate)
         set({
           userName: name,
-          examDate: date || null,
+          examDate: normalizedDate,
           hasCompletedOnboarding: true,
           uiToast: { id: Date.now(), message: `Bienvenido${name ? `, ${name}` : ''}` },
         })
@@ -243,10 +249,11 @@ const useStudyStore = create(
 
       /** Actualiza el perfil del usuario */
       updateProfile: (name, date) => {
-        writeOnboardingSnapshot(name, date || null)
+        const normalizedDate = normalizeExamDate(date)
+        writeOnboardingSnapshot(name, normalizedDate)
         set({
           userName: name,
-          examDate: date || null,
+          examDate: normalizedDate,
           uiToast: { id: Date.now(), message: 'Perfil actualizado' },
         })
       },
@@ -456,7 +463,7 @@ const useStudyStore = create(
           soundMuted: typeof state.soundMuted === 'boolean' ? state.soundMuted : currentState.soundMuted,
           userName: persistedUserName,
           hasCompletedOnboarding: inferredOnboarding,
-          examDate: typeof state.examDate === 'string' || state.examDate === null ? state.examDate : currentState.examDate,
+          examDate: normalizeExamDate(state.examDate) ?? currentState.examDate,
         }
       },
       onRehydrateStorage: () => (state, error) => {
