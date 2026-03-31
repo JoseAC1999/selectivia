@@ -41,6 +41,15 @@ export default function Onboarding() {
         }
         localStorage.setItem('selectivia-store', JSON.stringify(next))
       } catch {}
+
+      window.setTimeout(() => {
+        if (window.location.pathname !== '/') {
+          window.location.assign('/')
+          return
+        }
+
+        window.location.reload()
+      }, 80)
     })
   }
 
