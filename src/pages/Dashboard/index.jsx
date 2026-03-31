@@ -184,6 +184,9 @@ export default function Dashboard() {
   const isMobile = useIsMobile()
   const { progress, streak, testHistory, pomodoroSessions, flashcardWrongIds, examDate, studyPlanCompleted, studyHoursPerDay, userName } = useStudyStore()
   const addFlashcardResult = useStudyStore(s => s.addFlashcardResult)
+  const safeTestHistory = Array.isArray(testHistory) ? testHistory : []
+  const safePomodoroSessions = Array.isArray(pomodoroSessions) ? pomodoroSessions : []
+  const safeFlashcardWrongIds = flashcardWrongIds && typeof flashcardWrongIds === 'object' ? flashcardWrongIds : {}
 
   // ── Estado Repaso rápido ──
   const [repasoCards, setRepasoCards] = useState(null)   // null = no iniciado, [] = cargando
@@ -192,16 +195,16 @@ export default function Dashboard() {
   const [repasoStreak, setRepasoStreak] = useState(false)
 
   // Últimos 5 tests
-  const recent = useMemo(() => [...testHistory].reverse().slice(0, 5), [testHistory])
+  const recent = useMemo(() => [...safeTestHistory].reverse().slice(0, 5), [safeTestHistory])
 
   // Temas más débiles: contar IDs incorrectos por materia, mostrar top 3
   const weakTopics = useMemo(() => {
-    return Object.entries(flashcardWrongIds)
+    return Object.entries(safeFlashcardWrongIds)
       .map(([subject, ids]) => ({ subject, count: ids.length, meta: SUBJECT_META[subject] }))
       .filter(x => x.count > 0 && x.meta)
       .sort((a, b) => b.count - a.count)
       .slice(0, 3)
-  }, [flashcardWrongIds])
+  }, [safeFlashcardWrongIds])
 
   // Horas por día esta semana (últimos 7 días)
   const weeklyData = useMemo(() => {
@@ -210,7 +213,7 @@ export default function Dashboard() {
       const d = new Date(today)
       d.setDate(today.getDate() - (6 - i))
       const dayStr = d.toISOString().split('T')[0]
-      const mins = pomodoroSessions
+      const mins = safePomodoroSessions
         .filter(s => s.date.startsWith(dayStr))
         .reduce((sum, s) => sum + (s.duration ?? 25), 0)
       return {
@@ -218,7 +221,7 @@ export default function Dashboard() {
         hours: Math.round((mins / 60) * 10) / 10,
       }
     })
-  }, [pomodoroSessions])
+  }, [safePomodoroSessions])
 
   const totalWeekHours = weeklyData.reduce((s, d) => s + d.hours, 0).toFixed(1)
 
@@ -228,12 +231,12 @@ export default function Dashboard() {
     return generateAdaptivePlan({
       examDate,
       progress,
-      flashcardWrongIds,
+      flashcardWrongIds: safeFlashcardWrongIds,
       hoursPerDay: studyHoursPerDay,
-      testHistory,
+      testHistory: safeTestHistory,
       studyPlanCompleted,
     })
-  }, [examDate, progress, flashcardWrongIds, studyHoursPerDay, studyPlanCompleted, testHistory])
+  }, [examDate, progress, safeFlashcardWrongIds, studyHoursPerDay, studyPlanCompleted, safeTestHistory])
   const nextPlanDays = useMemo(() => {
     return adaptivePlan.slice(0, 3).map((day, i) => ({
       date: day.date,
@@ -255,7 +258,7 @@ export default function Dashboard() {
   const weeklyObjectivePct = Math.min(100, Math.round((weeklyHoursValue / weeklyTargetHours) * 100))
 
   const questionTypeStats = useMemo(() => {
-    const recentHistory = testHistory.slice(-30)
+    const recentHistory = safeTestHistory.slice(-30)
     const map = new Map()
     for (const entry of recentHistory) {
       const type = entry.questionType || 'desarrollo'
@@ -266,21 +269,21 @@ export default function Dashboard() {
       current.avg = current.total / current.count
     }
     return [...map.values()].sort((a, b) => b.count - a.count)
-  }, [testHistory])
+  }, [safeTestHistory])
 
   const achievements = useMemo(() => {
     const list = []
     if (streak >= 3) list.push(`Racha activa de ${streak} días`)
     if (weeklyHoursValue >= weeklyTargetHours) list.push('Objetivo semanal de horas completado')
-    const recentScores = testHistory.slice(-5).map((entry) => entry.score)
+    const recentScores = safeTestHistory.slice(-5).map((entry) => entry.score)
     if (recentScores.length >= 3 && recentScores.reduce((a, b) => a + b, 0) / recentScores.length >= 7) {
       list.push('Rendimiento alto en los últimos tests')
     }
-    if (Object.values(flashcardWrongIds).reduce((sum, ids) => sum + ids.length, 0) === 0 && testHistory.length > 0) {
+    if (Object.values(safeFlashcardWrongIds).reduce((sum, ids) => sum + ids.length, 0) === 0 && safeTestHistory.length > 0) {
       list.push('Sin tarjetas pendientes de repaso')
     }
     return list.slice(0, 3)
-  }, [streak, weeklyHoursValue, weeklyTargetHours, testHistory, flashcardWrongIds])
+  }, [streak, weeklyHoursValue, weeklyTargetHours, safeTestHistory, safeFlashcardWrongIds])
 
   const reminders = useMemo(() => {
     const list = []
@@ -297,7 +300,7 @@ export default function Dashboard() {
   // ── Función para cargar tarjetas de repaso ──
   async function handleStartRepaso() {
     setRepasoCards([])
-    const wrongEntries = Object.entries(flashcardWrongIds).filter(([, ids]) => ids.length > 0)
+    const wrongEntries = Object.entries(safeFlashcardWrongIds).filter(([, ids]) => ids.length > 0)
     let cards = []
     if (wrongEntries.length > 0) {
       // Cargar desde las materias con más tarjetas incorrectas
@@ -456,7 +459,7 @@ export default function Dashboard() {
             </div>
             <div>
               <div style={{ fontSize: 32, fontWeight: 800, color: '#10B981', lineHeight: 1 }}>
-                {testHistory.length}
+                {safeTestHistory.length}
               </div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 3 }}>
                 tests completados
@@ -699,7 +702,7 @@ export default function Dashboard() {
                         5 tarjetas de tus temas más difíciles
                       </p>
                       <p style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                        {Object.values(flashcardWrongIds).reduce((s, ids) => s + ids.length, 0)} tarjetas pendientes de repaso
+                        {Object.values(safeFlashcardWrongIds).reduce((s, ids) => s + ids.length, 0)} tarjetas pendientes de repaso
                       </p>
                     </div>
                     <div style={{ display: 'flex', gap: 10, width: isMobile ? '100%' : 'auto', flexDirection: isMobile ? 'column' : 'row' }}>

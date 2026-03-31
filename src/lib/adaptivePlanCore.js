@@ -124,6 +124,11 @@ export function generateAdaptivePlanCore({
   studyPlanCompleted = [],
   predictionsBySubject = {},
 }) {
+  const safeProgress = progress && typeof progress === 'object' ? progress : {}
+  const safeFlashcardWrongIds = flashcardWrongIds && typeof flashcardWrongIds === 'object' ? flashcardWrongIds : {}
+  const safeTestHistory = Array.isArray(testHistory) ? testHistory : []
+  const safeStudyPlanCompleted = Array.isArray(studyPlanCompleted) ? studyPlanCompleted : []
+
   const today = toDateStr(new Date())
   if (!examDate || examDate <= today) return []
   const days = daysBetween(today, examDate)
@@ -131,14 +136,21 @@ export function generateAdaptivePlanCore({
 
   const minsPerDayBase = hoursPerDay * 60
   const urgencyMode = days <= 14
-  const weakTopicsMap = buildWeakTopicMap(testHistory)
-  const missedRecentDays = countMissedRecentDays(today, examDate, studyPlanCompleted)
+  const weakTopicsMap = buildWeakTopicMap(safeTestHistory)
+  const missedRecentDays = countMissedRecentDays(today, examDate, safeStudyPlanCompleted)
   const recoveryBoostDays = Math.min(5, missedRecentDays)
 
   const subjectStats = SUBJECTS
     .map((slug) => ({
       slug,
-      ...buildSubjectPressure({ slug, progress, flashcardWrongIds, testHistory, daysLeft: days, weakTopicsMap }),
+      ...buildSubjectPressure({
+        slug,
+        progress: safeProgress,
+        flashcardWrongIds: safeFlashcardWrongIds,
+        testHistory: safeTestHistory,
+        daysLeft: days,
+        weakTopicsMap,
+      }),
       predictions: pickPredictionTopics(slug, predictionsBySubject),
     }))
     .sort((a, b) => b.pressure - a.pressure)
