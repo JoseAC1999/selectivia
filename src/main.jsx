@@ -6,6 +6,13 @@ import './index.css'
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement)
 
+function hideBootSplash() {
+  const splash = document.getElementById('boot-splash')
+  if (!splash) return
+  splash.setAttribute('data-hidden', 'true')
+  window.setTimeout(() => splash.remove(), 260)
+}
+
 function formatError(error) {
   if (!error) return 'Error desconocido al iniciar la aplicación.'
   if (error instanceof Error) return `${error.name}: ${error.message}`
@@ -126,6 +133,7 @@ function CrashScreen({ title, message }) {
 }
 
 function renderCrashScreen(title, error) {
+  hideBootSplash()
   root.render(<CrashScreen title={title} message={formatError(error)} />)
 }
 
@@ -163,6 +171,7 @@ window.addEventListener('unhandledrejection', (event) => {
 async function bootstrap() {
   try {
     const { default: App } = await import('./App.jsx')
+    hideBootSplash()
     root.render(
       <StrictMode>
         <RootErrorBoundary>
