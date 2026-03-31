@@ -81,6 +81,14 @@ const useStudyStore = create(
       /** Si el usuario ha completado el onboarding inicial */
       hasCompletedOnboarding: false,
 
+      /** Toast de feedback para acciones clave */
+      uiToast: null,
+
+      showToast: (message) =>
+        set({ uiToast: { id: Date.now(), message } }),
+
+      clearToast: () => set({ uiToast: null }),
+
       /** Actualiza el progreso de una materia */
       setProgress: (subject, value) =>
         set((state) => ({
@@ -161,20 +169,35 @@ const useStudyStore = create(
 
       /** Completa el onboarding guardando nombre y fecha */
       completeOnboarding: (name, date) =>
-        set({ userName: name, examDate: date || null, hasCompletedOnboarding: true }),
+        set({
+          userName: name,
+          examDate: date || null,
+          hasCompletedOnboarding: true,
+          uiToast: { id: Date.now(), message: `Bienvenido${name ? `, ${name}` : ''}` },
+        }),
 
       /** Actualiza el perfil del usuario */
       updateProfile: (name, date) =>
-        set({ userName: name, examDate: date || null }),
+        set({
+          userName: name,
+          examDate: date || null,
+          uiToast: { id: Date.now(), message: 'Perfil actualizado' },
+        }),
 
       /** Alterna el modo oscuro/claro */
-      toggleDarkMode: () => set((s) => ({ darkMode: !s.darkMode })),
+      toggleDarkMode: () => set((s) => ({
+        darkMode: !s.darkMode,
+        uiToast: { id: Date.now(), message: s.darkMode ? 'Modo claro activado' : 'Modo oscuro activado' },
+      })),
 
       /** Alterna el silencio de audio */
       toggleMute: () => set((s) => {
         const next = !s.soundMuted
         try { localStorage.setItem('selectivia-muted', String(next)) } catch {}
-        return { soundMuted: next }
+        return {
+          soundMuted: next,
+          uiToast: { id: Date.now(), message: next ? 'Sonidos desactivados' : 'Sonidos activados' },
+        }
       }),
 
       /** Registra una sesión Pomodoro completada */
@@ -184,6 +207,7 @@ const useStudyStore = create(
             ...s.pomodoroSessions,
             { subject, duration, date: new Date().toISOString() },
           ],
+          uiToast: { id: Date.now(), message: `Pomodoro completado: ${duration} min` },
         })),
 
       /** Resetea todo el progreso */
@@ -204,10 +228,28 @@ const useStudyStore = create(
           darkMode: true,
           userName: '',
           hasCompletedOnboarding: false,
+          uiToast: null,
         }),
     }),
     {
       name: 'selectivia-store',
+      partialize: (state) => ({
+        progress: state.progress,
+        streak: state.streak,
+        lastStudiedDate: state.lastStudiedDate,
+        testHistory: state.testHistory,
+        pomodoroSessions: state.pomodoroSessions,
+        completedExams: state.completedExams,
+        flashcardHistory: state.flashcardHistory,
+        flashcardWrongIds: state.flashcardWrongIds,
+        examDate: state.examDate,
+        studyPlanCompleted: state.studyPlanCompleted,
+        studyHoursPerDay: state.studyHoursPerDay,
+        soundMuted: state.soundMuted,
+        darkMode: state.darkMode,
+        userName: state.userName,
+        hasCompletedOnboarding: state.hasCompletedOnboarding,
+      }),
     }
   )
 )

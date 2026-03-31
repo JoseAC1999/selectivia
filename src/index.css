@@ -71,12 +71,28 @@ body {
   overflow-x: hidden;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+}
+
 @media (max-width: 767px) {
   input,
   textarea,
   select,
   button {
     font-size: 16px;
+  }
+
+  button {
+    min-height: 44px;
   }
 }
 

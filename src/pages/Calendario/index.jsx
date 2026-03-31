@@ -2,37 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
-
-// ── Datos de predicciones (importados estáticamente) ────────────────────────
-import bioP from '../../data/predictions/biologia.json'
-import hisP from '../../data/predictions/historia.json'
-import lenP from '../../data/predictions/lengua.json'
-import ingP from '../../data/predictions/ingles.json'
-import matP from '../../data/predictions/matematicas.json'
-import msoP from '../../data/predictions/mates-sociales.json'
-import quiP from '../../data/predictions/quimica.json'
-
-const ALL_PREDICTIONS = {
-  biologia: bioP.predictions,
-  historia: hisP.predictions,
-  lengua: lenP.predictions,
-  ingles: ingP.predictions,
-  matematicas: matP.predictions,
-  'mates-sociales': msoP.predictions,
-  quimica: quiP.predictions,
-}
-
-const SUBJECT_META = {
-  biologia:         { name: 'Biología',         color: '#10B981', icon: '🧬' },
-  historia:         { name: 'Historia',         color: '#F59E0B', icon: '🏛️' },
-  lengua:           { name: 'Lengua',           color: '#EC4899', icon: '📚' },
-  ingles:           { name: 'Inglés',           color: '#06B6D4', icon: '🌍' },
-  'mates-sociales': { name: 'Mat. Sociales',    color: '#8B5CF6', icon: '📊' },
-  matematicas:      { name: 'Matemáticas II',   color: '#7C3AED', icon: '📐' },
-  quimica:          { name: 'Química',          color: '#F97316', icon: '🧪' },
-}
-
-const SUBJECTS = Object.keys(SUBJECT_META)
+import { SUBJECT_META, addDays, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -44,12 +14,6 @@ function toDateStr(d) {
   return d.toISOString().split('T')[0]
 }
 
-function addDays(dateStr, n) {
-  const d = new Date(dateStr)
-  d.setDate(d.getDate() + n)
-  return toDateStr(d)
-}
-
 function daysBetween(a, b) {
   return Math.round((new Date(b) - new Date(a)) / 86400000)
 }
@@ -58,76 +22,6 @@ function urgencyColor(days) {
   if (days > 60) return '#10B981'
   if (days > 30) return '#F59E0B'
   return '#EF4444'
-}
-
-/**
- * Genera el plan de estudio día a día hasta examDate.
- * Prioriza: temas con baja predicción + materias con poco progreso + flashcards incorrectas.
- */
-function generatePlan({ examDate, progress, flashcardWrongIds, hoursPerDay }) {
-  const today = toDateStr(new Date())
-  if (!examDate || examDate <= today) return []
-
-  const days = daysBetween(today, examDate)
-  if (days > 300) return []
-
-  // Construir pool de tareas priorizadas
-  const tasks = []
-
-  // 1. Temas de predicciones con confianza alta/muy alta
-  SUBJECTS.forEach(slug => {
-    const preds = ALL_PREDICTIONS[slug] ?? []
-    preds
-      .filter(p => p.confidence === 'muy alta' || p.confidence === 'alta')
-      .forEach(p => tasks.push({ subject: slug, topic: p.topic, priority: 1, mins: 45 }))
-  })
-
-  // 2. Materias con menos progreso → temas generales
-  const byProgress = [...SUBJECTS].sort((a, b) => (progress[a] ?? 0) - (progress[b] ?? 0))
-  byProgress.forEach((slug, i) => {
-    const pct = progress[slug] ?? 0
-    if (pct < 80) {
-      tasks.push({ subject: slug, topic: 'Repaso general', priority: 2 + i, mins: 60 })
-    }
-  })
-
-  // 3. Flashcards incorrectas por materia
-  Object.entries(flashcardWrongIds).forEach(([slug, ids]) => {
-    if (ids.length > 0) {
-      tasks.push({
-        subject: slug,
-        topic: `Repaso de ${ids.length} flashcard${ids.length > 1 ? 's' : ''} fallada${ids.length > 1 ? 's' : ''}`,
-        priority: 0, // máxima prioridad
-        mins: Math.min(30, ids.length * 3),
-      })
-    }
-  })
-
-  // Ordenar por prioridad
-  tasks.sort((a, b) => a.priority - b.priority)
-
-  const minsPerDay = hoursPerDay * 60
-  const plan = []
-  let taskIdx = 0
-
-  for (let i = 0; i < days && i < 120; i++) {
-    const dateStr = addDays(today, i)
-    const dayTasks = []
-    let remaining = minsPerDay
-
-    while (remaining > 0 && tasks.length > 0) {
-      const t = tasks[taskIdx % tasks.length]
-      const taskMins = Math.min(t.mins, remaining)
-      dayTasks.push({ ...t, mins: taskMins })
-      remaining -= taskMins
-      taskIdx++
-      if (taskIdx >= tasks.length * 3) break // evitar bucle infinito
-    }
-
-    plan.push({ date: dateStr, tasks: dayTasks })
-  }
-
-  return plan
 }
 
 // ── Componente de celda del calendario ───────────────────────────────────────
@@ -187,7 +81,7 @@ export default function Calendario() {
     examDate, setExamDate,
     studyHoursPerDay, setStudyHoursPerDay,
     studyPlanCompleted, toggleStudyPlanDay,
-    progress, flashcardWrongIds,
+    progress, flashcardWrongIds, testHistory,
   } = useStudyStore()
 
   const today = toDateStr(new Date())
@@ -202,10 +96,10 @@ export default function Calendario() {
   const urgColor = daysLeft !== null ? urgencyColor(daysLeft) : '#71717A'
 
   // Plan generado
-  const plan = useMemo(() => generatePlan({
+  const plan = useMemo(() => generateAdaptivePlan({
     examDate, progress, flashcardWrongIds,
-    hoursPerDay: studyHoursPerDay,
-  }), [examDate, progress, flashcardWrongIds, studyHoursPerDay])
+    hoursPerDay: studyHoursPerDay, testHistory,
+  }), [examDate, progress, flashcardWrongIds, studyHoursPerDay, testHistory])
 
   const planByDate = useMemo(() => {
     const m = {}
@@ -457,6 +351,11 @@ export default function Calendario() {
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{meta.name}</div>
                               <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{task.topic}</div>
+                              {task.rationale && (
+                                <div style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 3, lineHeight: 1.4 }}>
+                                  {task.rationale}
+                                </div>
+                              )}
                             </div>
                             <span style={{ fontSize: 10, color: meta.color, whiteSpace: 'nowrap' }}>
                               {task.mins}min

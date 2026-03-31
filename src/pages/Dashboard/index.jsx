@@ -7,6 +7,7 @@ import {
 import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
+import { SUBJECT_META as PLAN_SUBJECT_META, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
 
 // Totales de preguntas por materia (de src/data/ebau/)
 const TOTAL_QUESTIONS = {
@@ -178,7 +179,7 @@ function MiniFlipCard({ card, onRate }) {
 export default function Dashboard() {
   const navigate = useNavigate()
   const isMobile = useIsMobile()
-  const { progress, streak, testHistory, pomodoroSessions, flashcardWrongIds, examDate, studyPlanCompleted, userName } = useStudyStore()
+  const { progress, streak, testHistory, pomodoroSessions, flashcardWrongIds, examDate, studyPlanCompleted, studyHoursPerDay, userName } = useStudyStore()
   const addFlashcardResult = useStudyStore(s => s.addFlashcardResult)
 
   // ── Estado Repaso rápido ──
@@ -221,31 +222,23 @@ export default function Dashboard() {
   // ── Plan de estudio: próximos 3 días ──
   const today = new Date().toISOString().split('T')[0]
   const nextPlanDays = useMemo(() => {
-    if (!examDate || examDate <= today) return []
-    // Importar predicciones dinámicamente sería complejo aquí; usar subjects por progreso
-    const SUBJECTS_SORTED = Object.entries(progress)
-      .sort(([, a], [, b]) => a - b)
-      .map(([s]) => s)
-    const SUBJECT_TOPICS = {
-      biologia: 'Genética y evolución', historia: 'Transición democrática',
-      lengua: 'Comentario de texto', ingles: 'Reading comprehension',
-      'mates-sociales': 'Estadística', matematicas: 'Integrales', quimica: 'Equilibrio químico',
-    }
-    const days = []
-    for (let i = 0; i < 3; i++) {
-      const d = new Date(); d.setDate(d.getDate() + i)
-      const dateStr = d.toISOString().split('T')[0]
-      const subject = SUBJECTS_SORTED[i % SUBJECTS_SORTED.length]
-      days.push({
-        date: dateStr,
-        label: i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : d.toLocaleDateString('es-ES', { weekday: 'short' }),
-        subject,
-        topic: SUBJECT_TOPICS[subject] ?? 'Repaso general',
-        completed: studyPlanCompleted.includes(dateStr),
-      })
-    }
-    return days
-  }, [examDate, progress, studyPlanCompleted, today])
+    const plan = generateAdaptivePlan({
+      examDate,
+      progress,
+      flashcardWrongIds,
+      hoursPerDay: studyHoursPerDay,
+      testHistory,
+    })
+
+    return plan.slice(0, 3).map((day, i) => ({
+      date: day.date,
+      label: i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : new Date(day.date).toLocaleDateString('es-ES', { weekday: 'short' }),
+      subject: day.focusSubject,
+      topic: day.tasks[0]?.topic ?? 'Repaso general',
+      rationale: day.tasks[0]?.rationale ?? '',
+      completed: studyPlanCompleted.includes(day.date),
+    }))
+  }, [examDate, progress, flashcardWrongIds, studyHoursPerDay, studyPlanCompleted, testHistory])
 
   // ── Función para cargar tarjetas de repaso ──
   async function handleStartRepaso() {
@@ -698,6 +691,7 @@ export default function Dashboard() {
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 12 }}>
               {nextPlanDays.map((day, i) => {
                 const meta = SUBJECT_META[day.subject]
+                const adaptiveMeta = meta ?? PLAN_SUBJECT_META[day.subject]
                 return (
                   <motion.div
                     key={day.date}
@@ -716,10 +710,15 @@ export default function Dashboard() {
                       {day.completed && <span style={{ color: '#10B981', marginLeft: 6 }}>✓</span>}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                      <span style={{ fontSize: 20 }}>{meta?.icon}</span>
-                      <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{meta?.name}</span>
+                      <span style={{ fontSize: 20 }}>{adaptiveMeta?.icon}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{adaptiveMeta?.name}</span>
                     </div>
                     <p style={{ fontSize: 11, color: 'var(--text-muted)' }}>{day.topic}</p>
+                    {day.rationale && (
+                      <p style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 8, lineHeight: 1.4 }}>
+                        {day.rationale}
+                      </p>
+                    )}
                   </motion.div>
                 )
               })}

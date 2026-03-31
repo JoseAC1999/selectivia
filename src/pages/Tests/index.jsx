@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../../store/useStudyStore.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
+import { assessAnswerAgainstText } from '../../lib/localAssessment.js'
 
 // ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 
@@ -116,6 +118,7 @@ function DifficultyPill({ diff, active, color, onClick }) {
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
 
 export default function Tests() {
+  const isMobile = useIsMobile()
   const [step, setStep] = useState('subjects')         // subjects | config | test | results
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [difficulty, setDifficulty] = useState(0)
@@ -139,6 +142,13 @@ export default function Tests() {
   const testHistory   = useStudyStore(s => s.testHistory)
 
   const accentColor = selectedSubject?.color ?? '#7C3AED'
+  const currentAssessment = step === 'test' && questions[currentIdx]
+    ? assessAnswerAgainstText(
+        answers[currentIdx] ?? '',
+        questions[currentIdx].back,
+        `${questions[currentIdx].front} ${questions[currentIdx].topic}`
+      )
+    : null
 
   // ── Cronómetro ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -203,6 +213,9 @@ export default function Tests() {
       card: questions[currentIdx],
       userAnswer: answers[currentIdx] ?? '',
       selfScore: score,
+      suggestedScore: currentAssessment?.score ?? 0,
+      coverage: currentAssessment?.coverage ?? 0,
+      matchedKeywords: currentAssessment?.matchedKeywords ?? [],
     }]
     setResults(newResults)
 
@@ -244,11 +257,11 @@ export default function Tests() {
   // Paso 1: Selector de materia
   if (step === 'subjects') {
     return (
-      <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
         <div style={{ marginBottom: 32 }}>
           <h1 style={{
             fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700,
-            fontSize: 26, color: 'var(--text-primary)', marginBottom: 6,
+            fontSize: isMobile ? 22 : 26, color: 'var(--text-primary)', marginBottom: 6,
           }}>
             Tests
           </h1>
@@ -298,9 +311,10 @@ export default function Tests() {
                 const scoreColor = entry.score >= 7 ? '#10B981' : entry.score >= 5 ? '#F59E0B' : '#EF4444'
                 return (
                   <div key={i} style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    display: 'flex', alignItems: isMobile ? 'flex-start' : 'center', justifyContent: 'space-between',
                     background: 'var(--bg-card)', border: '1px solid var(--border)',
                     borderRadius: 10, padding: '10px 14px',
+                    gap: 10, flexWrap: isMobile ? 'wrap' : 'nowrap',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <span style={{ fontSize: 16 }}>{subj?.icon ?? '📝'}</span>
@@ -333,7 +347,7 @@ export default function Tests() {
   if (step === 'config') {
     const pool = difficulty === 0 ? allCards : allCards.filter(c => c.difficulty === difficulty)
     return (
-      <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
         <button
           onClick={() => setStep('subjects')}
           style={{
@@ -358,7 +372,7 @@ export default function Tests() {
           transition={{ duration: 0.3 }}
           style={{
             background: 'var(--bg-card)', border: `1px solid ${accentColor}30`,
-            borderRadius: 20, padding: '32px 28px',
+            borderRadius: 20, padding: isMobile ? '24px 18px' : '32px 28px',
             maxWidth: 440, margin: '0 auto',
           }}
         >
@@ -439,7 +453,7 @@ export default function Tests() {
     const timerColor = elapsed > 120 ? '#EF4444' : elapsed > 60 ? '#F59E0B' : 'var(--text-secondary)'
 
     return (
-      <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
 
         {/* Barra superior */}
         <div style={{
@@ -449,6 +463,7 @@ export default function Tests() {
           display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', gap: 10,
           marginBottom: 24,
+          flexWrap: isMobile ? 'wrap' : 'nowrap',
         }}>
           <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             {selectedSubject?.icon} {selectedSubject?.name}
@@ -495,7 +510,7 @@ export default function Tests() {
             {/* Pregunta */}
             <div style={{
               background: 'var(--bg-card)', border: `1px solid ${accentColor}30`,
-              borderRadius: 16, padding: '24px 24px 20px',
+              borderRadius: 16, padding: isMobile ? '20px 18px 18px' : '24px 24px 20px',
               marginBottom: 20,
             }}>
               {/* Badges */}
@@ -512,7 +527,7 @@ export default function Tests() {
               </div>
               <p style={{
                 fontFamily: '"Space Grotesk", sans-serif',
-                fontWeight: 600, fontSize: 18, color: 'var(--text-primary)',
+                fontWeight: 600, fontSize: isMobile ? 16 : 18, color: 'var(--text-primary)',
                 lineHeight: 1.5, margin: 0,
               }}>
                 {card.front}
@@ -598,12 +613,66 @@ export default function Tests() {
 
                 {/* Autoevaluación */}
                 <div style={{ marginTop: 16 }}>
+                  {currentAssessment && (
+                    <div
+                      style={{
+                        background: `${accentColor}12`,
+                        border: `1px solid ${accentColor}35`,
+                        borderRadius: 12,
+                        padding: '12px 14px',
+                        marginBottom: 14,
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: accentColor }}>
+                          Sugerencia automática: {currentAssessment.label}
+                        </span>
+                        <button
+                          onClick={() => handleSelfScore(currentAssessment.score)}
+                          style={{
+                            border: `1px solid ${accentColor}`,
+                            background: 'transparent',
+                            color: accentColor,
+                            borderRadius: 999,
+                            padding: '4px 10px',
+                            fontSize: 11,
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                          }}
+                        >
+                          Usar sugerencia
+                        </button>
+                      </div>
+                      <p style={{ margin: '0 0 6px', fontSize: 12, color: 'var(--text-secondary)' }}>
+                        Cobertura estimada de conceptos: {Math.round(currentAssessment.coverage * 100)}%
+                      </p>
+                      {currentAssessment.matchedKeywords.length > 0 && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                          {currentAssessment.matchedKeywords.slice(0, 5).map((keyword) => (
+                            <span
+                              key={keyword}
+                              style={{
+                                fontSize: 11,
+                                padding: '3px 8px',
+                                borderRadius: 999,
+                                background: 'rgba(16,185,129,0.12)',
+                                border: '1px solid rgba(16,185,129,0.25)',
+                                color: '#10B981',
+                              }}
+                            >
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <div style={{
                     fontSize: 12, color: 'var(--text-muted)', marginBottom: 10, textAlign: 'center',
                   }}>
                     ¿Cómo ha sido tu respuesta?
                   </div>
-                  <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+                  <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexDirection: isMobile ? 'column' : 'row' }}>
                     {[
                       { score: 0, label: 'No lo sabía', color: '#EF4444', bg: 'rgba(239,68,68,0.12)', border: 'rgba(239,68,68,0.4)' },
                       { score: 1, label: 'A medias',    color: '#F59E0B', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.4)' },
@@ -613,7 +682,7 @@ export default function Tests() {
                         key={score}
                         onClick={() => handleSelfScore(score)}
                         style={{
-                          flex: 1, maxWidth: 140,
+                          flex: 1, maxWidth: isMobile ? '100%' : 140,
                           padding: '9px 0', borderRadius: 10,
                           fontSize: 13, fontWeight: 600, cursor: 'pointer',
                           background: bg, border: `1px solid ${border}`, color,
@@ -673,7 +742,7 @@ export default function Tests() {
     })).sort((a, b) => a.pct - b.pct)
 
     return (
-      <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -683,7 +752,7 @@ export default function Tests() {
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
             <div style={{
               fontFamily: '"Space Grotesk", sans-serif',
-              fontWeight: 800, fontSize: 72, lineHeight: 1,
+              fontWeight: 800, fontSize: isMobile ? 56 : 72, lineHeight: 1,
               color: scoreColor, marginBottom: 4,
             }}>
               {score.toFixed(1).replace('.', ',')}
@@ -692,7 +761,7 @@ export default function Tests() {
           </div>
 
           {/* Stats */}
-          <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, minmax(0, 1fr))' : 'repeat(4, minmax(0, 1fr))', gap: 10, marginBottom: 28 }}>
             {[
               { label: 'Perfectas', value: perfectCount,  color: '#10B981' },
               { label: 'A medias',  value: partialCount,  color: '#F59E0B' },
@@ -700,7 +769,7 @@ export default function Tests() {
               { label: 'Tiempo',    value: formatTime(elapsed), color: 'var(--text-secondary)' },
             ].map(({ label, value, color }) => (
               <div key={label} style={{
-                flex: 1, background: 'var(--bg-card)',
+                background: 'var(--bg-card)',
                 border: '1px solid var(--border)', borderRadius: 10, padding: '12px 8px',
                 textAlign: 'center',
               }}>
@@ -799,6 +868,9 @@ export default function Tests() {
                     <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
                       {r.card.back}
                     </p>
+                    <p style={{ fontSize: 11, color: 'var(--text-muted)', margin: '8px 0 0' }}>
+                      Sugerencia local: {r.suggestedScore === 2 ? 'Alta' : r.suggestedScore === 1 ? 'Parcial' : 'Baja'} · cobertura {Math.round((r.coverage ?? 0) * 100)}%
+                    </p>
                   </div>
                 )
               })}
@@ -806,7 +878,7 @@ export default function Tests() {
           </div>
 
           {/* Botones */}
-          <div style={{ display: 'flex', gap: 10 }}>
+          <div style={{ display: 'flex', gap: 10, flexDirection: isMobile ? 'column' : 'row' }}>
             <button
               onClick={handleNewTest}
               style={{

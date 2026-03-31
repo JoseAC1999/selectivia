@@ -5,6 +5,7 @@ import useStudyStore from '../../store/useStudyStore.js'
 import PDF_PATHS from '../../data/pdf-paths.json'
 import { playConfetti } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
+import { assessAnswerAgainstText, assessChecklistCoverage } from '../../lib/localAssessment.js'
 import biologiaData from '../../data/ebau/biologia.json'
 import historiaData from '../../data/ebau/historia.json'
 import inglesData from '../../data/ebau/ingles.json'
@@ -593,6 +594,12 @@ export default function ExamenesOficiales() {
     : Math.min(10, checklistItems.reduce((s, i) => s + i.points, 0))
 
   const scoreColor = liveScore >= 7 ? '#10B981' : liveScore >= 5 ? '#F59E0B' : '#EF4444'
+  const checklistSuggestion = useChecklist
+    ? assessChecklistCoverage(userAnswer, checklistItems)
+    : null
+  const fallbackSuggestion = activeExam
+    ? assessAnswerAgainstText(userAnswer, activeExam.rawAnswer || activeExam.rawQuestion, activeExam.rawQuestion)
+    : null
 
   // ── Efectos ─────────────────────────────────────────────────────────────────
 
@@ -722,6 +729,15 @@ export default function ExamenesOficiales() {
     setChecklistItems(prev => prev.map(item =>
       item.id === id ? { ...item, checked: !item.checked } : item
     ))
+  }
+
+  function applySuggestedChecklist() {
+    setChecklistItems((prev) =>
+      assessChecklistCoverage(userAnswer, prev).suggestedItems.map((item) => ({
+        ...item,
+        checked: item.suggested,
+      }))
+    )
   }
 
   function toggleGroup(gid) {
@@ -1526,6 +1542,40 @@ export default function ExamenesOficiales() {
                               style={{ height: '100%', borderRadius: 6, background: scoreColor }}
                             />
                           </div>
+                          {checklistSuggestion && (
+                            <div style={{
+                              marginTop: 10,
+                              paddingTop: 10,
+                              borderTop: '1px solid var(--border)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              gap: 10,
+                              flexWrap: 'wrap',
+                            }}>
+                              <div>
+                                <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Sugerencia automática</div>
+                                <div style={{ fontSize: 14, fontWeight: 700, color: selectedSubject.color }}>
+                                  {fmtPts(checklistSuggestion.suggestedPoints)} / {fmtPts(maxPossibleScore > 0 ? maxPossibleScore : checklistSuggestion.maxPoints)}
+                                </div>
+                              </div>
+                              <button
+                                onClick={applySuggestedChecklist}
+                                style={{
+                                  padding: '6px 10px',
+                                  borderRadius: 999,
+                                  border: `1px solid ${selectedSubject.color}`,
+                                  background: 'transparent',
+                                  color: selectedSubject.color,
+                                  cursor: 'pointer',
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                }}
+                              >
+                                Aplicar sugerencia
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
 
@@ -1685,6 +1735,20 @@ export default function ExamenesOficiales() {
                                           }}>
                                             {item.pointsRaw} pts
                                           </span>
+                                          {!item.checked && checklistSuggestion?.suggestedItems.find((entry) => entry.id === item.id)?.suggested && (
+                                            <span style={{
+                                              flexShrink: 0,
+                                              fontSize: 10,
+                                              fontWeight: 700,
+                                              padding: '2px 6px',
+                                              borderRadius: 999,
+                                              background: `${selectedSubject.color}15`,
+                                              color: selectedSubject.color,
+                                              border: `1px solid ${selectedSubject.color}30`,
+                                            }}>
+                                              sugerido
+                                            </span>
+                                          )}
                                         </motion.div>
                                       ))}
                                     </div>
@@ -1775,6 +1839,20 @@ export default function ExamenesOficiales() {
                                       }}>
                                         {item.pointsRaw} pts
                                       </span>
+                                      {!item.checked && checklistSuggestion?.suggestedItems.find((entry) => entry.id === item.id)?.suggested && (
+                                        <span style={{
+                                          flexShrink: 0,
+                                          fontSize: 10,
+                                          fontWeight: 700,
+                                          padding: '2px 6px',
+                                          borderRadius: 999,
+                                          background: `${selectedSubject.color}15`,
+                                          color: selectedSubject.color,
+                                          border: `1px solid ${selectedSubject.color}30`,
+                                        }}>
+                                          sugerido
+                                        </span>
+                                      )}
                                     </motion.div>
                                   ))}
                                 </div>
@@ -1846,6 +1924,39 @@ export default function ExamenesOficiales() {
                       <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>
                         Puntúate manualmente revisando los criterios
                       </div>
+                      {fallbackSuggestion && (
+                        <div style={{
+                          marginBottom: 14,
+                          padding: '12px 14px',
+                          borderRadius: 10,
+                          background: `${selectedSubject.color}12`,
+                          border: `1px solid ${selectedSubject.color}30`,
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                            <div>
+                              <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Sugerencia automática local</div>
+                              <div style={{ fontSize: 14, fontWeight: 700, color: selectedSubject.color }}>
+                                {fallbackSuggestion.score === 2 ? 'Alta' : fallbackSuggestion.score === 1 ? 'Parcial' : 'Baja'} · {Math.round(fallbackSuggestion.coverage * 100)}%
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => setExamScore(fallbackSuggestion.score === 2 ? '8' : fallbackSuggestion.score === 1 ? '5' : '2')}
+                              style={{
+                                padding: '6px 10px',
+                                borderRadius: 999,
+                                border: `1px solid ${selectedSubject.color}`,
+                                background: 'transparent',
+                                color: selectedSubject.color,
+                                cursor: 'pointer',
+                                fontSize: 11,
+                                fontWeight: 700,
+                              }}
+                            >
+                              Usar sugerencia
+                            </button>
+                          </div>
+                        </div>
+                      )}
                       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                         <input
                           type="range" min="0" max="10" step="0.5"

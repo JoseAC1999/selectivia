@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../store/useStudyStore.js'
+import useGlobalSearch from '../hooks/useGlobalSearch.js'
 
 /** Definición de las secciones de navegación */
 const NAV_ITEMS = [
@@ -87,6 +88,9 @@ const NAV_ITEMS = [
   },
 ]
 
+const MOBILE_PRIMARY_ITEMS = NAV_ITEMS.slice(0, 4)
+const MOBILE_MORE_ITEMS = NAV_ITEMS.slice(4)
+
 /** Indicador circular de progreso pequeño */
 function ProgressDot({ value }) {
   if (!value) return null
@@ -143,6 +147,229 @@ function NavItem({ item, progress, isMobile = false }) {
         </>
       )}
     </NavLink>
+  )
+}
+
+function MobileMenuButton({ onClick, isOpen }) {
+  return (
+    <button
+      onClick={onClick}
+      className={[
+        'min-w-[4.5rem] flex flex-col items-center gap-1 rounded-lg px-2 py-2 text-center text-xs font-medium transition-all duration-200',
+        isOpen ? 'bg-[#7C3AED]/10 shadow-[0_0_20px_rgba(124,58,237,0.15)]' : '',
+      ].join(' ')}
+      style={{ color: isOpen ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+      aria-expanded={isOpen}
+      aria-label="Abrir mas opciones"
+    >
+      <span style={{ color: isOpen ? '#7C3AED' : 'var(--text-muted)' }}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <circle cx="12" cy="5" r="1.5" />
+          <circle cx="12" cy="12" r="1.5" />
+          <circle cx="12" cy="19" r="1.5" />
+        </svg>
+      </span>
+      <span className="text-[10px] leading-tight">Mas</span>
+    </button>
+  )
+}
+
+function SearchButton({ onClick, compact = false }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex items-center gap-2 rounded-xl"
+      style={{
+        minHeight: compact ? 44 : 42,
+        padding: compact ? '0 12px' : '0 14px',
+        border: '1px solid var(--border)',
+        background: 'var(--bg-card)',
+        color: 'var(--text-secondary)',
+        cursor: 'pointer',
+      }}
+      aria-label="Abrir buscador global"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </svg>
+      {!compact && <span style={{ fontSize: 13, fontWeight: 500 }}>Buscar</span>}
+      {!compact && <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>⌘K</span>}
+    </button>
+  )
+}
+
+function SearchModal({ query, setQuery, onClose, onSelect, loading, results }) {
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 210,
+        background: 'rgba(0,0,0,0.55)',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        padding: 16,
+        paddingTop: 'min(10vh, 72px)',
+      }}
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 18, scale: 0.98 }}
+        transition={{ duration: 0.2 }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          width: '100%',
+          maxWidth: 760,
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: 24,
+          boxShadow: '0 30px 90px rgba(0,0,0,0.35)',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ padding: 16, borderBottom: '1px solid var(--border)' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              background: 'var(--bg-base)',
+              border: '1px solid var(--border)',
+              borderRadius: 16,
+              padding: '0 14px',
+            }}
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ color: 'var(--text-muted)' }}>
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Busca materias, temas, preguntas, exámenes..."
+              autoFocus
+              style={{
+                flex: 1,
+                height: 54,
+                border: 'none',
+                background: 'transparent',
+                color: 'var(--text-primary)',
+                outline: 'none',
+                fontSize: 15,
+              }}
+            />
+            <button
+              onClick={onClose}
+              style={{
+                border: 'none',
+                background: 'transparent',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                fontSize: 13,
+              }}
+            >
+              ESC
+            </button>
+          </div>
+        </div>
+
+        <div style={{ maxHeight: 'min(70vh, 560px)', overflowY: 'auto', padding: 12 }}>
+          {loading && (
+            <div style={{ padding: 36, textAlign: 'center', color: 'var(--text-muted)', fontSize: 14 }}>
+              Construyendo indice de busqueda...
+            </div>
+          )}
+
+          {!loading && query.trim().length < 2 && (
+            <div
+              style={{
+                padding: 28,
+                borderRadius: 18,
+                background: 'var(--bg-base)',
+                border: '1px dashed var(--border)',
+                textAlign: 'center',
+              }}
+            >
+              <p style={{ margin: '0 0 8px', color: 'var(--text-primary)', fontWeight: 600 }}>Busca en toda la app</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: 13 }}>
+                Materias, flashcards, predicciones, orientaciones y examenes oficiales.
+              </p>
+            </div>
+          )}
+
+          {!loading && query.trim().length >= 2 && results.length === 0 && (
+            <div
+              style={{
+                padding: 28,
+                borderRadius: 18,
+                background: 'var(--bg-base)',
+                border: '1px dashed var(--border)',
+                textAlign: 'center',
+              }}
+            >
+              <p style={{ margin: '0 0 8px', color: 'var(--text-primary)', fontWeight: 600 }}>No hay coincidencias</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: 13 }}>
+                Prueba con otra materia, tema o palabra clave.
+              </p>
+            </div>
+          )}
+
+          {!loading && results.length > 0 && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {results.map((result) => (
+                <button
+                  key={result.id}
+                  onClick={() => onSelect(result)}
+                  style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    border: '1px solid var(--border)',
+                    background: 'var(--bg-base)',
+                    borderRadius: 18,
+                    padding: '14px 16px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' }}>
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            padding: '3px 8px',
+                            borderRadius: 999,
+                            background: `${result.meta?.color ?? '#7C3AED'}18`,
+                            color: result.meta?.color ?? '#7C3AED',
+                            fontSize: 11,
+                            fontWeight: 700,
+                          }}
+                        >
+                          {result.meta?.icon ?? '🔎'} {result.type}
+                        </span>
+                        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>{result.subtitle}</span>
+                      </div>
+                      <p style={{ margin: '0 0 6px', color: 'var(--text-primary)', fontSize: 14, fontWeight: 600 }}>
+                        {result.title}
+                      </p>
+                      <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.55 }}>
+                        {result.body}
+                      </p>
+                    </div>
+                    <span style={{ color: 'var(--text-muted)', fontSize: 13, flexShrink: 0 }}>Abrir</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </div>
   )
 }
 
@@ -252,18 +479,181 @@ function ProfileModal({ onClose }) {
 
 /** Layout principal */
 export default function Layout({ children }) {
+  const navigate = useNavigate()
   const progress = useStudyStore((s) => s.progress)
   const streak = useStudyStore((s) => s.streak)
   const soundMuted = useStudyStore((s) => s.soundMuted)
   const toggleMute = useStudyStore((s) => s.toggleMute)
   const darkMode = useStudyStore((s) => s.darkMode)
   const toggleDarkMode = useStudyStore((s) => s.toggleDarkMode)
+  const userName = useStudyStore((s) => s.userName)
+  const examDate = useStudyStore((s) => s.examDate)
+  const uiToast = useStudyStore((s) => s.uiToast)
+  const clearToast = useStudyStore((s) => s.clearToast)
   const [showProfileModal, setShowProfileModal] = useState(false)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const { loading: searchLoading, results: searchResults } = useGlobalSearch(showSearch, searchQuery)
+
+  const daysLeft = examDate
+    ? Math.max(0, Math.ceil((new Date(examDate) - new Date(new Date().toISOString().split('T')[0])) / 86400000))
+    : null
+
+  const mobileSummary = daysLeft != null
+    ? daysLeft === 0
+      ? 'Hoy es tu examen'
+      : `Faltan ${daysLeft} dias`
+    : 'Configura tu fecha de selectividad'
+
+  useEffect(() => {
+    if (!uiToast) return undefined
+    const timeoutId = window.setTimeout(() => clearToast(), 2200)
+    return () => window.clearTimeout(timeoutId)
+  }, [uiToast, clearToast])
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault()
+        setShowSearch(true)
+      }
+      if (event.key === 'Escape') {
+        setShowSearch(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  function handleSelectSearchResult(result) {
+    navigate(result.route)
+    setShowSearch(false)
+    setSearchQuery('')
+  }
 
   return (
     <>
     <AnimatePresence>
       {showProfileModal && <ProfileModal onClose={() => setShowProfileModal(false)} />}
+    </AnimatePresence>
+    <AnimatePresence>
+      {showSearch && (
+        <SearchModal
+          query={searchQuery}
+          setQuery={setSearchQuery}
+          onClose={() => {
+            setShowSearch(false)
+            setSearchQuery('')
+          }}
+          onSelect={handleSelectSearchResult}
+          loading={searchLoading}
+          results={searchResults}
+        />
+      )}
+    </AnimatePresence>
+    <AnimatePresence>
+      {showMobileMenu && (
+        <>
+          <motion.button
+            type="button"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            onClick={() => setShowMobileMenu(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 55,
+              border: 'none',
+              background: 'rgba(0,0,0,0.45)',
+            }}
+            aria-label="Cerrar menu"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden fixed left-3 right-3 z-[60]"
+            style={{
+              bottom: 'calc(82px + env(safe-area-inset-bottom))',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: 18,
+              padding: 14,
+              boxShadow: '0 24px 80px rgba(0,0,0,0.28)',
+            }}
+          >
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 8, marginBottom: 10 }}>
+              {MOBILE_MORE_ITEMS.map((item) => (
+                <div key={item.path} onClick={() => setShowMobileMenu(false)}>
+                  <NavItem item={item} isMobile />
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              <button
+                onClick={() => {
+                  setShowProfileModal(true)
+                  setShowMobileMenu(false)
+                }}
+                style={{
+                  minHeight: 48,
+                  borderRadius: 12,
+                  border: '1px solid var(--border)',
+                  background: 'var(--bg-base)',
+                  color: 'var(--text-primary)',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Perfil
+              </button>
+              <button
+                onClick={() => {
+                  toggleDarkMode()
+                  setShowMobileMenu(false)
+                }}
+                style={{
+                  minHeight: 48,
+                  borderRadius: 12,
+                  border: '1px solid var(--border)',
+                  background: 'var(--bg-base)',
+                  color: 'var(--text-primary)',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                {darkMode ? 'Modo claro' : 'Modo oscuro'}
+              </button>
+              <button
+                onClick={() => {
+                  toggleMute()
+                  setShowMobileMenu(false)
+                }}
+                style={{
+                  minHeight: 48,
+                  borderRadius: 12,
+                  border: '1px solid var(--border)',
+                  background: 'var(--bg-base)',
+                  color: 'var(--text-primary)',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  gridColumn: '1 / -1',
+                }}
+              >
+                {soundMuted ? 'Activar sonidos' : 'Silenciar sonidos'}
+              </button>
+            </div>
+          </motion.div>
+        </>
+      )}
     </AnimatePresence>
     <div className="flex overflow-hidden" style={{ backgroundColor: 'var(--bg-base)', minHeight: '100dvh' }}>
       {/* ── Sidebar desktop ───────────────────────────────────────── */}
@@ -302,6 +692,10 @@ export default function Layout({ children }) {
               Editar perfil
             </button>
           </div>
+        </div>
+
+        <div className="px-3 pt-3">
+          <SearchButton onClick={() => setShowSearch(true)} />
         </div>
 
         {/* Nav links */}
@@ -389,28 +783,31 @@ export default function Layout({ children }) {
                   className="truncate text-sm font-semibold"
                   style={{ fontFamily: '"Space Grotesk", sans-serif' }}
                 >
-                  SelectivIA
+                  {userName || 'SelectivIA'}
                 </p>
                 <p className="truncate text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                  Editar perfil
+                  {mobileSummary}
                 </p>
               </div>
             </button>
 
-            <button
-              onClick={toggleDarkMode}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                border: '1px solid var(--border)',
-                color: 'var(--text-secondary)',
-                cursor: 'pointer',
-                fontSize: 18,
-              }}
-              title={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-            >
-              {darkMode ? '☀️' : '🌙'}
-            </button>
+            <div className="flex items-center gap-2">
+              <SearchButton onClick={() => setShowSearch(true)} compact />
+              <button
+                onClick={toggleDarkMode}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: 18,
+                }}
+                title={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              >
+                {darkMode ? '☀️' : '🌙'}
+              </button>
+            </div>
           </div>
         </div>
         <div
@@ -430,11 +827,36 @@ export default function Layout({ children }) {
           padding: '10px 8px calc(10px + env(safe-area-inset-bottom))',
         }}
       >
-        {NAV_ITEMS.map((item) => (
+        {MOBILE_PRIMARY_ITEMS.map((item) => (
           <NavItem key={item.path} item={item} isMobile />
         ))}
+        <MobileMenuButton onClick={() => setShowMobileMenu((v) => !v)} isOpen={showMobileMenu} />
       </nav>
     </div>
+    <AnimatePresence>
+      {uiToast && (
+        <motion.div
+          key={uiToast.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
+          transition={{ duration: 0.2 }}
+          className="fixed left-1/2 z-[70] -translate-x-1/2"
+          style={{
+            bottom: 'calc(94px + env(safe-area-inset-bottom))',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
+            borderRadius: 999,
+            padding: '10px 16px',
+            color: 'var(--text-primary)',
+            fontSize: 13,
+            boxShadow: '0 18px 48px rgba(0,0,0,0.22)',
+          }}
+        >
+          {uiToast.message}
+        </motion.div>
+      )}
+    </AnimatePresence>
     </>
   )
 }

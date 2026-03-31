@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 
 // ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 
@@ -50,7 +51,7 @@ function buildQueue(cards, wrongIds) {
 
 // ─── SUB-COMPONENTES ──────────────────────────────────────────────────────────
 
-function SubjectGrid({ subjects, onSelect, wrongCounts, cardCounts }) {
+function SubjectGrid({ subjects, onSelect, wrongCounts, cardCounts, isMobile }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -61,7 +62,7 @@ function SubjectGrid({ subjects, onSelect, wrongCounts, cardCounts }) {
       <div style={{ marginBottom: 32 }}>
         <h1 style={{
           fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700,
-          fontSize: 26, color: 'var(--text-primary)', marginBottom: 6,
+          fontSize: isMobile ? 22 : 26, color: 'var(--text-primary)', marginBottom: 6,
         }}>
           Flashcards
         </h1>
@@ -144,10 +145,10 @@ function SubjectGrid({ subjects, onSelect, wrongCounts, cardCounts }) {
 }
 
 /** Selector de temas */
-function TopicFilter({ topics, selected, onSelect, color }) {
+function TopicFilter({ topics, selected, onSelect, color, isMobile }) {
   return (
     <div style={{
-      display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20,
+      display: 'flex', gap: 8, flexWrap: isMobile ? 'nowrap' : 'wrap', marginBottom: 20, overflowX: isMobile ? 'auto' : 'visible', paddingBottom: 4,
     }}>
       <button
         onClick={() => onSelect(null)}
@@ -181,7 +182,7 @@ function TopicFilter({ topics, selected, onSelect, color }) {
 }
 
 /** Tarjeta con animación de flip 3D */
-function FlipCard({ card, flipped, onFlip, color }) {
+function FlipCard({ card, flipped, onFlip, color, isMobile }) {
   return (
     <div
       style={{
@@ -190,7 +191,7 @@ function FlipCard({ card, flipped, onFlip, color }) {
         maxWidth: 560,
         margin: '0 auto',
         cursor: 'pointer',
-        height: 280,
+        height: isMobile ? 320 : 280,
       }}
       onClick={onFlip}
     >
@@ -212,7 +213,7 @@ function FlipCard({ card, flipped, onFlip, color }) {
           background: 'var(--bg-card)',
           border: `1px solid ${color}40`,
           borderRadius: 20,
-          padding: '28px 32px',
+          padding: isMobile ? '22px 18px' : '28px 32px',
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           boxShadow: `0 0 40px ${color}20`,
@@ -239,7 +240,7 @@ function FlipCard({ card, flipped, onFlip, color }) {
           </div>
           <p style={{
             fontFamily: '"Space Grotesk", sans-serif',
-            fontSize: 18, fontWeight: 600, color: 'var(--text-primary)',
+            fontSize: isMobile ? 16 : 18, fontWeight: 600, color: 'var(--text-primary)',
             textAlign: 'center', lineHeight: 1.5, margin: 0,
           }}>
             {card.front}
@@ -260,7 +261,7 @@ function FlipCard({ card, flipped, onFlip, color }) {
           background: 'var(--bg-card)',
           border: `1px solid ${color}60`,
           borderRadius: 20,
-          padding: '28px 32px',
+          padding: isMobile ? '22px 18px' : '28px 32px',
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           boxShadow: `0 0 40px ${color}30`,
@@ -273,9 +274,9 @@ function FlipCard({ card, flipped, onFlip, color }) {
             Respuesta
           </div>
           <p style={{
-            fontSize: 15, color: 'var(--text-primary)',
+            fontSize: isMobile ? 14 : 15, color: 'var(--text-primary)',
             textAlign: 'center', lineHeight: 1.7, margin: 0,
-            maxHeight: 200, overflowY: 'auto',
+            maxHeight: isMobile ? 238 : 200, overflowY: 'auto',
           }}>
             {card.back}
           </p>
@@ -286,13 +287,13 @@ function FlipCard({ card, flipped, onFlip, color }) {
 }
 
 /** Botones de valoración */
-function RatingButtons({ onRate }) {
+function RatingButtons({ onRate, isMobile }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
-      style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 24 }}
+      style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 24, flexDirection: isMobile ? 'column' : 'row' }}
     >
       {[
         { result: 0, label: 'No lo sabía', color: '#EF4444', bg: 'rgba(239,68,68,0.12)', border: 'rgba(239,68,68,0.4)' },
@@ -303,7 +304,7 @@ function RatingButtons({ onRate }) {
           key={result}
           onClick={() => onRate(result)}
           style={{
-            flex: 1, maxWidth: 160,
+            flex: 1, maxWidth: isMobile ? '100%' : 160,
             padding: '10px 0', borderRadius: 10,
             fontSize: 13, fontWeight: 600, cursor: 'pointer',
             background: bg, border: `1px solid ${border}`, color,
@@ -322,6 +323,7 @@ function RatingButtons({ onRate }) {
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
 
 export default function Flashcards() {
+  const isMobile = useIsMobile()
   const [step, setStep] = useState('subjects')
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [allCards, setAllCards] = useState([])
@@ -452,7 +454,7 @@ export default function Flashcards() {
   // ── Paso 1: Selector de materia ──────────────────────────────────────────
   if (step === 'subjects') {
     return (
-      <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
         <AnimatePresence mode="wait">
           <SubjectGrid
             key="subjects"
@@ -460,6 +462,7 @@ export default function Flashcards() {
             onSelect={handleSelectSubject}
             wrongCounts={wrongCounts}
             cardCounts={cardCounts}
+            isMobile={isMobile}
           />
         </AnimatePresence>
 
@@ -509,7 +512,7 @@ export default function Flashcards() {
 
   // ── Paso 2: Sesión de estudio ─────────────────────────────────────────────
   return (
-    <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+      <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
 
       {/* Cabecera */}
       <div style={{
@@ -535,7 +538,7 @@ export default function Flashcards() {
         </button>
 
         {/* Stats de sesión */}
-        <div style={{ display: 'flex', gap: 16, fontSize: 13, color: 'var(--text-secondary)' }}>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13, color: 'var(--text-secondary)', flexWrap: 'wrap', justifyContent: isMobile ? 'flex-start' : 'flex-end' }}>
           <span>
             <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{sessionStudied}</span>
             {' '}estudiadas
@@ -555,13 +558,14 @@ export default function Flashcards() {
 
       {/* Filtro de temas */}
       {topics.length > 1 && !sessionDone && (
-        <TopicFilter
-          topics={topics}
-          selected={selectedTopic}
-          onSelect={(t) => { setSelectedTopic(t); }}
-          color={accentColor}
-        />
-      )}
+          <TopicFilter
+            topics={topics}
+            selected={selectedTopic}
+            onSelect={(t) => { setSelectedTopic(t); }}
+            color={accentColor}
+            isMobile={isMobile}
+          />
+        )}
 
       {/* Barra de progreso */}
       {!sessionDone && totalInSession > 0 && (
@@ -679,9 +683,10 @@ export default function Flashcards() {
               flipped={flipped}
               onFlip={handleFlip}
               color={accentColor}
+              isMobile={isMobile}
             />
             {flipped && (
-              <RatingButtons onRate={handleRate} />
+              <RatingButtons onRate={handleRate} isMobile={isMobile} />
             )}
             {!flipped && (
               <motion.p

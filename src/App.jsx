@@ -1,15 +1,53 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
-import Dashboard from './pages/Dashboard/index.jsx'
-import ExamenesOficiales from './pages/ExamenesOficiales/index.jsx'
-import Flashcards from './pages/Flashcards/index.jsx'
-import Tests from './pages/Tests/index.jsx'
-import Predicciones2026 from './pages/Predicciones2026/index.jsx'
-import Pomodoro from './pages/Pomodoro/index.jsx'
-import Calendario from './pages/Calendario/index.jsx'
-import Onboarding from './pages/Onboarding/index.jsx'
 import useStudyStore from './store/useStudyStore.js'
+
+const Dashboard = lazy(() => import('./pages/Dashboard/index.jsx'))
+const ExamenesOficiales = lazy(() => import('./pages/ExamenesOficiales/index.jsx'))
+const Flashcards = lazy(() => import('./pages/Flashcards/index.jsx'))
+const Tests = lazy(() => import('./pages/Tests/index.jsx'))
+const Predicciones2026 = lazy(() => import('./pages/Predicciones2026/index.jsx'))
+const Pomodoro = lazy(() => import('./pages/Pomodoro/index.jsx'))
+const Calendario = lazy(() => import('./pages/Calendario/index.jsx'))
+const Onboarding = lazy(() => import('./pages/Onboarding/index.jsx'))
+
+function AppLoader() {
+  return (
+    <div
+      style={{
+        minHeight: '100dvh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--bg-base)',
+        color: 'var(--text-secondary)',
+        padding: 24,
+      }}
+    >
+      <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            width: 44,
+            height: 44,
+            margin: '0 auto 14px',
+            borderRadius: 14,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'linear-gradient(135deg, #7C3AED, #06B6D4)',
+            color: '#fff',
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontWeight: 700,
+          }}
+        >
+          S
+        </div>
+        <p style={{ margin: 0, fontSize: 14 }}>Cargando SelectivIA...</p>
+      </div>
+    </div>
+  )
+}
 
 export default function App() {
   const hasCompletedOnboarding = useStudyStore((s) => s.hasCompletedOnboarding)
@@ -24,20 +62,26 @@ export default function App() {
   }, [darkMode])
 
   if (!hasCompletedOnboarding) {
-    return <Onboarding />
+    return (
+      <Suspense fallback={<AppLoader />}>
+        <Onboarding />
+      </Suspense>
+    )
   }
 
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/examenes" element={<ExamenesOficiales />} />
-        <Route path="/flashcards" element={<Flashcards />} />
-        <Route path="/tests" element={<Tests />} />
-        <Route path="/predicciones" element={<Predicciones2026 />} />
-        <Route path="/pomodoro" element={<Pomodoro />} />
-        <Route path="/calendario" element={<Calendario />} />
-      </Routes>
+      <Suspense fallback={<AppLoader />}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/examenes" element={<ExamenesOficiales />} />
+          <Route path="/flashcards" element={<Flashcards />} />
+          <Route path="/tests" element={<Tests />} />
+          <Route path="/predicciones" element={<Predicciones2026 />} />
+          <Route path="/pomodoro" element={<Pomodoro />} />
+          <Route path="/calendario" element={<Calendario />} />
+        </Routes>
+      </Suspense>
     </Layout>
   )
 }
