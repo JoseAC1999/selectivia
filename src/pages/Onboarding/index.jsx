@@ -14,8 +14,7 @@ export default function Onboarding() {
 
   function submitOnboarding() {
     const normalizedName = name.trim() || 'Estudiante'
-    const normalizedDate = examDate || null
-    completeOnboarding(normalizedName, normalizedDate)
+    completeOnboarding(normalizedName, null)
     navigate('/', { replace: true })
 
     window.setTimeout(() => {
@@ -143,7 +142,7 @@ export default function Onboarding() {
               style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)', marginBottom: 8 }}
             >
               ¿Cuándo es tu selectividad?{' '}
-              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>(opcional)</span>
+              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>(configúrala después)</span>
             </label>
             <input
               id="examDate"
@@ -151,22 +150,25 @@ export default function Onboarding() {
               value={examDate}
               onChange={(e) => setExamDate(e.target.value)}
               min="2026-01-01"
+              disabled
               style={{
                 width: '100%',
                 padding: '12px 16px',
                 borderRadius: 12,
                 border: '1px solid var(--border)',
                 background: 'var(--bg-base)',
-                color: examDate ? 'var(--text-primary)' : 'var(--text-muted)',
+                color: 'var(--text-muted)',
                 fontSize: 15,
                 outline: 'none',
                 boxSizing: 'border-box',
                 colorScheme: 'dark',
                 transition: 'border-color 0.15s',
+                opacity: 0.65,
               }}
-              onFocus={(e) => { e.target.style.borderColor = '#7C3AED' }}
-              onBlur={(e) => { e.target.style.borderColor = 'var(--border)' }}
             />
+            <p style={{ margin: '8px 0 0', fontSize: 12, color: 'var(--text-muted)' }}>
+              La fecha se configura mejor desde `Calendario` para evitar bloqueos en móvil.
+            </p>
           </div>
 
           {/* Botón */}

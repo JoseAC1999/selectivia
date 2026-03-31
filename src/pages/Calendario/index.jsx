@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META, addDays, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
-import { getDaysUntilExam } from '../../lib/examDate.js'
+import { getDaysUntilExam, normalizeExamDate } from '../../lib/examDate.js'
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
@@ -89,6 +89,11 @@ export default function Calendario() {
     return { year: d.getFullYear(), month: d.getMonth() }
   })
   const [expandedDay, setExpandedDay] = useState(null)
+  const [draftExamDate, setDraftExamDate] = useState(examDate ?? '')
+
+  useEffect(() => {
+    setDraftExamDate(examDate ?? '')
+  }, [examDate])
 
   function openTask(task) {
     if (task.kind === 'flashcards') {
@@ -100,6 +105,15 @@ export default function Calendario() {
       return
     }
     navigate('/predicciones', { state: { subject: task.subject } })
+  }
+
+  function handleSaveExamDate() {
+    setExamDate(normalizeExamDate(draftExamDate))
+  }
+
+  function handleClearExamDate() {
+    setDraftExamDate('')
+    setExamDate(null)
   }
 
   // Días restantes
@@ -170,9 +184,9 @@ export default function Calendario() {
             </label>
             <input
               type="date"
-              value={examDate ?? ''}
+              value={draftExamDate}
               min={today}
-              onChange={e => setExamDate(e.target.value || null)}
+              onChange={e => setDraftExamDate(e.target.value)}
               style={{
                 width: '100%', padding: '10px 12px', borderRadius: 10,
                 background: 'var(--border)', border: '1px solid var(--border)',
@@ -180,6 +194,43 @@ export default function Calendario() {
                 colorScheme: 'dark',
               }}
             />
+            <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
+              <button
+                type="button"
+                onClick={handleSaveExamDate}
+                style={{
+                  flex: 1,
+                  padding: '10px 12px',
+                  borderRadius: 10,
+                  border: 'none',
+                  background: 'linear-gradient(135deg, #10B981, #06B6D4)',
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Guardar fecha
+              </button>
+              <button
+                type="button"
+                onClick={handleClearExamDate}
+                style={{
+                  padding: '10px 12px',
+                  borderRadius: 10,
+                  border: '1px solid var(--border)',
+                  background: 'transparent',
+                  color: 'var(--text-secondary)',
+                  fontSize: 13,
+                  cursor: 'pointer',
+                }}
+              >
+                Quitar
+              </button>
+            </div>
+            <p style={{ margin: '8px 0 0', fontSize: 12, color: 'var(--text-muted)' }}>
+              La fecha solo se aplica al pulsar `Guardar fecha`.
+            </p>
             {daysLeft !== null && (
               <motion.div
                 initial={false}

@@ -378,16 +378,16 @@ function SearchModal({ query, setQuery, onClose, onSelect, loading, results }) {
 
 /** Modal para editar perfil */
 function ProfileModal({ onClose }) {
+  const navigate = useNavigate()
   const userName = useStudyStore((s) => s.userName)
   const examDate = useStudyStore((s) => s.examDate)
   const updateProfile = useStudyStore((s) => s.updateProfile)
   const [name, setName] = useState(userName || '')
-  const [date, setDate] = useState(examDate || '')
 
   function handleSave(e) {
     e.preventDefault()
     if (!name.trim()) return
-    updateProfile(name.trim(), date || null)
+    updateProfile(name.trim(), examDate || null)
     onClose()
   }
 
@@ -439,17 +439,35 @@ function ProfileModal({ onClose }) {
             <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-secondary)', marginBottom: 6 }}>
               Fecha de selectividad
             </label>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+            <div
               style={{
                 width: '100%', padding: '10px 14px', borderRadius: 10,
                 border: '1px solid var(--border)', background: 'var(--bg-base)',
-                color: date ? 'var(--text-primary)' : 'var(--text-muted)', fontSize: 14, outline: 'none',
-                boxSizing: 'border-box', colorScheme: 'dark',
+                color: examDate ? 'var(--text-primary)' : 'var(--text-muted)', fontSize: 14,
+                boxSizing: 'border-box',
               }}
-            />
+            >
+              {examDate || 'Sin configurar'}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                onClose()
+                navigate('/calendario')
+              }}
+              style={{
+                marginTop: 10,
+                border: '1px solid var(--border)',
+                borderRadius: 10,
+                padding: '10px 12px',
+                background: 'transparent',
+                color: 'var(--text-secondary)',
+                fontSize: 13,
+                cursor: 'pointer',
+              }}
+            >
+              Configurar fecha desde Calendario
+            </button>
           </div>
           <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
             <button
