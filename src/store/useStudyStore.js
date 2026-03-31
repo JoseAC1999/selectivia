@@ -18,6 +18,15 @@ const DEFAULT_PROGRESS = {
 
 const POMODORO_WORK_MINS = 25
 const POMODORO_BREAK_MINS = 5
+const POMODORO_SUBJECT_NAMES = {
+  biologia: 'Biología',
+  historia: 'Historia',
+  lengua: 'Lengua',
+  ingles: 'Inglés',
+  'mates-sociales': 'Mat. Sociales',
+  matematicas: 'Matemáticas II',
+  quimica: 'Química',
+}
 const onboardingBootstrap = readOnboardingSnapshot()
 
 const safePersistStorage =
@@ -60,6 +69,13 @@ function toObject(value) {
 
 function toNumber(value, fallback = 0) {
   return Number.isFinite(value) ? value : fallback
+}
+
+function formatClock(seconds) {
+  const safe = Math.max(0, Math.floor(Number(seconds) || 0))
+  const mins = String(Math.floor(safe / 60)).padStart(2, '0')
+  const secs = String(safe % 60).padStart(2, '0')
+  return `${mins}:${secs}`
 }
 
 const useStudyStore = create(
@@ -297,12 +313,16 @@ const useStudyStore = create(
       startPomodoro: () =>
         set((s) => {
           if (s.pomodoroTimer.running) return {}
+          const timeLabel = formatClock(s.pomodoroTimer.secondsLeft)
+          const modeLabel = s.pomodoroTimer.isWork ? 'foco' : 'descanso'
+          const subjectLabel = POMODORO_SUBJECT_NAMES[s.pomodoroTimer.selectedSubject] ?? 'tu materia'
           return {
             pomodoroTimer: {
               ...s.pomodoroTimer,
               running: true,
               endAt: Date.now() + s.pomodoroTimer.secondsLeft * 1000,
             },
+            uiToast: { id: Date.now(), message: `Pomodoro iniciado: ${timeLabel} de ${modeLabel} en ${subjectLabel}` },
           }
         }),
 

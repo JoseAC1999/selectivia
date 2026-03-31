@@ -9,7 +9,6 @@ export default function Onboarding() {
   const completeOnboarding = useStudyStore((s) => s.completeOnboarding)
   const isMobile = useIsMobile()
   const [name, setName] = useState('')
-  const [examDate, setExamDate] = useState('')
   const [error, setError] = useState('')
 
   function submitOnboarding() {
@@ -133,42 +132,6 @@ export default function Onboarding() {
               onBlur={(e) => { if (!error) e.target.style.borderColor = 'var(--border)' }}
             />
             {error && <p style={{ fontSize: 12, color: '#EF4444', marginTop: 6 }}>{error}</p>}
-          </div>
-
-          {/* Fecha de selectividad */}
-          <div>
-            <label
-              htmlFor="examDate"
-              style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)', marginBottom: 8 }}
-            >
-              ¿Cuándo es tu selectividad?{' '}
-              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>(configúrala después)</span>
-            </label>
-            <input
-              id="examDate"
-              type="date"
-              value={examDate}
-              onChange={(e) => setExamDate(e.target.value)}
-              min="2026-01-01"
-              disabled
-              style={{
-                width: '100%',
-                padding: '12px 16px',
-                borderRadius: 12,
-                border: '1px solid var(--border)',
-                background: 'var(--bg-base)',
-                color: 'var(--text-muted)',
-                fontSize: 15,
-                outline: 'none',
-                boxSizing: 'border-box',
-                colorScheme: 'dark',
-                transition: 'border-color 0.15s',
-                opacity: 0.65,
-              }}
-            />
-            <p style={{ margin: '8px 0 0', fontSize: 12, color: 'var(--text-muted)' }}>
-              La fecha se configura mejor desde `Calendario` para evitar bloqueos en móvil.
-            </p>
           </div>
 
           {/* Botón */}

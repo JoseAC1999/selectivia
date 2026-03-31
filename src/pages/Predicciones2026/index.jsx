@@ -166,9 +166,12 @@ function Collapsible({ label, icon, children }) {
 }
 
 /** Tarjeta de predicción individual */
-function PredictionCard({ prediction, index, onStudyFlashcards }) {
+function PredictionCard({ prediction, index, onStudyFlashcards, subjectColor }) {
   const conf = normalizeConfidence(prediction.confidence)
   const config = CONFIDENCE_CONFIG[conf] ?? CONFIDENCE_CONFIG['media']
+  const accentColor = subjectColor ?? '#7C3AED'
+  const accentSoft = `${accentColor}22`
+  const accentMedium = `${accentColor}40`
 
   return (
     <motion.div
@@ -181,7 +184,7 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
         background: 'var(--bg-card)',
         border: '1px solid var(--border)',
         borderLeftWidth: 3,
-        borderLeftColor: config.borderColor,
+        borderLeftColor: accentColor,
       }}
     >
       {/* Cabecera */}
@@ -194,7 +197,14 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
             )}
           </div>
           <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
-            <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-400 border border-violet-500/30 font-medium">
+            <span
+              className="text-xs px-2 py-0.5 rounded-full font-medium"
+              style={{
+                background: accentSoft,
+                color: accentColor,
+                border: `1px solid ${accentMedium}`,
+              }}
+            >
               ✦ Predicción IA
             </span>
             <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold tracking-wide ${config.badgeClass}`}>
@@ -231,7 +241,12 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
 
         <button
           onClick={onStudyFlashcards}
-          className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-violet-600/20 hover:bg-violet-600/30 border border-violet-500/20 hover:border-violet-500/40 text-violet-400 text-sm font-medium transition-all"
+          className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all"
+          style={{
+            background: accentSoft,
+            border: `1px solid ${accentMedium}`,
+            color: accentColor,
+          }}
         >
           <span>🃏</span>
           <span>Estudiar flashcards</span>
@@ -428,6 +443,7 @@ export default function Predicciones2026() {
                       key={pred.id ?? i}
                       prediction={pred}
                       index={i}
+                      subjectColor={selectedSubject?.color}
                       onStudyFlashcards={() => navigate('/flashcards', { state: { subject: selectedSlug } })}
                     />
                   ))

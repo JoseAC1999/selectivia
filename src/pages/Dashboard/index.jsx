@@ -375,6 +375,49 @@ export default function Dashboard() {
           </p>
         </div>
 
+        {daysLeft == null && (
+          <section style={{ marginBottom: 24 }}>
+            <div
+              style={{
+                background: 'linear-gradient(135deg, rgba(124,58,237,0.16), rgba(6,182,212,0.1))',
+                border: '1px solid rgba(124,58,237,0.35)',
+                borderRadius: 16,
+                padding: isMobile ? '14px 14px' : '16px 18px',
+                display: 'flex',
+                alignItems: isMobile ? 'flex-start' : 'center',
+                justifyContent: 'space-between',
+                gap: 14,
+                flexDirection: isMobile ? 'column' : 'row',
+              }}
+            >
+              <div>
+                <p style={{ margin: '0 0 6px', fontSize: 13, fontWeight: 700, color: 'var(--text-primary)' }}>
+                  Define el día de tu Selectividad para personalizar el plan
+                </p>
+                <p style={{ margin: 0, fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.45 }}>
+                  En menos de 10 segundos tendrás el calendario adaptado a tus semanas reales.
+                </p>
+              </div>
+              <button
+                onClick={() => navigate('/calendario')}
+                style={{
+                  padding: '9px 14px',
+                  borderRadius: 10,
+                  border: '1px solid #7C3AED66',
+                  background: '#7C3AED26',
+                  color: '#C4B5FD',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Añadir fecha ahora
+              </button>
+            </div>
+          </section>
+        )}
+
         {/* ── Racha + Total horas ── */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
           {/* Racha */}
