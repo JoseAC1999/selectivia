@@ -4,17 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META, addDays, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
-import { getDaysUntilExam, normalizeExamDate } from '../../lib/examDate.js'
+import { getDaysUntilExam, getTodayDateString, normalizeExamDate } from '../../lib/examDate.js'
 
 const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
 const DAY_NAMES = ['L','M','X','J','V','S','D']
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-function toDateStr(d) {
-  return d.toISOString().split('T')[0]
-}
 
 function urgencyColor(days) {
   if (days > 60) return '#10B981'
@@ -80,16 +74,18 @@ export default function Calendario() {
     examDate, setExamDate,
     studyHoursPerDay, setStudyHoursPerDay,
     studyPlanCompleted, toggleStudyPlanDay,
-    progress, flashcardWrongIds, testHistory,
+    progress, flashcardWrongIds, testHistory, showToast,
   } = useStudyStore()
 
-  const today = toDateStr(new Date())
+  const today = getTodayDateString()
   const [calMonth, setCalMonth] = useState(() => {
     const d = new Date()
     return { year: d.getFullYear(), month: d.getMonth() }
   })
   const [expandedDay, setExpandedDay] = useState(null)
   const [draftExamDate, setDraftExamDate] = useState(examDate ?? '')
+  const normalizedDraftExamDate = normalizeExamDate(draftExamDate)
+  const canSaveExamDate = normalizedDraftExamDate !== null
 
   useEffect(() => {
     setDraftExamDate(examDate ?? '')
@@ -108,12 +104,26 @@ export default function Calendario() {
   }
 
   function handleSaveExamDate() {
-    setExamDate(normalizeExamDate(draftExamDate))
+    if (!normalizedDraftExamDate) {
+      showToast('Elige una fecha válida')
+      return
+    }
+
+    const [year, month] = normalizedDraftExamDate.split('-')
+    setExamDate(normalizedDraftExamDate)
+    setCalMonth({
+      year: Number(year),
+      month: Number(month) - 1,
+    })
+    setExpandedDay(normalizedDraftExamDate)
+    showToast('Fecha guardada')
   }
 
   function handleClearExamDate() {
     setDraftExamDate('')
     setExamDate(null)
+    setExpandedDay(null)
+    showToast('Fecha eliminada')
   }
 
   // Días restantes
@@ -198,16 +208,20 @@ export default function Calendario() {
               <button
                 type="button"
                 onClick={handleSaveExamDate}
+                disabled={!canSaveExamDate}
                 style={{
                   flex: 1,
                   padding: '10px 12px',
                   borderRadius: 10,
                   border: 'none',
-                  background: 'linear-gradient(135deg, #10B981, #06B6D4)',
-                  color: '#fff',
+                  background: canSaveExamDate
+                    ? 'linear-gradient(135deg, #10B981, #06B6D4)'
+                    : 'var(--border)',
+                  color: canSaveExamDate ? '#fff' : 'var(--text-muted)',
                   fontSize: 13,
                   fontWeight: 600,
-                  cursor: 'pointer',
+                  cursor: canSaveExamDate ? 'pointer' : 'not-allowed',
+                  opacity: canSaveExamDate ? 1 : 0.7,
                 }}
               >
                 Guardar fecha

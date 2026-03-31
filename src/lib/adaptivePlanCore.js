@@ -1,4 +1,10 @@
-import { normalizeExamDate } from './examDate.js'
+import {
+  addDaysToDateString,
+  daysBetweenDateStrings,
+  getTodayDateString,
+  normalizeExamDate,
+  toExamDateString,
+} from './examDate.js'
 
 export const SUBJECT_META = {
   biologia: { name: 'Biología', color: '#10B981', icon: '🧬' },
@@ -13,17 +19,15 @@ export const SUBJECT_META = {
 const SUBJECTS = Object.keys(SUBJECT_META)
 
 function toDateStr(d) {
-  return d.toISOString().split('T')[0]
+  return toExamDateString(d)
 }
 
 export function addDays(dateStr, n) {
-  const d = new Date(dateStr)
-  d.setDate(d.getDate() + n)
-  return toDateStr(d)
+  return addDaysToDateString(dateStr, n)
 }
 
 function daysBetween(a, b) {
-  return Math.round((new Date(b) - new Date(a)) / 86400000)
+  return daysBetweenDateStrings(a, b)
 }
 
 function normalizeConfidence(raw) {
@@ -131,7 +135,7 @@ export function generateAdaptivePlanCore({
   const safeTestHistory = Array.isArray(testHistory) ? testHistory : []
   const safeStudyPlanCompleted = Array.isArray(studyPlanCompleted) ? studyPlanCompleted : []
 
-  const today = toDateStr(new Date())
+  const today = getTodayDateString()
   const normalizedExamDate = normalizeExamDate(examDate)
   if (!normalizedExamDate || normalizedExamDate <= today) return []
   const days = daysBetween(today, normalizedExamDate)

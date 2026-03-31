@@ -1,10 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { addDays, generateAdaptivePlanCore } from '../src/lib/adaptivePlanCore.js'
+import { daysBetweenDateStrings, getTodayDateString, normalizeExamDate } from '../src/lib/examDate.js'
 import { buildTomorrowTasks, inferQuestionType } from '../src/lib/examFeedback.js'
 
 function baseInput(overrides = {}) {
-  const today = new Date().toISOString().split('T')[0]
+  const today = getTodayDateString()
   return {
     examDate: addDays(today, 20),
     progress: {
@@ -32,10 +33,16 @@ function baseInput(overrides = {}) {
 }
 
 test('adaptive plan activa modo urgencia cerca del examen', () => {
-  const today = new Date().toISOString().split('T')[0]
+  const today = getTodayDateString()
   const plan = generateAdaptivePlanCore(baseInput({ examDate: addDays(today, 7) }))
   assert.ok(plan.length > 0)
   assert.equal(plan[0].urgencyMode, true)
+})
+
+test('examDate mantiene fechas válidas y cuenta días sin desfases', () => {
+  assert.equal(normalizeExamDate('2026-06-09'), '2026-06-09')
+  assert.equal(normalizeExamDate('2026-02-31'), null)
+  assert.equal(daysBetweenDateStrings('2026-06-09', '2026-06-10'), 1)
 })
 
 test('adaptive plan añade bloque de recuperación al detectar días saltados', () => {

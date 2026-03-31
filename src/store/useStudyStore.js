@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { normalizeExamDate } from '../lib/examDate.js'
+import { getTodayDateString, normalizeExamDate } from '../lib/examDate.js'
 import { clearOnboardingSnapshot, readOnboardingSnapshot, writeOnboardingSnapshot } from '../lib/onboardingStorage.js'
 
 /** @typedef {{ biologia: number, fisica: number, historia: number, lengua: number, ingles: number, 'mates-sociales': number, matematicas: number, quimica: number }} SubjectProgress */
@@ -161,7 +161,7 @@ const useStudyStore = create(
 
       /** Registra un resultado de test y actualiza racha */
       addTestResult: (subject, score, wrongAnswers = [], label = '', questionType = 'desarrollo') => {
-        const today = new Date().toISOString().split('T')[0]
+        const today = getTodayDateString()
         const state = get()
 
         // Calcular nueva racha
@@ -169,7 +169,7 @@ const useStudyStore = create(
         if (state.lastStudiedDate !== today) {
           const yesterday = new Date()
           yesterday.setDate(yesterday.getDate() - 1)
-          const yesterdayStr = yesterday.toISOString().split('T')[0]
+          const yesterdayStr = getTodayDateString(yesterday)
           newStreak = state.lastStudiedDate === yesterdayStr ? state.streak + 1 : 1
         }
 
@@ -193,7 +193,7 @@ const useStudyStore = create(
 
       /** Registra el resultado de una flashcard y actualiza la lista de repaso */
       addFlashcardResult: (subject, cardId, result) => {
-        const today = new Date().toISOString().split('T')[0]
+        const today = getTodayDateString()
         set((s) => {
           const prevWrong = s.flashcardWrongIds[subject] ?? []
           let newWrong

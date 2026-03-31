@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useStudyStore from '../store/useStudyStore.js'
 import useGlobalSearch from '../hooks/useGlobalSearch.js'
 import { generateAdaptivePlan } from '../lib/adaptivePlan.js'
-import { getDaysUntilExam, isValidExamDate } from '../lib/examDate.js'
+import { getDaysUntilExam, getTodayDateString, isValidExamDate } from '../lib/examDate.js'
 import { preloadRoute } from '../lib/preloadRoutes.js'
 
 /** Definición de las secciones de navegación */
@@ -533,7 +533,7 @@ export default function Layout({ children }) {
 
   const pendingPlanCount = useMemo(() => {
     if (!isValidExamDate(examDate)) return 0
-    const today = new Date().toISOString().split('T')[0]
+    const today = getTodayDateString()
     const plan = generateAdaptivePlan({
       examDate,
       progress,

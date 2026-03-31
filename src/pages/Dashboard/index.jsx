@@ -8,7 +8,7 @@ import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { SUBJECT_META as PLAN_SUBJECT_META, generateAdaptivePlan } from '../../lib/adaptivePlan.js'
-import { getDaysUntilExam } from '../../lib/examDate.js'
+import { getDaysUntilExam, getTodayDateString } from '../../lib/examDate.js'
 import { preloadRoute } from '../../lib/preloadRoutes.js'
 
 // Totales de preguntas por materia (de src/data/ebau/)
@@ -213,7 +213,7 @@ export default function Dashboard() {
     return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(today)
       d.setDate(today.getDate() - (6 - i))
-      const dayStr = d.toISOString().split('T')[0]
+      const dayStr = getTodayDateString(d)
       const mins = safePomodoroSessions
         .filter(s => s.date.startsWith(dayStr))
         .reduce((sum, s) => sum + (s.duration ?? 25), 0)
@@ -227,7 +227,7 @@ export default function Dashboard() {
   const totalWeekHours = weeklyData.reduce((s, d) => s + d.hours, 0).toFixed(1)
 
   // ── Plan de estudio: próximos 3 días ──
-  const today = new Date().toISOString().split('T')[0]
+  const today = getTodayDateString()
   const adaptivePlan = useMemo(() => {
     return generateAdaptivePlan({
       examDate,

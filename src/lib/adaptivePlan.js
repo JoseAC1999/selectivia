@@ -20,8 +20,13 @@ const ALL_PREDICTIONS = {
 export { SUBJECT_META, addDays }
 
 export function generateAdaptivePlan(input) {
-  return generateAdaptivePlanCore({
-    ...input,
-    predictionsBySubject: ALL_PREDICTIONS,
-  })
+  try {
+    return generateAdaptivePlanCore({
+      ...input,
+      predictionsBySubject: ALL_PREDICTIONS,
+    })
+  } catch (error) {
+    console.error('SelectivIA adaptive plan error:', error)
+    return []
+  }
 }
