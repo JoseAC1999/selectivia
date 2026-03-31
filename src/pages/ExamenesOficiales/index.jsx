@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import confetti from 'canvas-confetti'
 import useStudyStore from '../../store/useStudyStore.js'
 import PDF_PATHS from '../../data/pdf-paths.json'
+import CRITERIA_PATHS from '../../data/criteria-paths.json'
 import { playConfetti } from '../../lib/sounds.js'
 import useIsMobile from '../../hooks/useIsMobile.js'
 import { assessAnswerAgainstText, assessChecklistCoverage } from '../../lib/localAssessment.js'
@@ -57,6 +58,69 @@ function formatTime(s) {
 function fmtPts(n) {
   const rounded = Math.round(n * 100) / 100
   return rounded.toString().replace('.', ',')
+}
+
+function buildDefaultChecklist() {
+  return [
+    { id: 0, description: 'He respondido exactamente a lo que pedía el enunciado', points: 2, pointsRaw: '2', groupId: 'g0', groupLabel: 'Adecuación' },
+    { id: 1, description: 'He estructurado la respuesta de forma clara y ordenada', points: 2, pointsRaw: '2', groupId: 'g1', groupLabel: 'Estructura' },
+    { id: 2, description: 'He usado terminología específica y conceptos correctos', points: 2, pointsRaw: '2', groupId: 'g2', groupLabel: 'Terminología' },
+    { id: 3, description: 'He justificado razonamientos y no solo he enumerado ideas', points: 2, pointsRaw: '2', groupId: 'g3', groupLabel: 'Justificación' },
+    { id: 4, description: 'Mi respuesta está cuidada (redacción, precisión y cierre)', points: 2, pointsRaw: '2', groupId: 'g4', groupLabel: 'Calidad global' },
+  ]
+}
+
+function PdfPreview({ title, subtitle, pdfPath, color, emptyLabel = 'PDF no disponible', height = 480 }) {
+  return (
+    <div style={{
+      background: 'var(--bg-card)',
+      border: '1px solid var(--border)',
+      borderRadius: 12,
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 10,
+        padding: '10px 12px',
+        borderBottom: '1px solid var(--border)',
+        background: 'var(--bg-elevated)',
+      }}>
+        <div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>{title}</div>
+          {subtitle && <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 1 }}>{subtitle}</div>}
+        </div>
+        {pdfPath && (
+          <button
+            onClick={() => window.open(pdfPath, '_blank')}
+            style={{
+              padding: '6px 10px',
+              borderRadius: 8,
+              border: `1px solid ${color}66`,
+              background: `${color}20`,
+              color: color,
+              fontSize: 11,
+              fontWeight: 700,
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            Abrir PDF
+          </button>
+        )}
+      </div>
+      {pdfPath ? (
+        <iframe
+          title={title}
+          src={`${pdfPath}#view=FitH`}
+          style={{ width: '100%', height, border: 'none', background: '#111' }}
+        />
+      ) : (
+        <div style={{ padding: '16px 12px', color: 'var(--text-muted)', fontSize: 13 }}>{emptyLabel}</div>
+      )}
+    </div>
+  )
 }
 
 /**
@@ -556,10 +620,18 @@ export default function ExamenesOficiales() {
     ? subjectData.questions.filter(q => q.year === selectedYear)
     : []
   const availableYears = subjectData
-    ? [...new Set(subjectData.questions.map(q => q.year))].sort()
+    ? [...new Set(subjectData.questions.map(q => q.year))].sort((a, b) => b - a)
     : []
   const safeIndex = Math.min(examIndex, Math.max(0, filteredExams.length - 1))
   const activeExam = filteredExams[safeIndex] ?? null
+  const examPdfPath = activeExam ? PDF_PATHS[activeExam.id] : null
+  const criteriaPdfPath = activeExam ? CRITERIA_PATHS[activeExam.id] : null
+  const sharedCriteriaExamIds = criteriaPdfPath
+    ? Object.entries(CRITERIA_PATHS)
+      .filter(([id, path]) => id !== activeExam?.id && path === criteriaPdfPath)
+      .map(([id]) => id)
+    : []
+  const hasSharedCriteria = sharedCriteriaExamIds.length > 0
   const timerColor = timeLeft <= 60 ? '#EF4444' : timeLeft <= 300 ? '#F59E0B' : 'var(--text-primary)'
   const useChecklist = checklistItems.length > 0
 
@@ -647,9 +719,10 @@ export default function ExamenesOficiales() {
   useEffect(() => {
     if (examSubmitted && activeExam) {
       const parsed = parseCriterios(activeExam.rawAnswer)
-      setChecklistItems(parsed.map(item => ({ ...item, checked: false })))
+      const source = parsed.length >= 2 ? parsed : buildDefaultChecklist()
+      setChecklistItems(source.map(item => ({ ...item, checked: false })))
     }
-  }, [examSubmitted])
+  }, [examSubmitted, activeExam])
 
   // Mostrar botón "Ir al inicio" tras 300px de scroll
   useEffect(() => {
@@ -685,7 +758,7 @@ export default function ExamenesOficiales() {
       const data = EBAU_DATA[subject.slug]
       if (!data) throw new Error(`No hay datos para ${subject.slug}`)
       setSubjectData(data)
-      const years = [...new Set(data.questions.map(q => q.year))].sort()
+      const years = [...new Set(data.questions.map(q => q.year))].sort((a, b) => b - a)
       setSelectedYear(years[0] ?? 2024)
       setExamIndex(0)
       setVisibleExams(8)
@@ -1020,50 +1093,13 @@ export default function ExamenesOficiales() {
 
               {/* Izquierda (60%): enlace al PDF + enunciado en texto */}
               <div style={{ flex: isMobile ? '1 1 auto' : '0 0 60%', width: isMobile ? '100%' : 'auto' }}>
-                {/* Tarjeta de acceso al PDF */}
-                <div style={{
-                  background: 'var(--bg-card)', border: '1px solid var(--border)',
-                  borderRadius: 12, padding: '24px',
-                  marginBottom: 16, textAlign: 'center',
-                }}>
-                  <div style={{ fontSize: 36, marginBottom: 8 }}>📄</div>
-                  <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)', marginBottom: 4 }}>
-                    Ver examen oficial
-                  </div>
-                  <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
-                    {formatExamLabel(activeExam)} · {activeExam.year}
-                  </div>
-                  {PDF_PATHS[activeExam.id] ? (
-                    <button
-                      onClick={() => window.open(PDF_PATHS[activeExam.id], '_blank')}
-                      style={{
-                        display: 'inline-flex', alignItems: 'center', gap: 8,
-                        padding: '10px 20px', borderRadius: 10, fontSize: 14,
-                        fontWeight: 600, cursor: 'pointer',
-                        background: selectedSubject.color, color: '#000',
-                        border: 'none',
-                      }}
-                    >
-                      Abrir PDF →
-                    </button>
-                  ) : (
-                    <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>PDF no disponible</span>
-                  )}
-                </div>
-
-                {/* Enunciado en texto plano */}
-                {activeExam.rawQuestion && (
-                  <pre style={{
-                    background: 'var(--bg-card)', border: '1px solid var(--border)',
-                    borderRadius: 12, padding: '20px',
-                    color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.7,
-                    whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                    overflowY: 'auto', maxHeight: isMobile ? 'none' : 'calc(100vh - 260px)',
-                    margin: 0, fontFamily: '"Inter", sans-serif',
-                  }}>
-                    {activeExam.rawQuestion}
-                  </pre>
-                )}
+                <PdfPreview
+                  title="Examen oficial"
+                  subtitle={`${formatExamLabel(activeExam)} · ${activeExam.year}`}
+                  pdfPath={examPdfPath}
+                  color={selectedSubject.color}
+                  height={isMobile ? 420 : 640}
+                />
               </div>
 
               {/* Derecha (40%): criterios de corrección + navegación */}
@@ -1111,20 +1147,44 @@ export default function ExamenesOficiales() {
                       style={{ overflow: 'hidden', marginBottom: 16 }}
                     >
                       {activeExam.hasCriterios ? (
-                        <div style={{ padding: '8px 0' }}>
-                          <div style={{
-                            fontSize: 10, color: selectedSubject.color, fontWeight: 700,
-                            textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 12,
-                          }}>
-                            Criterios de corrección oficiales
-                          </div>
-                          <pre style={{
-                            whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                            fontFamily: '"Inter", sans-serif', fontSize: 13, lineHeight: 1.75,
-                            color: 'var(--text-primary)', margin: 0,
-                          }}>
-                            {activeExam.rawAnswer}
-                          </pre>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                          {hasSharedCriteria && (
+                            <div style={{
+                              padding: '10px 12px',
+                              borderRadius: 10,
+                              border: '1px solid rgba(245,158,11,0.35)',
+                              background: 'rgba(245,158,11,0.1)',
+                              color: '#FCD34D',
+                              fontSize: 12,
+                              lineHeight: 1.45,
+                            }}>
+                              Este criterio está compartido con {sharedCriteriaExamIds.length} variante(s) del mismo año/convocatoria.
+                            </div>
+                          )}
+                          <PdfPreview
+                            title="Criterios oficiales"
+                            subtitle={`${formatExamLabel(activeExam)} · ${activeExam.year}`}
+                            pdfPath={criteriaPdfPath}
+                            color={selectedSubject.color}
+                            emptyLabel="No se encontró PDF de criterios para este examen."
+                            height={isMobile ? 360 : 460}
+                          />
+                          <details style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '8px 10px' }}>
+                            <summary style={{ cursor: 'pointer', color: 'var(--text-secondary)', fontSize: 12 }}>
+                              Ver criterios en texto (respaldo)
+                            </summary>
+                            <pre style={{
+                              marginTop: 10,
+                              whiteSpace: 'pre-wrap',
+                              wordBreak: 'break-word',
+                              fontFamily: '"Inter", sans-serif',
+                              fontSize: 12,
+                              lineHeight: 1.6,
+                              color: 'var(--text-primary)',
+                            }}>
+                              {activeExam.rawAnswer}
+                            </pre>
+                          </details>
                         </div>
                       ) : (
                         <div style={{
@@ -1345,9 +1405,9 @@ export default function ExamenesOficiales() {
                     <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                       {selectedSubject.icon} {formatExamLabel(activeExam)} · {activeExam.year}
                     </span>
-                    {PDF_PATHS[activeExam.id] && (
+                    {examPdfPath && (
                       <button
-                        onClick={() => window.open(PDF_PATHS[activeExam.id], '_blank')}
+                        onClick={() => window.open(examPdfPath, '_blank')}
                         style={{
                           display: 'inline-flex', alignItems: 'center', gap: 5,
                           padding: '3px 10px', borderRadius: 16, fontSize: 11,
@@ -1398,50 +1458,13 @@ export default function ExamenesOficiales() {
                     className="md:col-span-3"
                     style={{ position: isMobile ? 'static' : 'sticky', top: 64 }}
                   >
-                    {/* Tarjeta de acceso al PDF */}
-                    <div style={{
-                      background: 'var(--bg-card)', border: '1px solid var(--border)',
-                      borderRadius: 12, padding: '24px',
-                      marginBottom: 16, textAlign: 'center',
-                    }}>
-                      <div style={{ fontSize: 36, marginBottom: 8 }}>📄</div>
-                      <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)', marginBottom: 4 }}>
-                        Ver examen oficial
-                      </div>
-                      <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
-                        {formatExamLabel(activeExam)} · {activeExam.year}
-                      </div>
-                      {PDF_PATHS[activeExam.id] ? (
-                        <button
-                          onClick={() => window.open(PDF_PATHS[activeExam.id], '_blank')}
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 8,
-                            padding: '10px 20px', borderRadius: 10, fontSize: 14,
-                            fontWeight: 600, cursor: 'pointer',
-                            background: selectedSubject.color, color: '#000',
-                            border: 'none',
-                          }}
-                        >
-                          Abrir PDF →
-                        </button>
-                      ) : (
-                        <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>PDF no disponible</span>
-                      )}
-                    </div>
-
-                    {/* Enunciado en texto plano */}
-                    {activeExam.rawQuestion && (
-                      <pre style={{
-                        background: 'var(--bg-card)', border: '1px solid var(--border)',
-                        borderRadius: 12, padding: '20px',
-                        color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.7,
-                        whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                        overflowY: 'auto', maxHeight: isMobile ? 320 : 'calc(100vh - 260px)',
-                        margin: 0, fontFamily: '"Inter", sans-serif',
-                      }}>
-                        {activeExam.rawQuestion}
-                      </pre>
-                    )}
+                    <PdfPreview
+                      title="Examen oficial"
+                      subtitle={`${formatExamLabel(activeExam)} · ${activeExam.year}`}
+                      pdfPath={examPdfPath}
+                      color={selectedSubject.color}
+                      height={isMobile ? 360 : 600}
+                    />
                   </div>
 
                   {/* Columna derecha (40%): área de respuesta */}
@@ -1580,6 +1603,31 @@ export default function ExamenesOficiales() {
 
                     {/* Columna derecha: contador + checklist */}
                     <div>
+                      {hasSharedCriteria && (
+                        <div style={{
+                          marginBottom: 10,
+                          padding: '9px 11px',
+                          borderRadius: 10,
+                          border: '1px solid rgba(245,158,11,0.35)',
+                          background: 'rgba(245,158,11,0.1)',
+                          color: '#FCD34D',
+                          fontSize: 12,
+                          lineHeight: 1.45,
+                        }}>
+                          Nota: este PDF de criterios está compartido con {sharedCriteriaExamIds.length} variante(s) de este examen.
+                        </div>
+                      )}
+                      <div style={{ marginBottom: 12 }}>
+                        <PdfPreview
+                          title="Criterios oficiales para corregirte"
+                          subtitle={`${formatExamLabel(activeExam)} · ${activeExam.year}`}
+                          pdfPath={criteriaPdfPath}
+                          color={selectedSubject.color}
+                          emptyLabel="No se encontró PDF de criterios. Puedes usar el checklist igualmente."
+                          height={isMobile ? 280 : 320}
+                        />
+                      </div>
+
                       {/* Contador de puntuación (sticky) */}
                       <div style={{ position: 'sticky', top: 0, background: 'var(--bg-base)', paddingBottom: 10, marginBottom: 10, zIndex: 5 }}>
                         <div style={{
