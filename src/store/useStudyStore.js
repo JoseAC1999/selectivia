@@ -17,6 +17,36 @@ const DEFAULT_PROGRESS = {
 const POMODORO_WORK_MINS = 25
 const POMODORO_BREAK_MINS = 5
 
+const safePersistStorage =
+  typeof window === 'undefined'
+    ? undefined
+    : {
+        getItem: (name) => {
+          try {
+            const raw = window.localStorage.getItem(name)
+            if (!raw) return null
+            try {
+              return JSON.parse(raw)
+            } catch {
+              window.localStorage.removeItem(name)
+              return null
+            }
+          } catch {
+            return null
+          }
+        },
+        setItem: (name, value) => {
+          try {
+            window.localStorage.setItem(name, JSON.stringify(value))
+          } catch {}
+        },
+        removeItem: (name) => {
+          try {
+            window.localStorage.removeItem(name)
+          } catch {}
+        },
+      }
+
 function toArray(value) {
   return Array.isArray(value) ? value : []
 }
@@ -371,6 +401,7 @@ const useStudyStore = create(
     {
       name: 'selectivia-store',
       version: 2,
+      storage: safePersistStorage,
       merge: (persistedState, currentState) => {
         const persisted = toObject(persistedState)
         const state = toObject(persisted.state)
@@ -417,8 +448,17 @@ const useStudyStore = create(
           examDate: typeof state.examDate === 'string' || state.examDate === null ? state.examDate : currentState.examDate,
         }
       },
-      onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true)
+      onRehydrateStorage: () => (state, error) => {
+        if (state?.setHasHydrated) {
+          state.setHasHydrated(true)
+          return
+        }
+
+        if (error) {
+          queueMicrotask(() => {
+            useStudyStore.setState({ hasHydrated: true })
+          })
+        }
       },
       partialize: (state) => ({
         progress: state.progress,
