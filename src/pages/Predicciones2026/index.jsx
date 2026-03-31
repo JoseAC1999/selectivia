@@ -172,7 +172,7 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12, scale: 0.97 }}
       transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
@@ -302,7 +302,7 @@ export default function Predicciones2026() {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -16 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="mb-8"
@@ -320,7 +320,7 @@ export default function Predicciones2026() {
 
           {/* Sidebar: selector de materias */}
           <motion.aside
-            initial={{ opacity: 0, x: -16 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             className="lg:w-64 shrink-0"

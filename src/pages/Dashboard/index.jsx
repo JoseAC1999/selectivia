@@ -49,7 +49,7 @@ function formatDate(isoString) {
 
 // Animación de entrada escalonada para tarjetas
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 0 },
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.07, duration: 0.4 } }),
 }
 
@@ -358,7 +358,7 @@ export default function Dashboard() {
 
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* ── Header ── */}
         <div style={{ marginBottom: 36 }}>
@@ -379,7 +379,7 @@ export default function Dashboard() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
           {/* Racha */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
             style={{
@@ -409,7 +409,7 @@ export default function Dashboard() {
 
           {/* Horas esta semana */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.15 }}
             style={{
@@ -439,7 +439,7 @@ export default function Dashboard() {
 
           {/* Exámenes completados */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             style={{

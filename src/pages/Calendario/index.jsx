@@ -143,7 +143,7 @@ export default function Calendario() {
 
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
@@ -184,7 +184,7 @@ export default function Calendario() {
             />
             {daysLeft !== null && (
               <motion.div
-                initial={{ opacity: 0 }}
+                initial={false}
                 animate={{ opacity: 1 }}
                 style={{
                   marginTop: 12, display: 'flex', alignItems: 'baseline', gap: 6,

@@ -819,7 +819,7 @@ export default function ExamenesOficiales() {
         {step === 'subjects' && (
           <motion.div
             key="subjects"
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
@@ -856,7 +856,7 @@ export default function ExamenesOficiales() {
             <motion.div
               className="grid grid-cols-2 md:grid-cols-4 gap-3"
               variants={containerVariants}
-              initial="hidden"
+              initial={false}
               animate="visible"
             >
               {SUBJECTS.map(subject => (

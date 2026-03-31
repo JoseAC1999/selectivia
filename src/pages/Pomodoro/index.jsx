@@ -160,7 +160,7 @@ export default function Pomodoro() {
 
   return (
     <div style={{ maxWidth: 900, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* ── Header ── */}
         <div style={{ marginBottom: 36 }}>
@@ -190,7 +190,7 @@ export default function Pomodoro() {
             {/* Modo badge */}
             <motion.div
               key={isWork ? 'work' : 'break'}
-              initial={{ opacity: 0, y: -6 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               style={{
                 padding: '5px 16px', borderRadius: 99, fontSize: 12, fontWeight: 600,

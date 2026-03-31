@@ -58,7 +58,7 @@ export default function Onboarding() {
       }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{
@@ -130,7 +130,7 @@ export default function Onboarding() {
               htmlFor="userName"
               style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)', marginBottom: 8 }}
             >
-              ¿Cómo te llamas? <span style={{ color: '#EF4444' }}>*</span>
+              ¿Cómo te llamas? <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>(opcional)</span>
             </label>
             <input
               id="userName"
