@@ -107,6 +107,10 @@ const useStudyStore = create(
 
       /** Si el usuario ha completado el onboarding inicial */
       hasCompletedOnboarding: false,
+      /** Si el estado persistido ya se ha rehidratado */
+      hasHydrated: false,
+
+      setHasHydrated: (value) => set({ hasHydrated: Boolean(value) }),
 
       /** Toast de feedback para acciones clave */
       uiToast: null,
@@ -387,6 +391,12 @@ const useStudyStore = create(
         timer.sessionCount = Math.max(1, Math.floor(toNumber(timer.sessionCount, 1)))
         timer.selectedSubject = typeof timer.selectedSubject === 'string' ? timer.selectedSubject : 'biologia'
 
+        const persistedUserName = typeof state.userName === 'string' ? state.userName : currentState.userName
+        const inferredOnboarding =
+          typeof state.hasCompletedOnboarding === 'boolean'
+            ? state.hasCompletedOnboarding
+            : persistedUserName.trim().length > 0
+
         return {
           ...currentState,
           ...state,
@@ -402,10 +412,13 @@ const useStudyStore = create(
           streak: Math.max(0, Math.floor(toNumber(state.streak, 0))),
           darkMode: typeof state.darkMode === 'boolean' ? state.darkMode : currentState.darkMode,
           soundMuted: typeof state.soundMuted === 'boolean' ? state.soundMuted : currentState.soundMuted,
-          userName: typeof state.userName === 'string' ? state.userName : currentState.userName,
-          hasCompletedOnboarding: Boolean(state.hasCompletedOnboarding),
+          userName: persistedUserName,
+          hasCompletedOnboarding: inferredOnboarding,
           examDate: typeof state.examDate === 'string' || state.examDate === null ? state.examDate : currentState.examDate,
         }
+      },
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
       },
       partialize: (state) => ({
         progress: state.progress,

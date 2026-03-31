@@ -50,6 +50,7 @@ function AppLoader() {
 }
 
 export default function App() {
+  const hasHydrated = useStudyStore((s) => s.hasHydrated)
   const hasCompletedOnboarding = useStudyStore((s) => s.hasCompletedOnboarding)
   const darkMode = useStudyStore((s) => s.darkMode)
 
@@ -60,6 +61,10 @@ export default function App() {
       document.documentElement.classList.remove('dark')
     }
   }, [darkMode])
+
+  if (!hasHydrated) {
+    return <AppLoader />
+  }
 
   if (!hasCompletedOnboarding) {
     return (
