@@ -177,8 +177,12 @@ function PredictionCard({ prediction, index, onStudyFlashcards }) {
       exit={{ opacity: 0, y: -12, scale: 0.97 }}
       transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
       className="relative rounded-2xl overflow-hidden"
-      style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-      style={{ borderLeftWidth: 3, borderLeftColor: config.borderColor }}
+      style={{
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border)',
+        borderLeftWidth: 3,
+        borderLeftColor: config.borderColor,
+      }}
     >
       {/* Cabecera */}
       <div className="p-5 pb-3">

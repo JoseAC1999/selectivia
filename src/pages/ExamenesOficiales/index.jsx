@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti'
 import useStudyStore from '../../store/useStudyStore.js'
 import PDF_PATHS from '../../data/pdf-paths.json'
 import { playConfetti } from '../../lib/sounds.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 import biologiaData from '../../data/ebau/biologia.json'
 import historiaData from '../../data/ebau/historia.json'
 import inglesData from '../../data/ebau/ingles.json'
@@ -509,6 +510,7 @@ const stepAnim = {
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
 
 export default function ExamenesOficiales() {
+  const isMobile = useIsMobile()
   // Navegación por pasos
   const [step, setStep] = useState('subjects')
 
@@ -765,7 +767,7 @@ export default function ExamenesOficiales() {
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
-    <div style={{ minHeight: '100%', padding: '24px 20px 48px' }}>
+    <div style={{ minHeight: '100%', padding: isMobile ? '20px 16px 32px' : '24px 20px 48px' }}>
       <AnimatePresence mode="wait">
 
         {/* ════════════════════════════════════════════════════════════════════
@@ -783,7 +785,7 @@ export default function ExamenesOficiales() {
             <div style={{ marginBottom: 32 }}>
               <h1 style={{
                 fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700,
-                fontSize: 26, color: 'var(--text-primary)', marginBottom: 6,
+                fontSize: isMobile ? 22 : 26, color: 'var(--text-primary)', marginBottom: 6,
               }}>
                 Exámenes Oficiales
               </h1>
@@ -953,10 +955,10 @@ export default function ExamenesOficiales() {
             </h2>
 
             {/* Layout dos columnas: PDF (izquierda) + criterios (derecha) */}
-            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexDirection: isMobile ? 'column' : 'row' }}>
 
               {/* Izquierda (60%): enlace al PDF + enunciado en texto */}
-              <div style={{ flex: '0 0 60%' }}>
+              <div style={{ flex: isMobile ? '1 1 auto' : '0 0 60%', width: isMobile ? '100%' : 'auto' }}>
                 {/* Tarjeta de acceso al PDF */}
                 <div style={{
                   background: 'var(--bg-card)', border: '1px solid var(--border)',
@@ -995,7 +997,7 @@ export default function ExamenesOficiales() {
                     borderRadius: 12, padding: '20px',
                     color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.7,
                     whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                    overflowY: 'auto', maxHeight: 'calc(100vh - 260px)',
+                    overflowY: 'auto', maxHeight: isMobile ? 'none' : 'calc(100vh - 260px)',
                     margin: 0, fontFamily: '"Inter", sans-serif',
                   }}>
                     {activeExam.rawQuestion}
@@ -1004,7 +1006,7 @@ export default function ExamenesOficiales() {
               </div>
 
               {/* Derecha (40%): criterios de corrección + navegación */}
-              <div style={{ flex: '0 0 40%', minWidth: 0 }}>
+              <div style={{ flex: isMobile ? '1 1 auto' : '0 0 40%', minWidth: 0, width: isMobile ? '100%' : 'auto' }}>
 
                 {/* Botón para mostrar/ocultar criterios */}
                 <button
@@ -1081,7 +1083,7 @@ export default function ExamenesOficiales() {
                 {/* Navegación anterior / siguiente */}
                 <div
                   className="flex items-center justify-between"
-                  style={{ paddingTop: 8 }}
+                  style={{ paddingTop: 8, gap: 12, flexWrap: isMobile ? 'wrap' : 'nowrap' }}
                 >
                   <button
                     onClick={handleNavPrev}
@@ -1148,7 +1150,7 @@ export default function ExamenesOficiales() {
                   transition={{ duration: 0.3 }}
                   style={{
                     background: 'var(--bg-card)', border: '1px solid var(--border)',
-                    borderRadius: 20, padding: '40px 40px 36px',
+                    borderRadius: 20, padding: isMobile ? '28px 20px 24px' : '40px 40px 36px',
                     textAlign: 'center', maxWidth: 440, width: '100%',
                   }}
                 >
@@ -1191,7 +1193,7 @@ export default function ExamenesOficiales() {
                   </div>
 
                   {/* Botones */}
-                  <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+                  <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexDirection: isMobile ? 'column' : 'row' }}>
                     <button
                       onClick={() => setStep('exams')}
                       style={{
@@ -1333,7 +1335,7 @@ export default function ExamenesOficiales() {
                   {/* Columna izquierda (60%): enlace al PDF + enunciado en texto */}
                   <div
                     className="md:col-span-3"
-                    style={{ position: 'sticky', top: 64 }}
+                    style={{ position: isMobile ? 'static' : 'sticky', top: 64 }}
                   >
                     {/* Tarjeta de acceso al PDF */}
                     <div style={{
@@ -1373,7 +1375,7 @@ export default function ExamenesOficiales() {
                         borderRadius: 12, padding: '20px',
                         color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.7,
                         whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                        overflowY: 'auto', maxHeight: 'calc(100vh - 260px)',
+                        overflowY: 'auto', maxHeight: isMobile ? 320 : 'calc(100vh - 260px)',
                         margin: 0, fontFamily: '"Inter", sans-serif',
                       }}>
                         {activeExam.rawQuestion}
@@ -1394,7 +1396,7 @@ export default function ExamenesOficiales() {
                       onChange={e => setUserAnswer(e.target.value)}
                       placeholder="Escribe tu respuesta aquí..."
                       style={{
-                        width: '100%', minHeight: 'calc(100vh - 220px)', resize: 'vertical',
+                        width: '100%', minHeight: isMobile ? 260 : 'calc(100vh - 220px)', resize: 'vertical',
                         background: 'var(--bg-card)', color: 'var(--text-primary)',
                         border: '1px solid var(--border)', borderRadius: 10,
                         padding: '16px', fontFamily: '"Inter", sans-serif',

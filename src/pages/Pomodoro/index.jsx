@@ -6,6 +6,7 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList,
 } from 'recharts'
 import useStudyStore from '../../store/useStudyStore.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 
 // ── Constantes ──────────────────────────────────────────────────────────────
 const WORK_MINS = 25
@@ -62,6 +63,7 @@ export default function Pomodoro() {
   const addPomodoroSession = useStudyStore(s => s.addPomodoroSession)
   const pomodoroSessions = useStudyStore(s => s.pomodoroSessions)
   const userName = useStudyStore(s => s.userName)
+  const isMobile = useIsMobile()
 
   // Estado del timer
   const [isWork, setIsWork] = useState(true)
@@ -172,14 +174,14 @@ export default function Pomodoro() {
   const sessionInCycle = ((sessionCount - 1) % SESSIONS_PER_CYCLE) + 1
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto', padding: '40px 24px' }}>
+    <div style={{ maxWidth: 900, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* ── Header ── */}
         <div style={{ marginBottom: 36 }}>
           <h1 style={{
             fontFamily: '"Space Grotesk", sans-serif',
-            fontSize: 28, fontWeight: 700, marginBottom: 6,
+            fontSize: isMobile ? 24 : 28, fontWeight: 700, marginBottom: 6,
             background: 'linear-gradient(90deg, #F59E0B, #F97316)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
@@ -191,12 +193,12 @@ export default function Pomodoro() {
         </div>
 
         {/* ── Contenido principal ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 320px', gap: 24, alignItems: 'start' }}>
 
           {/* ── Timer ── */}
           <div style={{
             background: 'var(--bg-card)', border: '1px solid var(--border)',
-            borderRadius: 20, padding: '36px 32px',
+            borderRadius: 20, padding: isMobile ? '24px 18px' : '36px 32px',
             display: 'flex', flexDirection: 'column', alignItems: 'center',
           }}>
 
@@ -217,16 +219,16 @@ export default function Pomodoro() {
             </motion.div>
 
             {/* Reloj circular SVG */}
-            <div style={{ position: 'relative', width: 220, height: 220, marginBottom: 28 }}>
-              <svg width="220" height="220" style={{ transform: 'rotate(-90deg)' }}>
+            <div style={{ position: 'relative', width: isMobile ? 190 : 220, height: isMobile ? 190 : 220, marginBottom: 28 }}>
+              <svg width={isMobile ? 190 : 220} height={isMobile ? 190 : 220} style={{ transform: 'rotate(-90deg)' }}>
                 {/* Track */}
                 <circle
-                  cx="110" cy="110" r={RADIUS}
+                  cx={isMobile ? 95 : 110} cy={isMobile ? 95 : 110} r={RADIUS}
                   fill="none" stroke="var(--border)" strokeWidth="10"
                 />
                 {/* Progreso */}
                 <motion.circle
-                  cx="110" cy="110" r={RADIUS}
+                  cx={isMobile ? 95 : 110} cy={isMobile ? 95 : 110} r={RADIUS}
                   fill="none" stroke={arcColor} strokeWidth="10"
                   strokeLinecap="round"
                   strokeDasharray={CIRCUMFERENCE}
@@ -244,7 +246,7 @@ export default function Pomodoro() {
                   key={secondsLeft}
                   style={{
                     fontFamily: '"Space Grotesk", sans-serif',
-                    fontSize: 48, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-2px', lineHeight: 1,
+                    fontSize: isMobile ? 40 : 48, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-2px', lineHeight: 1,
                   }}
                 >
                   {formatTime(secondsLeft)}
@@ -280,7 +282,7 @@ export default function Pomodoro() {
               <label style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 8, display: 'block' }}>
                 Materia vinculada
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: isMobile ? 8 : 6 }}>
                 {Object.entries(SUBJECT_META).map(([slug, meta]) => (
                   <button
                     key={slug}
@@ -305,7 +307,7 @@ export default function Pomodoro() {
             </div>
 
             {/* Botones */}
-            <div style={{ display: 'flex', gap: 12, width: '100%' }}>
+            <div style={{ display: 'flex', gap: 12, width: '100%', flexDirection: isMobile ? 'column' : 'row' }}>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

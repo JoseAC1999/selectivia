@@ -120,7 +120,7 @@ function NavItem({ item, progress, isMobile = false }) {
       className={({ isActive }) =>
         [
           'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200',
-          isMobile ? 'flex-col gap-1 px-2 py-2 text-xs' : '',
+          isMobile ? 'min-w-[4.5rem] flex-col gap-1 px-2 py-2 text-xs text-center' : '',
           isActive
             ? 'bg-[#7C3AED]/10 shadow-[0_0_20px_rgba(124,58,237,0.15)]'
             : 'hover:bg-[#7C3AED]/5',
@@ -138,7 +138,7 @@ function NavItem({ item, progress, isMobile = false }) {
           >
             {item.icon}
           </span>
-          <span className={isMobile ? 'text-[10px]' : ''}>{item.label}</span>
+          <span className={isMobile ? 'text-[10px] leading-tight' : ''}>{item.label}</span>
           {!isMobile && progress != null && <ProgressDot value={progress} />}
         </>
       )}
@@ -265,7 +265,7 @@ export default function Layout({ children }) {
     <AnimatePresence>
       {showProfileModal && <ProfileModal onClose={() => setShowProfileModal(false)} />}
     </AnimatePresence>
-    <div className="flex h-screen overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
+    <div className="flex overflow-hidden" style={{ backgroundColor: 'var(--bg-base)', minHeight: '100dvh' }}>
       {/* ── Sidebar desktop ───────────────────────────────────────── */}
       <motion.aside
         initial={{ x: -20, opacity: 0 }}
@@ -360,15 +360,22 @@ export default function Layout({ children }) {
 
       {/* ── Contenido principal ────────────────────────────────────── */}
       <main className="flex-1 flex flex-col overflow-hidden">
-        <div className="flex-1 overflow-y-auto pb-20 md:pb-0">
+        <div
+          className="flex-1 overflow-y-auto md:pb-0"
+          style={{ paddingBottom: 'calc(84px + env(safe-area-inset-bottom))' }}
+        >
           {children}
         </div>
       </main>
 
       {/* ── Bottom nav mobile ─────────────────────────────────────── */}
       <nav
-        className="md:hidden fixed bottom-0 left-0 right-0 flex items-center justify-around px-2 py-2 border-t z-50"
-        style={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border)' }}
+        className="md:hidden fixed bottom-0 left-0 right-0 flex items-center gap-1 overflow-x-auto border-t z-50"
+        style={{
+          backgroundColor: 'var(--bg-base)',
+          borderColor: 'var(--border)',
+          padding: '10px 8px calc(10px + env(safe-area-inset-bottom))',
+        }}
       >
         {NAV_ITEMS.map((item) => (
           <NavItem key={item.path} item={item} isMobile />

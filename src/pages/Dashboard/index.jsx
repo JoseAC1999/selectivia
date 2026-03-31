@@ -6,6 +6,7 @@ import {
 } from 'recharts'
 import useStudyStore from '../../store/useStudyStore.js'
 import { playSuccess, playWrong } from '../../lib/sounds.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 
 // Totales de preguntas por materia (de src/data/ebau/)
 const TOTAL_QUESTIONS = {
@@ -176,6 +177,7 @@ function MiniFlipCard({ card, onRate }) {
 
 export default function Dashboard() {
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
   const { progress, streak, testHistory, pomodoroSessions, flashcardWrongIds, examDate, studyPlanCompleted, userName } = useStudyStore()
   const addFlashcardResult = useStudyStore(s => s.addFlashcardResult)
 
@@ -305,14 +307,14 @@ export default function Dashboard() {
   ]
 
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 24px' }}>
+    <div style={{ maxWidth: 960, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* ── Header ── */}
         <div style={{ marginBottom: 36 }}>
           <h1 style={{
             fontFamily: '"Space Grotesk", sans-serif',
-            fontSize: 30, fontWeight: 700, marginBottom: 6,
+            fontSize: isMobile ? 24 : 30, fontWeight: 700, marginBottom: 6,
             background: 'linear-gradient(90deg, #A78BFA, #06B6D4)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
@@ -421,7 +423,7 @@ export default function Dashboard() {
           <h2 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14, fontFamily: '"Space Grotesk", sans-serif' }}>
             Acciones rápidas
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 12 }}>
             {QUICK_ACTIONS.map((action, i) => (
               <motion.button
                 key={action.path}
@@ -457,7 +459,7 @@ export default function Dashboard() {
           <h2 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14, fontFamily: '"Space Grotesk", sans-serif' }}>
             Progreso por materia
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, minmax(0, 1fr))' : 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
             {Object.entries(TOTAL_QUESTIONS).map(([slug], i) => {
               const meta = SUBJECT_META[slug]
               const pct = progress[slug] ?? 0
@@ -467,7 +469,7 @@ export default function Dashboard() {
         </section>
 
         {/* ── Fila: Temas débiles + Chart semanal ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 20, marginBottom: 36 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: 20, marginBottom: 36 }}>
 
           {/* Temas débiles */}
           <motion.section
@@ -599,7 +601,7 @@ export default function Dashboard() {
               <AnimatePresence mode="wait">
                 {repasoCards === null ? (
                   <motion.div key="start" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+                    style={{ display: 'flex', alignItems: isMobile ? 'stretch' : 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', flexDirection: isMobile ? 'column' : 'row' }}>
                     <div>
                       <p style={{ fontSize: 13, color: 'var(--text-primary)', marginBottom: 4 }}>
                         5 tarjetas de tus temas más difíciles
@@ -608,7 +610,7 @@ export default function Dashboard() {
                         {Object.values(flashcardWrongIds).reduce((s, ids) => s + ids.length, 0)} tarjetas pendientes de repaso
                       </p>
                     </div>
-                    <div style={{ display: 'flex', gap: 10 }}>
+                    <div style={{ display: 'flex', gap: 10, width: isMobile ? '100%' : 'auto', flexDirection: isMobile ? 'column' : 'row' }}>
                       <button
                         onClick={handleStartRepaso}
                         style={{
@@ -693,7 +695,7 @@ export default function Dashboard() {
                 Ver plan completo →
               </button>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 12 }}>
               {nextPlanDays.map((day, i) => {
                 const meta = SUBJECT_META[day.subject]
                 return (
@@ -788,10 +790,11 @@ export default function Dashboard() {
                     transition={{ delay: i * 0.05 }}
                     onClick={() => navigate('/examenes')}
                     style={{
-                      display: 'flex', alignItems: 'center', gap: 12,
+                      display: 'flex', alignItems: isMobile ? 'flex-start' : 'center', gap: 12,
                       padding: '13px 18px',
                       borderBottom: i < recent.length - 1 ? '1px solid var(--border)' : 'none',
                       cursor: 'pointer', transition: 'background 0.15s',
+                      flexWrap: isMobile ? 'wrap' : 'nowrap',
                     }}
                     onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-elevated)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
@@ -805,8 +808,9 @@ export default function Dashboard() {
                       {meta.icon} {meta.name}
                     </span>
                     <span style={{
-                      flex: 1, fontSize: 12, color: 'var(--text-secondary)',
-                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                      flex: isMobile ? '1 1 100%' : 1, fontSize: 12, color: 'var(--text-secondary)',
+                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap',
+                      order: isMobile ? 3 : 0,
                     }}>
                       {entry.label || 'Examen oficial'}
                     </span>

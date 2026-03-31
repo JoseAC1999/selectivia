@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
 import useStudyStore from '../../store/useStudyStore.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 
 // ── Datos de predicciones (importados estáticamente) ────────────────────────
 import bioP from '../../data/predictions/biologia.json'
@@ -182,6 +182,7 @@ function CalendarDay({ dateStr, today, examDate, isCompleted, isPlan, planTasks,
 
 // ── Página principal ──────────────────────────────────────────────────────────
 export default function Calendario() {
+  const isMobile = useIsMobile()
   const {
     examDate, setExamDate,
     studyHoursPerDay, setStudyHoursPerDay,
@@ -233,14 +234,14 @@ export default function Calendario() {
   const pct = plan.length > 0 ? Math.round((completedCount / plan.length) * 100) : 0
 
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 24px' }}>
+    <div style={{ maxWidth: 960, margin: '0 auto', padding: isMobile ? '24px 16px 32px' : '40px 24px' }}>
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
           <h1 style={{
             fontFamily: '"Space Grotesk", sans-serif',
-            fontSize: 28, fontWeight: 700, marginBottom: 6,
+            fontSize: isMobile ? 24 : 28, fontWeight: 700, marginBottom: 6,
             background: 'linear-gradient(90deg, #10B981, #06B6D4)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
@@ -252,7 +253,7 @@ export default function Calendario() {
         </div>
 
         {/* ── Configuración: fecha + horas ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 28 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 16, marginBottom: 28 }}>
           {/* Fecha selectividad */}
           <div style={{
             background: 'var(--bg-card)', border: '1px solid var(--border)',
@@ -330,7 +331,7 @@ export default function Calendario() {
         {!examDate ? (
           <div style={{
             background: 'var(--bg-card)', border: '1px solid var(--border)',
-            borderRadius: 16, padding: '60px', textAlign: 'center',
+            borderRadius: 16, padding: isMobile ? '32px 20px' : '60px', textAlign: 'center',
           }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>📅</div>
             <p style={{ color: 'var(--text-muted)', fontSize: 14 }}>
@@ -338,7 +339,7 @@ export default function Calendario() {
             </p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 340px', gap: 20 }}>
 
             {/* ── Calendario visual ── */}
             <div style={{
@@ -371,14 +372,14 @@ export default function Calendario() {
               </div>
 
               {/* Cabecera días */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4, marginBottom: 6 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: 4, marginBottom: 6 }}>
                 {DAY_NAMES.map(d => (
                   <div key={d} style={{ textAlign: 'center', fontSize: 10, color: 'var(--text-muted)', padding: '4px 0' }}>{d}</div>
                 ))}
               </div>
 
               {/* Grid de días */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: 4 }}>
                 {calCells.map((dateStr, i) => (
                   <CalendarDay
                     key={i}

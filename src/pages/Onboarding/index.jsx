@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import useStudyStore from '../../store/useStudyStore.js'
+import useIsMobile from '../../hooks/useIsMobile.js'
 
 export default function Onboarding() {
   const completeOnboarding = useStudyStore((s) => s.completeOnboarding)
+  const isMobile = useIsMobile()
   const [name, setName] = useState('')
   const [examDate, setExamDate] = useState('')
   const [error, setError] = useState('')
@@ -20,12 +22,14 @@ export default function Onboarding() {
   return (
     <div
       style={{
-        minHeight: '100vh',
+        minHeight: '100dvh',
         backgroundColor: 'var(--bg-base)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '24px',
+        paddingTop: isMobile ? '32px' : '24px',
+        paddingBottom: isMobile ? '32px' : '24px',
       }}
     >
       <motion.div
@@ -38,7 +42,7 @@ export default function Onboarding() {
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',
           borderRadius: 24,
-          padding: '48px 40px',
+          padding: isMobile ? '32px 20px' : '48px 40px',
           boxShadow: '0 25px 60px rgba(0,0,0,0.15)',
         }}
       >
@@ -63,7 +67,7 @@ export default function Onboarding() {
           </div>
           <span
             style={{
-              fontSize: 24,
+              fontSize: isMobile ? 20 : 24,
               fontWeight: 700,
               fontFamily: '"Space Grotesk", sans-serif',
               background: 'linear-gradient(90deg, #7C3AED, #06B6D4)',
@@ -79,7 +83,7 @@ export default function Onboarding() {
         <div style={{ textAlign: 'center', marginBottom: 36 }}>
           <h1
             style={{
-              fontSize: 26,
+              fontSize: isMobile ? 22 : 26,
               fontWeight: 700,
               color: 'var(--text-primary)',
               fontFamily: '"Space Grotesk", sans-serif',
