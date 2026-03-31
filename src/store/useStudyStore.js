@@ -17,6 +17,18 @@ const DEFAULT_PROGRESS = {
 const POMODORO_WORK_MINS = 25
 const POMODORO_BREAK_MINS = 5
 
+function toArray(value) {
+  return Array.isArray(value) ? value : []
+}
+
+function toObject(value) {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
+}
+
+function toNumber(value, fallback = 0) {
+  return Number.isFinite(value) ? value : fallback
+}
+
 const useStudyStore = create(
   persist(
     (set, get) => ({
@@ -354,6 +366,47 @@ const useStudyStore = create(
     }),
     {
       name: 'selectivia-store',
+      version: 2,
+      merge: (persistedState, currentState) => {
+        const persisted = toObject(persistedState)
+        const state = toObject(persisted.state)
+
+        const mergedProgress = { ...DEFAULT_PROGRESS, ...toObject(state.progress) }
+        for (const key of Object.keys(mergedProgress)) {
+          mergedProgress[key] = Math.max(0, Math.min(100, toNumber(mergedProgress[key], 0)))
+        }
+
+        const timer = {
+          ...currentState.pomodoroTimer,
+          ...toObject(state.pomodoroTimer),
+        }
+        timer.isWork = Boolean(timer.isWork)
+        timer.secondsLeft = Math.max(0, Math.floor(toNumber(timer.secondsLeft, POMODORO_WORK_MINS * 60)))
+        timer.running = Boolean(timer.running)
+        timer.endAt = timer.endAt == null ? null : toNumber(timer.endAt, null)
+        timer.sessionCount = Math.max(1, Math.floor(toNumber(timer.sessionCount, 1)))
+        timer.selectedSubject = typeof timer.selectedSubject === 'string' ? timer.selectedSubject : 'biologia'
+
+        return {
+          ...currentState,
+          ...state,
+          progress: mergedProgress,
+          testHistory: toArray(state.testHistory),
+          pomodoroSessions: toArray(state.pomodoroSessions),
+          pomodoroTimer: timer,
+          completedExams: toArray(state.completedExams),
+          flashcardHistory: toArray(state.flashcardHistory),
+          flashcardWrongIds: toObject(state.flashcardWrongIds),
+          studyPlanCompleted: toArray(state.studyPlanCompleted),
+          studyHoursPerDay: Math.max(1, Math.min(8, toNumber(state.studyHoursPerDay, currentState.studyHoursPerDay))),
+          streak: Math.max(0, Math.floor(toNumber(state.streak, 0))),
+          darkMode: typeof state.darkMode === 'boolean' ? state.darkMode : currentState.darkMode,
+          soundMuted: typeof state.soundMuted === 'boolean' ? state.soundMuted : currentState.soundMuted,
+          userName: typeof state.userName === 'string' ? state.userName : currentState.userName,
+          hasCompletedOnboarding: Boolean(state.hasCompletedOnboarding),
+          examDate: typeof state.examDate === 'string' || state.examDate === null ? state.examDate : currentState.examDate,
+        }
+      },
       partialize: (state) => ({
         progress: state.progress,
         streak: state.streak,
